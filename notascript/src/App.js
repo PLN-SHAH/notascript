@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import OutputStream from "./OutputStream";
 import Buttons from "./Buttons";
+import Header from "./Header";
 
 export default class App extends Component {
   state = {
@@ -21,6 +22,7 @@ export default class App extends Component {
 
     return (
       <main>
+        <Header />
         <OutputStream input="hajsjsldosdh" />
         <Buttons />
         <h1>git notascript</h1>
