@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Test from "./OutputStream";
-
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -19,6 +17,7 @@ const StyledButton = styled.button`
     font-size: 2.2em;
   }
 `;
+
 export default class App extends Component {
   state = {
     outputStream: [],
@@ -28,12 +27,10 @@ export default class App extends Component {
   //getButtonValue
   handleClick = event => {
     const content = event.target.innerHTML;
-    console.log("buttoncontent", content);
     this.setState({
       outputStream: [...this.state.outputStream, content],
       output: content
     });
-    console.log("state outputStream länge", this.state.outputStream);
   };
 
   render() {
@@ -41,9 +38,11 @@ export default class App extends Component {
     return (
       <main>
         <Header />
-        <Test />
         <div>output: content={this.state.output}</div>
-        <div>outputStream: {this.state.outputStream}</div>
+        <div>
+          outputStream: {this.state.outputStream}{" "}
+          {this.state.outputStream.length}
+        </div>
         <StyledButton onClick={this.handleClick}>&#1049;</StyledButton>
         <StyledButton onClick={this.handleClick}>&#859;</StyledButton>
         <StyledButton onClick={this.handleClick}>&#1029;</StyledButton>
