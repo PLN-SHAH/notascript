@@ -1,11 +1,9 @@
 {
-  "name": "react-mongo-exercise",
-  "proxy": "http://localhost:4000",
-  "version": "0.1.0",
+  "name": "notascript",
+  "proxy": "http://localhost:3000",
+  "version": "0.0.1",
   "author": {
-    "name": "Jeremias Erbs",
-    "email": "jerry@badabam.de",
-    "url": "https://badabam.de"
+    "name": "Pauline Shahjahah"
   },
   "private": true,
   "dependencies": {
