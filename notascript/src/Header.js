@@ -10,7 +10,8 @@ const StyledHeader = styled.header`
 export default function Header() {
   return (
     <StyledHeader>
-      <h1>Bearbeiten</h1>
+      <h1>notascript</h1>
+      <h2>Bearbeiten</h2>
     </StyledHeader>
   );
 }
