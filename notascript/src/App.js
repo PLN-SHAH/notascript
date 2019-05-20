@@ -17,7 +17,7 @@ export default class App extends Component {
 
     return (
       <main>
-        <h1>notascript</h1>
+        <h1>git notascript</h1>
       </main>
     );
   }
