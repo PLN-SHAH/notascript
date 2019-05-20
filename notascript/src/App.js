@@ -21,6 +21,7 @@ const StyledButton = styled.button`
 export default class App extends Component {
   state = {
     outputStream: [],
+    outputStreamArray: [this.outputStream],
     output: ""
   };
 
@@ -28,17 +29,40 @@ export default class App extends Component {
   handleClick = event => {
     const content = event.target.innerHTML;
     this.setState({
-      outputStream: [...this.state.outputStream, content],
-      output: content
+      output: content,
+      outputStream: [...this.state.outputStream, content]
     });
   };
 
+  componentDidMount() {
+    //console.log("did mount", this.state.outputStream);
+  }
+
+  componentDidUpdate() {
+    const outputStream = this.state.outputStream;
+    let outputStreamArray = this.state.outputStreamArray;
+
+    //save every 9 item array in cache
+    if (outputStream.length % 9 === 0) {
+      console.log("rest 0");
+      let accStream = [];
+      accStream = [...accStream, outputStream];
+      outputStreamArray = [...outputStreamArray, accStream];
+      console.log("outputStreamArray", outputStreamArray);
+
+      console.log("zwischengespeichertes array", accStream);
+      return accStream;
+    } else {
+      console.log("outputStream.length != 0", outputStream.length);
+    }
+  }
+
   render() {
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <main>
         <Header />
-        <div>output: content={this.state.output}</div>
+        <div>typed {this.state.output}</div>
         <div>
           outputStream: {this.state.outputStream}{" "}
           {this.state.outputStream.length}

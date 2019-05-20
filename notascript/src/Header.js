@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   font-family: "Dancing Script", cursive;
-  background-color: lightgreen;
   color: white;
   justify-content: center;
   align-items: center;
