@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import OutputStream from "./OutputStream";
+import Buttons from "./Buttons";
 
 export default class App extends Component {
   state = {
-    cards: []
+    cards: [],
+    target: undefined
   };
 
   componentDidMount() {
@@ -14,10 +17,15 @@ export default class App extends Component {
 
   render() {
     const { cards } = this.state;
+    const { target } = this.state;
 
     return (
       <main>
+        <OutputStream input="hajsjsldosdh" />
+        <Buttons />
         <h1>git notascript</h1>
+        <output>&#1049;</output>
+        <p>typed: {target}</p>
       </main>
     );
   }
