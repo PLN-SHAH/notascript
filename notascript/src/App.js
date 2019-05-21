@@ -18,8 +18,10 @@ export default class App extends Component {
   };
 
   //getButtonValue
-  handleClick = event => {
-    const content = event.target.innerHTML;
+  handleButtonClick(label) {
+    console.log("handleButtonClick", label);
+    const content = label;
+
     this.setState({
       actualSign: content,
       outputStream: [...this.state.outputStream, content]
@@ -28,7 +30,7 @@ export default class App extends Component {
       //console.log("outputStream: mod 4  ", outputStream);
       this.sliceArray(this.state.outputStream);
     }
-  };
+  }
 
   sliceArray(array) {
     let slicedArray = [];
@@ -48,7 +50,10 @@ export default class App extends Component {
       <main>
         <Header />
         <StyledOutput>{this.state.outputStream}</StyledOutput>
-        <Buttons buttonLabels={["a", "b", "c", "a", "b", "c", "a", "b", "c"]} />
+        <Buttons
+          buttonLabels={["a", "b", "c", "d", "e", "f", "g", "h", "i"]}
+          handleButtonClick={label => this.handleButtonClick(label)}
+        />
         <Footer />
       </main>
     );

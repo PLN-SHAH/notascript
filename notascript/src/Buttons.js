@@ -23,11 +23,14 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Button({ buttonLabels }) {
+export default function Button({ buttonLabels, handleButtonClick }) {
+  console.log("Button");
   return (
     <StyledButtonContainer>
       {buttonLabels.map(label => (
-        <StyledButton>{label}</StyledButton>
+        <StyledButton key={label} onClick={() => handleButtonClick(label)}>
+          {label}
+        </StyledButton>
       ))}
     </StyledButtonContainer>
   );
