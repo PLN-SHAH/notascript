@@ -51,7 +51,17 @@ export default class App extends Component {
         <Header />
         <StyledOutput>{this.state.outputStream}</StyledOutput>
         <Buttons
-          buttonLabels={["a", "b", "c", "d", "e", "f", "g", "h", "i"]}
+          buttonLabels={[
+            String.fromCodePoint(0x03a3),
+            String.fromCodePoint(0x03b6),
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i"
+          ]}
           handleButtonClick={label => this.handleButtonClick(label)}
         />
         <Footer />
