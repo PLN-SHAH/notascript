@@ -1,13 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
+const StyledButtonContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: end;
+`;
+
 const StyledButton = styled.button`
-  padding: 20px;
-  font-size: 2em;
   color: white;
   border: 0;
   margin-right: 5px;
   border-bottom: 5px solid #4c4a58;
+  height: 50px;
+  width: 50px;
 
   &:hover,
   &:active {
@@ -16,22 +23,12 @@ const StyledButton = styled.button`
   }
 `;
 
-export default class Button extends Component {
-  state = {
-    buttons: ["a", "b", "c", "d"]
-  };
-
-  renderButtons() {
-    this.state.buttons.forEach(button => {});
-  }
-
-  render() {
-    return <StyledButton render={this.renderButtons()}>&#1049;</StyledButton>;
-  }
+export default function Button({ buttonLabels }) {
+  return (
+    <StyledButtonContainer>
+      {buttonLabels.map(label => (
+        <StyledButton>{label}</StyledButton>
+      ))}
+    </StyledButtonContainer>
+  );
 }
-
-/*
-      <StyledButton onClick={this.handleClick}>&#859;</StyledButton>
-      <StyledButton onClick={this.handleClick}>&#1029;</StyledButton>
-      <StyledButton onClick={this.handleClick}>&#995;</StyledButton>
-      */
