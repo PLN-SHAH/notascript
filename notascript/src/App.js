@@ -18,55 +18,57 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledOutput = styled.section`
+  max-width: 100vw;
+  border: 1px solid black;
+  word-break: break-all;
+`;
+
 export default class App extends Component {
   state = {
     outputStream: [],
-    outputStreamArray: [this.outputStream],
-    output: ""
+    actualSign: ""
   };
 
   //getButtonValue
   handleClick = event => {
     const content = event.target.innerHTML;
     this.setState({
-      output: content,
+      actualSign: content,
       outputStream: [...this.state.outputStream, content]
     });
   };
 
-  componentDidMount() {
-    //console.log("did mount", this.state.outputStream);
-  }
-
   componentDidUpdate() {
     const outputStream = this.state.outputStream;
-    let outputStreamArray = this.state.outputStreamArray;
 
     //save every 9 item array in cache
-    if (outputStream.length % 9 === 0) {
-      console.log("rest 0");
-      let accStream = [];
-      accStream = [...accStream, outputStream];
-      outputStreamArray = [...outputStreamArray, accStream];
-      console.log("outputStreamArray", outputStreamArray);
-
-      console.log("zwischengespeichertes array", accStream);
-      return accStream;
-    } else {
-      console.log("outputStream.length != 0", outputStream.length);
+    if (outputStream.length % 4 === 0) {
+      //console.log("outputStream: mod 4  ", outputStream);
+      this.sliceArray(outputStream);
     }
   }
 
+  sliceArray(array) {
+    let slicedArray = [];
+
+    //toDo change 4 dynamically
+    for (let i = 0; i < array.length; i += 4) {
+      slicedArray.push(array.slice(i, i + 4));
+    }
+
+    console.log(slicedArray, "sliced array function");
+  }
+
   render() {
-    //console.log(this.state);
+    console.log(this.state, "this state");
     return (
       <main>
         <Header />
-        <div>typed {this.state.output}</div>
-        <div>
-          outputStream: {this.state.outputStream}{" "}
-          {this.state.outputStream.length}
-        </div>
+        <StyledOutput>
+          outputStream: {this.state.outputStream.length} <br />
+          {this.state.outputStream}
+        </StyledOutput>
         <StyledButton onClick={this.handleClick}>&#1049;</StyledButton>
         <StyledButton onClick={this.handleClick}>&#859;</StyledButton>
         <StyledButton onClick={this.handleClick}>&#1029;</StyledButton>
