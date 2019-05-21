@@ -4,12 +4,12 @@ import Footer from "./Footer";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  padding: 20px;
-  font-size: 2em;
   color: white;
   border: 0;
   margin-right: 5px;
   border-bottom: 5px solid #4c4a58;
+  height: 50px;
+  width: 50px;
 
   &:hover,
   &:active {
@@ -23,6 +23,13 @@ const StyledOutput = styled.section`
   border: 1px solid black;
   word-break: break-all;
   font-size: 3em;
+`;
+
+const StyledButtonContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: end;
 `;
 
 export default class App extends Component {
@@ -61,12 +68,17 @@ export default class App extends Component {
     return (
       <main>
         <Header />
-        <div>{this.slicedArray}</div>
         <StyledOutput>{this.state.outputStream}</StyledOutput>
-        <StyledButton onClick={this.handleClick}>&#1049;</StyledButton>
-        <StyledButton onClick={this.handleClick}>&#859;</StyledButton>
-        <StyledButton onClick={this.handleClick}>&#1029;</StyledButton>
-        <StyledButton onClick={this.handleClick}>&#995;</StyledButton>
+        <StyledButtonContainer>
+          <StyledButton onClick={this.handleClick}>&#1049;</StyledButton>
+          <StyledButton onClick={this.handleClick}>&#859;</StyledButton>
+          <StyledButton onClick={this.handleClick}>&#1029;</StyledButton>
+          <StyledButton onClick={this.handleClick}>&#995;</StyledButton>
+          <StyledButton onClick={this.handleClick}>&#1049;</StyledButton>
+          <StyledButton onClick={this.handleClick}>&#859;</StyledButton>
+          <StyledButton onClick={this.handleClick}>&#1029;</StyledButton>
+          <StyledButton onClick={this.handleClick}>&#995;</StyledButton>
+        </StyledButtonContainer>
         <Footer />
       </main>
     );
