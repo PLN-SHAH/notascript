@@ -23,11 +23,16 @@ const StyledButton = styled.button`
 	}
 `;
 
-export default function Button({ buttonLabels, handleButtonClick }) {
+export default function Button(props) {
 	return (
 		<StyledButtonContainer>
-			{buttonLabels.map(label => (
-				<StyledButton key={label} onClick={() => handleButtonClick(label)}>
+			<div>{props.output}</div>
+			{props.buttonLabels.map(label => (
+				<StyledButton
+					key={label}
+					//onClick={label => props.handleButtonClick(label)}
+					onClick={() => props.handleButtonClick(label)}
+				>
 					{label}
 				</StyledButton>
 			))}

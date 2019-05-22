@@ -3,15 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Work from './Work';
 import Test from './Test';
-import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
-
-const StyledOutput = styled.section`
-	border: 1px solid black;
-	font-size: 3em;
-	max-width: 100vw;
-	word-break: break-all;
-`;
 
 export default class App extends Component {
 	state = {
@@ -20,7 +12,6 @@ export default class App extends Component {
 	};
 
 	handleButtonClick(label) {
-		console.log('handleButtonClick', label);
 		const content = label;
 
 		this.setState({
@@ -34,11 +25,11 @@ export default class App extends Component {
 
 	sliceArray(array) {
 		let slicedArray = [];
+		console.log('slicedArray', slicedArray);
 
 		for (let i = 0; i < array.length; i += 4) {
 			slicedArray.push(array.slice(i, 4));
 		}
-		//dev:	console.log(slicedArray, 'sliced array');
 		return slicedArray;
 	}
 
@@ -49,7 +40,16 @@ export default class App extends Component {
 				<section>
 					<Switch>
 						<Route exact path='/test' component={Test} />
-						<Route exact path='/work' component={Work} />
+						<Route
+							path='/work'
+							render={props => (
+								<Work
+									output={this.state.outputStream}
+									handleButtonClick={label => this.handleButtonClick(label)}
+									{...props}
+								/>
+							)}
+						/>
 					</Switch>
 				</section>
 				<Footer />
