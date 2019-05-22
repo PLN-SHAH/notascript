@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Work from './Work';
-import Test from './Test';
+import Home from './Home';
 import { Route, Switch } from 'react-router-dom';
 
 export default class App extends Component {
@@ -39,7 +39,7 @@ export default class App extends Component {
 				<Header />
 				<section>
 					<Switch>
-						<Route exact path='/test' component={Test} />
+						<Route exact path='/test' component={Home} />
 						<Route
 							path='/work'
 							render={props => (

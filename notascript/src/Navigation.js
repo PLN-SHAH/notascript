@@ -16,7 +16,7 @@ export default class Navigation extends Component {
 			<StyledNavigation>
 				<ul>
 					<li>
-						<NavLink to='/test'>Home</NavLink>
+						<NavLink to='/home'>Home</NavLink>
 					</li>
 					<li>
 						<NavLink to='/work'>Work</NavLink>
