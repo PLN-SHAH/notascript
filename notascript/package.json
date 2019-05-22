@@ -1,48 +1,50 @@
 {
-  "name": "notascript",
-  "proxy": "http://localhost:3000",
-  "version": "0.0.1",
-  "author": {
-    "name": "Pauline Shahjahah"
-  },
-  "private": true,
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "7.4.4",
-    "@craco/craco": "5.0.2",
-    "docz": "^1.2.0",
-    "docz-theme-default": "^1.2.0",
-    "express": "4.16.4",
-    "mongoose": "5.5.7",
-    "nodemon": "1.19.0",
-    "npm-run-all": "4.1.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "styled-components": "^4.2.0"
-  },
-  "scripts": {
-    "start": "run-p react server",
-    "react": "craco start",
-    "server": "nodemon -w server.js -w models/* server.js",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "Notascript",
+	"proxy": "http://localhost:3000",
+	"version": "0.0.1",
+	"author": {
+		"name": "Pauline Shahjahan",
+		"mail": "p.shahjahan@gmx.de",
+		"url": "https://github.com/PLN-SHAH/gesellenstueck"
+	},
+	"private": true,
+	"dependencies": {
+		"@babel/plugin-proposal-class-properties": "7.4.4",
+		"@craco/craco": "5.0.2",
+		"docz": "^1.2.0",
+		"docz-theme-default": "^1.2.0",
+		"express": "4.16.4",
+		"mongoose": "5.5.7",
+		"nodemon": "1.19.0",
+		"npm-run-all": "4.1.5",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"react-scripts": "3.0.1",
+		"styled-components": "^4.2.0"
+	},
+	"scripts": {
+		"start": "run-p react server",
+		"react": "craco start",
+		"server": "nodemon -w server.js -w models/* server.js",
+		"build": "craco build",
+		"test": "craco test",
+		"eject": "react-scripts eject",
+		"docz:dev": "docz dev",
+		"docz:build": "docz build"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }
