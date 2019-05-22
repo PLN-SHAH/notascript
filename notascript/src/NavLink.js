@@ -6,11 +6,11 @@ const NavLink = styled(RRDNavlink)`
 	text-decoration: none;
 
 	&:hover {
+		padding-bottom: 5px;
 		text-decoration: underline;
 	}
 
 	&.active {
-		color: red;
 	}
 `;
 
