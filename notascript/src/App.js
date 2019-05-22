@@ -12,7 +12,7 @@ export default class App extends Component {
 		actualSymbol: ''
 	};
 
-	handleButtonClick(buttonLabel) {
+	getSymbolsFromButtons(buttonLabel) {
 		const symbol = buttonLabel;
 
 		this.setState({
@@ -33,7 +33,7 @@ export default class App extends Component {
 								<Work
 									symbols={this.state.symbols}
 									handleButtonClick={buttonLabel =>
-										this.handleButtonClick(buttonLabel)
+										this.getSymbolsFromButtons(buttonLabel)
 									}
 									{...props}
 								/>

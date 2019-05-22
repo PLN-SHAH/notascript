@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledButtonContainer = styled.section`
+const StyledSymbolsContainer = styled.section`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -25,7 +25,7 @@ const StyledButton = styled.button`
 
 export default function Button(props) {
 	return (
-		<StyledButtonContainer>
+		<StyledSymbolsContainer>
 			<div>{props.symbols}</div>
 			{props.buttonLabels.map(label => (
 				<StyledButton
@@ -35,6 +35,6 @@ export default function Button(props) {
 					{label}
 				</StyledButton>
 			))}
-		</StyledButtonContainer>
+		</StyledSymbolsContainer>
 	);
 }

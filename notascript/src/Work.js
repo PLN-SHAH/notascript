@@ -26,6 +26,7 @@ export default function Work(props) {
 		String.fromCodePoint(0x0483),
 		String.fromCodePoint(0x0484)
 	];
+
 	return (
 		<>
 			<StyledSymbols>{props.symbols}</StyledSymbols>
