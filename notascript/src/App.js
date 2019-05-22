@@ -54,13 +54,10 @@ export default class App extends Component {
           buttonLabels={[
             String.fromCodePoint(0x03a3),
             String.fromCodePoint(0x03b6),
-            "c",
-            "d",
-            "e",
-            "f",
-            "g",
-            "h",
-            "i"
+            String.fromCodePoint(0x03a6),
+            String.fromCodePoint(0x03a9),
+            String.fromCodePoint(0x03df),
+            String.fromCodePoint(0x03f4)
           ]}
           handleButtonClick={label => this.handleButtonClick(label)}
         />
