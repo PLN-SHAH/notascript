@@ -19,18 +19,6 @@ export default class App extends Component {
 			actualSymbol: symbol,
 			symbols: [...this.state.symbols, symbol]
 		});
-		if (this.state.symbols.length % 4 === 0) {
-			this.sliceArray(this.state.symbols);
-		}
-	}
-
-	sliceArray(array) {
-		let slicedArray = [];
-
-		for (let i = 0; i < array.length; i += 4) {
-			slicedArray.push(array.slice(i, 4));
-		}
-		return slicedArray;
 	}
 
 	render() {
