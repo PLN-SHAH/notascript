@@ -3,7 +3,8 @@ import Header from './Header';
 import Footer from './Footer';
 import Work from './Work';
 import Home from './Home';
-import { Route, Switch } from 'react-router-dom';
+import Settings from './Settings';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 export default class App extends Component {
 	state = {
@@ -50,6 +51,9 @@ export default class App extends Component {
 								/>
 							)}
 						/>
+						<Route exact path='/home' component={Home} />
+						<Route exact path='/settings' component={Settings} />
+						<Route path='/not-found' component={() => <h1>Not Found</h1>} />
 					</Switch>
 				</section>
 				<Footer />
