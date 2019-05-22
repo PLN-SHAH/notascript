@@ -15,7 +15,7 @@ export default createGlobalStyle`
 
   main {
     display: grid;
-    grid-template-rows: 150px auto 100px 100px;
+    grid-template-rows: 150px auto 100px;
   }
 
   input,
