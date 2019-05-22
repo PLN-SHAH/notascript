@@ -15,7 +15,6 @@ export default function Header() {
 	return (
 		<StyledHeader>
 			<h1>Notascript</h1>
-			<h2>Bearbeiten</h2>
 		</StyledHeader>
 	);
 }

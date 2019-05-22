@@ -26,11 +26,10 @@ const StyledButton = styled.button`
 export default function Button(props) {
 	return (
 		<StyledButtonContainer>
-			<div>{props.output}</div>
+			<div>{props.symbols}</div>
 			{props.buttonLabels.map(label => (
 				<StyledButton
 					key={label}
-					//onClick={label => props.handleButtonClick(label)}
 					onClick={() => props.handleButtonClick(label)}
 				>
 					{label}

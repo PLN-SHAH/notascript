@@ -2,7 +2,7 @@ import React from 'react';
 import Buttons from './Buttons';
 import styled from 'styled-components';
 
-const StyledOutput = styled.section`
+const StyledSymbols = styled.section`
 	max-width: 100vw;
 	border: 1px solid black;
 	word-break: break-all;
@@ -10,10 +10,9 @@ const StyledOutput = styled.section`
 `;
 
 export default function Work(props) {
-	console.log('comp work props', props);
 	return (
 		<>
-			<StyledOutput>{props.output}</StyledOutput>
+			<StyledSymbols>{props.symbols}</StyledSymbols>
 			<Buttons
 				buttonLabels={[
 					String.fromCodePoint(0x03a3),
@@ -23,7 +22,7 @@ export default function Work(props) {
 					String.fromCodePoint(0x03df),
 					String.fromCodePoint(0x03f4)
 				]}
-				handleButtonClick={label => props.handleButtonClick(label)}
+				handleButtonClick={buttonLabel => props.handleButtonClick(buttonLabel)}
 			/>
 		</>
 	);
