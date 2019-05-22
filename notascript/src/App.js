@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import Buttons from './Buttons';
+import Work from './Work';
 import Test from './Test';
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
@@ -49,19 +49,8 @@ export default class App extends Component {
 				<section>
 					<Switch>
 						<Route exact path='/test' component={Test} />
+						<Route exact path='/work' component={Work} />
 					</Switch>
-					<StyledOutput>{this.state.outputStream}</StyledOutput>
-					<Buttons
-						buttonLabels={[
-							String.fromCodePoint(0x03a3),
-							String.fromCodePoint(0x03b6),
-							String.fromCodePoint(0x03a6),
-							String.fromCodePoint(0x03a9),
-							String.fromCodePoint(0x03df),
-							String.fromCodePoint(0x03f4)
-						]}
-						handleButtonClick={label => this.handleButtonClick(label)}
-					/>
 				</section>
 				<Footer />
 			</main>
