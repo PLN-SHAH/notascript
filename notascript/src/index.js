@@ -1,16 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import GlobalStyles from "./GlobalStyles";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import GlobalStyles from './GlobalStyles';
+import { BrowserRouter } from 'react-router-dom';
 
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <>
-    <GlobalStyles />
-    <App />
-  </>,
-  document.getElementById("root")
+	<>
+		<BrowserRouter>
+			<GlobalStyles />
+			<App />
+		</BrowserRouter>
+	</>,
+	document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
@@ -32,6 +32,12 @@ export default createGlobalStyle`
       font-size: 2em;
       margin: 0;
   }
+
+  ul {
+		margin: 0;
+		padding: 0;
+        list-style: none;
+    }
 
   #root {
     height: 100vh;
