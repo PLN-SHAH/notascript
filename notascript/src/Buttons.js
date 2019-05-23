@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledSymbolsContainer = styled.section`
 	display: grid;
@@ -21,7 +22,7 @@ const StyledButton = styled.button`
 	}
 `;
 
-export default function Button({ buttonLabels, handleButtonClick }) {
+export default function Buttons({ buttonLabels, handleButtonClick }) {
 	return (
 		<StyledSymbolsContainer>
 			{buttonLabels.map(label => (
@@ -32,3 +33,8 @@ export default function Button({ buttonLabels, handleButtonClick }) {
 		</StyledSymbolsContainer>
 	);
 }
+
+Buttons.propTypes = {
+	buttonLabels: PropTypes.array,
+	handleButtonClick: PropTypes.func
+};
