@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactSVG from 'react-svg';
+import Domain from './Domain';
 
 const StyledDocument = styled.section`
 	padding: 20px;
@@ -40,8 +41,7 @@ export default function Document({ document }) {
 				<StyledTitle>{document.title}</StyledTitle>
 				<p>{document.description}</p>
 				<StyledDomainList>
-					<li>domain</li>
-					<li>domain</li>
+					<Domain domainList={document.domains} />
 				</StyledDomainList>
 			</section>
 			<section>
