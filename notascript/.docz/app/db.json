@@ -1,9 +1,9 @@
 {
   "config": {
-    "title": "React Mongo Exercise",
+    "title": "Notascript",
     "description": "My awesome app using docz",
     "menu": [],
-    "version": "0.1.0",
+    "version": "0.0.1",
     "repository": null,
     "native": false,
     "codeSandbox": true,
@@ -17,11 +17,153 @@
         {
           "description": "",
           "displayName": "App",
-          "methods": [],
+          "methods": [
+            {
+              "name": "getSymbolsFromButtons",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "buttonLabel",
+                  "type": null
+                }
+              ],
+              "returns": null
+            }
+          ],
           "actualName": "App"
+        }
+      ]
+    },
+    {
+      "key": "src/Buttons.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Buttons",
+          "methods": [],
+          "actualName": "Buttons",
+          "props": {
+            "buttonLabels": {
+              "type": {
+                "name": "array"
+              },
+              "required": false,
+              "description": ""
+            },
+            "handleButtonClick": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/Footer.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Footer",
+          "methods": [],
+          "actualName": "Footer"
+        }
+      ]
+    },
+    {
+      "key": "src/Header.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Header",
+          "methods": [],
+          "actualName": "Header"
+        }
+      ]
+    },
+    {
+      "key": "src/Home.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Home",
+          "methods": [],
+          "actualName": "Home"
+        }
+      ]
+    },
+    {
+      "key": "src/Navigation.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Navigation",
+          "methods": [],
+          "actualName": "Navigation"
+        }
+      ]
+    },
+    {
+      "key": "src/Settings.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Settings",
+          "methods": [],
+          "actualName": "Settings"
+        }
+      ]
+    },
+    {
+      "key": "src/Work.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Work",
+          "methods": [],
+          "actualName": "Work",
+          "props": {
+            "symbols": {
+              "type": {
+                "name": "array"
+              },
+              "required": false,
+              "description": ""
+            },
+            "handleButtonClick": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
         }
       ]
     }
   ],
-  "entries": []
+  "entries": [
+    {
+      "key": "src/index.mdx",
+      "value": {
+        "name": "Index",
+        "route": "/",
+        "id": "6576455a124f9aaefd860597f03a8fe4",
+        "filepath": "src/index.mdx",
+        "link": "",
+        "slug": "src-index",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "hallo-start",
+            "depth": 2,
+            "value": "hallo start"
+          }
+        ]
+      }
+    }
+  ]
 }
