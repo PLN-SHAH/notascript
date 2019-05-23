@@ -5,6 +5,12 @@ import Work from './Work';
 import Home from './Home';
 import Settings from './Settings';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledContentWork = styled.section`
+	display: grid;
+	grid-template-rows: 2fr 1fr;
+`;
 
 export default class App extends Component {
 	state = {
@@ -25,7 +31,7 @@ export default class App extends Component {
 		return (
 			<main>
 				<Header />
-				<section>
+				<StyledContentWork>
 					<Switch>
 						<Route
 							path='/work'
@@ -44,7 +50,7 @@ export default class App extends Component {
 						<Route path='/not-found' component={() => <h1>Not Found</h1>} />
 						<Redirect from='/' to='/not-found' />
 					</Switch>
-				</section>
+				</StyledContentWork>
 				<Footer />
 			</main>
 		);

@@ -2,36 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSymbolsContainer = styled.section`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-self: end;
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: auto;
+	background: linear-gradient(135deg, #562323, #4c4a58);
 `;
 
 const StyledButton = styled.button`
-	color: $c-main;
-	border: 0;
-	border-bottom: 5px solid #4c4a58;
+	font-size: 1.8em;
+	padding: 5px;
+	color: white;
 	height: 50px;
-	margin-right: 5px;
-	width: 50px;
+	background-color: transparent;
 
 	&:hover,
 	&:active {
-		border-bottom: 15px solid #4c4a58;
 		font-size: 2.2em;
 	}
 `;
 
-export default function Button(props) {
+export default function Button({ buttonLabels, handleButtonClick }) {
 	return (
 		<StyledSymbolsContainer>
-			<div>{props.symbols}</div>
-			{props.buttonLabels.map(label => (
-				<StyledButton
-					key={label}
-					onClick={() => props.handleButtonClick(label)}
-				>
+			{buttonLabels.map(label => (
+				<StyledButton key={label} onClick={() => handleButtonClick(label)}>
 					{label}
 				</StyledButton>
 			))}

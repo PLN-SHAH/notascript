@@ -9,6 +9,7 @@ const StyledFooter = styled.footer`
 	color: white;
 	font-family: 'Dancing Script', cursive;
 	text-align: center;
+	border-top: 5px solid white;
 	background: linear-gradient(135deg, #562323, #4c4a58);
 `;
 
