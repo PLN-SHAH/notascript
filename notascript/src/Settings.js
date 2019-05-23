@@ -15,12 +15,6 @@ export default class Settings extends Component {
 	}
 
 	render() {
-		const { documents } = this.state;
-		return (
-			<div>
-				<Documents documentList={this.state.documents} />
-				<h1 render={this.renderDocumentList(documents)}>Settings</h1>
-			</div>
-		);
+		return <Documents documentList={this.state.documents} />;
 	}
 }

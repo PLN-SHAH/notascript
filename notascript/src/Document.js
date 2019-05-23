@@ -2,16 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledDocument = styled.section`
-	border: 1px solid blue;
 	padding: 20px;
 	display: grid;
 	grid-template-columns: auto 100px;
 `;
 
 const StyledTitle = styled.h4`
-	font-size: 2em;
+	font-size: 2rem;
 	margin: 0;
+	color: #562323;
+	font-family: 'Roboto';
 `;
+
+const StyledDomainList = styled.ul`
+	list-style: none;
+	padding: 0;
+	display: flex;
+
+	> li {
+		margin: 5px 10px;
+		background-color: #562323;
+		color: white;
+		padding: 10px;
+	}
+`;
+
+//#444547
 
 export default function Document({ document }) {
 	return (
@@ -19,10 +35,10 @@ export default function Document({ document }) {
 			<section>
 				<StyledTitle>{document.title}</StyledTitle>
 				<p>{document.description}</p>
-				<ul>
+				<StyledDomainList>
 					<li>domain</li>
 					<li>domain</li>
-				</ul>
+				</StyledDomainList>
 			</section>
 			<section>
 				<button>edit</button>

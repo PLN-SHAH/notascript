@@ -11,6 +11,7 @@ export default createGlobalStyle`
     margin: 0;
     font-family: sans-serif;
     font-family: 'Roboto', sans-serif;
+    font-size: 18px;
   }
 
   main {

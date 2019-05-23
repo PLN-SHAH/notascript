@@ -7,6 +7,11 @@ const StyledSymbols = styled.section`
 	font-size: 3em;
 `;
 
+const StyledContentWork = styled.section`
+	display: grid;
+	grid-template-rows: 2fr 1fr;
+`;
+
 export default function Work({ symbols, handleButtonClick }) {
 	let createdSymbols = createUnicodes('0200', 50);
 
@@ -23,13 +28,13 @@ export default function Work({ symbols, handleButtonClick }) {
 	}
 
 	return (
-		<>
+		<StyledContentWork>
 			<StyledSymbols>{symbols}</StyledSymbols>
 			<Buttons
 				buttonLabels={createdSymbols}
 				handleButtonClick={buttonLabel => handleButtonClick(buttonLabel)}
 			/>
-		</>
+		</StyledContentWork>
 	);
 }
 
