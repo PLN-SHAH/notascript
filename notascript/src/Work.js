@@ -27,6 +27,25 @@ export default function Work(props) {
 		String.fromCodePoint(0x0484)
 	];
 
+	//createEmptyArray(10);
+
+	function createUnicodes(start, counter) {
+		//create an array with placeholders
+
+		const newArray = Array(counter)
+			.fill('')
+			.map(() => {
+				start++;
+				let unicode = '0x' + start;
+				return String.fromCodePoint(unicode);
+			});
+
+		return newArray;
+	}
+	console.log(createUnicodes('0500', 20), 'this is function call');
+
+	//const test = createUnicodes('0500', 30);
+
 	return (
 		<>
 			<StyledSymbols>{props.symbols}</StyledSymbols>
