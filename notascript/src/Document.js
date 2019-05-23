@@ -6,6 +6,9 @@ const StyledDocument = styled.section`
 	padding: 20px;
 	display: grid;
 	grid-template-columns: auto 100px;
+	border-bottom: 10px;
+	border-bottom-color: #562323;
+	border-bottom-style: solid;
 `;
 
 const StyledTitle = styled.h4`

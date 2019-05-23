@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import Work from './Work';
-import Home from './Home';
-import Settings from './Settings';
+import Header from './Header.js';
+import Footer from './Footer.js';
+import Work from './Work.js';
+import Home from './Home.js';
+import Settings from './Settings.js';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import styled from 'styled-components';
 
 export default class App extends Component {
 	state = {

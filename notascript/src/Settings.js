@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Documents from './Documents';
+import DocumentList from './DocumentList';
 
 export default class Settings extends Component {
 	state = {
@@ -15,6 +15,6 @@ export default class Settings extends Component {
 	}
 
 	render() {
-		return <Documents documentList={this.state.documents} />;
+		return <DocumentList documentList={this.state.documents} />;
 	}
 }

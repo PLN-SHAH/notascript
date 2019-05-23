@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import GlobalStyles from './GlobalStyles';
 import { BrowserRouter } from 'react-router-dom';
-
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
