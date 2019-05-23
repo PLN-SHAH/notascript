@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactSVG from 'react-svg';
 
 const StyledDocument = styled.section`
 	padding: 20px;
@@ -41,8 +42,12 @@ export default function Document({ document }) {
 				</StyledDomainList>
 			</section>
 			<section>
-				<button>edit</button>
-				<button>delete</button>
+				<button>
+					<ReactSVG src='icon-delete.svg' alt='delete button' />
+				</button>
+				<button>
+					<ReactSVG src='icon-edit.svg' alt='edit button' />
+				</button>
 			</section>
 		</StyledDocument>
 	);
