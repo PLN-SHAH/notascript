@@ -32,8 +32,6 @@ const StyledDomainList = styled.ul`
 	}
 `;
 
-//#444547
-
 export default function Document({ document }) {
 	return (
 		<StyledDocument>

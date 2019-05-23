@@ -3,6 +3,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import Work from './Work.js';
 import Home from './Home.js';
+import CreateDocument from './CreateDocument';
 import Settings from './Settings.js';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
@@ -40,6 +41,7 @@ export default class App extends Component {
 							)}
 						/>
 						<Route exact path='/home' component={Home} />
+						<Route exact path='/create' component={CreateDocument} />
 						<Route exact path='/settings' component={Settings} />
 						<Route path='/not-found' component={() => <h1>Not Found</h1>} />
 						<Redirect from='/' to='/not-found' />

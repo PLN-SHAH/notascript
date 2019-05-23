@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DocumentList({ domainList }) {
+export default function DomainList({ domainList }) {
 	return (
 		<>
 			{domainList.map(domain => (
