@@ -7,10 +7,9 @@ export default createGlobalStyle`
   }
 
   body {
-    @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Roboto&display=swap');
+   @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:100,700&display=swap');
     margin: 0;
-    font-family: sans-serif;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
   }
 

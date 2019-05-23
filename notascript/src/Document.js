@@ -16,7 +16,6 @@ const StyledTitle = styled.h4`
 	font-size: 2rem;
 	margin: 0;
 	color: #562323;
-	font-family: 'Roboto';
 `;
 
 const StyledDomainList = styled.ul`
@@ -42,14 +41,14 @@ export default function Document({ document }) {
 					<Domain domainList={document.domains} />
 				</StyledDomainList>
 			</section>
-			<section>
+			{/*<section>
 				<button>
 					<ReactSVG src='icon-delete.svg' alt='delete button' />
 				</button>
 				<button>
 					<ReactSVG src='icon-edit.svg' alt='edit button' />
 				</button>
-			</section>
+			</section>*/}
 		</StyledDocument>
 	);
 }
