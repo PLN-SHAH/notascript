@@ -20,9 +20,6 @@ export default function Work(props) {
 
 		return newArray;
 	}
-	console.log(createUnicodes('0200', 30), 'this is function call');
-
-	//const test = createUnicodes('0500', 30);
 
 	return (
 		<>
