@@ -21,39 +21,19 @@ const StyledIcon = styled.button`
 	color: white;
 `;
 
-export default class Settings extends Component {
-	state = {
-		documents: [
-			{
-				title: 'filename1',
-				description: 'some description for filename1',
-				domains: ['domainx', 'domainy', 'domainz']
-			},
-			{
-				title: 'filename2',
-				description: 'some description for filename2',
-				domains: ['domain1', 'domain2', 'domain3']
-			},
-			{
-				title: 'filename3',
-				description: 'some description for filename3',
-				domains: ['domain_a', 'domain_b', 'domain_c']
-			}
-		]
-	};
-	render() {
-		return (
-			<>
-				<StyledHeadlineNewFile>
-					Add new file
-					<StyledIcon>
-						<NavLink to='/create'>
-							<ReactSVG src='icon-add.svg' alt='create new file button' />
-						</NavLink>
-					</StyledIcon>
-				</StyledHeadlineNewFile>
-				<DocumentList documentList={this.state.documents} />
-			</>
-		);
-	}
+export default function Settings(props) {
+	console.log('props in settings', props);
+	return (
+		<>
+			<StyledHeadlineNewFile>
+				Add new file
+				<StyledIcon>
+					<NavLink to='/create'>
+						<ReactSVG src='icon-add.svg' alt='create new file button' />
+					</NavLink>
+				</StyledIcon>
+			</StyledHeadlineNewFile>
+			<DocumentList documentList={props.documentList} />
+		</>
+	);
 }

@@ -32,13 +32,14 @@ const StyledDomainList = styled.ul`
 	}
 `;
 
-export default function DocumentDetailView({ props }) {
+export default function DocumentDetailView({ props, document }) {
+	console.log('props in details view', document.title);
 	return (
 		<StyledDetailsView>
-			<StyledTitle>filename</StyledTitle>
-			<p>description</p>
+			<StyledTitle>{document.title}</StyledTitle>
+			<p>{document.description}</p>
 			<StyledDomainList>
-				domains
+				{document.domains}
 				<li>domain</li>
 				<li>domain</li>
 			</StyledDomainList>

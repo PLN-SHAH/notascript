@@ -34,7 +34,7 @@ const StyledDomainList = styled.ul`
 	}
 `;
 
-export default function Document({ document, match }) {
+export default function Document({ document }) {
 	return (
 		<StyledDocument>
 			<section>
