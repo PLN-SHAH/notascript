@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function DomainList({ domainList }) {
 	return (
@@ -9,3 +10,7 @@ export default function DomainList({ domainList }) {
 		</>
 	);
 }
+
+DomainList.propTypes = {
+	domainList: PropTypes.array
+};

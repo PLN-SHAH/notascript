@@ -1,5 +1,6 @@
 import React from 'react';
 import Document from './Document';
+import PropTypes from 'prop-types';
 
 export default function DocumentList({ documentList }) {
 	return (
@@ -10,3 +11,6 @@ export default function DocumentList({ documentList }) {
 		</>
 	);
 }
+DocumentList.propTypes = {
+	documentList: PropTypes.array
+};

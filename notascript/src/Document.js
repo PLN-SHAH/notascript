@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactSVG from 'react-svg';
 import Domain from './Domain';
+import PropTypes from 'prop-types';
 
 const StyledDocument = styled.section`
 	padding: 20px;
 	display: grid;
-	grid-template-columns: auto 100px;
+	//grid-template-columns: auto 100px;
 	border-bottom: 10px;
 	border-bottom-color: #562323;
 	border-bottom-style: solid;
@@ -52,3 +53,7 @@ export default function Document({ document }) {
 		</StyledDocument>
 	);
 }
+
+Document.propTypes = {
+	document: PropTypes.object
+};
