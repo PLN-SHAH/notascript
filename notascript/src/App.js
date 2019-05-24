@@ -16,17 +16,20 @@ export default class App extends Component {
 			{
 				title: 'filename1',
 				description: 'some description for filename1',
-				domains: ['domainx', 'domainy', 'domainz']
+				domains: ['domainx', 'domainy', 'domainz'],
+				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
 				title: 'filename2',
 				description: 'some description for filename2',
-				domains: ['domain1', 'domain2', 'domain3']
+				domains: ['domain1', 'domain2', 'domain3'],
+				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
 				title: 'filename3',
 				description: 'some description for filename3',
-				domains: ['domain_a', 'domain_b', 'domain_c']
+				domains: ['domain_a', 'domain_b', 'domain_c'],
+				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			}
 		]
 	};

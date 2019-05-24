@@ -46,7 +46,7 @@ export default function DocumentDetailView({ selectedDocument }) {
 			<StyledTitle>{document[0].title}</StyledTitle>
 			<p>{document[0].description}</p>
 			<ul>{document[0].domains}</ul>
-			<StyledSymbols>symbols</StyledSymbols>
+			<StyledSymbols>{document[0].symbols}</StyledSymbols>
 		</StyledDetailsView>
 	);
 }
