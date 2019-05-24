@@ -40,10 +40,16 @@ export default class App extends Component {
 		});
 	}
 
-	showDetailPage(documents, documentTitle) {
-		return documents
-			.filter(document => document.title === documentTitle)
-			.map(item => item.title);
+	selectDocumentForDetailView(props) {
+		const selectedDocument = this.state.documents.filter(
+			document => document.title === props.match.params.title
+		);
+
+		return selectedDocument;
+		/*
+		return this.state.documents
+			.filter(document => document.title === props.match.params.title)
+			.map(document => document.title);*/
 	}
 
 	render() {
@@ -85,11 +91,8 @@ export default class App extends Component {
 							path='/details/:title'
 							render={props => (
 								<DocumentDetailView
-									document={this.state.documents}
-									chooseDocument={this.showDetailPage(
-										this.state.documents,
-										props.match.params.title
-									)}
+									selectedDocument={this.selectDocumentForDetailView(props)}
+									documents={this.state.documents}
 									{...props}
 								/>
 							)}

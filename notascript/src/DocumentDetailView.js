@@ -32,22 +32,21 @@ const StyledDomainList = styled.ul`
 	}
 `;
 
-export default function DocumentDetailView({ chooseDocument, document }) {
-	console.log('props in details view', chooseDocument);
+export default function DocumentDetailView({ selectedDocument }) {
+	//destructured selectedDocument -> filename
+	const document = selectedDocument;
+	console.log(
+		'selectedDocument in detailsview',
+		selectedDocument,
+		document[0].description
+	);
+
 	return (
 		<StyledDetailsView>
-			<StyledTitle>{chooseDocument}</StyledTitle>
-			<p>{document.description}</p>
-			<StyledDomainList>
-				{document.domains}
-				<li>domain</li>
-				<li>domain</li>
-			</StyledDomainList>
+			<StyledTitle>{document[0].title}</StyledTitle>
+			<p>{document[0].description}</p>
+			<ul>{document[0].domains}</ul>
 			<StyledSymbols>symbols</StyledSymbols>
 		</StyledDetailsView>
 	);
 }
-
-DocumentDetailView.propTypes = {
-	documentList: PropTypes.array
-};

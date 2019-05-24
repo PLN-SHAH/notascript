@@ -37,24 +37,27 @@ const StyledDomainList = styled.ul`
 export default function Document({ document }) {
 	return (
 		<StyledDocument>
-			<section>
-				<StyledTitle>{document.title}</StyledTitle>
-				<p>{document.description}</p>
-				<StyledDomainList>
-					<Domain domainList={document.domains} />
-				</StyledDomainList>
-			</section>
-			<section>
-				<button>
-					<Link to={`details/${document.title}`}>
+			<Link
+				to={`details/${document.title}`}
+				params={{ domains: document.domains }}
+			>
+				<section>
+					<StyledTitle>{document.title}</StyledTitle>
+					<p>{document.description}</p>
+					<StyledDomainList>
+						<Domain domainList={document.domains} />
+					</StyledDomainList>
+				</section>
+				<section>
+					<button>
 						<ReactSVG src='icon-view.svg' alt='see details button' />
-					</Link>
-				</button>
-				{/*
+					</button>
+					{/*
 				<button>
-					<ReactSVG src='icon-edit.svg' alt='edit button' />
-				</button>*/}
-			</section>
+				<ReactSVG src='icon-edit.svg' alt='edit button' />
+			</button>*/}
+				</section>
+			</Link>
 		</StyledDocument>
 	);
 }

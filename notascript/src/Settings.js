@@ -22,7 +22,6 @@ const StyledIcon = styled.button`
 `;
 
 export default function Settings(props) {
-	console.log('props in settings', props);
 	return (
 		<>
 			<StyledHeadlineNewFile>
