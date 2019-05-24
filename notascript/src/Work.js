@@ -7,34 +7,32 @@ const StyledSymbols = styled.section`
 	font-size: 3em;
 `;
 
-const StyledContentWork = styled.section`
+const StyledContent = styled.section`
 	display: grid;
 	grid-template-rows: 2fr 1fr;
 `;
 
 export default function Work({ symbols, handleButtonClick }) {
-	let createdSymbols = createUnicodes('0200', 50);
+	const createdSymbols = createUnicodes('0200', 50);
 
 	function createUnicodes(start, counter) {
-		const newArray = Array(counter)
+		return Array(counter)
 			.fill('')
 			.map(() => {
 				start++;
 				let unicode = '0x' + start;
 				return String.fromCodePoint(unicode);
 			});
-
-		return newArray;
 	}
 
 	return (
-		<StyledContentWork>
+		<StyledContent>
 			<StyledSymbols>{symbols}</StyledSymbols>
 			<Buttons
 				buttonLabels={createdSymbols}
 				handleButtonClick={buttonLabel => handleButtonClick(buttonLabel)}
 			/>
-		</StyledContentWork>
+		</StyledContent>
 	);
 }
 
