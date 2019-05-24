@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ReactSVG from 'react-svg';
 import Domain from './Domain';
 import PropTypes from 'prop-types';
+import NavLink from './NavLink';
 
 const StyledDocument = styled.section`
 	padding: 20px;
@@ -42,14 +43,17 @@ export default function Document({ document }) {
 					<Domain domainList={document.domains} />
 				</StyledDomainList>
 			</section>
-			{/*<section>
+			<section>
 				<button>
-					<ReactSVG src='icon-delete.svg' alt='delete button' />
+					<NavLink to='/details'>
+						<ReactSVG src='icon-view.svg' alt='see details button' />
+					</NavLink>
 				</button>
+				{/*
 				<button>
 					<ReactSVG src='icon-edit.svg' alt='edit button' />
-				</button>
-			</section>*/}
+				</button>*/}
+			</section>
 		</StyledDocument>
 	);
 }
