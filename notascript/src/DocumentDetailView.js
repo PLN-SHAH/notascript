@@ -32,7 +32,7 @@ const StyledDomainList = styled.ul`
 	}
 `;
 
-export default function DocumentDetailView() {
+export default function DocumentDetailView({ props }) {
 	return (
 		<StyledDetailsView>
 			<StyledTitle>filename</StyledTitle>

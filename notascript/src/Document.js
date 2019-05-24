@@ -4,6 +4,7 @@ import ReactSVG from 'react-svg';
 import Domain from './Domain';
 import PropTypes from 'prop-types';
 import NavLink from './NavLink';
+import { Route, Link } from 'react-router-dom';
 
 const StyledDocument = styled.section`
 	padding: 20px;
@@ -33,7 +34,7 @@ const StyledDomainList = styled.ul`
 	}
 `;
 
-export default function Document({ document }) {
+export default function Document({ document, match }) {
 	return (
 		<StyledDocument>
 			<section>
@@ -45,9 +46,9 @@ export default function Document({ document }) {
 			</section>
 			<section>
 				<button>
-					<NavLink to='/details'>
+					<Link to={`details/${document.title}`}>
 						<ReactSVG src='icon-view.svg' alt='see details button' />
-					</NavLink>
+					</Link>
 				</button>
 				{/*
 				<button>
