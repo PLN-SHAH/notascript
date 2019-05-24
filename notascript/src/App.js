@@ -40,6 +40,17 @@ export default class App extends Component {
 								/>
 							)}
 						/>
+						<Route
+							path='/create'
+							render={props => (
+								<CreateDocument
+									handleButtonClick={buttonLabel =>
+										this.getSymbolsFromButtons(buttonLabel)
+									}
+									{...props}
+								/>
+							)}
+						/>
 						<Route exact path='/home' component={Home} />
 						<Route exact path='/create' component={CreateDocument} />
 						<Route exact path='/settings' component={Settings} />
