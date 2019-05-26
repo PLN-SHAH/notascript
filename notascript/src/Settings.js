@@ -18,11 +18,11 @@ const StyledNavLink = styled(NavLink)`
 	}
 `;
 
-export default function Settings(props) {
+export default function Settings({ documentList, onDelete }) {
 	return (
 		<>
 			<StyledNavLink to='/create'>create new file</StyledNavLink>
-			<DocumentList documentList={props.documentList} />
+			<DocumentList documentList={documentList} onDelete={onDelete} />
 		</>
 	);
 }

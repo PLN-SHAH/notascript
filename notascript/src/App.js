@@ -66,10 +66,25 @@ export default class App extends Component {
 		});
 	}
 
-	selectDocumentForDetailView(props) {
-		return this.state.documents.filter(
+	deleteDocumentFromList(document) {
+		const index = this.state.documents.indexOf(document);
+		this.setState({
+			documents: [
+				...this.state.documents.slice(0, index),
+
+				...this.state.documents.slice(index + 1)
+			]
+		});
+	}
+
+	selectDocumentForDetailView({ props }) {
+		console.log(props.match.params, ' document for details view props');
+
+		const selection = this.state.documents.filter(
 			document => document.title === props.match.params.title
 		);
+		console.log(selection, 'selection');
+		return selection;
 	}
 
 	render() {
@@ -101,14 +116,18 @@ export default class App extends Component {
 						<Route
 							path='/settings'
 							render={props => (
-								<Settings documentList={this.state.documents} {...props} />
+								<Settings
+									documentList={this.state.documents}
+									{...props}
+									onDelete={document => this.deleteDocumentFromList(document)}
+								/>
 							)}
 						/>
 						<Route
 							path='/details/:title'
 							render={props => (
 								<DocumentDetailView
-									selectedDocument={this.selectDocumentForDetailView(props)}
+									selectedDocument={this.selectDocumentForDetailView({ props })}
 									documents={this.state.documents}
 									{...props}
 								/>

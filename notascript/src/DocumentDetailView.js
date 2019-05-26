@@ -61,16 +61,28 @@ const StyledSymbolsContainer = styled.section`
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
+	console.log(
+		'ich bin document details view selected document',
+		selectedDocument
+	);
 	return (
 		<StyledDetailsView>
 			<section>
 				<StyledNavLink to='/settings'>back to view</StyledNavLink>
-				<StyledTitle>{selectedDocument[0].title}</StyledTitle>
-				<StyledDescription>{selectedDocument[0].description}</StyledDescription>
-				<StyledDomainList>{selectedDocument[0].domains}</StyledDomainList>
+				<StyledTitle>
+					{selectedDocument.title || selectedDocument[0].title}
+				</StyledTitle>
+				<StyledDescription>
+					{selectedDocument.description || selectedDocument[0].description}
+				</StyledDescription>
+				<StyledDomainList>
+					{selectedDocument.domains || selectedDocument[0].domains}
+				</StyledDomainList>
 			</section>
 			<StyledSymbolsContainer>
-				<StyledSymbolsSheet>{selectedDocument[0].symbols}</StyledSymbolsSheet>
+				<StyledSymbolsSheet>
+					{selectedDocument.symbols || selectedDocument[0].symbols}
+				</StyledSymbolsSheet>
 			</StyledSymbolsContainer>
 		</StyledDetailsView>
 	);
