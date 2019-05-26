@@ -9,33 +9,34 @@ import { Route, Switch } from 'react-router-dom';
 import DocumentDetailView from './DocumentDetailView.js';
 import styled from 'styled-components';
 
-const StyledContentContainer = styled.section`
-	flex: 1;
+const StyledContent = styled.section`
+	overflow-y: scroll;
 `;
-
 export default class App extends Component {
 	state = {
 		symbols: [],
 		actualSymbol: '',
 		documents: [
 			{
-				title: 'filename1',
+				title: 'Lorem',
 				description:
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
 
-				domains: ['domainx', 'domainy', 'domainz'],
+				domains: ['Gericht', 'Straftrecht', 'Verteidigung'],
 				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
-				title: 'filename2',
-				description: 'some description for filename2',
-				domains: ['domain1', 'domain2', 'domain3'],
+				title: 'Ipsum',
+				description:
+					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
+				domains: ['Schule', 'Allgemein', 'Freizeit'],
 				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
-				title: 'filename3',
-				description: 'some description for filename3',
-				domains: ['domain_a', 'domain_b', 'domain_c'],
+				title: 'Dolor',
+				description:
+					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
+				domains: ['Zeitung'],
 				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			}
 		]
@@ -60,7 +61,7 @@ export default class App extends Component {
 		return (
 			<main>
 				<Header />
-				<StyledContentContainer>
+				<StyledContent>
 					<Switch>
 						<Route
 							path='/work'
@@ -112,7 +113,7 @@ export default class App extends Component {
 							component={() => <h1>Not Found</h1>}
 						/>
 					</Switch>
-				</StyledContentContainer>
+				</StyledContent>
 				<Footer />
 			</main>
 		);

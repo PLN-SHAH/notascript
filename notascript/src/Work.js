@@ -9,7 +9,8 @@ const StyledSymbols = styled.section`
 
 const StyledContent = styled.section`
 	display: grid;
-	grid-template-rows: 2fr 1fr;
+	grid-template-rows: 60% 40%;
+	height: 100%;
 `;
 
 export default function Work({ symbols, handleButtonClick }) {

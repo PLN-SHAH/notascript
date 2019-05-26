@@ -4,7 +4,7 @@ import NavLink from './NavLink.js';
 
 const StyledNavigation = styled.nav`
 	> ul {
-		font-size: 3em;
+		font-size: 2.5em;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 	}

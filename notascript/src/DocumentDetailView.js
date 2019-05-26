@@ -17,7 +17,7 @@ const StyledTitle = styled.h4`
 
 const StyledDetailsView = styled.section`
 	display: grid;
-	grid-template-rows: 50px 100px auto auto-fill;
+	height: 100%;
 `;
 
 const StyledDescription = styled.p`
@@ -31,7 +31,7 @@ const StyledDomainList = styled.ul`
 	display: flex;
 
 	> li {
-		margin: 5px 10px;
+		margin-right: 10px;
 		background-color: #562323;
 		color: white;
 		padding: 10px;

@@ -4,12 +4,10 @@ import Navigation from './Navigation.js';
 
 const StyledFooter = styled.footer`
 	display: grid;
-	align-items: center;
-	background-color: lightgreen;
+	justify-content: center;
 	color: white;
 	font-family: 'Dancing Script', cursive;
-	text-align: center;
-	border-top: 5px solid white;
+	border-top: 1px solid white;
 	background: linear-gradient(135deg, #562323, #4c4a58);
 `;
 
