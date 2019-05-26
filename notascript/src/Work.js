@@ -11,10 +11,11 @@ const StyledContent = styled.section`
 	display: grid;
 	grid-template-rows: 60% 40%;
 	height: 100%;
+	font-weight: light;
 `;
 
 export default function Work({ symbols, handleButtonClick }) {
-	const createdSymbols = createUnicodes('0200', 50);
+	const createdSymbols = createUnicodes('0200', 40);
 
 	function createUnicodes(start, counter) {
 		return Array(counter)

@@ -12,8 +12,8 @@ const StyledButton = styled.button`
 	font-size: 1.8em;
 	padding: 5px;
 	color: white;
-	height: 50px;
-	background-color: transparent;
+	border: none;
+	background: transparent;
 
 	&:hover,
 	&:active {

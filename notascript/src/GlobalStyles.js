@@ -11,6 +11,7 @@ export default createGlobalStyle`
     margin: 0;
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
+    color: #170444;
   }
 
   main {

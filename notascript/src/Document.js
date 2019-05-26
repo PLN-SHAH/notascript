@@ -15,7 +15,8 @@ const StyledDocument = styled.section`
 const StyledTitle = styled.h4`
 	font-size: 2rem;
 	margin: 0;
-	color: #562323;
+	color: #170444;
+	font-family: 'Dancing Script', cursive;
 `;
 
 const StyledDomainList = styled.ul`
@@ -25,7 +26,9 @@ const StyledDomainList = styled.ul`
 
 	> li {
 		margin: 5px 10px;
-		background-color: #562323;
+		background: linear-gradient(135deg, #322356, #43579c);
+		border-radius: 15px;
+		box-shadow: -2px 3px 3px 0 #ccc;
 		color: white;
 		padding: 10px;
 	}
