@@ -3,13 +3,11 @@ import styled from 'styled-components';
 import ReactSVG from 'react-svg';
 import Domain from './Domain';
 import PropTypes from 'prop-types';
-import NavLink from './NavLink';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const StyledDocument = styled.section`
 	padding: 20px;
 	display: grid;
-	//grid-template-columns: auto 100px;
 	border-bottom: 10px;
 	border-bottom-color: #562323;
 	border-bottom-style: solid;
@@ -37,10 +35,7 @@ const StyledDomainList = styled.ul`
 export default function Document({ document }) {
 	return (
 		<StyledDocument>
-			<Link
-				to={`details/${document.title}`}
-				params={{ domains: document.domains }}
-			>
+			<Link to={`details/${document.title}`}>
 				<section>
 					<StyledTitle>{document.title}</StyledTitle>
 					<p>{document.description}</p>
@@ -52,10 +47,6 @@ export default function Document({ document }) {
 					<button>
 						<ReactSVG src='icon-view.svg' alt='see details button' />
 					</button>
-					{/*
-				<button>
-				<ReactSVG src='icon-edit.svg' alt='edit button' />
-			</button>*/}
 				</section>
 			</Link>
 		</StyledDocument>

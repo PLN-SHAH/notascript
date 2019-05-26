@@ -44,15 +44,9 @@ export default class App extends Component {
 	}
 
 	selectDocumentForDetailView(props) {
-		const selectedDocument = this.state.documents.filter(
+		return this.state.documents.filter(
 			document => document.title === props.match.params.title
 		);
-
-		return selectedDocument;
-		/*
-		return this.state.documents
-			.filter(document => document.title === props.match.params.title)
-			.map(document => document.title);*/
 	}
 
 	render() {

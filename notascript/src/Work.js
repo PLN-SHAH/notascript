@@ -14,7 +14,6 @@ const StyledContent = styled.section`
 
 export default function Work({ symbols, handleButtonClick }) {
 	const createdSymbols = createUnicodes('0200', 50);
-	console.log(createUnicodes('0200', 10));
 
 	function createUnicodes(start, counter) {
 		return Array(counter)

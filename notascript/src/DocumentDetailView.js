@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledSymbols = styled.section`
@@ -33,20 +32,12 @@ const StyledDomainList = styled.ul`
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
-	//destructured selectedDocument -> filename
-	const document = selectedDocument;
-	console.log(
-		'selectedDocument in detailsview',
-		selectedDocument,
-		document[0].description
-	);
-
 	return (
 		<StyledDetailsView>
-			<StyledTitle>{document[0].title}</StyledTitle>
-			<p>{document[0].description}</p>
-			<ul>{document[0].domains}</ul>
-			<StyledSymbols>{document[0].symbols}</StyledSymbols>
+			<StyledTitle>{selectedDocument[0].title}</StyledTitle>
+			<p>{selectedDocument[0].description}</p>
+			<StyledDomainList>{selectedDocument[0].domains}</StyledDomainList>
+			<StyledSymbols>{selectedDocument[0].symbols}</StyledSymbols>
 		</StyledDetailsView>
 	);
 }
