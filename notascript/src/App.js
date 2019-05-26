@@ -31,7 +31,8 @@ export default class App extends Component {
 				description:
 					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
 				domains: ['Schule', 'Allgemein', 'Freizeit'],
-				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
+				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ'],
+				domains: ['tag1', 'tag2', 'tag3']
 			},
 			{
 				title: 'Dolor',
@@ -43,18 +44,17 @@ export default class App extends Component {
 		]
 	};
 
-	createDoc(data) {
+	createNewDocument(data) {
 		const newDocument = {
 			title: data.title,
 			description: data.description,
-			symbols: ['s']
+			symbols: ['*'],
+			domains: [' tag']
 		};
-		console.log('newDocument', newDocument);
-		console.log(
-			'updated array',
-			(this.documents = [...this.state.documents, newDocument])
-		);
-		this.documents = [...this.state.documents, newDocument];
+
+		this.setState({
+			documents: [newDocument, ...this.state.documents]
+		});
 	}
 
 	getSymbolsFromButtons(buttonLabel) {
@@ -93,7 +93,9 @@ export default class App extends Component {
 						<Route
 							path='/create'
 							render={() => (
-								<CreateDocument onFormSubmit={data => this.createDoc(data)} />
+								<CreateDocument
+									onFormSubmit={data => this.createNewDocument(data)}
+								/>
 							)}
 						/>
 						<Route
