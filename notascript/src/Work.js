@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 const StyledSymbols = styled.section`
 	font-size: 3em;
+	padding: 20px;
+	font-weight: light;
 `;
 
 const StyledContent = styled.section`

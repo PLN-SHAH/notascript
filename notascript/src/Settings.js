@@ -21,10 +21,7 @@ const StyledNavLink = styled(NavLink)`
 export default function Settings(props) {
 	return (
 		<>
-			<StyledNavLink>
-				<NavLink to='/create/' />
-				create new file
-			</StyledNavLink>
+			<StyledNavLink to='/create'>create new file</StyledNavLink>
 			<DocumentList documentList={props.documentList} />
 		</>
 	);
