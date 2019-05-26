@@ -14,8 +14,12 @@ export default createGlobalStyle`
   }
 
   main {
-    display: grid;
-    grid-template-rows: 150px auto 100px;
+   /* display: grid;
+   grid-template-rows: 150px auto 100px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* display: grid; */
   }
 
   input,
@@ -39,8 +43,12 @@ export default createGlobalStyle`
         list-style: none;
     }
 
+    a {
+      text-decoration: none;
+    }
+
   #root {
-    height: 100vh;
-    display: grid;
+    /*height: 100vh;
+    display: grid;*/
   }
 `;

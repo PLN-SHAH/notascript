@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
 	display: grid;
 	font-family: 'Dancing Script', cursive;
 	justify-content: center;
-	text-align: center;
+	box-shadow: 3px 3px 5px 6px #ccc;
 `;
 
 export default function Header() {

@@ -7,6 +7,11 @@ import CreateDocument from './CreateDocument';
 import Settings from './Settings.js';
 import { Route, Switch } from 'react-router-dom';
 import DocumentDetailView from './DocumentDetailView.js';
+import styled from 'styled-components';
+
+const StyledContentContainer = styled.section`
+	flex: 1;
+`;
 
 export default class App extends Component {
 	state = {
@@ -15,7 +20,9 @@ export default class App extends Component {
 		documents: [
 			{
 				title: 'filename1',
-				description: 'some description for filename1',
+				description:
+					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
+
 				domains: ['domainx', 'domainy', 'domainz'],
 				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
@@ -53,7 +60,7 @@ export default class App extends Component {
 		return (
 			<main>
 				<Header />
-				<section>
+				<StyledContentContainer>
 					<Switch>
 						<Route
 							path='/work'
@@ -105,7 +112,7 @@ export default class App extends Component {
 							component={() => <h1>Not Found</h1>}
 						/>
 					</Switch>
-				</section>
+				</StyledContentContainer>
 				<Footer />
 			</main>
 		);
