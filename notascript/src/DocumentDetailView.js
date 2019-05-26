@@ -69,20 +69,12 @@ export default function DocumentDetailView({ selectedDocument }) {
 		<StyledDetailsView>
 			<section>
 				<StyledNavLink to='/settings'>back to view</StyledNavLink>
-				<StyledTitle>
-					{selectedDocument.title || selectedDocument[0].title}
-				</StyledTitle>
-				<StyledDescription>
-					{selectedDocument.description || selectedDocument[0].description}
-				</StyledDescription>
-				<StyledDomainList>
-					{selectedDocument.domains || selectedDocument[0].domains}
-				</StyledDomainList>
+				<StyledTitle>{selectedDocument.title}</StyledTitle>
+				<StyledDescription>{selectedDocument.description}</StyledDescription>
+				<StyledDomainList>{selectedDocument.domains}</StyledDomainList>
 			</section>
 			<StyledSymbolsContainer>
-				<StyledSymbolsSheet>
-					{selectedDocument.symbols || selectedDocument[0].symbols}
-				</StyledSymbolsSheet>
+				<StyledSymbolsSheet>{selectedDocument.symbols}</StyledSymbolsSheet>
 			</StyledSymbolsContainer>
 		</StyledDetailsView>
 	);

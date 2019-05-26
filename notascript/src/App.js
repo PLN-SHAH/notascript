@@ -78,13 +78,10 @@ export default class App extends Component {
 	}
 
 	selectDocumentForDetailView({ props }) {
-		console.log(props.match.params, ' document for details view props');
-
-		const selection = this.state.documents.filter(
+		const selectionArray = this.state.documents.filter(
 			document => document.title === props.match.params.title
 		);
-		console.log(selection, 'selection');
-		return selection;
+		return selectionArray[0];
 	}
 
 	render() {

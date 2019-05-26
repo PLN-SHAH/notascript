@@ -40,16 +40,16 @@ const StyledDomainList = styled.ul`
 export default function Document({ document, onDelete }) {
 	return (
 		<StyledDocument>
-			<Link to={`details/${document.title}`}>
-				<section>
+			<section>
+				<Link to={`details/${document.title}`}>
 					<StyledTitle>{document.title}</StyledTitle>
 					<p>{document.description}</p>
 					<StyledDomainList>
 						<Domain domainList={document.domains} />
 					</StyledDomainList>
-					<button onClick={onDelete}>x</button>
-				</section>
-			</Link>
+				</Link>
+				<button onClick={onDelete}>x</button>
+			</section>
 		</StyledDocument>
 	);
 }
