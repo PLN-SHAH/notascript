@@ -44,5 +44,9 @@ export default createGlobalStyle`
     a {
       text-decoration: none;
       color: #562323;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 `;

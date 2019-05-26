@@ -12,6 +12,7 @@ import styled from 'styled-components';
 const StyledContent = styled.section`
 	overflow-y: scroll;
 `;
+
 export default class App extends Component {
 	state = {
 		symbols: [],
@@ -22,7 +23,7 @@ export default class App extends Component {
 				description:
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
 
-				domains: ['Gericht', 'Straftrecht', 'Verteidigung'],
+				domains: ['Gericht', 'Straftrecht'],
 				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{

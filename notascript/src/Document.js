@@ -7,9 +7,12 @@ import { Link } from 'react-router-dom';
 const StyledDocument = styled.section`
 	padding: 20px;
 	display: grid;
-	border-top: 1px;
-	border-color: #562323;
-	border-top-style: solid;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: -2px 3px 3px 0 #ccc;
+	margin-bottom: 20px;
+	border-left-width: 15px;
+	border-left-color: #170444;
 `;
 
 const StyledTitle = styled.h4`
