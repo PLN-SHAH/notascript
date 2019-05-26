@@ -43,6 +43,20 @@ export default class App extends Component {
 		]
 	};
 
+	createDoc(data) {
+		const newDocument = {
+			title: data.title,
+			description: data.description,
+			symbols: ['s']
+		};
+		console.log('newDocument', newDocument);
+		console.log(
+			'updated array',
+			(this.documents = [...this.state.documents, newDocument])
+		);
+		this.documents = [...this.state.documents, newDocument];
+	}
+
 	getSymbolsFromButtons(buttonLabel) {
 		const symbol = buttonLabel;
 
@@ -78,13 +92,8 @@ export default class App extends Component {
 						/>
 						<Route
 							path='/create'
-							render={props => (
-								<CreateDocument
-									handleButtonClick={buttonLabel =>
-										this.getSymbolsFromButtons(buttonLabel)
-									}
-									{...props}
-								/>
+							render={() => (
+								<CreateDocument onFormSubmit={data => this.createDoc(data)} />
 							)}
 						/>
 						<Route

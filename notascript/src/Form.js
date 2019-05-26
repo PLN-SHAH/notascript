@@ -48,7 +48,7 @@ const StyledButton = styled.button`
 	text-align: center;
 `;
 
-export default function CreateDocument({ onFormSubmit }) {
+export default function Form({ onFormSubmit }) {
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
