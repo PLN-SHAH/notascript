@@ -44,7 +44,7 @@ export default class App extends Component {
 		]
 	};
 
-	createNewDocument(data) {
+	createNewDocument(data, history) {
 		const newDocument = {
 			title: data.title,
 			description: data.description,

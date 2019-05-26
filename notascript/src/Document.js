@@ -37,10 +37,22 @@ const StyledDomainList = styled.ul`
 	}
 `;
 
+const StyledDeleteButton = styled.button`
+	background: transparent;
+	border: none;
+	justify-self: right;
+	width: 30px;
+`;
+
+const StyledFile = styled.section`
+	display: grid;
+`;
+
 export default function Document({ document, onDelete }) {
 	return (
 		<StyledDocument>
-			<section>
+			<StyledFile>
+				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
 				<Link to={`details/${document.title}`}>
 					<StyledTitle>{document.title}</StyledTitle>
 					<p>{document.description}</p>
@@ -48,8 +60,7 @@ export default function Document({ document, onDelete }) {
 						<Domain domainList={document.domains} />
 					</StyledDomainList>
 				</Link>
-				<button onClick={onDelete}>x</button>
-			</section>
+			</StyledFile>
 		</StyledDocument>
 	);
 }

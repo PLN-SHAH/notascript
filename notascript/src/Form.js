@@ -48,7 +48,7 @@ const StyledButton = styled.button`
 	text-align: center;
 `;
 
-export default function Form({ onFormSubmit }) {
+export default function Form({ onFormSubmit, props }) {
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
@@ -60,7 +60,7 @@ export default function Form({ onFormSubmit }) {
 			title,
 			description
 		});
-		console.log(title, description);
+		console.log(props.history);
 	}
 
 	return (
