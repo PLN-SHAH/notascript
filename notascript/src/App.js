@@ -43,7 +43,7 @@ export default class App extends Component {
 		]
 	};
 
-	createNewDocument(data) {
+	createNewDocument(data, history) {
 		const newDocument = {
 			title: data.title,
 			description: data.description,
@@ -54,6 +54,8 @@ export default class App extends Component {
 		this.setState({
 			documents: [newDocument, ...this.state.documents]
 		});
+
+		history.replace('/overview');
 	}
 
 	getSymbolsFromButtons(buttonLabel) {
@@ -101,11 +103,12 @@ export default class App extends Component {
 								/>
 							)}
 						/>
+
 						<Route
 							path='/create'
-							render={() => (
+							render={({ history }) => (
 								<CreateDocument
-									onFormSubmit={data => this.createNewDocument(data)}
+									onFormSubmit={data => this.createNewDocument(data, history)}
 								/>
 							)}
 						/>
