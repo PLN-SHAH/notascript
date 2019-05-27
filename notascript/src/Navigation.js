@@ -6,7 +6,7 @@ const StyledNavigation = styled.nav`
 	> ul {
 		font-size: 2.5em;
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
 `;
 
@@ -16,13 +16,10 @@ export default class Navigation extends Component {
 			<StyledNavigation>
 				<ul>
 					<li>
-						<NavLink to='/home'>Home</NavLink>
-					</li>
-					<li>
 						<NavLink to='/work'>Work</NavLink>
 					</li>
 					<li>
-						<NavLink to='/settings'>Settings</NavLink>
+						<NavLink to='/overview'>Overview</NavLink>
 					</li>
 				</ul>
 			</StyledNavigation>

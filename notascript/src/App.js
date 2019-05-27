@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Header from './Header.js';
 import Footer from './Footer.js';
 import Work from './Work.js';
-import Home from './Home.js';
 import CreateDocument from './CreateDocument';
-import Settings from './Settings.js';
+import Overview from './Overview.js';
 import { Route, Switch } from 'react-router-dom';
 import DocumentDetailView from './DocumentDetailView.js';
 import styled from 'styled-components';
@@ -111,9 +110,9 @@ export default class App extends Component {
 							)}
 						/>
 						<Route
-							path='/settings'
+							path='/overview'
 							render={props => (
-								<Settings
+								<Overview
 									documentList={this.state.documents}
 									{...props}
 									onDelete={document => this.deleteDocumentFromList(document)}
@@ -131,9 +130,8 @@ export default class App extends Component {
 							)}
 						/>
 
-						<Route exact path='/home' component={Home} />
 						<Route exact path='/create' component={CreateDocument} />
-						<Route exact path='/settings' component={Settings} />
+						<Route exact path='/overview' component={Overview} />
 						<Route exact path='/details' component={DocumentDetailView} />
 						<Route
 							exact

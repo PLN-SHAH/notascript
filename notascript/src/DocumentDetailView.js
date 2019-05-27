@@ -68,7 +68,7 @@ export default function DocumentDetailView({ selectedDocument }) {
 	return (
 		<StyledDetailsView>
 			<section>
-				<StyledNavLink to='/settings'>back to view</StyledNavLink>
+				<StyledNavLink to='/overview'>back to view</StyledNavLink>
 				<StyledTitle>{selectedDocument.title}</StyledTitle>
 				<StyledDescription>{selectedDocument.description}</StyledDescription>
 				<StyledDomainList>{selectedDocument.domains}</StyledDomainList>
