@@ -66,27 +66,6 @@ export default class App extends Component {
 		}
 	}
 
-	updateDocument(document) {
-		//delete
-		const title = 'test';
-		const description = 'test description';
-		const index = this.getIndexByTitle(document);
-
-		const updateDocument = {
-			...this.state.documents[index],
-			title,
-			description
-		};
-
-		this.setState({
-			documents: [
-				...this.state.documents.slice(0, index),
-				updateDocument,
-				...this.state.documents.slice(index + 1)
-			]
-		});
-	}
-
 	getSymbolsFromButtons(buttonLabel) {
 		const symbol = buttonLabel;
 
