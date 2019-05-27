@@ -24,21 +24,6 @@ const StyledTextarea = styled.textarea`
 	min-height: 45px;
 `;
 
-const StyledDropdown = styled.select`
-	border: 1px solid #ddd;
-	font-size: 1rem;
-	margin-bottom: 10px;
-	padding-left: 5px;
-	font-style: italic;
-	color: #8e8e8e;
-	height: 45px;
-`;
-
-const StyledLabel = styled.label`
-	margin-bottom: 5px;
-	color: #33050a;
-`;
-
 const StyledButton = styled.button`
 	background: linear-gradient(135deg, #562323, #4c4a58);
 	padding: 5px;
@@ -49,7 +34,6 @@ const StyledButton = styled.button`
 `;
 
 export default function EditForm({ onFormSubmit, selectedDocument }) {
-	console.log('in editdocument selected doc title', selectedDocument.title);
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
@@ -66,11 +50,15 @@ export default function EditForm({ onFormSubmit, selectedDocument }) {
 	return (
 		<StyledForm onSubmit={handleOnSubmit}>
 			<h4>Edit document</h4>
-			<StyledInput name='title' value={selectedDocument.title} type='text' />
+			<StyledInput
+				name='title'
+				defaultValue={selectedDocument.title}
+				type='text'
+			/>
 
 			<StyledTextarea
 				name='description'
-				value={selectedDocument.description}
+				defaultValue={selectedDocument.description}
 				type='text'
 			/>
 			<StyledButton>save</StyledButton>

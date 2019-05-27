@@ -9,9 +9,6 @@ const NavLink = styled(RRDNavlink)`
 		padding-bottom: 5px;
 		text-decoration: underline;
 	}
-
-	&.active {
-	}
 `;
 
 export default NavLink;

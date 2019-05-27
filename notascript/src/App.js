@@ -70,11 +70,6 @@ export default class App extends Component {
 		//delete
 		const title = 'test';
 		const description = 'test description';
-		/*
-		const index = this.state.documents.findIndex(
-			index => index.title === document.title
-		);*/
-
 		const index = this.getIndexByTitle(document);
 
 		const updateDocument = {
