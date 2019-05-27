@@ -15,7 +15,7 @@ const StyledContent = styled.section`
 
 export default class App extends Component {
 	state = {
-		domains: ['random'],
+		domains: ['random', 'important'],
 		symbols: [],
 		actualSymbol: '',
 		documents: [
@@ -118,6 +118,7 @@ export default class App extends Component {
 							render={({ history }) => (
 								<CreateDocument
 									onFormSubmit={data => this.addDocument(data, history)}
+									domainList={this.state.domains}
 								/>
 							)}
 						/>
@@ -139,12 +140,6 @@ export default class App extends Component {
 									documents={this.state.documents}
 									{...props}
 								/>
-							)}
-						/>
-						<Route
-							path='/create/:title'
-							render={props => (
-								<CreateDocument {...props} document={this.state.documents[0]} />
 							)}
 						/>
 						<Route

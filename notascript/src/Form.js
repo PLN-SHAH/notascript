@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropType from 'prop-types';
+import DomainList from './DomainList';
 
 const StyledForm = styled.form`
 	display: grid;
@@ -49,7 +50,7 @@ const StyledButton = styled.button`
 	text-align: center;
 `;
 
-export default function Form({ onFormSubmit }) {
+export default function Form({ onFormSubmit, domainList }) {
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
@@ -76,11 +77,7 @@ export default function Form({ onFormSubmit }) {
 			/>
 
 			<StyledLabel htmlFor='domainSelection'>Choose domains</StyledLabel>
-			<StyledDropdown name='domainSelection'>
-				<option>domain option1</option>
-				<option>domain option3</option>
-				<option>domain option3</option>
-			</StyledDropdown>
+			<DomainList domainList={domainList} />
 			<StyledButton>save</StyledButton>
 		</StyledForm>
 	);
