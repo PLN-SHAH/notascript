@@ -2,6 +2,7 @@ import NavLink from './NavLink.js';
 import React from 'react';
 import DocumentList from './DocumentList';
 import styled from 'styled-components';
+import PropType from 'prop-types';
 
 const StyledNavLink = styled(NavLink)`
 	color: #170444;
@@ -18,15 +19,16 @@ const StyledNavLink = styled(NavLink)`
 	}
 `;
 
-export default function Overview({ documentList, onDelete, onEdit }) {
+export default function Overview({ documentList, onDelete }) {
 	return (
 		<>
 			<StyledNavLink to='/create'>create new file</StyledNavLink>
-			<DocumentList
-				documentList={documentList}
-				onDelete={onDelete}
-				onEdit={onEdit}
-			/>
+			<DocumentList documentList={documentList} onDelete={onDelete} />
 		</>
 	);
 }
+
+Overview.propType = {
+	documentList: PropType.array,
+	onDelete: PropType.func
+};

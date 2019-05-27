@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const StyledDocumentList = styled.section`
 	padding: 20px;
 `;
-export default function DocumentList({ documentList, onDelete, onEdit }) {
+export default function DocumentList({ documentList, onDelete }) {
 	return (
 		<StyledDocumentList>
 			{documentList.map(document => (
@@ -14,7 +14,6 @@ export default function DocumentList({ documentList, onDelete, onEdit }) {
 					key={document}
 					document={document}
 					onDelete={() => onDelete(document)}
-					onEdit={() => onEdit(document)}
 					{...document}
 				/>
 			))}
@@ -23,5 +22,6 @@ export default function DocumentList({ documentList, onDelete, onEdit }) {
 }
 
 DocumentList.propTypes = {
-	documentList: PropTypes.array
+	documentList: PropTypes.array,
+	onDelete: PropTypes.func
 };

@@ -17,5 +17,6 @@ export default function EditDocument({
 }
 
 EditDocument.propType = {
-	onFormSubmit: PropType.func
+	onFormSubmit: PropType.func,
+	selectedDocument: PropType.object
 };

@@ -45,17 +45,25 @@ const StyledDeleteButton = styled.button`
 	width: 30px;
 `;
 
+const StyledButtonContainer = styled.section`
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+`;
+
 const StyledFile = styled.section`
 	display: grid;
 `;
 
-export default function Document({ document, onDelete, onEdit }) {
+export default function Document({ document, onDelete }) {
 	return (
 		<StyledDocument>
 			<StyledFile>
-				<StyledDeleteButton onClick={onEdit} />
-				<Link to={`edit/${document.title}`}>edit</Link>
-				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
+				<StyledButtonContainer>
+					<Link to={`edit/${document.title}`}>
+						<ReactSVG src='icon-edit.svg' />
+					</Link>
+					<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
+				</StyledButtonContainer>
 				<Link to={`details/${document.title}`}>
 					<StyledTitle>{document.title}</StyledTitle>
 					<p>{document.description}</p>
@@ -69,5 +77,6 @@ export default function Document({ document, onDelete, onEdit }) {
 }
 
 Document.propTypes = {
-	document: PropTypes.object
+	document: PropTypes.object,
+	onDelete: PropTypes.func
 };

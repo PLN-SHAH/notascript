@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropType from 'prop-types';
 
 const StyledForm = styled.form`
 	display: grid;
@@ -65,3 +66,8 @@ export default function EditForm({ onFormSubmit, selectedDocument }) {
 		</StyledForm>
 	);
 }
+
+EditForm.propType = {
+	onFormSubmit: PropType.func,
+	selectedDocument: PropType.object
+};

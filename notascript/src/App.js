@@ -148,7 +148,6 @@ export default class App extends Component {
 									documentList={this.state.documents}
 									{...props}
 									onDelete={document => this.deleteDocument(document)}
-									onEdit={document => this.updateDocument(document)}
 								/>
 							)}
 						/>
