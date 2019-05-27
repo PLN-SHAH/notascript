@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Domain from './Domain';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 
 const StyledDocument = styled.section`
@@ -56,6 +56,7 @@ export default function Document({ document, onDelete, onEdit }) {
 				<StyledDeleteButton onClick={onEdit}>
 					<ReactSVG src='icon-edit.svg' />
 				</StyledDeleteButton>
+				<Link to={`edit/${document.title}`}>edit</Link>
 				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
 				<Link to={`details/${document.title}`}>
 					<StyledTitle>{document.title}</StyledTitle>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header.js';
 import Footer from './Footer.js';
 import Work from './Work.js';
+import EditDocument from './EditDocument.js';
 import CreateDocument from './CreateDocument';
 import Overview from './Overview.js';
 import { Route, Switch } from 'react-router-dom';
@@ -84,10 +85,6 @@ export default class App extends Component {
 		});
 	}
 
-	/*		...this.state.documents.slice(0, index),
-				updateDocument,
-				...this.state.documentsdos.slice(index + 1)*/
-
 	getSymbolsFromButtons(buttonLabel) {
 		const symbol = buttonLabel;
 
@@ -163,7 +160,22 @@ export default class App extends Component {
 								/>
 							)}
 						/>
-
+						<Route
+							path='/create/:title'
+							render={props => (
+								<CreateDocument {...props} document={this.state.documents[0]} />
+							)}
+						/>
+						<Route
+							path='/edit/:title'
+							render={props => (
+								<EditDocument
+									{...props}
+									selectedDocument={this.selectDocumentForDetailView({ props })}
+								/>
+							)}
+						/>
+						<Route exact path='/edit' component={EditDocument} />
 						<Route exact path='/create' component={CreateDocument} />
 						<Route exact path='/overview' component={Overview} />
 						<Route exact path='/details' component={DocumentDetailView} />
