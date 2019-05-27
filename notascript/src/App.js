@@ -31,8 +31,7 @@ export default class App extends Component {
 				description:
 					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
 				domains: ['Schule', 'Allgemein', 'Freizeit'],
-				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ'],
-				domains: ['tag1', 'tag2', 'tag3']
+				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
 				title: 'Dolor',
@@ -44,37 +43,45 @@ export default class App extends Component {
 		]
 	};
 
-	createNewDocument(data, history) {
+	getIndexByTitle(document) {
+		return this.state.documents.findIndex(
+			index => index.title === document.title
+		);
+	}
+
+	addDocument(data, history) {
 		const newDocument = {
 			title: data.title,
 			description: data.description,
-			symbols: ['*'],
-			domains: [' tag']
+			symbols: data.symbols || ['*'],
+			domains: data.domains || [' tag']
 		};
 
 		this.setState({
 			documents: [newDocument, ...this.state.documents]
 		});
 
-		history.replace('/overview');
+		if (history) {
+			history.replace('/overview');
+		}
 	}
 
 	updateDocument(document) {
+		//delete
 		const title = 'test';
 		const description = 'test description';
-
+		/*
 		const index = this.state.documents.findIndex(
-			documentIndex => documentIndex.title === document.title
-		);
-		console.log(index, 'index');
+			index => index.title === document.title
+		);*/
+
+		const index = this.getIndexByTitle(document);
 
 		const updateDocument = {
 			...this.state.documents[index],
 			title,
 			description
 		};
-
-		console.log(updateDocument, 'updateDocument');
 
 		this.setState({
 			documents: [
@@ -94,18 +101,18 @@ export default class App extends Component {
 		});
 	}
 
-	deleteDocumentFromList(document) {
-		const index = this.state.documents.indexOf(document);
+	deleteDocument(document) {
+		const index = this.getIndexByTitle(document);
+
 		this.setState({
 			documents: [
 				...this.state.documents.slice(0, index),
-
 				...this.state.documents.slice(index + 1)
 			]
 		});
 	}
 
-	selectDocumentForDetailView({ props }) {
+	showDetails({ props }) {
 		const selectionArray = this.state.documents.filter(
 			document => document.title === props.match.params.title
 		);
@@ -135,7 +142,7 @@ export default class App extends Component {
 							path='/create'
 							render={({ history }) => (
 								<CreateDocument
-									onFormSubmit={data => this.createNewDocument(data, history)}
+									onFormSubmit={data => this.addDocument(data, history)}
 								/>
 							)}
 						/>
@@ -145,7 +152,7 @@ export default class App extends Component {
 								<Overview
 									documentList={this.state.documents}
 									{...props}
-									onDelete={document => this.deleteDocumentFromList(document)}
+									onDelete={document => this.deleteDocument(document)}
 									onEdit={document => this.updateDocument(document)}
 								/>
 							)}
@@ -154,7 +161,7 @@ export default class App extends Component {
 							path='/details/:title'
 							render={props => (
 								<DocumentDetailView
-									selectedDocument={this.selectDocumentForDetailView({ props })}
+									selectedDocument={this.showDetails({ props })}
 									documents={this.state.documents}
 									{...props}
 								/>
@@ -171,7 +178,8 @@ export default class App extends Component {
 							render={props => (
 								<EditDocument
 									{...props}
-									selectedDocument={this.selectDocumentForDetailView({ props })}
+									selectedDocument={this.showDetails({ props })}
+									onFormSubmit={data => this.addDocument(data)}
 								/>
 							)}
 						/>
