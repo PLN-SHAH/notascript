@@ -18,11 +18,15 @@ const StyledNavLink = styled(NavLink)`
 	}
 `;
 
-export default function Overview({ documentList, onDelete }) {
+export default function Overview({ documentList, onDelete, onEdit }) {
 	return (
 		<>
 			<StyledNavLink to='/create'>create new file</StyledNavLink>
-			<DocumentList documentList={documentList} onDelete={onDelete} />
+			<DocumentList
+				documentList={documentList}
+				onDelete={onDelete}
+				onEdit={onEdit}
+			/>
 		</>
 	);
 }

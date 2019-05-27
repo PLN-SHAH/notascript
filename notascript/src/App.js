@@ -58,6 +58,36 @@ export default class App extends Component {
 		history.replace('/overview');
 	}
 
+	updateDocument(document) {
+		const title = 'test';
+		const description = 'test description';
+
+		const index = this.state.documents.findIndex(
+			documentIndex => documentIndex.title === document.title
+		);
+		console.log(index, 'index');
+
+		const updateDocument = {
+			...this.state.documents[index],
+			title,
+			description
+		};
+
+		console.log(updateDocument, 'updateDocument');
+
+		this.setState({
+			documents: [
+				...this.state.documents.slice(0, index),
+				updateDocument,
+				...this.state.documents.slice(index + 1)
+			]
+		});
+	}
+
+	/*		...this.state.documents.slice(0, index),
+				updateDocument,
+				...this.state.documentsdos.slice(index + 1)*/
+
 	getSymbolsFromButtons(buttonLabel) {
 		const symbol = buttonLabel;
 
@@ -119,6 +149,7 @@ export default class App extends Component {
 									documentList={this.state.documents}
 									{...props}
 									onDelete={document => this.deleteDocumentFromList(document)}
+									onEdit={document => this.updateDocument(document)}
 								/>
 							)}
 						/>
