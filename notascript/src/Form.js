@@ -51,6 +51,7 @@ const StyledButton = styled.button`
 `;
 
 export default function Form({ onFormSubmit, domainList }) {
+	console.log('domainlist form', domainList);
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
@@ -77,7 +78,11 @@ export default function Form({ onFormSubmit, domainList }) {
 			/>
 
 			<StyledLabel htmlFor='domainSelection'>Choose domains</StyledLabel>
-			<DomainList domainList={domainList} />
+			<StyledDropdown name='domainSelection'>
+				{domainList.map(domain => (
+					<option>{domain}</option>
+				))}
+			</StyledDropdown>
 			<StyledButton>save</StyledButton>
 		</StyledForm>
 	);

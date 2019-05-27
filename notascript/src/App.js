@@ -15,7 +15,7 @@ const StyledContent = styled.section`
 
 export default class App extends Component {
 	state = {
-		domains: ['random', 'important'],
+		domains: ['random', 'important', 'd'],
 		symbols: [],
 		actualSymbol: '',
 		documents: [
