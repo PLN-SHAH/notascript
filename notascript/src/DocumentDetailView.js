@@ -61,10 +61,6 @@ const StyledSymbolsContainer = styled.section`
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
-	console.log(
-		'ich bin document details view selected document',
-		selectedDocument
-	);
 	return (
 		<StyledDetailsView>
 			<section>
