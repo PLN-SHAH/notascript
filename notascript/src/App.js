@@ -15,6 +15,7 @@ const StyledContent = styled.section`
 
 export default class App extends Component {
 	state = {
+		domains: ['random'],
 		symbols: [],
 		actualSymbol: '',
 		documents: [
@@ -37,7 +38,7 @@ export default class App extends Component {
 				title: 'Dolor',
 				description:
 					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
-				domains: ['Zeitung'],
+				domains: ['Zeitung', 'Medien'],
 				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			}
 		]

@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Domain from './Domain';
+import Domain from './DomainList';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
+import DomainList from './DomainList';
 
 const StyledDocument = styled.section`
 	padding: 20px;
@@ -68,7 +69,7 @@ export default function Document({ document, onDelete }) {
 					<StyledTitle>{document.title}</StyledTitle>
 					<p>{document.description}</p>
 					<StyledDomainList>
-						<Domain domainList={document.domains} />
+						<DomainList domainList={document.domains} />
 					</StyledDomainList>
 				</Link>
 			</StyledFile>
