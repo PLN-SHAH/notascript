@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Header from './Header.js';
 import Footer from './Footer.js';
-import Work from './Work.js';
-import EditDocument from './EditDocument.js';
-import CreateDocument from './CreateDocument';
-import Overview from './Overview.js';
+import Work from '../Work/Work.js';
+import EditDocument from '../edit/EditDocument.js';
+import CreateDocument from '../create/CreateDocument';
+import Overview from '../Documents/Overview.js';
 import { Route, Switch } from 'react-router-dom';
-import DocumentDetailView from './DocumentDetailView.js';
+import DocumentDetailView from '../Documents/DocumentDetailView.js';
 import styled from 'styled-components';
 
 const StyledContent = styled.section`

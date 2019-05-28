@@ -1,4 +1,4 @@
-import NavLink from './NavLink.js';
+import NavLink from '../app/NavLink.js';
 import React from 'react';
 import DocumentList from './DocumentList';
 import styled from 'styled-components';

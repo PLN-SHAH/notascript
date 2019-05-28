@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavLink from './NavLink.js';
+import NavLink from '../app/NavLink.js';
 
 const StyledSymbolsSheet = styled.section`
 	font-size: 3em;

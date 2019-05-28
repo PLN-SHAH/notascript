@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Domain from './DomainList';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
