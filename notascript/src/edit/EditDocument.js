@@ -7,7 +7,6 @@ export default function EditDocument({
 	onFormSubmit,
 	domainList
 }) {
-	console.log(selectedDocument, 'selectedDocument in editdok');
 	return (
 		<Edit
 			selectedDocument={selectedDocument}

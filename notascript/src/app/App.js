@@ -73,13 +73,12 @@ export default class App extends Component {
 		});
 	}
 
-	getSymbolsFromButtons(buttonLabel) {
-		const symbol = buttonLabel;
-
+	getSymbolsFromButtons(buttonLabel, symbolSet) {
 		this.setState({
-			actualSymbol: symbol,
-			symbols: [...this.state.symbols, symbol]
+			actualSymbol: buttonLabel,
+			symbols: symbolSet
 		});
+		console.log(symbolSet, 'in app status');
 	}
 
 	deleteDocument(document) {
@@ -111,8 +110,8 @@ export default class App extends Component {
 							render={props => (
 								<WorkPage
 									symbols={this.state.symbols}
-									handleButtonClick={buttonLabel =>
-										this.getSymbolsFromButtons(buttonLabel)
+									handleButtonClick={(buttonLabel, symbolSet) =>
+										this.getSymbolsFromButtons(buttonLabel, symbolSet)
 									}
 									selectedDocument={this.showDetails({ props })}
 									{...props}

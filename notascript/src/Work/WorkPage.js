@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Buttons from './Buttons';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -21,6 +21,7 @@ export default function WorkPage({
 	selectedDocument
 }) {
 	const createdSymbols = createUnicodes('0200', 40);
+	let [symbolSet, setSymbolSet] = useState([symbols || 'startsymbols']);
 
 	function createUnicodes(start, counter) {
 		return Array(counter)
@@ -32,13 +33,21 @@ export default function WorkPage({
 			});
 	}
 
+	function handleOnClick(buttonLabel) {
+		setSymbolSet((symbolSet = [...symbolSet, buttonLabel]));
+		console.log(buttonLabel, symbolSet);
+	}
+
 	return (
 		<>
 			<StyledTitle>{selectedDocument && selectedDocument.title}</StyledTitle>
 			<StyledSymbols>{symbols}</StyledSymbols>
 			<Buttons
 				buttonLabels={createdSymbols}
-				handleButtonClick={buttonLabel => handleButtonClick(buttonLabel)}
+				handleButtonClick={buttonLabel => {
+					handleButtonClick(buttonLabel, symbolSet);
+					handleOnClick(buttonLabel);
+				}}
 			/>
 		</>
 	);
