@@ -51,7 +51,6 @@ export default class App extends Component {
 	}
 
 	addDocument(data, history) {
-		console.log(data);
 		const newDocument = {
 			title: data.title,
 			description: data.description,
@@ -63,9 +62,7 @@ export default class App extends Component {
 			documents: [newDocument, ...this.state.documents]
 		});
 
-		if (history) {
-			history.replace('/overview');
-		}
+		history.replace('/overview');
 	}
 
 	getSymbolsFromButtons(buttonLabel) {
@@ -139,7 +136,6 @@ export default class App extends Component {
 								<DocumentDetailView
 									selectedDocument={this.showDetails({ props })}
 									documents={this.state.documents}
-									{...props}
 								/>
 							)}
 						/>
@@ -147,7 +143,6 @@ export default class App extends Component {
 							path='/edit/:title'
 							render={props => (
 								<EditDocument
-									{...props}
 									selectedDocument={this.showDetails({ props })}
 									onFormSubmit={data => this.addDocument(data)}
 									domainList={this.state.domains}
