@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Formular = styled.form`
-	display: grid;
+	height: 100%;
 	padding: 20px;
+	display: grid;
+	grid-template-rows: 1fr 3fr 1fr 1fr;
 `;
 
 export const Input = styled.input`
@@ -17,6 +19,7 @@ export const Input = styled.input`
 export const Label = styled.label`
 	margin-bottom: 5px;
 	color: #33050a;
+	display: grid;
 `;
 
 export const Button = styled.button`

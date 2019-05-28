@@ -65,7 +65,7 @@ export default class App extends Component {
 		});
 
 		if (history) {
-			history.replace('/overview');
+			history.replace('/documents');
 		}
 	}
 

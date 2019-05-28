@@ -18,6 +18,12 @@ const StyledTextarea = styled.textarea`
 	min-height: 45px;
 `;
 
+const StyledSelect = styled(Select)`
+	font-size: 1rem;
+	margin-bottom: 10px;
+	font-style: italic;
+`;
+
 export default function Form({ onFormSubmit, domainList }) {
 	const [options, setOptions] = useState([]);
 
@@ -51,29 +57,36 @@ export default function Form({ onFormSubmit, domainList }) {
 
 	return (
 		<StyledForm onSubmit={handleOnSubmit}>
-			<StyledLabel htmlFor='title'>New Title</StyledLabel>
-			<StyledInput name='title' placeholder='type title here...' type='text' />
+			<StyledLabel>
+				New Title
+				<StyledInput
+					name='title'
+					placeholder='type title here...'
+					type='text'
+				/>
+			</StyledLabel>
+			<StyledLabel>
+				New Description
+				<StyledTextarea
+					name='description'
+					placeholder='type description here...'
+					type='text'
+				/>
+			</StyledLabel>
 
-			<StyledLabel htmlFor='description'>New Description</StyledLabel>
-			<StyledTextarea
-				name='description'
-				placeholder='type description here...'
-				type='text'
-			/>
-
-			<StyledLabel htmlFor='domainSelection'>Choose domains</StyledLabel>
-
-			<Select
-				name='domainSelection'
-				options={options}
-				onInputChange={handleOnInputChange}
-			/>
-			<Select
-				name='domainSelectionSecond'
-				options={options}
-				onInputChange={handleOnInputChange}
-			/>
-			<div>selected</div>
+			<StyledLabel>
+				Choose domains
+				<StyledSelect
+					name='domainSelection'
+					options={options}
+					onInputChange={handleOnInputChange}
+				/>
+				<StyledSelect
+					name='domainSelectionSecond'
+					options={options}
+					onInputChange={handleOnInputChange}
+				/>
+			</StyledLabel>
 			<StyledButton>save</StyledButton>
 		</StyledForm>
 	);

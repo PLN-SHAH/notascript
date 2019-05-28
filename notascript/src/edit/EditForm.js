@@ -3,11 +3,12 @@ import PropType from 'prop-types';
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-import { Formular, Input, Button } from '../misc/Style.js';
+import { Formular, Input, Button, Label } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;
 const StyledButton = styled(Button)``;
+const StyledLabel = styled(Label)``;
 
 const StyledTextarea = styled.textarea`
 	border: 1px solid #ddd;
@@ -55,28 +56,35 @@ export default function EditForm({
 
 	return (
 		<StyledForm onSubmit={handleOnSubmit}>
-			<h4>Edit document</h4>
-			<StyledInput
-				name='title'
-				defaultValue={selectedDocument.title}
-				type='text'
-			/>
-
-			<StyledTextarea
-				name='description'
-				defaultValue={selectedDocument.description}
-				type='text'
-			/>
-			<Select
-				name='domainSelection'
-				options={options}
-				onInputChange={handleOnInputChange}
-			/>
-			<Select
-				name='domainSelectionSecond'
-				options={options}
-				onInputChange={handleOnInputChange}
-			/>
+			<StyledLabel>
+				Title
+				<StyledInput
+					name='title'
+					defaultValue={selectedDocument.title}
+					type='text'
+				/>
+			</StyledLabel>
+			<StyledLabel>
+				Description
+				<StyledTextarea
+					name='description'
+					defaultValue={selectedDocument.description}
+					type='text'
+				/>
+			</StyledLabel>
+			<StyledLabel>
+				Choose domains
+				<Select
+					name='domainSelection'
+					options={options}
+					onInputChange={handleOnInputChange}
+				/>
+				<Select
+					name='domainSelectionSecond'
+					options={options}
+					onInputChange={handleOnInputChange}
+				/>
+			</StyledLabel>
 			<StyledButton>save</StyledButton>
 		</StyledForm>
 	);
