@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Domain from './Domain';
+import Domain from './Domain.js';
 
 export default function DomainList({ domainList }) {
 	return (

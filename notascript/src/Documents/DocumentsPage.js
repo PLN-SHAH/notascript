@@ -1,6 +1,6 @@
 import NavLink from '../app/NavLink.js';
 import React from 'react';
-import DocumentList from './DocumentList';
+import DocumentList from './DocumentList.js';
 import styled from 'styled-components';
 import PropType from 'prop-types';
 

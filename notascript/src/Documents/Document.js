@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
-import DomainList from './DomainList';
+import DomainList from '../domains/DomainList.js';
 
 const StyledDocument = styled.section`
 	padding: 20px;
