@@ -68,6 +68,7 @@ export default function Document({ document, onDelete }) {
 					</StyledDomainList>
 				</Link>
 			</StyledFile>
+			<button>continue work</button>
 		</StyledDocument>
 	);
 }

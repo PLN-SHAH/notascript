@@ -34,8 +34,6 @@ export default function Form({
 		);
 	}
 
-	function handleOnClick() {}
-
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
@@ -92,7 +90,7 @@ export default function Form({
 				/>
 			</StyledLabel>
 			<StyledButton>save</StyledButton>
-			{isWork && <StyledButton onClick={handleOnClick}>go work</StyledButton>}
+			{isWork && <StyledButton>go work</StyledButton>}
 		</StyledForm>
 	);
 }
