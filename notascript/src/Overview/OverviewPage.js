@@ -22,12 +22,14 @@ const StyledNavContainer = styled.section`
 	height: 100%;
 `;
 
-export default function OverviewPage() {
+export default function OverviewPage({ onFormSubmit }) {
 	return (
 		<StyledNavContainer>
 			<nav>
 				<StyledNavLink to='/documents'>Document List</StyledNavLink>
-				<StyledNavLink to='/domains'>Domain List</StyledNavLink>
+				<StyledNavLink to='/domains' onFormSubmit={onFormSubmit}>
+					Domain List
+				</StyledNavLink>
 			</nav>
 		</StyledNavContainer>
 	);

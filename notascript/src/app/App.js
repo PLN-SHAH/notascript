@@ -67,6 +67,12 @@ export default class App extends Component {
 		history.replace('/overview');
 	}
 
+	addDomain(domainName) {
+		this.setState({
+			domains: [domainName, ...this.state.domains]
+		});
+	}
+
 	getSymbolsFromButtons(buttonLabel) {
 		const symbol = buttonLabel;
 
@@ -144,7 +150,12 @@ export default class App extends Component {
 						/>
 						<Route
 							path='/domains'
-							render={() => <DomainsPage domainList={this.state.domains} />}
+							render={() => (
+								<DomainsPage
+									domainList={this.state.domains}
+									onFormSubmit={data => this.addDomain(data)}
+								/>
+							)}
 						/>
 						<Route
 							path='/details/:title'
