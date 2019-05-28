@@ -67,6 +67,7 @@ export default function Document({ document, onDelete }) {
 						<DomainList domainList={document.domains} />
 					</StyledDomainList>
 				</Link>
+				<div>symbols:{document.symbols}</div>
 			</StyledFile>
 			<Link to={`work/${document.title}`}>
 				<button>continue work</button>

@@ -41,7 +41,9 @@ export default function WorkPage({
 	return (
 		<>
 			<StyledTitle>{selectedDocument && selectedDocument.title}</StyledTitle>
-			<StyledSymbols>{symbols}</StyledSymbols>
+			<StyledSymbols>
+				{selectedDocument && selectedDocument.symbols}
+			</StyledSymbols>
 			<Buttons
 				buttonLabels={createdSymbols}
 				handleButtonClick={buttonLabel => {

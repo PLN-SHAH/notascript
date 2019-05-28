@@ -78,7 +78,6 @@ export default class App extends Component {
 			actualSymbol: buttonLabel,
 			symbols: symbolSet
 		});
-		console.log(symbolSet, 'in app status');
 	}
 
 	deleteDocument(document) {
