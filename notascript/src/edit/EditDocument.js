@@ -1,5 +1,5 @@
 import React from 'react';
-import EditForm from './EditForm';
+import Edit from './Edit';
 import PropType from 'prop-types';
 
 export default function EditDocument({
@@ -8,7 +8,7 @@ export default function EditDocument({
 	domainList
 }) {
 	return (
-		<EditForm
+		<Edit
 			selectedDocument={selectedDocument}
 			onFormSubmit={onFormSubmit}
 			domainList={domainList}

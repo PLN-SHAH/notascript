@@ -2,21 +2,14 @@ import styled from 'styled-components';
 import PropType from 'prop-types';
 import React, { useState } from 'react';
 import Select from 'react-select';
-import { Formular, Input, Button, Label } from '../misc/Style.js';
+import { Formular, Input, Button, Label, Textarea } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
 
-const StyledTextarea = styled.textarea`
-	border: 1px solid #ddd;
-	font-size: 1rem;
-	margin-bottom: 10px;
-	padding-left: 5px;
-	font-style: italic;
-	min-height: 45px;
-`;
+const StyledTextarea = styled(Textarea)``;
 
 const StyledSelect = styled(Select)`
 	font-size: 1rem;

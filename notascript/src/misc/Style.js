@@ -7,6 +7,15 @@ export const Formular = styled.form`
 	grid-template-rows: 1fr 3fr 1fr 1fr;
 `;
 
+export const Textarea = styled.textarea`
+	border: 1px solid #ddd;
+	font-size: 1rem;
+	margin-bottom: 10px;
+	padding-left: 5px;
+	font-style: italic;
+	min-height: 45px;
+`;
+
 export const Input = styled.input`
 	border: 1px solid #ddd;
 	font-size: 1rem;
