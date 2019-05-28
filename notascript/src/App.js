@@ -51,6 +51,7 @@ export default class App extends Component {
 	}
 
 	addDocument(data, history) {
+		console.log(data);
 		const newDocument = {
 			title: data.title,
 			description: data.description,

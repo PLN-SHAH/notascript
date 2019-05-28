@@ -6,7 +6,7 @@ export default function DomainList({ domainList }) {
 	return (
 		<>
 			{domainList.map(domain => (
-				<Domain domain={domain} />
+				<Domain domain={domain} key={domain} />
 			))}
 		</>
 	);

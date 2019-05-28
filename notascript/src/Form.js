@@ -1,7 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import PropType from 'prop-types';
-import DomainList from './DomainList';
+import React, { useState } from 'react';
+import Select from 'react-select';
 
 const StyledForm = styled.form`
 	display: grid;
@@ -26,16 +26,6 @@ const StyledTextarea = styled.textarea`
 	min-height: 45px;
 `;
 
-const StyledDropdown = styled.select`
-	border: 1px solid #ddd;
-	font-size: 1rem;
-	margin-bottom: 10px;
-	padding-left: 5px;
-	font-style: italic;
-	color: #8e8e8e;
-	height: 45px;
-`;
-
 const StyledLabel = styled.label`
 	margin-bottom: 5px;
 	color: #33050a;
@@ -51,17 +41,33 @@ const StyledButton = styled.button`
 `;
 
 export default function Form({ onFormSubmit, domainList }) {
-	console.log('domainlist form', domainList);
+	const [options, setOptions] = useState([]);
+
+	function handleOnInputChange() {
+		setOptions(
+			domainList.map(domain => ({
+				value: domain,
+				label: domain
+			}))
+		);
+		console.log(options, 'options');
+	}
+
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
 		const form = event.target;
 		const title = form.title.value;
 		const description = form.description.value;
+		const domains = [];
+		const domain = form.domainSelection.value;
+		domains.push(domain);
+		console.log(domain, 'domains');
 
 		onFormSubmit({
 			title,
-			description
+			description,
+			domains
 		});
 	}
 
@@ -78,11 +84,13 @@ export default function Form({ onFormSubmit, domainList }) {
 			/>
 
 			<StyledLabel htmlFor='domainSelection'>Choose domains</StyledLabel>
-			<StyledDropdown name='domainSelection'>
-				{domainList.map(domain => (
-					<option>{domain}</option>
-				))}
-			</StyledDropdown>
+
+			<Select
+				name='domainSelection'
+				options={options}
+				onInputChange={handleOnInputChange}
+			/>
+			<div>selected</div>
 			<StyledButton>save</StyledButton>
 		</StyledForm>
 	);
