@@ -4,7 +4,7 @@ import Footer from './Footer.js';
 import Work from '../Work/Work.js';
 import EditDocument from '../edit/EditDocument.js';
 import CreateDocument from '../create/CreateDocument';
-import Overview from '../Documents/Overview.js';
+import DocumentsPage from '../Documents/DocumentsPage.js';
 import { Route, Switch } from 'react-router-dom';
 import DocumentDetailView from '../Documents/DocumentDetailView.js';
 import styled from 'styled-components';
@@ -123,7 +123,7 @@ export default class App extends Component {
 						<Route
 							path='/overview'
 							render={props => (
-								<Overview
+								<DocumentsPage
 									documentList={this.state.documents}
 									{...props}
 									onDelete={document => this.deleteDocument(document)}
@@ -149,10 +149,6 @@ export default class App extends Component {
 								/>
 							)}
 						/>
-						<Route exact path='/edit' component={EditDocument} />
-						<Route exact path='/create' component={CreateDocument} />
-						<Route exact path='/overview' component={Overview} />
-						<Route exact path='/details' component={DocumentDetailView} />
 						<Route
 							exact
 							path='/not-found'

@@ -19,7 +19,7 @@ const StyledNavLink = styled(NavLink)`
 	}
 `;
 
-export default function Overview({ documentList, onDelete }) {
+export default function DocumentsPage({ documentList, onDelete }) {
 	return (
 		<>
 			<StyledNavLink to='/create'>create new file</StyledNavLink>
@@ -28,7 +28,7 @@ export default function Overview({ documentList, onDelete }) {
 	);
 }
 
-Overview.propType = {
+DocumentsPage.propType = {
 	documentList: PropType.array,
 	onDelete: PropType.func
 };
