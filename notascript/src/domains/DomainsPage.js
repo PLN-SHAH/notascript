@@ -8,6 +8,12 @@ const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
+const StyledDomainList = styled.ul`
+	margin: 20px;
+	list-style: none;
+	padding: 0;
+	display: flex;
+`;
 
 export default function DomainsPage({ domainList, onFormSubmit }) {
 	function handleSubmit(event) {
@@ -20,7 +26,9 @@ export default function DomainsPage({ domainList, onFormSubmit }) {
 	}
 	return (
 		<>
-			<DomainList domainList={domainList} />
+			<StyledDomainList>
+				<DomainList domainList={domainList} />
+			</StyledDomainList>
 			<section>add/edit domains</section>
 			<StyledForm onSubmit={handleSubmit}>
 				<StyledLabel htmlFor='name'>New Domain name: </StyledLabel>

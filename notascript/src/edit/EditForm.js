@@ -3,19 +3,11 @@ import PropType from 'prop-types';
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const StyledForm = styled.form`
-	display: grid;
-	padding: 20px;
-`;
+import { Formular, Input, Button } from '../misc/Style.js';
 
-const StyledInput = styled.input`
-	border: 1px solid #ddd;
-	font-size: 1rem;
-	margin-bottom: 10px;
-	padding-left: 5px;
-	font-style: italic;
-	height: 45px;
-`;
+const StyledInput = styled(Input)``;
+const StyledForm = styled(Formular)``;
+const StyledButton = styled(Button)``;
 
 const StyledTextarea = styled.textarea`
 	border: 1px solid #ddd;
@@ -24,15 +16,6 @@ const StyledTextarea = styled.textarea`
 	padding-left: 5px;
 	font-style: italic;
 	min-height: 45px;
-`;
-
-const StyledButton = styled.button`
-	background: linear-gradient(135deg, #562323, #4c4a58);
-	padding: 5px;
-	color: white;
-	font-family: 'Dancing Script', cursive;
-	font-size: 2rem;
-	text-align: center;
 `;
 
 export default function EditForm({

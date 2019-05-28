@@ -64,7 +64,9 @@ export default class App extends Component {
 			documents: [newDocument, ...this.state.documents]
 		});
 
-		history.replace('/overview');
+		if (history) {
+			history.replace('/overview');
+		}
 	}
 
 	addDomain(domainName) {

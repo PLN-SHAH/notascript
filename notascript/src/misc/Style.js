@@ -36,8 +36,10 @@ export const Title = styled.h4`
 `;
 
 export const DomainTag = styled.li`
-	margin-right: 10px;
-	background-color: #170444;
+	margin: 5px 10px;
+	background: linear-gradient(135deg, #322356, #43579c);
+	border-radius: 15px;
+	box-shadow: -2px 3px 3px 0 #ccc;
 	color: white;
 	padding: 10px;
 `;
