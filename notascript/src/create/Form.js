@@ -16,7 +16,12 @@ const StyledSelect = styled(Select)`
 	font-style: italic;
 `;
 
-export default function Form({ onFormSubmit, domainList, selectedDocument }) {
+export default function Form({
+	onFormSubmit,
+	domainList,
+	selectedDocument,
+	isWork
+}) {
 	const { title, description } = selectedDocument || {};
 	const [options, setOptions] = useState([]);
 
@@ -28,6 +33,8 @@ export default function Form({ onFormSubmit, domainList, selectedDocument }) {
 			}))
 		);
 	}
+
+	function handleOnClick() {}
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
@@ -85,6 +92,7 @@ export default function Form({ onFormSubmit, domainList, selectedDocument }) {
 				/>
 			</StyledLabel>
 			<StyledButton>save</StyledButton>
+			{isWork && <StyledButton onClick={handleOnClick}>go work</StyledButton>}
 		</StyledForm>
 	);
 }

@@ -56,17 +56,15 @@ export default class App extends Component {
 		const newDocument = {
 			title: data.title,
 			description: data.description,
-			symbols: data.symbols > 0 ? data.symbols : '*',
-			domains: data.domains ? data.domains : 'addtext'
+			symbols: data.symbols || '*',
+			domains: data.domains || 'addtext'
 		};
 
 		this.setState({
 			documents: [newDocument, ...this.state.documents]
 		});
 
-		if (history) {
-			history.replace('/documents');
-		}
+		history && history.replace('/documents');
 	}
 
 	addDomain(domainName) {
