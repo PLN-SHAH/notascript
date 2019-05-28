@@ -3,6 +3,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import Work from '../Work/Work.js';
 import DocumentsPage from '../Documents/DocumentsPage.js';
+import DomainsPage from '../domains/DomainsPage.js';
 import EditDocument from '../edit/EditDocument.js';
 import CreateDocument from '../create/CreateDocument';
 import OverviewPage from '../Overview/OverviewPage.js';
@@ -140,6 +141,10 @@ export default class App extends Component {
 									onDelete={document => this.deleteDocument(document)}
 								/>
 							)}
+						/>
+						<Route
+							path='/domains'
+							render={() => <DomainsPage domainList={this.state.domains} />}
 						/>
 						<Route
 							path='/details/:title'
