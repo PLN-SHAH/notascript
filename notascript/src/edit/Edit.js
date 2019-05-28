@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Form from '../create/Form.js';
 
 export default function Edit({ onFormSubmit, selectedDocument, domainList }) {
+	console.log(selectedDocument, 'in edit');
 	const [options, setOptions] = useState([]);
 
 	function handleOnInputChange() {

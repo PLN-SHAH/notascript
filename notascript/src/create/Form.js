@@ -8,7 +8,6 @@ const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
-
 const StyledTextarea = styled(Textarea)``;
 
 const StyledSelect = styled(Select)`
@@ -17,7 +16,8 @@ const StyledSelect = styled(Select)`
 	font-style: italic;
 `;
 
-export default function Form({ onFormSubmit, domainList }) {
+export default function Form({ onFormSubmit, domainList, selectedDocument }) {
+	const { title, description } = selectedDocument || {};
 	const [options, setOptions] = useState([]);
 
 	function handleOnInputChange() {
@@ -56,6 +56,8 @@ export default function Form({ onFormSubmit, domainList }) {
 					name='title'
 					placeholder='type title here...'
 					type='text'
+					defaultValue={title}
+					required
 				/>
 			</StyledLabel>
 			<StyledLabel>
@@ -64,6 +66,8 @@ export default function Form({ onFormSubmit, domainList }) {
 					name='description'
 					placeholder='type description here...'
 					type='text'
+					defaultValue={selectedDocument && description}
+					required
 				/>
 			</StyledLabel>
 
@@ -86,6 +90,7 @@ export default function Form({ onFormSubmit, domainList }) {
 }
 
 Form.propType = {
-	onFormSubmit: PropType.func,
-	domainList: PropType.array
+	onFormSubmit: PropType.func.isRequired,
+	domainList: PropType.array,
+	selectedDocument: PropType.object
 };

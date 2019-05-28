@@ -10,10 +10,8 @@ export const Formular = styled.form`
 export const Textarea = styled.textarea`
 	border: 1px solid #ddd;
 	font-size: 1rem;
-	margin-bottom: 10px;
 	padding-left: 5px;
 	font-style: italic;
-	min-height: 45px;
 `;
 
 export const Input = styled.input`

@@ -27,21 +27,21 @@ export default class App extends Component {
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
 
 				domains: ['Gericht', 'Straftrecht'],
-				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
+				symbols: ['A', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
 				title: 'Ipsum',
 				description:
 					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
 				domains: ['Schule', 'Allgemein', 'Freizeit'],
-				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
+				symbols: ['B', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
 				title: 'Dolor',
 				description:
-					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
+					'But I must explain to you how all this mistaken idea of denouncing',
 				domains: ['Zeitung', 'Medien'],
-				symbols: ['ȁ', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
+				symbols: ['C', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			}
 		]
 	};
@@ -56,8 +56,8 @@ export default class App extends Component {
 		const newDocument = {
 			title: data.title,
 			description: data.description,
-			symbols: data.symbols || ['*'],
-			domains: data.domains || [' tag']
+			symbols: data.symbols > 0 ? data.symbols : '*',
+			domains: data.domains ? data.domains : 'addtext'
 		};
 
 		this.setState({
