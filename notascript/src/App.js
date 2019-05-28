@@ -150,6 +150,7 @@ export default class App extends Component {
 									{...props}
 									selectedDocument={this.showDetails({ props })}
 									onFormSubmit={data => this.addDocument(data)}
+									domainList={this.state.domains}
 								/>
 							)}
 						/>

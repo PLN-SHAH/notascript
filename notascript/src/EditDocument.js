@@ -5,18 +5,21 @@ import PropType from 'prop-types';
 export default function EditDocument({
 	selectedDocument,
 	onFormSubmit,
-	props
+	props,
+	domainList
 }) {
 	return (
 		<EditForm
 			selectedDocument={selectedDocument}
 			onFormSubmit={onFormSubmit}
 			{...props}
+			domainList={domainList}
 		/>
 	);
 }
 
 EditDocument.propType = {
 	onFormSubmit: PropType.func,
-	selectedDocument: PropType.object
+	selectedDocument: PropType.object,
+	domainList: PropType.array
 };

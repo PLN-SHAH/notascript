@@ -50,7 +50,6 @@ export default function Form({ onFormSubmit, domainList }) {
 				label: domain
 			}))
 		);
-		console.log(options, 'options');
 	}
 
 	function handleOnSubmit(event) {
@@ -64,7 +63,6 @@ export default function Form({ onFormSubmit, domainList }) {
 		const domainSecond = form.domainSelectionSecond.value;
 		domains.push(domainMain);
 		domains.push(domainSecond);
-		console.log(domains, 'domains');
 
 		onFormSubmit({
 			title,
@@ -104,5 +102,6 @@ export default function Form({ onFormSubmit, domainList }) {
 }
 
 Form.propType = {
-	onFormSubmit: PropType.func
+	onFormSubmit: PropType.func,
+	domainList: PropType.array
 };
