@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header.js';
 import Footer from './Footer.js';
-import Work from '../Work/Work.js';
+import WorkPage from '../Work/WorkPage.js';
 import DocumentsPage from '../Documents/DocumentsPage.js';
 import DomainsPage from '../domains/DomainsPage.js';
 import EditDocument from '../edit/EditDocument.js';
@@ -107,13 +107,14 @@ export default class App extends Component {
 				<StyledContent>
 					<Switch>
 						<Route
-							path='/work'
+							path='/work/:title'
 							render={props => (
-								<Work
+								<WorkPage
 									symbols={this.state.symbols}
 									handleButtonClick={buttonLabel =>
 										this.getSymbolsFromButtons(buttonLabel)
 									}
+									selectedDocument={this.showDetails({ props })}
 									{...props}
 								/>
 							)}
