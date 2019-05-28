@@ -60,9 +60,11 @@ export default function Form({ onFormSubmit, domainList }) {
 		const title = form.title.value;
 		const description = form.description.value;
 		const domains = [];
-		const domain = form.domainSelection.value;
-		domains.push(domain);
-		console.log(domain, 'domains');
+		const domainMain = form.domainSelection.value;
+		const domainSecond = form.domainSelectionSecond.value;
+		domains.push(domainMain);
+		domains.push(domainSecond);
+		console.log(domains, 'domains');
 
 		onFormSubmit({
 			title,
@@ -87,6 +89,11 @@ export default function Form({ onFormSubmit, domainList }) {
 
 			<Select
 				name='domainSelection'
+				options={options}
+				onInputChange={handleOnInputChange}
+			/>
+			<Select
+				name='domainSelectionSecond'
 				options={options}
 				onInputChange={handleOnInputChange}
 			/>
