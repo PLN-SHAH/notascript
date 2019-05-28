@@ -2,7 +2,7 @@ import React from 'react';
 import DomainList from './DomainList.js';
 import PropType from 'prop-types';
 import styled from 'styled-components';
-import { Input, Formular, Label, Button } from '../misc/FormStyle.js';
+import { Input, Formular, Label, Button } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import DomainList from '../domains/DomainList.js';
+import { Title } from '../misc/Style.js';
 
 const StyledDocument = styled.section`
 	padding: 20px;
@@ -16,12 +17,7 @@ const StyledDocument = styled.section`
 	border-left-color: #170444;
 `;
 
-const StyledTitle = styled.h4`
-	font-size: 2rem;
-	margin: 0;
-	color: #170444;
-	font-family: 'Dancing Script', cursive;
-`;
+const StyledTitle = styled(Title)``;
 
 const StyledDomainList = styled.ul`
 	list-style: none;

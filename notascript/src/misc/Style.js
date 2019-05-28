@@ -14,15 +14,6 @@ export const Input = styled.input`
 	height: 45px;
 `;
 
-const StyledTextarea = styled.textarea`
-	border: 1px solid #ddd;
-	font-size: 1rem;
-	margin-bottom: 10px;
-	padding-left: 5px;
-	font-style: italic;
-	min-height: 45px;
-`;
-
 export const Label = styled.label`
 	margin-bottom: 5px;
 	color: #33050a;
@@ -35,4 +26,25 @@ export const Button = styled.button`
 	font-family: 'Dancing Script', cursive;
 	font-size: 2rem;
 	text-align: center;
+`;
+
+export const Title = styled.h4`
+	font-size: 3rem;
+	margin: 0;
+	font-family: 'Dancing Script', cursive;
+	margin: 20px;
+`;
+
+export const DomainTag = styled.li`
+	margin-right: 10px;
+	background-color: #170444;
+	color: white;
+	padding: 10px;
+`;
+
+export const DomainList = styled.ul`
+	margin: 20px;
+	list-style: none;
+	padding: 0;
+	display: flex;
 `;

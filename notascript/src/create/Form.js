@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PropType from 'prop-types';
 import React, { useState } from 'react';
 import Select from 'react-select';
-import { Formular, Input, Button, Label } from '../misc/FormStyle.js';
+import { Formular, Input, Button, Label } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;

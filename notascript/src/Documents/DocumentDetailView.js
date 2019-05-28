@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavLink from '../app/NavLink.js';
+import { Title, DomainList } from '../misc/Style.js';
 
 const StyledSymbolsSheet = styled.section`
 	font-size: 3em;
@@ -9,12 +10,7 @@ const StyledSymbolsSheet = styled.section`
 	box-shadow: -2px 3px 3px 0 #ccc;
 `;
 
-const StyledTitle = styled.h4`
-	font-size: 3rem;
-	margin: 0;
-	font-family: 'Dancing Script', cursive;
-	margin: 20px;
-`;
+const StyledTitle = styled(Title)``;
 
 const StyledDetailsView = styled.section`
 	display: grid;
@@ -25,19 +21,7 @@ const StyledDescription = styled.p`
 	margin: 20px;
 `;
 
-const StyledDomainList = styled.ul`
-	margin: 20px;
-	list-style: none;
-	padding: 0;
-	display: flex;
-
-	> li {
-		margin-right: 10px;
-		background-color: #170444;
-		color: white;
-		padding: 10px;
-	}
-`;
+const StyledDomainList = styled(DomainList)``;
 
 const StyledNavLink = styled(NavLink)`
 	color: #170444;
