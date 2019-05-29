@@ -13,7 +13,6 @@ const StyledFile = styled.section`
 	margin-bottom: 20px;
 	border-left-width: 15px;
 	border-left-color: #170444;
-	display: inline-grid;
 	grid-template-rows: 50px auto 50px;
 	padding: 20px;
 	width: 100%;
@@ -33,10 +32,6 @@ const StyledDeleteButton = styled.button`
 const StyledTitle = styled(Title)``;
 
 const StyledNavLink = styled(RouteLink)``;
-const StyledInvisibleLink = styled(Link)`
-	display: inline-grid;
-	grid-template-rows: auto;
-`;
 
 const StyledSymbols = styled.span`
 	background: #ddd;
@@ -51,14 +46,14 @@ export default function Document({ document, onDelete }) {
 				</Link>
 				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
 			</StyledCta>
-			<StyledInvisibleLink to={`details/${document.title}`}>
+			<Link to={`details/${document.title}`}>
 				<StyledTitle>{document.title}</StyledTitle>
 				<p>{document.description}</p>
 				<DomainList domainList={document.domains} />
 				<p>
 					<StyledSymbols>{document.symbols}</StyledSymbols>
 				</p>
-			</StyledInvisibleLink>
+			</Link>
 			<StyledNavLink to={`work/${document.title}`}>continue work</StyledNavLink>
 		</StyledFile>
 	);

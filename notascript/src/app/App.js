@@ -25,7 +25,48 @@ export default class App extends Component {
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
 
 				domains: ['Gericht', 'Straftrecht'],
-				symbols: ['A', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
+				symbols: [
+					'A',
+					'Ȃ',
+					'ȃ',
+					'Ȅ',
+					'ȅ',
+					'Ȇ',
+					'ȇ',
+					'Ȉ',
+					'ȉ',
+					'Ȑ',
+					'A',
+					'Ȃ',
+					'ȃ',
+					'Ȅ',
+					'ȅ',
+					'Ȇ',
+					'ȇ',
+					'Ȉ',
+					'ȉ',
+					'Ȑ',
+					'A',
+					'Ȃ',
+					'ȃ',
+					'Ȅ',
+					'ȅ',
+					'Ȇ',
+					'ȇ',
+					'Ȉ',
+					'ȉ',
+					'Ȑ',
+					'A',
+					'Ȃ',
+					'ȃ',
+					'Ȅ',
+					'ȅ',
+					'Ȇ',
+					'ȇ',
+					'Ȉ',
+					'ȉ',
+					'Ȑ'
+				]
 			},
 			{
 				title: 'Dolor',
@@ -47,7 +88,6 @@ export default class App extends Component {
 		const newDocument = {
 			title: data.title,
 			description: data.description,
-			symbols: data.symbols || '*',
 			domains: data.domains || 'addtext'
 		};
 
@@ -63,13 +103,6 @@ export default class App extends Component {
 			domains: [domainName, ...this.state.domains]
 		});
 	}
-	/*
-	updateSymbols(symbolFromButton, newsymbolList) {
-		this.setState({
-			symbols: newsymbolList
-		});
-		console.log('app set state symbols', this.state.symbols);
-	}*/
 
 	deleteDocument(document) {
 		const index = this.getIndexByTitle(document);

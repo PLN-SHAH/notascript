@@ -9,6 +9,7 @@ const StyledSymbolsSheet = styled.section`
 	background-color: white;
 	padding: 20px;
 	box-shadow: -2px 3px 3px 0 #ccc;
+	word-break: break-all;
 `;
 
 const StyledTitle = styled(Title)``;
@@ -36,7 +37,9 @@ const StyledSymbolsContainer = styled.section`
 	background-color: #f2f2f2;
 	padding: 20px;
 	border-top: 3px solid #170444;
-	display: grid;
+	word-break: break-all;
+	width: 100vw;
+	padding: 20px;
 `;
 
 const StyledFile = styled.section`
@@ -44,13 +47,18 @@ const StyledFile = styled.section`
 	border-left-width: 15px;
 	border-left-color: #170444;
 	border-left-style: solid;
+	word-break: break-all;
+	width: 100vw;
+	padding: 20px;
 `;
 
-export default function DocumentDetailView({ selectedDocument }) {
+export default function DocumentDetailView({ selectedDocument, documents }) {
+	console.log(documents, 'in detail view');
+
 	return (
 		<StyledDetailsView>
 			<StyledFile>
-				<StyledNavLink to='/overview'>back to view</StyledNavLink>
+				<StyledNavLink to='/documents'>back to view</StyledNavLink>
 				<StyledTitle>{selectedDocument.title}</StyledTitle>
 				<p>{selectedDocument.description}</p>
 				<DomainList domainList={selectedDocument.domains} />
