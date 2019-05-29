@@ -7,7 +7,7 @@ import DomainsPage from '../domains/DomainsPage.js';
 import EditDocument from '../edit/EditDocument.js';
 import CreateDocument from '../create/CreateDocument';
 import OverviewPage from '../Overview/OverviewPage.js';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import DocumentDetailView from '../Documents/DocumentDetailView.js';
 import styled from 'styled-components';
 
@@ -137,7 +137,6 @@ export default class App extends Component {
 								/>
 							)}
 						/>
-
 						<Route
 							path='/create'
 							render={({ history }) => (
@@ -195,6 +194,7 @@ export default class App extends Component {
 								/>
 							)}
 						/>
+						<Redirect from='/' to='/documents' />
 						<Route
 							exact
 							path='/not-found'
