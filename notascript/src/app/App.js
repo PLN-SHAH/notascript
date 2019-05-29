@@ -28,13 +28,6 @@ export default class App extends Component {
 				symbols: ['A', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			},
 			{
-				title: 'Ipsum',
-				description:
-					'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
-				domains: ['Schule', 'Allgemein', 'Freizeit'],
-				symbols: ['B', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
-			},
-			{
 				title: 'Dolor',
 				description:
 					'But I must explain to you how all this mistaken idea of denouncing',

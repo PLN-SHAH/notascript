@@ -6,12 +6,9 @@ import PropType from 'prop-types';
 
 const StyledNavLink = styled(NavLink)`
 	color: #170444;
-	height: 50px;
-	display: grid;
 	font-size: 2em;
 	text-align: right;
 	font-family: 'Dancing Script', cursive;
-	align-items: center;
 
 	&:hover {
 		text-decoration: none;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import NavLink from '../app/NavLink.js';
 
 export const Formular = styled.form`
 	height: 100%;
@@ -39,10 +40,9 @@ export const Button = styled.button`
 `;
 
 export const Title = styled.h4`
-	font-size: 3rem;
-	margin: 0;
 	font-family: 'Dancing Script', cursive;
-	margin: 20px;
+	font-size: 1.8em;
+	margin: 0;
 `;
 
 export const DomainTag = styled.li`
@@ -55,8 +55,16 @@ export const DomainTag = styled.li`
 `;
 
 export const DomainList = styled.ul`
-	margin: 20px;
-	list-style: none;
-	padding: 0;
 	display: flex;
+`;
+
+export const RouteLink = styled(NavLink)`
+	color: #170444;
+	font-size: 2em;
+	text-align: right;
+	font-family: 'Dancing Script', cursive;
+
+	&:hover {
+		text-decoration: none;
+	}
 `;

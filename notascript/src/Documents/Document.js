@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import DomainList from '../domains/DomainList.js';
-import { Title } from '../misc/Style.js';
+import { Title, RouteLink } from '../misc/Style.js';
 
 const StyledTitle = styled(Title)`
 	word-break: break-all;
@@ -19,29 +19,21 @@ const StyledDeleteButton = styled.button`
 	width: 30px;
 `;
 
-export const StyledDomainList = styled.ul`
-	margin: 20px;
-	list-style: none;
-	padding: 0;
-	display: flex;
-`;
-
 const StyledCta = styled.section`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 `;
 
-const StyledLink = styled(Link)`
+const StyledInvisibleLink = styled(Link)`
 	display: inline-grid;
 	grid-template-rows: auto;
 `;
 
-const StyledDescription = styled.p`
-	word-break: break-word;
-`;
 const StyledSymbolPreview = styled.p`
 	word-break: break-all;
 `;
+
+const StyledNavLink = styled(RouteLink)``;
 
 const StyledFile = styled.section`
 	border: 1px solid #ccc;
@@ -53,6 +45,7 @@ const StyledFile = styled.section`
 	display: inline-grid;
 	grid-template-rows: 50px auto 50px;
 	padding: 20px;
+	width: 100%;
 `;
 
 export default function Document({ document, onDelete }) {
@@ -64,17 +57,17 @@ export default function Document({ document, onDelete }) {
 				</Link>
 				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
 			</StyledCta>
-			<StyledLink to={`details/${document.title}`}>
+			<StyledInvisibleLink to={`details/${document.title}`}>
 				<StyledTitle>{document.title}</StyledTitle>
-				<StyledDescription>{document.description}</StyledDescription>
-				<StyledDomainList>
-					<DomainList domainList={document.domains} />
-				</StyledDomainList>
-				<StyledSymbolPreview>{document.symbols}</StyledSymbolPreview>
-			</StyledLink>
-			<StyledLink to={`work/${document.title}`}>
-				<button>continue work</button>
-			</StyledLink>
+				<p>{document.description}</p>
+
+				<DomainList domainList={document.domains} />
+
+				<StyledSymbolPreview>
+					<span>{document.symbols}</span>
+				</StyledSymbolPreview>
+			</StyledInvisibleLink>
+			<StyledNavLink to={`work/${document.title}`}>continue work</StyledNavLink>
 		</StyledFile>
 	);
 }

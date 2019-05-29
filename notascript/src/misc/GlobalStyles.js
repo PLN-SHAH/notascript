@@ -38,15 +38,23 @@ export default createGlobalStyle`
   ul {
 		margin: 0;
 		padding: 0;
-        list-style: none;
+    list-style: none;
     }
 
     a {
       text-decoration: none;
-      color: #562323;
+      color:#170444;
 
       &:hover {
         text-decoration: none;
       }
+    }
+
+    h4{
+      word-break: break-all;
+    }
+
+    p{
+      word-break: break-word;
     }
 `;
