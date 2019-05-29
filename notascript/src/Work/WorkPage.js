@@ -15,13 +15,9 @@ const StyledTitle = styled(Title)`
 	justify-content: center;
 `;
 
-export default function WorkPage({
-	symbols,
-	handleButtonClick,
-	selectedDocument
-}) {
+export default function WorkPage({ handleButtonClick, selectedDocument }) {
 	const createdSymbols = createUnicodes('0200', 40);
-	let [symbolSet, setSymbolSet] = useState([symbols || 'startsymbols']);
+	let [symbolList, setSymbolList] = useState([]);
 
 	function createUnicodes(start, counter) {
 		return Array(counter)
@@ -33,22 +29,23 @@ export default function WorkPage({
 			});
 	}
 
-	function handleOnClick(buttonLabel) {
-		setSymbolSet((symbolSet = [...symbolSet, buttonLabel]));
-		console.log(buttonLabel, symbolSet);
+	function renderSymbols(symbolFromButton) {
+		setSymbolList((symbolList = [...symbolList, symbolFromButton]));
 	}
 
 	return (
 		<>
 			<StyledTitle>{selectedDocument && selectedDocument.title}</StyledTitle>
 			<StyledSymbols>
+				renderedSymbols
 				{selectedDocument && selectedDocument.symbols}
+				{symbolList}
 			</StyledSymbols>
 			<Buttons
-				buttonLabels={createdSymbols}
-				handleButtonClick={buttonLabel => {
-					handleButtonClick(buttonLabel, symbolSet);
-					handleOnClick(buttonLabel);
+				createdSymbols={createdSymbols}
+				handleButtonClick={symbolFromButton => {
+					handleButtonClick(symbolFromButton, symbolList);
+					renderSymbols(symbolFromButton);
 				}}
 			/>
 		</>
@@ -56,7 +53,6 @@ export default function WorkPage({
 }
 
 WorkPage.propTypes = {
-	symbols: PropTypes.array,
 	handleButtonClick: PropTypes.func,
 	selectedDocument: PropTypes.object
 };

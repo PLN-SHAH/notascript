@@ -33,8 +33,10 @@ export default function Work({ symbols, handleButtonClick }) {
 		<StyledContent>
 			<StyledSymbols>{symbols}</StyledSymbols>
 			<Buttons
-				buttonLabels={createdSymbols}
-				handleButtonClick={buttonLabel => handleButtonClick(buttonLabel)}
+				createdSymbols={createdSymbols}
+				handleButtonClick={symbolFromButton =>
+					handleButtonClick(symbolFromButton)
+				}
 			/>
 		</StyledContent>
 	);

@@ -19,7 +19,6 @@ export default class App extends Component {
 	state = {
 		domains: ['random', 'important', 'd'],
 		symbols: [],
-		actualSymbol: '',
 		documents: [
 			{
 				title: 'Lorem',
@@ -73,11 +72,11 @@ export default class App extends Component {
 		});
 	}
 
-	getSymbolsFromButtons(buttonLabel, symbolSet) {
+	updateSymbols(symbolFromButton, symbolList) {
 		this.setState({
-			actualSymbol: buttonLabel,
-			symbols: symbolSet
+			symbols: symbolList
 		});
+		console.log('app set state symbols', this.state.symbols);
 	}
 
 	deleteDocument(document) {
@@ -108,9 +107,8 @@ export default class App extends Component {
 							path='/work/:title'
 							render={props => (
 								<WorkPage
-									symbols={this.state.symbols}
-									handleButtonClick={(buttonLabel, symbolSet) =>
-										this.getSymbolsFromButtons(buttonLabel, symbolSet)
+									handleButtonClick={(symbolFromButton, symbolList) =>
+										this.updateSymbols(symbolFromButton, symbolList)
 									}
 									selectedDocument={this.showDetails({ props })}
 									{...props}

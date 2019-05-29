@@ -21,12 +21,12 @@ const StyledButton = styled.button`
 	}
 `;
 
-export default function Buttons({ buttonLabels, handleButtonClick }) {
+export default function Buttons({ createdSymbols, handleButtonClick }) {
 	return (
 		<StyledSymbolsContainer>
-			{buttonLabels.map(label => (
-				<StyledButton key={label} onClick={() => handleButtonClick(label)}>
-					{label}
+			{createdSymbols.map(symbol => (
+				<StyledButton key={symbol} onClick={() => handleButtonClick(symbol)}>
+					{symbol}
 				</StyledButton>
 			))}
 		</StyledSymbolsContainer>
@@ -34,6 +34,6 @@ export default function Buttons({ buttonLabels, handleButtonClick }) {
 }
 
 Buttons.propTypes = {
-	buttonLabels: PropTypes.array,
+	createdSymbols: PropTypes.array,
 	handleButtonClick: PropTypes.func
 };
