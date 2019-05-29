@@ -30,8 +30,10 @@ export default function WorkPage({ selectedDocument }) {
 	}
 
 	function renderSymbols(symbolFromButton) {
-		setSymbolList((symbolList = [...symbolList, symbolFromButton]));
-		console.log('workpage symbols list state', symbolList);
+		setSymbolList(
+			(symbolList = [...symbolList, symbolFromButton]),
+			(selectedDocument.symbols = [...selectedDocument.symbols, symbolList])
+		);
 	}
 
 	return (
@@ -40,10 +42,7 @@ export default function WorkPage({ selectedDocument }) {
 			<StyledSymbols>
 				{selectedDocument && selectedDocument.symbols}
 			</StyledSymbols>
-			<div>
-				new added
-				{symbolList}
-			</div>
+			<div>{symbolList}</div>
 			<Buttons
 				createdSymbols={createdSymbols}
 				handleButtonClick={symbolFromButton => {
