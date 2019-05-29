@@ -20,7 +20,7 @@ export default class App extends Component {
 		domains: ['random', 'important', 'do'],
 		documents: [
 			{
-				title: 'Lorem',
+				title: 'Einseeeeeeeeeeeeehrlaaaaaangertitle',
 				description:
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
 

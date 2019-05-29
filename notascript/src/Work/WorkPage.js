@@ -7,12 +7,19 @@ import { Title } from '../misc/Style.js';
 const StyledSymbols = styled.section`
 	font-size: 3em;
 	padding: 20px;
-	font-weight: light;
+	word-break: break-all;
+	width: 100vw;
 `;
 
 const StyledTitle = styled(Title)`
 	display: grid;
 	justify-content: center;
+	word-break: break-all;
+`;
+
+const StyledContainer = styled.section`
+	display: inline-grid;
+	grid-template-columns: 1fr;
 `;
 
 export default function WorkPage({ selectedDocument }) {
@@ -44,11 +51,13 @@ export default function WorkPage({ selectedDocument }) {
 	}
 
 	return (
-		<>
+		<StyledContainer>
 			<StyledTitle>{selectedDocument && selectedDocument.title}</StyledTitle>
 			<StyledSymbols>
-				{selectedDocument && selectedDocument.symbols}
-				{newsymbolList}
+				<span>
+					{selectedDocument && selectedDocument.symbols}
+					{newsymbolList}
+				</span>
 			</StyledSymbols>
 			<Buttons
 				createdSymbols={createdSymbols}
@@ -57,7 +66,7 @@ export default function WorkPage({ selectedDocument }) {
 				}}
 			/>
 			<button onClick={updateDocument}>save</button>
-		</>
+		</StyledContainer>
 	);
 }
 
