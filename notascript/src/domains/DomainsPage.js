@@ -2,17 +2,19 @@ import React from 'react';
 import DomainList from './DomainList.js';
 import PropType from 'prop-types';
 import styled from 'styled-components';
-import { Input, Formular, Label, Button } from '../misc/Style.js';
+import { Input, Formular, Label, Button, Title } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
-const StyledDomainList = styled.ul`
-	margin: 20px;
-	list-style: none;
-	padding: 0;
-	display: flex;
+const StyledTitle = styled(Title)`
+	padding: 20px;
+`;
+
+const StyledContainer = styled.section`
+	display: grid;
+	grid-template-rows: 100px 50px 100px;
 `;
 
 export default function DomainsPage({ domainList, onFormSubmit }) {
@@ -25,11 +27,9 @@ export default function DomainsPage({ domainList, onFormSubmit }) {
 		onFormSubmit(input);
 	}
 	return (
-		<>
-			<StyledDomainList>
-				<DomainList domainList={domainList} />
-			</StyledDomainList>
-			<section>add/edit domains</section>
+		<StyledContainer>
+			<StyledTitle>Add or edit domains</StyledTitle>
+			<DomainList domainList={domainList} />
 			<StyledForm onSubmit={handleSubmit}>
 				<StyledLabel htmlFor='name'>New Domain name: </StyledLabel>
 				<StyledInput
@@ -39,10 +39,11 @@ export default function DomainsPage({ domainList, onFormSubmit }) {
 				/>
 				<StyledButton>add</StyledButton>
 			</StyledForm>
-		</>
+		</StyledContainer>
 	);
 }
 
 DomainsPage.propType = {
-	domainList: PropType.array
+	domainList: PropType.array,
+	onFormSubmit: PropType.func
 };

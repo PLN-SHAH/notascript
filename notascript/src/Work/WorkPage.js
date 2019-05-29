@@ -5,17 +5,14 @@ import PropTypes from 'prop-types';
 import { Title, Button } from '../misc/Style.js';
 
 const StyledSymbols = styled.section`
-	font-size: 3em;
-	padding: 20px;
+	font-size: 2em;
 	word-break: break-all;
 	width: 100vw;
+	padding: 20px;
 `;
 
 const StyledTitle = styled(Title)`
-	display: grid;
-	justify-content: center;
-	word-break: break-all;
-	font-size: 1em;
+	padding: 20px;
 `;
 
 const StyledButton = styled(Button)`
@@ -25,7 +22,7 @@ const StyledButton = styled(Button)`
 const StyledContainer = styled.section`
 	display: inline-grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 50px 1fr 1fr;
+	grid-template-rows: 100px 1fr 1fr;
 	height: 100%;
 `;
 

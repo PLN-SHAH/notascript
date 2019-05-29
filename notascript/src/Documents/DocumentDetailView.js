@@ -11,9 +11,7 @@ const StyledSymbolsSheet = styled.section`
 	box-shadow: -2px 3px 3px 0 #ccc;
 `;
 
-const StyledTitle = styled(Title)`
-	word-break: break-all;
-`;
+const StyledTitle = styled(Title)``;
 
 const StyledDetailsView = styled.section`
 	display: inline-grid;
@@ -41,19 +39,22 @@ const StyledSymbolsContainer = styled.section`
 	display: grid;
 `;
 
-const StyledDocument = styled.section`
+const StyledFile = styled.section`
 	padding: 20px;
+	border-left-width: 15px;
+	border-left-color: #170444;
+	border-left-style: solid;
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
 	return (
 		<StyledDetailsView>
-			<StyledDocument>
+			<StyledFile>
 				<StyledNavLink to='/overview'>back to view</StyledNavLink>
 				<StyledTitle>{selectedDocument.title}</StyledTitle>
 				<p>{selectedDocument.description}</p>
 				<DomainList domainList={selectedDocument.domains} />
-			</StyledDocument>
+			</StyledFile>
 			<StyledSymbolsContainer>
 				<StyledSymbolsSheet>{selectedDocument.symbols}</StyledSymbolsSheet>
 			</StyledSymbolsContainer>

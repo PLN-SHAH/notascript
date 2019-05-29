@@ -34,12 +34,15 @@ export const Button = styled.button`
 	background: linear-gradient(135deg, #562323, #4c4a58);
 	padding: 5px;
 	color: white;
+	max-height: 50px;
+	border: none;
 	font-family: 'Dancing Script', cursive;
 	font-size: 2rem;
 	text-align: center;
 `;
 
 export const Title = styled.h4`
+	word-break: break-all;
 	font-family: 'Dancing Script', cursive;
 	font-size: 1.8em;
 	margin: 0;

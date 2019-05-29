@@ -6,35 +6,6 @@ import ReactSVG from 'react-svg';
 import DomainList from '../domains/DomainList.js';
 import { Title, RouteLink } from '../misc/Style.js';
 
-const StyledTitle = styled(Title)`
-	word-break: break-all;
-	font-size: 1.8em;
-	margin: 0;
-`;
-
-const StyledDeleteButton = styled.button`
-	background: transparent;
-	border: none;
-	justify-self: right;
-	width: 30px;
-`;
-
-const StyledCta = styled.section`
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-`;
-
-const StyledInvisibleLink = styled(Link)`
-	display: inline-grid;
-	grid-template-rows: auto;
-`;
-
-const StyledSymbolPreview = styled.p`
-	word-break: break-all;
-`;
-
-const StyledNavLink = styled(RouteLink)``;
-
 const StyledFile = styled.section`
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -46,6 +17,29 @@ const StyledFile = styled.section`
 	grid-template-rows: 50px auto 50px;
 	padding: 20px;
 	width: 100%;
+`;
+const StyledCta = styled.section`
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+`;
+
+const StyledDeleteButton = styled.button`
+	background: transparent;
+	border: none;
+	justify-self: right;
+	width: 30px;
+`;
+
+const StyledTitle = styled(Title)``;
+
+const StyledNavLink = styled(RouteLink)``;
+const StyledInvisibleLink = styled(Link)`
+	display: inline-grid;
+	grid-template-rows: auto;
+`;
+
+const StyledSymbols = styled.span`
+	background: #ddd;
 `;
 
 export default function Document({ document, onDelete }) {
@@ -60,12 +54,10 @@ export default function Document({ document, onDelete }) {
 			<StyledInvisibleLink to={`details/${document.title}`}>
 				<StyledTitle>{document.title}</StyledTitle>
 				<p>{document.description}</p>
-
 				<DomainList domainList={document.domains} />
-
-				<StyledSymbolPreview>
-					<span>{document.symbols}</span>
-				</StyledSymbolPreview>
+				<p>
+					<StyledSymbols>{document.symbols}</StyledSymbols>
+				</p>
 			</StyledInvisibleLink>
 			<StyledNavLink to={`work/${document.title}`}>continue work</StyledNavLink>
 		</StyledFile>
