@@ -6,32 +6,10 @@ import ReactSVG from 'react-svg';
 import DomainList from '../domains/DomainList.js';
 import { Title } from '../misc/Style.js';
 
-const StyledDocument = styled.section`
-	padding: 20px;
-	display: grid;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	box-shadow: -2px 3px 3px 0 #ccc;
-	margin-bottom: 20px;
-	border-left-width: 15px;
-	border-left-color: #170444;
-`;
-
-const StyledTitle = styled(Title)``;
-
-const StyledDomainList = styled.ul`
-	list-style: none;
-	padding: 0;
-	display: flex;
-
-	> li {
-		margin: 5px 10px;
-		background: linear-gradient(135deg, #322356, #43579c);
-		border-radius: 15px;
-		box-shadow: -2px 3px 3px 0 #ccc;
-		color: white;
-		padding: 10px;
-	}
+const StyledTitle = styled(Title)`
+	word-break: break-all;
+	font-size: 1.8em;
+	margin: 0;
 `;
 
 const StyledDeleteButton = styled.button`
@@ -41,38 +19,63 @@ const StyledDeleteButton = styled.button`
 	width: 30px;
 `;
 
-const StyledButtonContainer = styled.section`
+export const StyledDomainList = styled.ul`
+	margin: 20px;
+	list-style: none;
+	padding: 0;
+	display: flex;
+`;
+
+const StyledCta = styled.section`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 `;
 
+const StyledLink = styled(Link)`
+	display: inline-grid;
+	grid-template-rows: auto;
+`;
+
+const StyledDescription = styled.p`
+	word-break: break-word;
+`;
+const StyledSymbolPreview = styled.p`
+	word-break: break-all;
+`;
+
 const StyledFile = styled.section`
-	display: grid;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: -2px 3px 3px 0 #ccc;
+	margin-bottom: 20px;
+	border-left-width: 15px;
+	border-left-color: #170444;
+	display: inline-grid;
+	grid-template-rows: 50px auto 50px;
+	padding: 20px;
 `;
 
 export default function Document({ document, onDelete }) {
 	return (
-		<StyledDocument>
-			<StyledFile>
-				<StyledButtonContainer>
-					<Link to={`edit/${document.title}`}>
-						<ReactSVG src='icon-edit.svg' />
-					</Link>
-					<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
-				</StyledButtonContainer>
-				<Link to={`details/${document.title}`}>
-					<StyledTitle>{document.title}</StyledTitle>
-					<p>{document.description}</p>
-					<StyledDomainList>
-						<DomainList domainList={document.domains} />
-					</StyledDomainList>
+		<StyledFile>
+			<StyledCta>
+				<Link to={`edit/${document.title}`}>
+					<ReactSVG src='icon-edit.svg' />
 				</Link>
-				<div>symbols:{document.symbols}</div>
-			</StyledFile>
-			<Link to={`work/${document.title}`}>
+				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
+			</StyledCta>
+			<StyledLink to={`details/${document.title}`}>
+				<StyledTitle>{document.title}</StyledTitle>
+				<StyledDescription>{document.description}</StyledDescription>
+				<StyledDomainList>
+					<DomainList domainList={document.domains} />
+				</StyledDomainList>
+				<StyledSymbolPreview>{document.symbols}</StyledSymbolPreview>
+			</StyledLink>
+			<StyledLink to={`work/${document.title}`}>
 				<button>continue work</button>
-			</Link>
-		</StyledDocument>
+			</StyledLink>
+		</StyledFile>
 	);
 }
 

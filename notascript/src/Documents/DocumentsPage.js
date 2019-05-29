@@ -8,7 +8,6 @@ const StyledNavLink = styled(NavLink)`
 	color: #170444;
 	height: 50px;
 	display: grid;
-	margin: 0 20px;
 	font-size: 2em;
 	text-align: right;
 	font-family: 'Dancing Script', cursive;
@@ -19,12 +18,16 @@ const StyledNavLink = styled(NavLink)`
 	}
 `;
 
+const StyledDocumentsContainer = styled.section`
+	padding: 20px;
+`;
+
 export default function DocumentsPage({ documentList, onDelete }) {
 	return (
-		<>
+		<StyledDocumentsContainer>
 			<StyledNavLink to='/create'>create new file</StyledNavLink>
 			<DocumentList documentList={documentList} onDelete={onDelete} />
-		</>
+		</StyledDocumentsContainer>
 	);
 }
 

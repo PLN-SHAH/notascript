@@ -1,14 +1,9 @@
 import React from 'react';
 import Document from './Document';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const StyledDocumentList = styled.section`
-	padding: 20px;
-`;
 export default function DocumentList({ documentList, onDelete }) {
 	return (
-		<StyledDocumentList>
+		<section>
 			{documentList.map(document => (
 				<Document
 					key={document}
@@ -17,7 +12,7 @@ export default function DocumentList({ documentList, onDelete }) {
 					{...document}
 				/>
 			))}
-		</StyledDocumentList>
+		</section>
 	);
 }
 
