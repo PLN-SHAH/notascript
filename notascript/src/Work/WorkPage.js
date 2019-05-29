@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Buttons from './Buttons';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Title } from '../misc/Style.js';
+import { Title, Button } from '../misc/Style.js';
 
 const StyledSymbols = styled.section`
 	font-size: 3em;
@@ -15,11 +15,18 @@ const StyledTitle = styled(Title)`
 	display: grid;
 	justify-content: center;
 	word-break: break-all;
+	font-size: 1em;
+`;
+
+const StyledButton = styled(Button)`
+	align-self: end;
 `;
 
 const StyledContainer = styled.section`
 	display: inline-grid;
 	grid-template-columns: 1fr;
+	grid-template-rows: 50px 1fr 1fr;
+	height: 100%;
 `;
 
 export default function WorkPage({ selectedDocument }) {
@@ -59,13 +66,13 @@ export default function WorkPage({ selectedDocument }) {
 					{newsymbolList}
 				</span>
 			</StyledSymbols>
+			<StyledButton onClick={updateDocument}>save</StyledButton>
 			<Buttons
 				createdSymbols={createdSymbols}
 				handleButtonClick={symbolFromButton => {
 					renderSymbols(symbolFromButton);
 				}}
 			/>
-			<button onClick={updateDocument}>save</button>
 		</StyledContainer>
 	);
 }

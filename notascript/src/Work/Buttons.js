@@ -6,6 +6,7 @@ const StyledSymbolsContainer = styled.section`
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
 	background: linear-gradient(135deg, #562323, #4c4a58);
+	align-self: end;
 `;
 
 const StyledButton = styled.button`
