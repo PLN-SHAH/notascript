@@ -26,11 +26,12 @@ const StyledContainer = styled.section`
 	height: 100%;
 `;
 
-export default function WorkPage({ selectedDocument }) {
+export default function WorkPage({ selectedDocument, history }) {
 	const createdSymbols = createUnicodes('0200', 40);
 
-	let [symbolList, setSymbolList] = useState([selectedDocument.symbols]);
-	let [newsymbolList, setNewsymbolList] = useState([]);
+	//let symbolList = selectedDocument.symbols || [];
+
+	let [newSymbolList, setNewSymbolList] = useState([]);
 
 	function createUnicodes(start, counter) {
 		return Array(counter)
@@ -43,15 +44,16 @@ export default function WorkPage({ selectedDocument }) {
 	}
 
 	function renderSymbols(symbolFromButton) {
-		setNewsymbolList((newsymbolList = [...newsymbolList, symbolFromButton]));
+		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
 	}
 
 	//save
 	function updateDocument() {
-		setSymbolList(
-			newsymbolList.forEach(item => selectedDocument.symbols.push(item))
+		setNewSymbolList(
+			newSymbolList.forEach(item => selectedDocument.symbols.push(item)) ||
+				selectedDocument.symbols
 		);
-		console.log(symbolList, 'new file ');
+		history.push('/');
 	}
 
 	return (
@@ -60,7 +62,7 @@ export default function WorkPage({ selectedDocument }) {
 			<StyledSymbols>
 				<span>
 					{selectedDocument && selectedDocument.symbols}
-					{newsymbolList}
+					{newSymbolList}
 				</span>
 			</StyledSymbols>
 			<StyledButton onClick={updateDocument}>save</StyledButton>

@@ -84,7 +84,7 @@ export default class App extends Component {
 		);
 	}
 
-	addDocument(data, history) {
+	addDocument(data) {
 		const newDocument = {
 			title: data.title,
 			description: data.description,
@@ -95,7 +95,11 @@ export default class App extends Component {
 			documents: [newDocument, ...this.state.documents]
 		});
 
-		history && history.replace('/documents');
+		//props.history && props.history.replace('/documents');
+	}
+
+	updateDocument(data) {
+		console.log('update', data);
 	}
 
 	addDomain(domainName) {
@@ -137,12 +141,14 @@ export default class App extends Component {
 								/>
 							)}
 						/>
+
 						<Route
 							path='/create'
-							render={({ history }) => (
+							render={props => (
 								<CreateDocument
-									onFormSubmit={data => this.addDocument(data, history)}
+									onFormSubmit={data => this.addDocument(data)}
 									domainList={this.state.domains}
+									{...props}
 								/>
 							)}
 						/>
@@ -189,8 +195,9 @@ export default class App extends Component {
 							render={props => (
 								<EditDocument
 									selectedDocument={this.showDetails({ props })}
-									onFormSubmit={data => this.addDocument(data)}
+									onFormSubmit={data => this.updateDocument(data)}
 									domainList={this.state.domains}
+									{...props}
 								/>
 							)}
 						/>

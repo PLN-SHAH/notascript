@@ -23,16 +23,6 @@ export default function Form({
 	isWork
 }) {
 	const { title, description } = selectedDocument || {};
-	const [options, setOptions] = useState([]);
-
-	function handleOnInputChange() {
-		setOptions(
-			domainList.map(domain => ({
-				value: domain,
-				label: domain
-			}))
-		);
-	}
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
@@ -40,11 +30,10 @@ export default function Form({
 		const form = event.target;
 		const title = form.title.value;
 		const description = form.description.value;
-		const domains = [];
-		const domainMain = form.domainSelection.value;
-		const domainSecond = form.domainSelectionSecond.value;
-		domains.push(domainMain);
-		domains.push(domainSecond);
+		const domains = [
+			form.domainSelection.value,
+			form.domainSelectionSecond.value
+		];
 
 		onFormSubmit({
 			title,
@@ -52,6 +41,11 @@ export default function Form({
 			domains
 		});
 	}
+
+	const options = domainList.map(domain => ({
+		value: domain,
+		label: domain
+	}));
 
 	return (
 		<StyledForm onSubmit={handleOnSubmit}>
@@ -78,16 +72,8 @@ export default function Form({
 
 			<StyledLabel>
 				Choose domains
-				<StyledSelect
-					name='domainSelection'
-					options={options}
-					onInputChange={handleOnInputChange}
-				/>
-				<StyledSelect
-					name='domainSelectionSecond'
-					options={options}
-					onInputChange={handleOnInputChange}
-				/>
+				<StyledSelect name='domainSelection' options={options} />
+				<StyledSelect name='domainSelectionSecond' options={options} />
 			</StyledLabel>
 			<StyledButton>save</StyledButton>
 			{isWork && <StyledButton>go work</StyledButton>}

@@ -6,7 +6,7 @@ export default function DocumentList({ documentList, onDelete }) {
 		<section>
 			{documentList.map(document => (
 				<Document
-					key={document}
+					key={document.title}
 					document={document}
 					onDelete={() => onDelete(document)}
 					{...document}

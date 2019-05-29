@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import Form from './Form';
-import Work from '../Work/Work.js';
 import PropType from 'prop-types';
 
-export default function CreateDocument({ onFormSubmit, domainList }) {
+export default function CreateDocument({ onFormSubmit, domainList, history }) {
+	console.log(history, 'history');
 	const [isWork, setIsWork] = useState(false);
 
 	function handleOnChange() {
 		setIsWork(!isWork);
 	}
 
+	function handleSubmit(doc) {
+		onFormSubmit(doc);
+		history.push('/');
+	}
+
 	return (
 		<>
 			<>
 				<Form
-					onFormSubmit={onFormSubmit}
+					onFormSubmit={handleSubmit}
 					domainList={domainList}
 					isWork={isWork}
 				/>

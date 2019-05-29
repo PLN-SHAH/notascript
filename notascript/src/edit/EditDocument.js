@@ -5,13 +5,16 @@ import PropType from 'prop-types';
 export default function EditDocument({
 	selectedDocument,
 	onFormSubmit,
-	domainList
+	domainList,
+	history
 }) {
 	return (
 		<Edit
 			selectedDocument={selectedDocument}
 			onFormSubmit={onFormSubmit}
 			domainList={domainList}
+			history={history}
+			symbols={selectedDocument.symbols}
 		/>
 	);
 }
