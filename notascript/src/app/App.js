@@ -71,9 +71,9 @@ export default class App extends Component {
 		});
 	}
 	/*
-	updateSymbols(symbolFromButton, symbolList) {
+	updateSymbols(symbolFromButton, newsymbolList) {
 		this.setState({
-			symbols: symbolList
+			symbols: newsymbolList
 		});
 		console.log('app set state symbols', this.state.symbols);
 	}*/
