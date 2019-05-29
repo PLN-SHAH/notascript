@@ -17,8 +17,7 @@ const StyledContent = styled.section`
 
 export default class App extends Component {
 	state = {
-		domains: ['random', 'important', 'd'],
-		symbols: [],
+		domains: ['random', 'important', 'do'],
 		documents: [
 			{
 				title: 'Lorem',
@@ -71,13 +70,13 @@ export default class App extends Component {
 			domains: [domainName, ...this.state.domains]
 		});
 	}
-
+	/*
 	updateSymbols(symbolFromButton, symbolList) {
 		this.setState({
 			symbols: symbolList
 		});
 		console.log('app set state symbols', this.state.symbols);
-	}
+	}*/
 
 	deleteDocument(document) {
 		const index = this.getIndexByTitle(document);
@@ -107,9 +106,6 @@ export default class App extends Component {
 							path='/work/:title'
 							render={props => (
 								<WorkPage
-									handleButtonClick={(symbolFromButton, symbolList) =>
-										this.updateSymbols(symbolFromButton, symbolList)
-									}
 									selectedDocument={this.showDetails({ props })}
 									{...props}
 								/>
