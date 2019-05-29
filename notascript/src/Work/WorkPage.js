@@ -18,6 +18,9 @@ const StyledTitle = styled(Title)`
 export default function WorkPage({ selectedDocument }) {
 	const createdSymbols = createUnicodes('0200', 40);
 	let [symbolList, setSymbolList] = useState([]);
+	let [selectedDocumentSymbols, setSelectedDocumentSymbols] = useState([
+		selectedDocument.symbols
+	]);
 
 	function createUnicodes(start, counter) {
 		return Array(counter)
@@ -30,10 +33,19 @@ export default function WorkPage({ selectedDocument }) {
 	}
 
 	function renderSymbols(symbolFromButton) {
-		setSymbolList(
-			(symbolList = [...symbolList, symbolFromButton]),
-			(selectedDocument.symbols = [...selectedDocument.symbols, symbolList])
+		setSymbolList((symbolList = [...symbolList, symbolFromButton]));
+	}
+
+	//save
+	function handleOnClick() {
+		console.log(
+			'clicked save selectedDocument.symbols',
+			selectedDocumentSymbols
 		);
+		setSelectedDocumentSymbols(
+			symbolList.forEach(item => selectedDocument.symbols.push(item))
+		);
+		console.log(selectedDocumentSymbols, 'hook ');
 	}
 
 	return (
@@ -41,14 +53,15 @@ export default function WorkPage({ selectedDocument }) {
 			<StyledTitle>{selectedDocument && selectedDocument.title}</StyledTitle>
 			<StyledSymbols>
 				{selectedDocument && selectedDocument.symbols}
+				{symbolList}
 			</StyledSymbols>
-			<div>{symbolList}</div>
 			<Buttons
 				createdSymbols={createdSymbols}
 				handleButtonClick={symbolFromButton => {
 					renderSymbols(symbolFromButton);
 				}}
 			/>
+			<button onClick={handleOnClick}>save</button>
 		</>
 	);
 }
