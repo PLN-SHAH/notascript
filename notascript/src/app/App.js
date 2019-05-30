@@ -10,6 +10,7 @@ import OverviewPage from '../Overview/OverviewPage.js';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import DocumentDetailView from '../Documents/DocumentDetailView.js';
 import styled from 'styled-components';
+import uid from 'uid';
 
 const StyledContent = styled.section`
 	overflow-y: scroll;
@@ -23,7 +24,7 @@ export default class App extends Component {
 				title: 'Einseeeeeeeeeeeeehrlaaaaaangertitle',
 				description:
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
-
+				id: uid(),
 				domains: ['Gericht', 'Straftrecht'],
 				symbols: [
 					'A',
@@ -72,6 +73,7 @@ export default class App extends Component {
 				title: 'Dolor',
 				description:
 					'But I must explain to you how all this mistaken idea of denouncing',
+				id: uid(),
 				domains: ['Zeitung', 'Medien'],
 				symbols: ['C', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
 			}
