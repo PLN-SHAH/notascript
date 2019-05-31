@@ -169,7 +169,6 @@ export default class App extends Component {
 
 	updateDocument(document) {
 		const { title, description, domains, symbols, id } = document;
-		console.log(symbols, 'in update');
 		const index = this.getIndex(document);
 
 		const updatedDocument = {
