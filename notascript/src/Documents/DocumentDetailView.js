@@ -5,21 +5,17 @@ import DomainList from '../domains/DomainList.js';
 import PropTypes from 'prop-types';
 import { Title } from '../misc/Style.js';
 
-const StyledSymbolsSheet = styled.section`
-	font-size: 3em;
-	background-color: white;
+const StyledDocument = styled.section`
 	padding: 20px;
-	box-shadow: -2px 3px 3px 0 #ccc;
+	border-left-width: 15px;
+	border-left-color: #170444;
+	border-left-style: solid;
 	word-break: break-all;
+	width: 100vw;
+	padding: 20px;
 `;
 
 const StyledTitle = styled(Title)``;
-
-const StyledDetailsView = styled.section`
-	display: inline-grid;
-	height: 100%;
-	grid-template-rows: 1fr 1fr;
-`;
 
 const StyledNavLink = styled(NavLink)`
 	color: #170444;
@@ -34,42 +30,41 @@ const StyledNavLink = styled(NavLink)`
 	}
 `;
 
-const StyledSymbolsContainer = styled.section`
+const StyledSymbols = styled.section`
 	background-color: #f2f2f2;
 	padding: 20px;
 	border-top: 3px solid #170444;
-	word-break: break-all;
 	width: 100vw;
-	padding: 20px;
 `;
 
-const StyledFile = styled.section`
+const StyledSymbolsSheet = styled.section`
+	font-size: 2em;
+	background-color: white;
 	padding: 20px;
-	border-left-width: 15px;
-	border-left-color: #170444;
-	border-left-style: solid;
+	box-shadow: -2px 3px 3px 0 #ccc;
 	word-break: break-all;
-	width: 100vw;
-	padding: 20px;
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
-	console.log(selectedDocument, 'details view');
+	const { title, description, symbols, domains } = selectedDocument;
 	return (
-		<StyledDetailsView>
-			<StyledFile>
+		<>
+			<StyledDocument>
 				<StyledNavLink to='/documents'>back to view</StyledNavLink>
-				<StyledTitle>{selectedDocument.title}</StyledTitle>
-				<p>{selectedDocument.description}</p>
-				<DomainList domainList={selectedDocument.domains} />
-			</StyledFile>
-			<StyledSymbolsContainer>
-				<StyledSymbolsSheet>{selectedDocument.symbols}</StyledSymbolsSheet>
-			</StyledSymbolsContainer>
-		</StyledDetailsView>
+				<StyledTitle>{title}</StyledTitle>
+				<p>{description}</p>
+				<DomainList domainList={domains} />
+			</StyledDocument>
+			<StyledSymbols>
+				<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
+			</StyledSymbols>
+		</>
 	);
 }
 
 DocumentDetailView.propTypes = {
-	selectedDocument: PropTypes.object
+	title: PropTypes.string.isRequired,
+	description: PropTypes.string,
+	domains: PropTypes.array,
+	symbols: PropTypes.array
 };

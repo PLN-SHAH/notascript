@@ -22,7 +22,7 @@ const StyledCta = styled.section`
 	grid-template-columns: repeat(2, 1fr);
 `;
 
-const StyledDeleteButton = styled.button`
+const StyledButton = styled.button`
 	background: transparent;
 	border: none;
 	justify-self: right;
@@ -38,28 +38,34 @@ const StyledSymbols = styled.span`
 `;
 
 export default function Document({ document, onDelete }) {
+	const { id, title, domains, description, symbols } = document;
 	return (
 		<StyledFile>
 			<StyledCta>
-				<Link to={`edit/${document.id}`}>
+				<Link to={`edit/${id}`}>
 					<ReactSVG src='icon-edit.svg' />
 				</Link>
-				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
+				<StyledButton onClick={onDelete}>x</StyledButton>
 			</StyledCta>
-			<Link to={`details/${document.id}`}>
-				<StyledTitle>{document.title}</StyledTitle>
-				<p>{document.description}</p>
-				<DomainList domainList={document.domains} />
+			<Link to={`details/${id}`}>
+				<StyledTitle>{title}</StyledTitle>
+				<p>{description}</p>
+				<DomainList domainList={domains} />
 				<p>
-					<StyledSymbols>{document.symbols}</StyledSymbols>
+					<StyledSymbols>{symbols}</StyledSymbols>
 				</p>
 			</Link>
-			<StyledNavLink to={`work/${document.id}`}>continue work</StyledNavLink>
+			<StyledNavLink to={`work/${id}`}>continue work</StyledNavLink>
 		</StyledFile>
 	);
 }
 
 Document.propTypes = {
 	document: PropTypes.object,
+	title: PropTypes.string.isRequired,
+	description: PropTypes.string,
+	id: PropTypes.number,
+	symbols: PropTypes.array,
+	domains: PropTypes.array,
 	onDelete: PropTypes.func
 };
