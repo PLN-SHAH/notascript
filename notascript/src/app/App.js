@@ -21,7 +21,7 @@ export default class App extends Component {
 		domains: ['random', 'important', 'do'],
 		documents: [
 			{
-				title: 'Einseeeeeeeeeeeeehrlaaaaaangertitle',
+				title: 'Eins',
 				description:
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
 				id: uid(),
@@ -47,32 +47,20 @@ export default class App extends Component {
 					'Ȉ',
 					'ȉ',
 					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ'
+					'A'
 				]
 			},
 			{
-				title: 'Dolor',
+				title: 'Zwei',
 				description:
 					'But I must explain to you how all this mistaken idea of denouncing',
+				id: uid(),
+				domains: ['Zeitung', 'Medien'],
+				symbols: ['C', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
+			},
+			{
+				title: 'Drei',
+				description: 'lalalalala',
 				id: uid(),
 				domains: ['Zeitung', 'Medien'],
 				symbols: ['C', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
@@ -81,17 +69,17 @@ export default class App extends Component {
 	};
 
 	getIndex(document) {
-		console.log(document, 'getindex');
-		return this.state.documents.findIndex(index => index.id === document.id);
+		return this.state.documents.findIndex(
+			item => item.title === document.title
+		);
 	}
 
 	addDocument(data) {
-		console.log(data, 'adddoc');
 		const newDocument = {
 			title: data.title,
 			description: data.description,
 			id: uid(),
-			domains: data.domains || 'addtext'
+			domains: data.domains
 		};
 
 		this.setState({
@@ -99,10 +87,26 @@ export default class App extends Component {
 		});
 	}
 
-	updateDocument(data) {
-		console.log('update', data);
-		console.log('app', this.state.documents);
-		//no id
+	updateDocument(document) {
+		const index = this.getIndex(document);
+
+		console.log(index, 'index');
+
+		const updatedDocument = {
+			title: document.title,
+			description: document.description,
+			id: document.id,
+			domains: document.domains,
+			symbols: document.symbols
+		};
+
+		this.setState({
+			documents: [
+				...this.state.documents.slice(0, index),
+				updatedDocument,
+				...this.state.documents.slice(index + 1)
+			]
+		});
 	}
 
 	addDomain(domainName) {
@@ -123,11 +127,9 @@ export default class App extends Component {
 	}
 
 	showDetails({ props }) {
-		console.log('show detail', props);
 		const selectionArray = this.state.documents.filter(
 			document => document.id === props.match.params.id
 		);
-		console.log(selectionArray, 'showdetails');
 		return selectionArray[0];
 	}
 
@@ -199,7 +201,7 @@ export default class App extends Component {
 							render={props => (
 								<Edit
 									selectedDocument={this.showDetails({ props })}
-									onFormSubmit={data => this.updateDocument(data)}
+									onFormSubmit={document => this.updateDocument(document)}
 									domainList={this.state.domains}
 									{...props}
 								/>
