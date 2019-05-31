@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../app/Form.js';
+import EditForm from './EditForm.js';
 import PropType from 'prop-types';
 
 export default function Edit({
@@ -18,7 +18,7 @@ export default function Edit({
 		history.push('/');
 	}
 	return (
-		<Form
+		<EditForm
 			onFormSubmit={handleSubmit}
 			domainList={domainList}
 			selectedDocument={selectedDocument}

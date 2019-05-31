@@ -17,18 +17,7 @@ const StyledDocument = styled.section`
 
 const StyledTitle = styled(Title)``;
 
-const StyledNavLink = styled(NavLink)`
-	color: #170444;
-	margin: 0 20px;
-	font-size: 2em;
-	display: grid;
-	text-align: right;
-	font-family: 'Dancing Script', cursive;
-
-	&:hover {
-		text-decoration: none;
-	}
-`;
+const StyledNavLink = styled(NavLink)``;
 
 const StyledSymbols = styled.section`
 	background-color: #f2f2f2;

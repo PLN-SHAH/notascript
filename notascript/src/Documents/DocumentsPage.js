@@ -4,16 +4,7 @@ import DocumentList from './DocumentList.js';
 import styled from 'styled-components';
 import PropType from 'prop-types';
 
-const StyledNavLink = styled(NavLink)`
-	color: #170444;
-	font-size: 2em;
-	text-align: right;
-	font-family: 'Dancing Script', cursive;
-
-	&:hover {
-		text-decoration: none;
-	}
-`;
+const StyledNavLink = styled(NavLink)``;
 
 const StyledDocumentsContainer = styled.section`
 	padding: 20px;
