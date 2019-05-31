@@ -29,6 +29,7 @@ const StyledContainer = styled.section`
 `;
 
 export default function WorkPage({ selectedDocument, history }) {
+	console.log('in work', selectedDocument);
 	const createdSymbols = createUnicodes('0200', 40);
 
 	let [newSymbolList, setNewSymbolList] = useState([]);
@@ -49,7 +50,10 @@ export default function WorkPage({ selectedDocument, history }) {
 
 	function updateDocument() {
 		setNewSymbolList(
-			newSymbolList.forEach(symbol => [...selectedDocument.symbols, symbol]) ||
+			(newSymbolList &&
+				newSymbolList.forEach(symbol =>
+					selectedDocument.symbols.push(symbol)
+				)) ||
 				selectedDocument.symbols
 		);
 		history.push('/');

@@ -54,6 +54,7 @@ const StyledFile = styled.section`
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
+	console.log(selectedDocument, 'details view');
 	return (
 		<StyledDetailsView>
 			<StyledFile>

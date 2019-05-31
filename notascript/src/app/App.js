@@ -149,9 +149,10 @@ export default class App extends Component {
 	};
 
 	getIndex(document) {
-		return this.state.documents.findIndex(
-			item => item.title === document.title
-		);
+		console.log('in get index', document);
+		console.log('in get index list', this.state.documents);
+
+		return this.state.documents.findIndex(item => item.id === document.id);
 	}
 
 	addDocument(data) {
@@ -159,8 +160,11 @@ export default class App extends Component {
 			title: data.title,
 			description: data.description,
 			id: uid(),
-			domains: data.domains
+			domains: data.domains,
+			symbols: data.symbols || ['*']
 		};
+
+		console.log('added new', newDocument);
 
 		this.setState({
 			documents: [newDocument, ...this.state.documents]
@@ -170,12 +174,11 @@ export default class App extends Component {
 	updateDocument(document) {
 		const index = this.getIndex(document);
 
-		console.log(index, 'index');
+		console.log(document);
 
 		const updatedDocument = {
 			title: document.title,
 			description: document.description,
-			id: document.id,
 			domains: document.domains,
 			symbols: document.symbols
 		};
@@ -281,7 +284,7 @@ export default class App extends Component {
 							render={props => (
 								<Edit
 									selectedDocument={this.showDetails({ props })}
-									onFormSubmit={document => this.updateDocument(document)}
+									onFormSubmit={document => this.addDocument(document)}
 									domainList={this.state.domains}
 									{...props}
 								/>
