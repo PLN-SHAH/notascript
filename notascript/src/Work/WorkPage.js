@@ -9,6 +9,8 @@ const StyledSymbols = styled.section`
 	word-break: break-all;
 	width: 100vw;
 	padding: 20px;
+	height: 350px;
+	overflow-y: scroll;
 `;
 
 const StyledTitle = styled(Title)`
