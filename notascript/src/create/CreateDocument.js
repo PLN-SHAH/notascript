@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Form from '../app/Form.js';
+import CreateForm from './CreateForm.js';
 import PropType from 'prop-types';
 
 export default function CreateDocument({ onFormSubmit, domainList, history }) {
@@ -16,7 +16,7 @@ export default function CreateDocument({ onFormSubmit, domainList, history }) {
 
 	return (
 		<>
-			<Form
+			<CreateForm
 				onFormSubmit={handleSubmit}
 				domainList={domainList}
 				isWork={isWork}
