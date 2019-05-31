@@ -35,8 +35,8 @@ const StyledSymbolsSheet = styled.section`
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
-	console.log(selectedDocument.title, 'selectedDocument');
 	const { title, description, symbols, domains } = selectedDocument;
+	console.log(symbols, 'in detail view');
 	return (
 		selectedDocument && (
 			<>

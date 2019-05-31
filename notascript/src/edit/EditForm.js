@@ -25,7 +25,7 @@ export default function EditForm({
 	domainList,
 	selectedDocument
 }) {
-	const { title, description, id } = selectedDocument || {};
+	const { title, description, id, symbols } = selectedDocument || {};
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
@@ -38,7 +38,9 @@ export default function EditForm({
 		onFormSubmit({
 			title,
 			description,
-			domains
+			domains,
+			symbols,
+			id
 		});
 	}
 
@@ -69,7 +71,7 @@ export default function EditForm({
 					required
 				/>
 			</StyledLabelTextarea>
-
+			<div>{selectedDocument && symbols}</div>
 			<StyledLabel>
 				Choose domains
 				<StyledSelect

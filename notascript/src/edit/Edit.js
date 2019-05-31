@@ -6,16 +6,14 @@ export default function Edit({
 	selectedDocument,
 	onFormSubmit,
 	domainList,
-	history,
-	symbols
+	history
 }) {
 	function handleSubmit(doc) {
-		console.log(doc, 'after edit submit');
 		onFormSubmit({
-			...doc,
-			symbols,
-			id: selectedDocument.id
+			...doc
+			//symbols
 		});
+		//console.log(symbols, 'in edit');
 		history.push('/');
 	}
 	return (
@@ -23,7 +21,6 @@ export default function Edit({
 			onFormSubmit={handleSubmit}
 			domainList={domainList}
 			selectedDocument={selectedDocument}
-			symbols={symbols}
 		/>
 	);
 }
