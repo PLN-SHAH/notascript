@@ -71,8 +71,16 @@ export default function Form({
 
 			<StyledLabel>
 				Choose domains
-				<StyledSelect name='domainFirst' options={options} />
-				<StyledSelect name='domainSecond' options={options} />
+				<StyledSelect
+					name='domainFirst'
+					options={options}
+					defaultValue={options[0]}
+				/>
+				<StyledSelect
+					name='domainSecond'
+					options={options}
+					defaultValue={options[1]}
+				/>
 			</StyledLabel>
 			<StyledButton>save</StyledButton>
 			{isWork && <StyledButton>go work</StyledButton>}
