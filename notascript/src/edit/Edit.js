@@ -1,10 +1,10 @@
+import React from 'react';
+import Form from '../app/Form.js';
 import PropType from 'prop-types';
-import React, { useState } from 'react';
-import Form from '../create/Form.js';
 
 export default function Edit({
-	onFormSubmit,
 	selectedDocument,
+	onFormSubmit,
 	domainList,
 	history,
 	symbols
@@ -16,13 +16,12 @@ export default function Edit({
 		});
 		history.push('/');
 	}
-
 	return (
 		<Form
 			onFormSubmit={handleSubmit}
 			domainList={domainList}
 			selectedDocument={selectedDocument}
-			history={history}
+			symbols={symbols}
 		/>
 	);
 }
@@ -30,5 +29,6 @@ export default function Edit({
 Edit.propType = {
 	onFormSubmit: PropType.func,
 	selectedDocument: PropType.object,
-	domainList: PropType.array
+	domainList: PropType.array,
+	symbols: PropType.array
 };

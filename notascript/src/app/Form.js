@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PropType from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
+import uid from 'uid';
 import { Formular, Input, Button, Label, Textarea } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
@@ -30,15 +31,13 @@ export default function Form({
 		const form = event.target;
 		const title = form.title.value;
 		const description = form.description.value;
-		const domains = [
-			form.domainSelection.value,
-			form.domainSelectionSecond.value
-		];
+		const domains = [form.domainFirst.value, form.domainSecond.value];
 
 		onFormSubmit({
 			title,
 			description,
-			domains
+			domains,
+			id: uid()
 		});
 	}
 
@@ -72,8 +71,8 @@ export default function Form({
 
 			<StyledLabel>
 				Choose domains
-				<StyledSelect name='domainSelection' options={options} />
-				<StyledSelect name='domainSelectionSecond' options={options} />
+				<StyledSelect name='domainFirst' options={options} />
+				<StyledSelect name='domainSecond' options={options} />
 			</StyledLabel>
 			<StyledButton>save</StyledButton>
 			{isWork && <StyledButton>go work</StyledButton>}

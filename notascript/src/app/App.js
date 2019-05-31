@@ -4,7 +4,7 @@ import Footer from './Footer.js';
 import WorkPage from '../Work/WorkPage.js';
 import DocumentsPage from '../Documents/DocumentsPage.js';
 import DomainsPage from '../domains/DomainsPage.js';
-import EditDocument from '../edit/EditDocument.js';
+import Edit from '../edit/Edit.js';
 import CreateDocument from '../create/CreateDocument';
 import OverviewPage from '../Overview/OverviewPage.js';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -80,28 +80,29 @@ export default class App extends Component {
 		]
 	};
 
-	getIndexByTitle(document) {
-		return this.state.documents.findIndex(
-			index => index.title === document.title
-		);
+	getIndex(document) {
+		console.log(document, 'getindex');
+		return this.state.documents.findIndex(index => index.id === document.id);
 	}
 
 	addDocument(data) {
+		console.log(data, 'adddoc');
 		const newDocument = {
 			title: data.title,
 			description: data.description,
+			id: uid(),
 			domains: data.domains || 'addtext'
 		};
 
 		this.setState({
 			documents: [newDocument, ...this.state.documents]
 		});
-
-		//props.history && props.history.replace('/documents');
 	}
 
 	updateDocument(data) {
 		console.log('update', data);
+		console.log('app', this.state.documents);
+		//no id
 	}
 
 	addDomain(domainName) {
@@ -111,7 +112,7 @@ export default class App extends Component {
 	}
 
 	deleteDocument(document) {
-		const index = this.getIndexByTitle(document);
+		const index = this.getIndex(document);
 
 		this.setState({
 			documents: [
@@ -122,9 +123,11 @@ export default class App extends Component {
 	}
 
 	showDetails({ props }) {
+		console.log('show detail', props);
 		const selectionArray = this.state.documents.filter(
-			document => document.title === props.match.params.title
+			document => document.id === props.match.params.id
 		);
+		console.log(selectionArray, 'showdetails');
 		return selectionArray[0];
 	}
 
@@ -135,7 +138,7 @@ export default class App extends Component {
 				<StyledContent>
 					<Switch>
 						<Route
-							path='/work/:title'
+							path='/work/:id'
 							render={props => (
 								<WorkPage
 									selectedDocument={this.showDetails({ props })}
@@ -184,18 +187,17 @@ export default class App extends Component {
 							)}
 						/>
 						<Route
-							path='/details/:title'
+							path='/details/:id'
 							render={props => (
 								<DocumentDetailView
 									selectedDocument={this.showDetails({ props })}
-									documents={this.state.documents}
 								/>
 							)}
 						/>
 						<Route
-							path='/edit/:title'
+							path='/edit/:id'
 							render={props => (
-								<EditDocument
+								<Edit
 									selectedDocument={this.showDetails({ props })}
 									onFormSubmit={data => this.updateDocument(data)}
 									domainList={this.state.domains}

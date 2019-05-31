@@ -1,12 +1,13 @@
 import React from 'react';
 import Document from './Document';
 import PropTypes from 'prop-types';
+
 export default function DocumentList({ documentList, onDelete }) {
 	return (
 		<section>
 			{documentList.map(document => (
 				<Document
-					key={document.title}
+					key={document.id}
 					document={document}
 					onDelete={() => onDelete(document)}
 					{...document}

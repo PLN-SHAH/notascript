@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import NavLink from '../app/NavLink.js';
 import DomainList from '../domains/DomainList.js';
+import PropTypes from 'prop-types';
 import { Title } from '../misc/Style.js';
 
 const StyledSymbolsSheet = styled.section`
@@ -52,9 +53,7 @@ const StyledFile = styled.section`
 	padding: 20px;
 `;
 
-export default function DocumentDetailView({ selectedDocument, documents }) {
-	console.log(documents, 'in detail view');
-
+export default function DocumentDetailView({ selectedDocument }) {
 	return (
 		<StyledDetailsView>
 			<StyledFile>
@@ -69,3 +68,7 @@ export default function DocumentDetailView({ selectedDocument, documents }) {
 		</StyledDetailsView>
 	);
 }
+
+DocumentDetailView.propTypes = {
+	selectedDocument: PropTypes.object
+};

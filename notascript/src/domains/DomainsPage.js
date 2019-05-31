@@ -4,17 +4,17 @@ import PropType from 'prop-types';
 import styled from 'styled-components';
 import { Input, Formular, Label, Button, Title } from '../misc/Style.js';
 
+const StyledContainer = styled.section`
+	display: grid;
+	grid-template-rows: 100px 50px 100px;
+`;
+
 const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
 const StyledTitle = styled(Title)`
 	padding: 20px;
-`;
-
-const StyledContainer = styled.section`
-	display: grid;
-	grid-template-rows: 100px 50px 100px;
 `;
 
 export default function DomainsPage({ domainList, onFormSubmit }) {

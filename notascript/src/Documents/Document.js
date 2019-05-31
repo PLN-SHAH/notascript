@@ -41,12 +41,12 @@ export default function Document({ document, onDelete }) {
 	return (
 		<StyledFile>
 			<StyledCta>
-				<Link to={`edit/${document.title}`}>
+				<Link to={`edit/${document.id}`}>
 					<ReactSVG src='icon-edit.svg' />
 				</Link>
 				<StyledDeleteButton onClick={onDelete}>x</StyledDeleteButton>
 			</StyledCta>
-			<Link to={`details/${document.title}`}>
+			<Link to={`details/${document.id}`}>
 				<StyledTitle>{document.title}</StyledTitle>
 				<p>{document.description}</p>
 				<DomainList domainList={document.domains} />
@@ -54,7 +54,7 @@ export default function Document({ document, onDelete }) {
 					<StyledSymbols>{document.symbols}</StyledSymbols>
 				</p>
 			</Link>
-			<StyledNavLink to={`work/${document.title}`}>continue work</StyledNavLink>
+			<StyledNavLink to={`work/${document.id}`}>continue work</StyledNavLink>
 		</StyledFile>
 	);
 }
