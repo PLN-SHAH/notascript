@@ -10,6 +10,9 @@ const StyledForm = styled(Formular)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
 const StyledTextarea = styled(Textarea)``;
+const StyledLabelTextarea = styled(Label)`
+	grid-auto-rows: 35px auto;
+`;
 
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
@@ -22,7 +25,7 @@ export default function EditForm({
 	domainList,
 	selectedDocument
 }) {
-	const { title, description } = selectedDocument || {};
+	const { title, description, id } = selectedDocument || {};
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
@@ -35,8 +38,7 @@ export default function EditForm({
 		onFormSubmit({
 			title,
 			description,
-			domains,
-			id: selectedDocument.id
+			domains
 		});
 	}
 
@@ -53,11 +55,11 @@ export default function EditForm({
 					name='title'
 					placeholder='type title here...'
 					type='text'
-					defaultValue={title}
+					defaultValue={selectedDocument && title}
 					required
 				/>
 			</StyledLabel>
-			<StyledLabel>
+			<StyledLabelTextarea>
 				New Description
 				<StyledTextarea
 					name='description'
@@ -66,7 +68,7 @@ export default function EditForm({
 					defaultValue={selectedDocument && description}
 					required
 				/>
-			</StyledLabel>
+			</StyledLabelTextarea>
 
 			<StyledLabel>
 				Choose domains

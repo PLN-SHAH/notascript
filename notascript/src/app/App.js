@@ -149,22 +149,17 @@ export default class App extends Component {
 	};
 
 	getIndex(document) {
-		console.log('in get index', document);
-		console.log('in get index list', this.state.documents);
-
 		return this.state.documents.findIndex(item => item.id === document.id);
 	}
 
-	addDocument(data) {
+	addDocument({ title, description, domains, symbols }) {
 		const newDocument = {
-			title: data.title,
-			description: data.description,
+			title,
+			description,
 			id: uid(),
-			domains: data.domains,
-			symbols: data.symbols || ['*']
+			domains,
+			symbols: symbols || ['*']
 		};
-
-		console.log('added new', newDocument);
 
 		this.setState({
 			...this.state,
@@ -173,15 +168,15 @@ export default class App extends Component {
 	}
 
 	updateDocument(document) {
+		//const { title, description, domains, symbols } = document;
 		const index = this.getIndex(document);
-		console.log(index);
-		console.log(document);
 
 		const updatedDocument = {
 			title: document.title,
 			description: document.description,
 			domains: document.domains,
-			symbols: document.symbols
+			symbols: document.symbols,
+			id: document.id
 		};
 
 		this.setState({

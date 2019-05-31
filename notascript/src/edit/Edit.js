@@ -10,10 +10,11 @@ export default function Edit({
 	symbols
 }) {
 	function handleSubmit(doc) {
-		console.log(doc);
+		console.log(doc, 'after edit submit');
 		onFormSubmit({
 			...doc,
-			symbols
+			symbols,
+			id: selectedDocument.id
 		});
 		history.push('/');
 	}

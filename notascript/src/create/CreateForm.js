@@ -7,9 +7,13 @@ import { Formular, Input, Button, Label, Textarea } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)``;
-const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
 const StyledTextarea = styled(Textarea)``;
+
+const StyledLabel = styled(Label)``;
+const StyledLabelTextarea = styled(Label)`
+	grid-auto-rows: 35px auto;
+`;
 
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
@@ -50,7 +54,7 @@ export default function createForm({ onFormSubmit, domainList, isWork }) {
 					required
 				/>
 			</StyledLabel>
-			<StyledLabel>
+			<StyledLabelTextarea>
 				New Description
 				<StyledTextarea
 					name='description'
@@ -58,7 +62,7 @@ export default function createForm({ onFormSubmit, domainList, isWork }) {
 					type='text'
 					required
 				/>
-			</StyledLabel>
+			</StyledLabelTextarea>
 
 			<StyledLabel>
 				Choose domains

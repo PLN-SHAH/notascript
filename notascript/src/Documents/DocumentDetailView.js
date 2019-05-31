@@ -35,24 +35,27 @@ const StyledSymbolsSheet = styled.section`
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {
+	console.log(selectedDocument.title, 'selectedDocument');
 	const { title, description, symbols, domains } = selectedDocument;
 	return (
-		<>
-			<StyledDocument>
-				<StyledNavLink to='/documents'>back to view</StyledNavLink>
-				<StyledTitle>{title}</StyledTitle>
-				<p>{description}</p>
-				<DomainList domainList={domains} />
-			</StyledDocument>
-			<StyledSymbols>
-				<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
-			</StyledSymbols>
-		</>
+		selectedDocument && (
+			<>
+				<StyledDocument>
+					<StyledNavLink to='/documents'>back to view</StyledNavLink>
+					<StyledTitle>{title}</StyledTitle>
+					<p>{description}</p>
+					<DomainList domainList={domains} />
+				</StyledDocument>
+				<StyledSymbols>
+					<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
+				</StyledSymbols>
+			</>
+		)
 	);
 }
 
 DocumentDetailView.propTypes = {
-	title: PropTypes.string.isRequired,
+	title: PropTypes.string,
 	description: PropTypes.string,
 	domains: PropTypes.array,
 	symbols: PropTypes.array

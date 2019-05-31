@@ -40,23 +40,25 @@ const StyledSymbols = styled.span`
 export default function Document({ document, onDelete }) {
 	const { id, title, domains, description, symbols } = document;
 	return (
-		<StyledFile>
-			<StyledCta>
-				<Link to={`edit/${id}`}>
-					<ReactSVG src='icon-edit.svg' />
+		document && (
+			<StyledFile>
+				<StyledCta>
+					<Link to={`edit/${id}`}>
+						<ReactSVG src='icon-edit.svg' />
+					</Link>
+					<StyledButton onClick={onDelete}>x</StyledButton>
+				</StyledCta>
+				<Link to={`details/${id}`}>
+					<StyledTitle>{title}</StyledTitle>
+					<p>{description}</p>
+					<DomainList domainList={domains} />
+					<p>
+						<StyledSymbols>{symbols}</StyledSymbols>
+					</p>
 				</Link>
-				<StyledButton onClick={onDelete}>x</StyledButton>
-			</StyledCta>
-			<Link to={`details/${id}`}>
-				<StyledTitle>{title}</StyledTitle>
-				<p>{description}</p>
-				<DomainList domainList={domains} />
-				<p>
-					<StyledSymbols>{symbols}</StyledSymbols>
-				</p>
-			</Link>
-			<StyledNavLink to={`work/${id}`}>continue work</StyledNavLink>
-		</StyledFile>
+				<StyledNavLink to={`work/${id}`}>continue work</StyledNavLink>
+			</StyledFile>
+		)
 	);
 }
 
@@ -64,7 +66,7 @@ Document.propTypes = {
 	document: PropTypes.object,
 	title: PropTypes.string.isRequired,
 	description: PropTypes.string,
-	id: PropTypes.number,
+	id: PropTypes.string,
 	symbols: PropTypes.array,
 	domains: PropTypes.array,
 	onDelete: PropTypes.func
