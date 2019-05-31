@@ -10,6 +10,7 @@ export default function Edit({
 	symbols
 }) {
 	function handleSubmit(doc) {
+		console.log(doc);
 		onFormSubmit({
 			...doc,
 			symbols

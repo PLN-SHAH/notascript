@@ -167,13 +167,14 @@ export default class App extends Component {
 		console.log('added new', newDocument);
 
 		this.setState({
+			...this.state,
 			documents: [newDocument, ...this.state.documents]
 		});
 	}
 
 	updateDocument(document) {
 		const index = this.getIndex(document);
-
+		console.log(index);
 		console.log(document);
 
 		const updatedDocument = {
@@ -184,6 +185,7 @@ export default class App extends Component {
 		};
 
 		this.setState({
+			...this.state,
 			documents: [
 				...this.state.documents.slice(0, index),
 				updatedDocument,
@@ -284,7 +286,7 @@ export default class App extends Component {
 							render={props => (
 								<Edit
 									selectedDocument={this.showDetails({ props })}
-									onFormSubmit={document => this.addDocument(document)}
+									onFormSubmit={document => this.updateDocument(document)}
 									domainList={this.state.domains}
 									{...props}
 								/>

@@ -37,7 +37,7 @@ export default function Form({
 			title,
 			description,
 			domains,
-			id: uid()
+			id: selectedDocument.id
 		});
 	}
 

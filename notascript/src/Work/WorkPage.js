@@ -48,7 +48,7 @@ export default function WorkPage({ selectedDocument, history }) {
 		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
 	}
 
-	function updateDocument() {
+	function updateSymbols() {
 		setNewSymbolList(
 			(newSymbolList &&
 				newSymbolList.forEach(symbol =>
@@ -68,7 +68,7 @@ export default function WorkPage({ selectedDocument, history }) {
 					{newSymbolList}
 				</span>
 			</StyledSymbols>
-			<StyledButton onClick={updateDocument}>save</StyledButton>
+			<StyledButton onClick={updateSymbols}>save</StyledButton>
 			<Buttons
 				createdSymbols={createdSymbols}
 				handleButtonClick={symbolFromButton => {
