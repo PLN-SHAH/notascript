@@ -2,7 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import Dictionary from './Dictionary.js';
 
-export default function Dictionaries({ dictionaries }) {
+export default function DictionaryList({ dictionaries }) {
 	console.log(dictionaries, 'dictionaries');
 	return (
 		<>
@@ -13,6 +13,6 @@ export default function Dictionaries({ dictionaries }) {
 	);
 }
 
-Dictionaries.propType = {
+DictionaryList.propType = {
 	dictionaries: PropType.array
 };

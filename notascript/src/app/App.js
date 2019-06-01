@@ -4,7 +4,7 @@ import Footer from './Footer.js';
 import WorkPage from '../Work/WorkPage.js';
 import DocumentsPage from '../Documents/DocumentsPage.js';
 import DomainsPage from '../domains/DomainsPage.js';
-import DictionaryPage from '../dictionary/DictionaryPage.js';
+import DictionaryList from '../dictionary/DictionaryList.js';
 import AddDictionary from '../dictionary/AddDictionary.js';
 import Edit from '../edit/Edit.js';
 import CreateDocument from '../create/CreateDocument';
@@ -41,109 +41,7 @@ export default class App extends Component {
 					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
 				id: uid(),
 				domains: ['Gericht', 'Straftrecht'],
-				symbols: [
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A',
-					'Ȃ',
-					'ȃ',
-					'Ȅ',
-					'ȅ',
-					'Ȇ',
-					'ȇ',
-					'Ȉ',
-					'ȉ',
-					'Ȑ',
-					'A'
-				]
+				symbols: ['A', 'Ȇ', 'ȇ', 'Ȉ', 'Ȑ', 'A']
 			},
 			{
 				title: 'Zwei',
@@ -164,7 +62,9 @@ export default class App extends Component {
 	};
 
 	getIndex(document) {
-		return this.state.documents.findIndex(item => item.id === document.id);
+		return this.state.documents.findIndex(
+			arrayItem => arrayItem.id === document.id
+		);
 	}
 
 	addDocument({ title, description, domains, symbols }) {
@@ -183,8 +83,8 @@ export default class App extends Component {
 	}
 
 	updateDocument(document) {
-		const { title, description, domains, symbols, id } = document;
 		const index = this.getIndex(document);
+		const { title, description, domains, symbols, id } = document;
 
 		const updatedDocument = {
 			title,
@@ -204,12 +104,6 @@ export default class App extends Component {
 		});
 	}
 
-	addDomain(domainName) {
-		this.setState({
-			domains: [domainName, ...this.state.domains]
-		});
-	}
-
 	deleteDocument(document) {
 		const index = this.getIndex(document);
 
@@ -221,22 +115,18 @@ export default class App extends Component {
 		});
 	}
 
-	showDetails({ props }) {
-		const selectionArray = this.state.documents.filter(
+	showDetails({ props }, dataArray) {
+		const selectionArray = dataArray.filter(
 			document => document.id === props.match.params.id
 		);
 		return selectionArray[0];
 	}
 
-	showDictionary({ props }) {
-		const selectionDict = this.state.dictionaries.filter(
-			document => document.id === props.match.params.id
-		);
-		console.log(selectionDict, 'in app details func');
-		return selectionDict[0];
+	addDomain(domainName) {
+		this.setState({
+			domains: [domainName, ...this.state.domains]
+		});
 	}
-
-	addToDictionary({ synonym, meaning }) {}
 
 	render() {
 		return (
@@ -245,42 +135,12 @@ export default class App extends Component {
 				<StyledContent>
 					<Switch>
 						<Route
-							path='/work/:id'
-							render={props => (
-								<WorkPage
-									selectedDocument={this.showDetails({ props })}
-									{...props}
-								/>
-							)}
-						/>
-
-						<Route
 							path='/create'
 							render={props => (
 								<CreateDocument
 									onFormSubmit={data => this.addDocument(data)}
 									domainList={this.state.domains}
 									{...props}
-								/>
-							)}
-						/>
-						<Route
-							path='/overview'
-							render={props => (
-								<OverviewPage
-									documentList={this.state.documents}
-									{...props}
-									onDelete={document => this.deleteDocument(document)}
-								/>
-							)}
-						/>
-						<Route
-							path='/documents'
-							render={props => (
-								<DocumentsPage
-									documentList={this.state.documents}
-									{...props}
-									onDelete={document => this.deleteDocument(document)}
 								/>
 							)}
 						/>
@@ -296,23 +156,28 @@ export default class App extends Component {
 						<Route
 							path='/dictionaries'
 							render={() => (
-								<DictionaryPage dictionaries={this.state.dictionaries} />
+								<DictionaryList dictionaries={this.state.dictionaries} />
 							)}
 						/>
 						<Route
-							path='/editDict/:id'
+							path='/documents'
 							render={props => (
-								<AddDictionary
-									dictionaries={this.state.dictionaries}
-									dictionary={this.showDictionary({ props })}
+								<DocumentsPage
+									documentList={this.state.documents}
+									onDelete={document => this.deleteDocument(document)}
+									{...props}
 								/>
 							)}
 						/>
+
 						<Route
 							path='/details/:id'
 							render={props => (
 								<DocumentDetailView
-									selectedDocument={this.showDetails({ props })}
+									selectedDocument={this.showDetails(
+										{ props },
+										this.state.documents
+									)}
 								/>
 							)}
 						/>
@@ -320,9 +185,48 @@ export default class App extends Component {
 							path='/edit/:id'
 							render={props => (
 								<Edit
-									selectedDocument={this.showDetails({ props })}
+									selectedDocument={this.showDetails(
+										{ props },
+										this.state.documents
+									)}
 									onFormSubmit={document => this.updateDocument(document)}
 									domainList={this.state.domains}
+									{...props}
+								/>
+							)}
+						/>
+
+						<Route
+							path='/editDictionary/:id'
+							render={props => (
+								<AddDictionary
+									dictionary={this.showDetails(
+										{ props },
+										this.state.dictionaries
+									)}
+								/>
+							)}
+						/>
+
+						<Route
+							path='/work/:id'
+							render={props => (
+								<WorkPage
+									selectedDocument={this.showDetails(
+										{ props },
+										this.state.documents
+									)}
+									{...props}
+								/>
+							)}
+						/>
+
+						<Route
+							path='/overview'
+							render={props => (
+								<OverviewPage
+									documentList={this.state.documents}
+									onDelete={document => this.deleteDocument(document)}
 									{...props}
 								/>
 							)}

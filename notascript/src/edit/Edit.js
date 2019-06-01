@@ -11,9 +11,7 @@ export default function Edit({
 	function handleSubmit(doc) {
 		onFormSubmit({
 			...doc
-			//symbols
 		});
-		//console.log(symbols, 'in edit');
 		history.push('/');
 	}
 	return (

@@ -29,7 +29,6 @@ const StyledContainer = styled.section`
 `;
 
 export default function WorkPage({ selectedDocument, history }) {
-	console.log('in work', selectedDocument);
 	const createdSymbols = createUnicodes('0200', 40);
 
 	let [newSymbolList, setNewSymbolList] = useState([]);
