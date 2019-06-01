@@ -39,7 +39,6 @@ const StyledSymbols = styled.span`
 
 export default function Document({ document, onDelete }) {
 	const { id, title, domains, description, symbols } = document;
-	console.log(symbols, 'in document js');
 	return (
 		document && (
 			<StyledFile>

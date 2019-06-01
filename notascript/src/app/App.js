@@ -5,6 +5,7 @@ import WorkPage from '../Work/WorkPage.js';
 import DocumentsPage from '../Documents/DocumentsPage.js';
 import DomainsPage from '../domains/DomainsPage.js';
 import DictionaryPage from '../dictionary/DictionaryPage.js';
+import AddDictionary from '../dictionary/AddDictionary.js';
 import Edit from '../edit/Edit.js';
 import CreateDocument from '../create/CreateDocument';
 import OverviewPage from '../Overview/OverviewPage.js';
@@ -227,6 +228,14 @@ export default class App extends Component {
 		return selectionArray[0];
 	}
 
+	showDictionary({ props }) {
+		const selectionDict = this.state.dictionaries.filter(
+			document => document.id === props.match.params.id
+		);
+		console.log(selectionDict, 'in app details func');
+		return selectionDict[0];
+	}
+
 	addToDictionary({ synonym, meaning }) {}
 
 	render() {
@@ -287,9 +296,15 @@ export default class App extends Component {
 						<Route
 							path='/dictionaries'
 							render={() => (
-								<DictionaryPage
+								<DictionaryPage dictionaries={this.state.dictionaries} />
+							)}
+						/>
+						<Route
+							path='/editDict/:id'
+							render={props => (
+								<AddDictionary
 									dictionaries={this.state.dictionaries}
-									onFormSubmit={entry => this.addToDictionary(entry)}
+									dictionary={this.showDictionary({ props })}
 								/>
 							)}
 						/>

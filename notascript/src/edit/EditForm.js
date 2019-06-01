@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import PropType from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
-import uid from 'uid';
 import { Formular, Input, Button, Label, Textarea } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;

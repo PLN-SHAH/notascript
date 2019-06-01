@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import NavLink from '../app/NavLink.js';
 
 export default function Dictionary({ dictionary }) {
@@ -8,13 +7,8 @@ export default function Dictionary({ dictionary }) {
 		dictionary && (
 			<section>
 				<h4>{title}</h4>
-				<NavLink to={`dictionaries/${id}`}>edit dict</NavLink>
-				<ul />
+				<NavLink to={`/editDict/${id}`}>edit dict</NavLink>
 			</section>
 		)
 	);
 }
-
-Dictionary.propTypes = {
-	dictionary: PropTypes.obj
-};

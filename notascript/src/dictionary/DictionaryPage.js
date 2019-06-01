@@ -3,7 +3,7 @@ import PropType from 'prop-types';
 import Dictionary from './Dictionary.js';
 
 export default function Dictionaries({ dictionaries }) {
-	console.log(dictionaries);
+	console.log(dictionaries, 'dictionaries');
 	return (
 		<>
 			{dictionaries.map(dictionary => (
@@ -14,5 +14,5 @@ export default function Dictionaries({ dictionaries }) {
 }
 
 Dictionaries.propType = {
-	onFormSubmit: PropType.func
+	dictionaries: PropType.array
 };
