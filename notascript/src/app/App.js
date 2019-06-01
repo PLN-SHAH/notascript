@@ -4,6 +4,7 @@ import Footer from './Footer.js';
 import WorkPage from '../Work/WorkPage.js';
 import DocumentsPage from '../Documents/DocumentsPage.js';
 import DomainsPage from '../domains/DomainsPage.js';
+import DictionaryPage from '../dictionary/DictionaryPage.js';
 import Edit from '../edit/Edit.js';
 import CreateDocument from '../create/CreateDocument';
 import OverviewPage from '../Overview/OverviewPage.js';
@@ -18,6 +19,19 @@ const StyledContent = styled.section`
 
 export default class App extends Component {
 	state = {
+		dictionaries: [
+			{
+				title: 'shorthand',
+				id: uid(),
+				entries: [{ key: '1', value: 'first' }]
+			},
+			{
+				title: 'stuff',
+				id: uid(),
+				entries: [{ key: 'I', value: 'Iran' }]
+			}
+		],
+
 		domains: ['random', 'important', 'do'],
 		documents: [
 			{
@@ -213,6 +227,8 @@ export default class App extends Component {
 		return selectionArray[0];
 	}
 
+	addToDictionary({ synonym, meaning }) {}
+
 	render() {
 		return (
 			<main>
@@ -265,6 +281,15 @@ export default class App extends Component {
 								<DomainsPage
 									domainList={this.state.domains}
 									onFormSubmit={data => this.addDomain(data)}
+								/>
+							)}
+						/>
+						<Route
+							path='/dictionaries'
+							render={() => (
+								<DictionaryPage
+									dictionaries={this.state.dictionaries}
+									onFormSubmit={entry => this.addToDictionary(entry)}
 								/>
 							)}
 						/>

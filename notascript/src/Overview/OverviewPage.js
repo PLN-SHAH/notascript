@@ -28,9 +28,8 @@ export default function OverviewPage({ onFormSubmit }) {
 			<nav>
 				<StyledNavLink to='/create'>Create new file</StyledNavLink>
 				<StyledNavLink to='/documents'>Document List</StyledNavLink>
-				<StyledNavLink to='/domains' onFormSubmit={onFormSubmit}>
-					Domain List
-				</StyledNavLink>
+				<StyledNavLink to='/domains'>Domain List</StyledNavLink>
+				<StyledNavLink to='/dictionaries'>dictionary List</StyledNavLink>
 			</nav>
 		</StyledNavContainer>
 	);
