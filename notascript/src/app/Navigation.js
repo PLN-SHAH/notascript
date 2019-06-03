@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { Component } from 'react';
 import NavLink from './NavLink.js';
+import ReactSVG from 'react-svg';
 
 const StyledNavLink = styled(NavLink)`
 	color: white;
@@ -17,7 +18,10 @@ const StyledNavigation = styled.nav`
 	> ul {
 		font-size: 2.5em;
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: center;
+		align-items: center;
+		margin: 5px;
 	}
 `;
 
@@ -27,10 +31,19 @@ export default class Navigation extends Component {
 			<StyledNavigation>
 				<ul>
 					<li>
-						<StyledNavLink to='/work'>Work</StyledNavLink>
+						<StyledNavLink to='/create'>
+							<ReactSVG src='icon-add.svg' />
+						</StyledNavLink>
 					</li>
 					<li>
-						<StyledNavLink to='/overview'>Overview</StyledNavLink>
+						<StyledNavLink to='/documents'>
+							<ReactSVG src='icon-overview.svg' />
+						</StyledNavLink>
+					</li>
+					<li>
+						<StyledNavLink to='/overview'>
+							<ReactSVG src='icon-documents.svg' />
+						</StyledNavLink>
 					</li>
 				</ul>
 			</StyledNavigation>
