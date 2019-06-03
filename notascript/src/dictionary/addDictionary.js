@@ -25,7 +25,7 @@ const StyledContainer = styled.section`
 	padding: 20px;
 `;
 
-export default function AddDictionary({ dictionary }) {
+export default function AddDictionary({ dictionary, onFormSubmitEntries }) {
 	const { title, entries } = dictionary;
 
 	let [synonyms, setSynonym] = useState(entries.key || []);
@@ -41,7 +41,10 @@ export default function AddDictionary({ dictionary }) {
 		setSynonym((synonyms = [...synonyms, synonym]));
 		setMeaning((meanings = [...meanings, meaning]));
 
-		form.reset();
+		onFormSubmitEntries({
+			synonyms,
+			meanings
+		});
 	}
 
 	return (

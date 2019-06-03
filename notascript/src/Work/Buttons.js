@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { isObject } from 'util';
 
 const StyledSymbolsContainer = styled.section`
 	display: grid;
@@ -27,19 +28,27 @@ const StyledButton = styled.button`
 export default function Buttons({
 	createdSymbols,
 	handleButtonClick,
-	filterList
+	filterList,
+	dictionaries
 }) {
-	const fakeContent = ['TR', 'Z', 'BGH'];
+	console.log(dictionaries[0].entries, 'shorthands');
+
+	function getContentFromFilter(entries) {
+		const keys = entries.map(obj => obj.key);
+		return keys;
+	}
 
 	let [output, setOutput] = useState(createdSymbols);
 	let [filter, setFilter] = useState([]);
 
 	function handleClick(event) {
 		setFilter((filter = event.target.innerHTML));
-		if (filter === 'filter 1') {
-			setOutput((output = createdSymbols));
+		if (filter === 'shorthands') {
+			setOutput((output = getContentFromFilter(dictionaries[0].entries)));
+		} else if (filter === 'stuff') {
+			setOutput((output = getContentFromFilter(dictionaries[1].entries)));
 		} else {
-			setOutput((output = fakeContent));
+			setOutput((output = createdSymbols));
 		}
 	}
 

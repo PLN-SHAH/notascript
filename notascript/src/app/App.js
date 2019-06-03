@@ -24,17 +24,25 @@ export default class App extends Component {
 	state = {
 		dictionaries: [
 			{
-				title: 'shorthand',
+				title: 'shorthands',
 				id: uid(),
-				entries: [{ key: '1', value: 'first' }]
+				entries: [
+					{ key: '1', value: 'first' },
+					{ key: '2', value: 'second' },
+					{ key: '3', value: 'third' }
+				]
 			},
 			{
 				title: 'stuff',
 				id: uid(),
-				entries: [{ key: 'I', value: 'Iran' }]
+				entries: [
+					{ key: 'I', value: 'Iran' },
+					{ key: 'Tr', value: 'Türkei' },
+					{ key: 'Bo', value: 'Bolivien' }
+				]
 			}
 		],
-		filterList: ['aa', 'bb', 'cc'],
+		filterList: ['shorthands', 'stuff', 'all'],
 
 		domains: ['random', 'important', 'do'],
 		documents: [
@@ -165,6 +173,10 @@ export default class App extends Component {
 		});
 	}
 
+	addEntryToDict(entry) {
+		console.log(entry, 'addEntryToDict');
+	}
+
 	render() {
 		return (
 			<main>
@@ -258,6 +270,8 @@ export default class App extends Component {
 										this.state.documents
 									)}
 									filterList={this.state.filterList}
+									dictionaries={this.state.dictionaries}
+									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 									{...props}
 								/>
 							)}
