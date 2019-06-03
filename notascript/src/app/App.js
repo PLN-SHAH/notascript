@@ -34,6 +34,7 @@ export default class App extends Component {
 				entries: [{ key: 'I', value: 'Iran' }]
 			}
 		],
+		filterList: ['aa', 'bb', 'cc'],
 
 		domains: ['random', 'important', 'do'],
 		documents: [
@@ -74,6 +75,7 @@ export default class App extends Component {
 			arrayItem => arrayItem.id === dictionary.id
 		);
 	}
+
 	addDocument({ title, description, domains, symbols }) {
 		const newDocument = {
 			title,
@@ -89,7 +91,7 @@ export default class App extends Component {
 		});
 	}
 
-	addDictionary({ title, id }) {
+	addDictionary({ title }) {
 		const newDictionary = {
 			title,
 			entries: [],
@@ -98,8 +100,12 @@ export default class App extends Component {
 
 		this.setState({
 			...this.state,
-			dictionaries: [newDictionary, ...this.state.dictionaries]
+			dictionaries: [newDictionary, ...this.state.dictionaries],
+			filterList: [...this.state.filterList, newDictionary.title]
 		});
+
+		console.log(...this.state.dictionaries, '...this.state.dictionaries');
+		console.log(...this.state.filterList, '...this.state.filterList');
 	}
 
 	updateDocument(document) {
@@ -136,9 +142,8 @@ export default class App extends Component {
 	}
 
 	deleteDictionary(dictionary) {
-		console.log(dictionary, 'dictionary on delete');
 		const index = this.getIndexDict(dictionary);
-		console.log(index, 'index on delete');
+
 		this.setState({
 			dictionaries: [
 				...this.state.dictionaries.slice(0, index),
@@ -252,6 +257,7 @@ export default class App extends Component {
 										{ props },
 										this.state.documents
 									)}
+									filterList={this.state.filterList}
 									{...props}
 								/>
 							)}

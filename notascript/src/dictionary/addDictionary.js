@@ -40,6 +40,8 @@ export default function AddDictionary({ dictionary }) {
 
 		setSynonym((synonyms = [...synonyms, synonym]));
 		setMeaning((meanings = [...meanings, meaning]));
+
+		form.reset();
 	}
 
 	return (

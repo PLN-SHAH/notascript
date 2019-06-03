@@ -32,12 +32,11 @@ export default function Buttons({
 	const fakeContent = ['TR', 'Z', 'BGH'];
 
 	let [output, setOutput] = useState(createdSymbols);
-	let [filter, setFilter] = useState(filterList);
+	let [filter, setFilter] = useState([]);
 
 	function handleClick(event) {
 		setFilter((filter = event.target.innerHTML));
 		if (filter === 'filter 1') {
-			//think about
 			setOutput((output = createdSymbols));
 		} else {
 			setOutput((output = fakeContent));
@@ -47,8 +46,9 @@ export default function Buttons({
 	return (
 		<>
 			<section>
-				<button onClick={handleClick}>filter 1</button>
-				<button onClick={handleClick}>filter 2</button>
+				{filterList.map(filter => (
+					<button onClick={handleClick}>{filter}</button>
+				))}
 			</section>
 			<StyledSymbolsContainer>
 				{output.map(symbol => (

@@ -32,10 +32,11 @@ const StyledContainer = styled.section`
 	grid-template-rows: 50px auto auto;
 `;
 
-export default function WorkPage({ selectedDocument, history }) {
+export default function WorkPage({ selectedDocument, history, filterList }) {
 	const { title, symbols } = selectedDocument;
 	const createdSymbols = createUnicodes('0200', 40);
-	const filterList = ['a', 'b', 'c'];
+
+	console.log(filterList, 'filerList in workpage');
 
 	let [newSymbolList, setNewSymbolList] = useState([]);
 
@@ -51,7 +52,6 @@ export default function WorkPage({ selectedDocument, history }) {
 
 	function renderSymbols(symbolFromButton) {
 		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
-		console.log(newSymbolList, 'newSymbolList in workpage in render');
 	}
 
 	function updateSymbols() {
