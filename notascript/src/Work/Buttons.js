@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -24,15 +24,34 @@ const StyledButton = styled.button`
 	}
 `;
 
-export default function Buttons({ createdSymbols, handleButtonClick }) {
+export default function Buttons({
+	createdSymbols,
+	handleButtonClick,
+	filterList
+}) {
+	const fakeContent = ['TR', 'Z', 'BGH'];
+
+	let [output, setOutput] = useState(createdSymbols);
+	let [filter, setFilter] = useState(filterList);
+
+	function handleClick(event) {
+		setFilter((filter = event.target.innerHTML));
+		if (filter === 'filter 1') {
+			//think about
+			setOutput((output = createdSymbols));
+		} else {
+			setOutput((output = fakeContent));
+		}
+	}
+
 	return (
 		<>
 			<section>
-				<button>filter 1</button>
-				<button>filter 2</button>
+				<button onClick={handleClick}>filter 1</button>
+				<button onClick={handleClick}>filter 2</button>
 			</section>
 			<StyledSymbolsContainer>
-				{createdSymbols.map(symbol => (
+				{output.map(symbol => (
 					<StyledButton key={symbol} onClick={() => handleButtonClick(symbol)}>
 						{symbol}
 					</StyledButton>

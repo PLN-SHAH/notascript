@@ -33,7 +33,9 @@ const StyledContainer = styled.section`
 `;
 
 export default function WorkPage({ selectedDocument, history }) {
+	const { title, symbols } = selectedDocument;
 	const createdSymbols = createUnicodes('0200', 40);
+	const filterList = ['a', 'b', 'c'];
 
 	let [newSymbolList, setNewSymbolList] = useState([]);
 
@@ -49,25 +51,24 @@ export default function WorkPage({ selectedDocument, history }) {
 
 	function renderSymbols(symbolFromButton) {
 		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
+		console.log(newSymbolList, 'newSymbolList in workpage in render');
 	}
 
 	function updateSymbols() {
 		setNewSymbolList(
 			(newSymbolList &&
-				newSymbolList.forEach(symbol =>
-					selectedDocument.symbols.push(symbol)
-				)) ||
-				selectedDocument.symbols
+				newSymbolList.forEach(symbol => symbols.push(symbol))) ||
+				symbols
 		);
 		history.push('/');
 	}
 
 	return (
 		<StyledContainer>
-			<StyledTitle>{selectedDocument && selectedDocument.title}</StyledTitle>
+			<StyledTitle>{selectedDocument && title}</StyledTitle>
 			<StyledSymbols>
 				<span>
-					{selectedDocument && selectedDocument.symbols}
+					{selectedDocument && symbols}
 					{newSymbolList}
 				</span>
 			</StyledSymbols>
@@ -77,6 +78,7 @@ export default function WorkPage({ selectedDocument, history }) {
 				handleButtonClick={symbolFromButton => {
 					renderSymbols(symbolFromButton);
 				}}
+				filterList={filterList}
 			/>
 		</StyledContainer>
 	);

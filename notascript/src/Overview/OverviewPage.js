@@ -21,7 +21,6 @@ const StyledNavContainer = styled.section`
 
 const StyledNav = styled.nav`
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
 	justify-content: center;
 	align-items: center;
 	height: 100%;
@@ -31,7 +30,6 @@ export default function OverviewPage() {
 	return (
 		<StyledNavContainer>
 			<StyledNav>
-				<StyledNavLink to='/create'>Create new file</StyledNavLink>
 				<StyledNavLink to='/documents'>Documents</StyledNavLink>
 				<StyledNavLink to='/domains'>Domains</StyledNavLink>
 				<StyledNavLink to='/dictionaries'>Dictionaries</StyledNavLink>
