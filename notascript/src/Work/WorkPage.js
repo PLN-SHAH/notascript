@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Buttons from './Buttons';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Title, Button } from '../misc/Style.js';
+import { Title } from '../misc/Style.js';
 
 const StyledSymbols = styled.section`
 	font-size: 2em;
@@ -17,11 +17,19 @@ const StyledTitle = styled(Title)`
 	padding: 20px;
 `;
 
-const StyledButton = styled(Button)``;
+const StyledButton = styled.button`
+	position: absolute;
+	right: 0;
+	width: 100px;
+	border: none;
+	padding: 5px;
+	background: #170444;
+	color: white;
+`;
 
 const StyledContainer = styled.section`
 	display: grid;
-	grid-template-rows: 50px auto 50px auto;
+	grid-template-rows: 50px auto auto;
 `;
 
 export default function WorkPage({ selectedDocument, history }) {

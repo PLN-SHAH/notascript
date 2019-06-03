@@ -26,13 +26,19 @@ const StyledButton = styled.button`
 
 export default function Buttons({ createdSymbols, handleButtonClick }) {
 	return (
-		<StyledSymbolsContainer>
-			{createdSymbols.map(symbol => (
-				<StyledButton key={symbol} onClick={() => handleButtonClick(symbol)}>
-					{symbol}
-				</StyledButton>
-			))}
-		</StyledSymbolsContainer>
+		<>
+			<section>
+				<button>filter 1</button>
+				<button>filter 2</button>
+			</section>
+			<StyledSymbolsContainer>
+				{createdSymbols.map(symbol => (
+					<StyledButton key={symbol} onClick={() => handleButtonClick(symbol)}>
+						{symbol}
+					</StyledButton>
+				))}
+			</StyledSymbolsContainer>
+		</>
 	);
 }
 
