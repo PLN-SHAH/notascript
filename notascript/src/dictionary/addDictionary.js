@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import PropType from 'prop-types';
 import styled from 'styled-components';
-import { Title, Input, Label, Button } from '../misc/Style.js';
+import { Title, Input, Label, Button, Formular } from '../misc/Style.js';
 
 const StyledContainer = styled.section`
 	display: grid;
 	padding: 20px;
 `;
 
+const StyledForm = styled(Formular)`
+	grid-template-rows: auto;
+`;
 const StyledInput = styled(Input)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
-const StyledTitle = styled(Title)``;
+const StyledTitle = styled(Title)`
+	justify-self: center;
+`;
+
+const StyledOutputList = styled.section`
+	display: grid;
+	grid-template-columns: 50% 50%;
+`;
+const StyledHeadlines = styled.section`
+	display: grid;
+	grid-template-columns: 50% 50%;
+`;
 
 export default function AddDictionary({ dictionary }) {
 	const { title, entries } = dictionary;
@@ -33,7 +47,7 @@ export default function AddDictionary({ dictionary }) {
 	return (
 		<StyledContainer>
 			<StyledTitle>{title}</StyledTitle>
-			<form onSubmit={handleSubmit}>
+			<StyledForm onSubmit={handleSubmit}>
 				<StyledLabel>
 					Synonym
 					<StyledInput
@@ -53,19 +67,30 @@ export default function AddDictionary({ dictionary }) {
 					/>
 				</StyledLabel>
 				<StyledButton>add</StyledButton>
-			</form>
-			<ul>
-				{entries.map(entry => (
-					<li>{entry.key}</li>
-				))}
-			</ul>
-			<ul>
-				{entries.map(entry => (
-					<span>{entry.value}</span>
-				))}
-			</ul>
-			{synonyms}
-			{meanings}
+			</StyledForm>
+			<StyledHeadlines>
+				<h6>Synonyms</h6>
+				<h6>Meanings</h6>
+			</StyledHeadlines>
+			<StyledOutputList>
+				<ul>
+					{entries.map(entry => (
+						<li>{entry.key}</li>
+					))}
+					{synonyms.map(synonym => (
+						<li>{synonym}</li>
+					))}
+				</ul>
+
+				<ul>
+					{entries.map(entry => (
+						<li>{entry.value}</li>
+					))}
+					{meanings.map(meaning => (
+						<li>{meaning}</li>
+					))}
+				</ul>
+			</StyledOutputList>
 		</StyledContainer>
 	);
 }
