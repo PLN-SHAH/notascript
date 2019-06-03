@@ -11,6 +11,9 @@ const StyledNavLink = styled(NavLink)`
 	grid-template-columns: 50% 50%;
 	text-align: left;
 	font-size: 1em;
+	margin: 0;
+	padding: 0 20px;
+	display: grid;
 	justify-content: space-between;
 `;
 

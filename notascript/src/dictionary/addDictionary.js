@@ -1,30 +1,28 @@
 import React, { useState } from 'react';
 import PropType from 'prop-types';
 import styled from 'styled-components';
-import { Title, Input, Label, Button, Formular } from '../misc/Style.js';
+import { Title, Input, Label, Button } from '../misc/Style.js';
 
-const StyledContainer = styled.section`
-	display: grid;
-	padding: 20px;
-`;
-
-const StyledForm = styled(Formular)`
-	grid-template-rows: auto;
-`;
 const StyledInput = styled(Input)``;
 const StyledLabel = styled(Label)``;
-const StyledButton = styled(Button)``;
+const StyledButton = styled(Button)`
+	width: 100%;
+`;
 const StyledTitle = styled(Title)`
-	justify-self: center;
+	text-align: center;
 `;
 
-const StyledOutputList = styled.section`
+const StyledGrid = styled.section`
 	display: grid;
 	grid-template-columns: 50% 50%;
 `;
-const StyledHeadlines = styled.section`
-	display: grid;
-	grid-template-columns: 50% 50%;
+
+const StyledEntry = styled.li`
+	padding-left: 20px;
+`;
+
+const StyledContainer = styled.section`
+	padding: 20px;
 `;
 
 export default function AddDictionary({ dictionary }) {
@@ -47,7 +45,7 @@ export default function AddDictionary({ dictionary }) {
 	return (
 		<StyledContainer>
 			<StyledTitle>{title}</StyledTitle>
-			<StyledForm onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<StyledLabel>
 					Synonym
 					<StyledInput
@@ -67,29 +65,29 @@ export default function AddDictionary({ dictionary }) {
 					/>
 				</StyledLabel>
 				<StyledButton>add</StyledButton>
-			</StyledForm>
-			<StyledHeadlines>
-				<h6>Synonyms</h6>
-				<h6>Meanings</h6>
-			</StyledHeadlines>
-			<StyledOutputList>
+			</form>
+			<StyledGrid>
+				<p>Synonyms</p>
+				<p>Meanings</p>
+			</StyledGrid>
+			<StyledGrid>
 				<ul>
 					{entries.map(entry => (
-						<li>{entry.key}</li>
+						<StyledEntry>{entry.key}</StyledEntry>
 					))}
 					{synonyms.map(synonym => (
-						<li>{synonym}</li>
+						<StyledEntry>{synonym}</StyledEntry>
 					))}
 				</ul>
 				<ul>
 					{entries.map(entry => (
-						<li>{entry.value}</li>
+						<StyledEntry>{entry.value}</StyledEntry>
 					))}
 					{meanings.map(meaning => (
-						<li>{meaning}</li>
+						<StyledEntry>{meaning}</StyledEntry>
 					))}
 				</ul>
-			</StyledOutputList>
+			</StyledGrid>
 		</StyledContainer>
 	);
 }

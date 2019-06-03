@@ -2,21 +2,18 @@ import React from 'react';
 import PropType from 'prop-types';
 import Dictionary from './Dictionary.js';
 import styled from 'styled-components';
-import uid from 'uid';
 import { Title, Input, Formular, Label, Button } from '../misc/Style.js';
 
-const StyledTitle = styled(Title)`
-	text-align: center;
-`;
-
-const StyledButton = styled(Button)``;
-
-const StyledInput = styled(Input)``;
 const StyledForm = styled(Formular)`
 	grid-template-rows: auto;
 	height: unset;
 `;
+const StyledTitle = styled(Title)`
+	padding: 0 20px;
+`;
 const StyledLabel = styled(Label)``;
+const StyledInput = styled(Input)``;
+const StyledButton = styled(Button)``;
 
 export default function DictionaryList({
 	dictionaries,
@@ -26,11 +23,8 @@ export default function DictionaryList({
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		const newDictionary = event.target.newDictionary.value;
-
 		onFormSubmit({
-			title: newDictionary,
-			id: uid()
+			title: event.target.newDictionary.value
 		});
 	}
 

@@ -89,20 +89,17 @@ export default class App extends Component {
 		});
 	}
 
-	createDictionary(dictionary) {
-		const { title, id } = dictionary;
+	addDictionary({ title, id }) {
 		const newDictionary = {
 			title,
 			entries: [],
-			id
+			id: uid()
 		};
 
 		this.setState({
 			...this.state,
 			dictionaries: [newDictionary, ...this.state.dictionaries]
 		});
-
-		console.log(this.state.dictionaries, 'this.state dictionaries');
 	}
 
 	updateDocument(document) {
@@ -194,7 +191,7 @@ export default class App extends Component {
 								<DictionaryList
 									dictionaries={this.state.dictionaries}
 									onDelete={document => this.deleteDictionary(document)}
-									onFormSubmit={dictionary => this.createDictionary(dictionary)}
+									onFormSubmit={dictionary => this.addDictionary(dictionary)}
 								/>
 							)}
 						/>
