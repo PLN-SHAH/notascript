@@ -14,16 +14,37 @@ const StyledNavLink = styled(NavLink)`
 	justify-content: space-between;
 `;
 
-export default function Dictionary({ dictionary }) {
+const StyledButton = styled.button`
+	background: transparent;
+	border: none;
+	justify-self: right;
+	width: 30px;
+	margin-right: 20px;
+`;
+
+const StyledContainer = styled.section`
+	display: grid;
+	grid-template-columns: auto 30px;
+`;
+
+const StyledSVG = styled(ReactSVG)`
+	text-align: right;
+`;
+
+export default function Dictionary({ dictionary, onDelete }) {
 	const { title, id } = dictionary;
 	return (
-		<StyledNavLink to={`/editDictionary/${id}`}>
-			<StyledTitle>{title}</StyledTitle>
-			<ReactSVG src='icon-edit.svg' />
-		</StyledNavLink>
+		<StyledContainer>
+			<StyledNavLink to={`/editDictionary/${id}`}>
+				<StyledTitle>{title}</StyledTitle>
+				<StyledSVG src='icon-edit.svg' />
+			</StyledNavLink>
+			<StyledButton onClick={onDelete}>x</StyledButton>
+		</StyledContainer>
 	);
 }
 
 Dictionary.propType = {
-	dictionary: PropType.obj
+	dictionary: PropType.obj,
+	onDelete: PropType.func
 };

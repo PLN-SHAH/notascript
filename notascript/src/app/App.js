@@ -16,6 +16,8 @@ import uid from 'uid';
 
 const StyledContent = styled.section`
 	overflow-y: scroll;
+	word-break: break-all;
+	width: 100vw;
 `;
 
 export default class App extends Component {
@@ -67,6 +69,11 @@ export default class App extends Component {
 		);
 	}
 
+	getIndexDict(dictionary) {
+		return this.state.dictionaries.findIndex(
+			arrayItem => arrayItem.id === dictionary.id
+		);
+	}
 	addDocument({ title, description, domains, symbols }) {
 		const newDocument = {
 			title,
@@ -80,6 +87,22 @@ export default class App extends Component {
 			...this.state,
 			documents: [newDocument, ...this.state.documents]
 		});
+	}
+
+	createDictionary(dictionary) {
+		const { title, id } = dictionary;
+		const newDictionary = {
+			title,
+			entries: [],
+			id
+		};
+
+		this.setState({
+			...this.state,
+			dictionaries: [newDictionary, ...this.state.dictionaries]
+		});
+
+		console.log(this.state.dictionaries, 'this.state dictionaries');
 	}
 
 	updateDocument(document) {
@@ -111,6 +134,18 @@ export default class App extends Component {
 			documents: [
 				...this.state.documents.slice(0, index),
 				...this.state.documents.slice(index + 1)
+			]
+		});
+	}
+
+	deleteDictionary(dictionary) {
+		console.log(dictionary, 'dictionary on delete');
+		const index = this.getIndexDict(dictionary);
+		console.log(index, 'index on delete');
+		this.setState({
+			dictionaries: [
+				...this.state.dictionaries.slice(0, index),
+				...this.state.dictionaries.slice(index + 1)
 			]
 		});
 	}
@@ -156,7 +191,11 @@ export default class App extends Component {
 						<Route
 							path='/dictionaries'
 							render={() => (
-								<DictionaryList dictionaries={this.state.dictionaries} />
+								<DictionaryList
+									dictionaries={this.state.dictionaries}
+									onDelete={document => this.deleteDictionary(document)}
+									onFormSubmit={dictionary => this.createDictionary(dictionary)}
+								/>
 							)}
 						/>
 						<Route

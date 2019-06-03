@@ -81,7 +81,6 @@ export default function AddDictionary({ dictionary }) {
 						<li>{synonym}</li>
 					))}
 				</ul>
-
 				<ul>
 					{entries.map(entry => (
 						<li>{entry.value}</li>

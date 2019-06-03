@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 const StyledNavLink = styled(NavLink)`
 	background: linear-gradient(135deg, #562323, #4c4a58);
+	background: linear-gradient(135deg, #322356, #43579c);
+	padding: 10px;
 	color: white;
 	border-radius: 20px;
 	min-height: 180px;
