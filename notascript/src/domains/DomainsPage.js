@@ -2,44 +2,40 @@ import React from 'react';
 import DomainList from './DomainList.js';
 import PropType from 'prop-types';
 import styled from 'styled-components';
-import { Input, Formular, Label, Button, Title } from '../misc/Style.js';
-
-const StyledContainer = styled.section`
-	display: grid;
-	grid-template-rows: 100px 50px 100px;
-`;
+import { Input, Label, Button, Title } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
-const StyledForm = styled(Formular)``;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
 const StyledTitle = styled(Title)`
 	padding: 20px;
+`;
+const StyledForm = styled.form`
+	padding: 20px;
+	display: grid;
 `;
 
 export default function DomainsPage({ domainList, onFormSubmit }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		const form = event.target;
-		const input = form.name.value;
-
-		onFormSubmit(input);
+		onFormSubmit(event.target.name.value);
 	}
 	return (
-		<StyledContainer>
+		<>
 			<StyledTitle>Add or edit domains</StyledTitle>
-			<DomainList domainList={domainList} />
 			<StyledForm onSubmit={handleSubmit}>
 				<StyledLabel htmlFor='name'>New Domain name: </StyledLabel>
 				<StyledInput
 					type='text'
 					name='name'
 					placeholder='add domain name here..'
+					required
 				/>
 				<StyledButton>add</StyledButton>
 			</StyledForm>
-		</StyledContainer>
+			<DomainList domainList={domainList} />
+		</>
 	);
 }
 

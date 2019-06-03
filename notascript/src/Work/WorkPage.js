@@ -9,7 +9,7 @@ const StyledSymbols = styled.section`
 	word-break: break-all;
 	width: 100vw;
 	padding: 20px;
-	height: 350px;
+	min-height: 350px;
 	overflow-y: scroll;
 `;
 
@@ -17,15 +17,11 @@ const StyledTitle = styled(Title)`
 	padding: 20px;
 `;
 
-const StyledButton = styled(Button)`
-	align-self: end;
-`;
+const StyledButton = styled(Button)``;
 
 const StyledContainer = styled.section`
-	display: inline-grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 100px 1fr 1fr;
-	height: 100%;
+	display: grid;
+	grid-template-rows: 50px auto 50px auto;
 `;
 
 export default function WorkPage({ selectedDocument, history }) {

@@ -16,7 +16,7 @@ export default createGlobalStyle`
 
   main {
     display: grid;
-    grid-template-rows: 100px 1fr auto;
+    grid-template-rows: 80px auto 80px;
     height: 100vh;
   }
 
