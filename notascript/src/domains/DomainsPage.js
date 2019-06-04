@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import { Input, Label, Button, Title } from '../misc/Style.js';
 
 const StyledInput = styled(Input)``;
-const StyledLabel = styled(Label)``;
+const StyledLabel = styled(Label)`
+	margin-bottom: 10px;
+`;
 const StyledButton = styled(Button)``;
 const StyledTitle = styled(Title)`
 	padding: 20px;

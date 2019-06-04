@@ -14,9 +14,12 @@ const StyledNavigation = styled.nav`
 			text-align: center;
 			justify-content: center;
 			display: grid;
-			color: white;
 		}
 	}
+`;
+
+const StyledIcon = styled.i`
+	color: white;
 `;
 
 export default class Navigation extends Component {
@@ -26,17 +29,17 @@ export default class Navigation extends Component {
 				<ul>
 					<li>
 						<NavLink to='/create'>
-							<i className='far fa-plus-square' />
+							<StyledIcon className='far fa-plus-square' />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/documents'>
-							<i className='fas fa-copy' />
+							<StyledIcon className='fas fa-copy' />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/overview'>
-							<i className='fas fa-cog' />
+							<StyledIcon className='fas fa-cog' />
 						</NavLink>
 					</li>
 				</ul>

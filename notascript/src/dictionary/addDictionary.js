@@ -3,7 +3,10 @@ import PropType from 'prop-types';
 import styled from 'styled-components';
 import { Title, Input, Label, Button } from '../misc/Style.js';
 
-const StyledInput = styled(Input)``;
+const StyledInput = styled(Input)`
+	margin-top: 10px;
+	margin-bottom: 5px;
+`;
 const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)`
 	width: 100%;

@@ -12,7 +12,9 @@ const StyledTitle = styled(Title)`
 	padding: 0 20px;
 `;
 const StyledLabel = styled(Label)``;
-const StyledInput = styled(Input)``;
+const StyledInput = styled(Input)`
+	margin-top: 10px;
+`;
 const StyledButton = styled(Button)``;
 
 export default function DictionaryList({
@@ -31,10 +33,10 @@ export default function DictionaryList({
 
 	return (
 		<>
-			<StyledTitle>Dictionaries</StyledTitle>
 			<StyledTitle>create new dictionary</StyledTitle>
 			<StyledForm onSubmit={handleSubmit}>
 				<StyledLabel>
+					New title
 					<StyledInput
 						name='newDictionary'
 						placeholder='type title here...'

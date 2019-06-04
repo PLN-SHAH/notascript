@@ -24,6 +24,7 @@ const StyledSymbols = styled.section`
 	padding: 20px;
 	border-top: 3px solid #170444;
 	width: 100vw;
+	height: 100%;
 `;
 
 const StyledSymbolsSheet = styled.section`
@@ -32,6 +33,7 @@ const StyledSymbolsSheet = styled.section`
 	padding: 20px;
 	box-shadow: -2px 3px 3px 0 #ccc;
 	word-break: break-all;
+	height: 100%;
 `;
 
 export default function DocumentDetailView({ selectedDocument }) {

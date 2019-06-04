@@ -31,6 +31,7 @@ const StyledContainer = styled.section`
 
 export default function Dictionary({ dictionary, onDelete }) {
 	const { title, id } = dictionary;
+
 	return (
 		<StyledContainer>
 			<StyledNavLink to={`/editDictionary/${id}`}>

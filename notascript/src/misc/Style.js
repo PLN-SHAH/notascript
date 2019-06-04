@@ -12,20 +12,29 @@ export const Textarea = styled.textarea`
 	border: 1px solid #ddd;
 	font-size: 1rem;
 	padding-left: 5px;
+	margin-bottom: 10px;
 	font-style: italic;
+
+	&::placeholder {
+		color: #a9a9a9;
+		font-family: 'Raleway', sans-serif;
+	}
 `;
 
 export const Input = styled.input`
 	border: 1px solid #ddd;
 	font-size: 1rem;
-	margin-bottom: 10px;
 	padding-left: 5px;
-	font-style: italic;
 	height: 45px;
+
+	&::placeholder {
+		font-style: italic;
+		font-weight: normal;
+		color: #a9a9a9;
+	}
 `;
 
 export const Label = styled.label`
-	margin-bottom: 5px;
 	color: #33050a;
 	display: grid;
 `;
@@ -39,6 +48,7 @@ export const Button = styled.button`
 	font-family: 'Dancing Script', cursive;
 	font-size: 2rem;
 	text-align: center;
+	margin-top: 10px;
 `;
 
 export const Title = styled.h4`

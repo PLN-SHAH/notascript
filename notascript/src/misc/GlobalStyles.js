@@ -20,11 +20,6 @@ export default createGlobalStyle`
     height: 100vh;
   }
 
-  input,
-  button {
-    font-size: 1em;
-  }
-
   h1 {
       font-size: 3em;
       margin: 0;

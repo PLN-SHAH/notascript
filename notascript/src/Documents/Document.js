@@ -29,35 +29,27 @@ const StyledButton = styled.button`
 `;
 
 const StyledTitle = styled(Title)``;
-
 const StyledNavLink = styled(RouteLink)``;
 
-const StyledSymbols = styled.span`
-	background: #ddd;
-`;
-
 export default function Document({ document, onDelete }) {
-	const { id, title, domains, description, symbols } = document;
+	const { id, title, domains, description } = document;
 	return (
 		document && (
 			<StyledFile>
 				<StyledCta>
 					<Link to={`edit/${id}`}>
-						<i class='far fa-edit' />
+						<i className='far fa-edit' />
 					</Link>
 					<StyledButton onClick={onDelete}>
-						<i class='fas fa-trash-alt' />
+						<i className='fas fa-trash-alt' />
 					</StyledButton>
 				</StyledCta>
 				<Link to={`details/${id}`}>
 					<StyledTitle>{title}</StyledTitle>
 					<p>{description}</p>
 					<DomainList domainList={domains} />
-					<p>
-						<StyledSymbols>{symbols}</StyledSymbols>
-					</p>
 				</Link>
-				<StyledNavLink to={`work/${id}`}>continue work</StyledNavLink>
+				<StyledNavLink to={`work/${id}`}>...continue work</StyledNavLink>
 			</StyledFile>
 		)
 	);

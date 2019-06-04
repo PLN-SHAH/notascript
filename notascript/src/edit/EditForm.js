@@ -15,7 +15,7 @@ const StyledLabelTextarea = styled(Label)`
 
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
-	margin-bottom: 10px;
+	margin-top: 10px;
 	font-style: italic;
 `;
 
