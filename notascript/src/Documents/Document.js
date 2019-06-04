@@ -44,9 +44,11 @@ export default function Document({ document, onDelete }) {
 			<StyledFile>
 				<StyledCta>
 					<Link to={`edit/${id}`}>
-						<ReactSVG src='icon-edit.svg' />
+						<i class='far fa-edit' />
 					</Link>
-					<StyledButton onClick={onDelete}>x</StyledButton>
+					<StyledButton onClick={onDelete}>
+						<i class='fas fa-trash-alt' />
+					</StyledButton>
 				</StyledCta>
 				<Link to={`details/${id}`}>
 					<StyledTitle>{title}</StyledTitle>

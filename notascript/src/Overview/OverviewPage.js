@@ -30,9 +30,18 @@ export default function OverviewPage() {
 	return (
 		<StyledNavContainer>
 			<StyledNav>
-				<StyledNavLink to='/documents'>Documents</StyledNavLink>
-				<StyledNavLink to='/domains'>Domains</StyledNavLink>
-				<StyledNavLink to='/dictionaries'>Dictionaries</StyledNavLink>
+				<StyledNavLink to='/documents'>
+					Documents
+					<i class='fas fa-copy' />
+				</StyledNavLink>
+				<StyledNavLink to='/domains'>
+					Domains
+					<i class='fas fa-tags' />
+				</StyledNavLink>
+				<StyledNavLink to='/dictionaries'>
+					Dictionaries
+					<i class='fas fa-book' />
+				</StyledNavLink>
 			</StyledNav>
 		</StyledNavContainer>
 	);

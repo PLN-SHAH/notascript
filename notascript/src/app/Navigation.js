@@ -26,17 +26,17 @@ export default class Navigation extends Component {
 				<ul>
 					<li>
 						<NavLink to='/create'>
-							<ReactSVG src='icon-add.svg' />
+							<i class='far fa-plus-square' />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/documents'>
-							<ReactSVG src='icon-overview.svg' />
+							<i class='fas fa-copy' />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/overview'>
-							<ReactSVG src='icon-documents.svg' />
+							<i class='fas fa-cog' />
 						</NavLink>
 					</li>
 				</ul>

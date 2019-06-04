@@ -41,7 +41,9 @@ export default function DocumentDetailView({ selectedDocument }) {
 		selectedDocument && (
 			<>
 				<StyledDocument>
-					<StyledNavLink to='/documents'>back to view</StyledNavLink>
+					<StyledNavLink to='/documents'>
+						<i class='fas fa-angle-double-left' />
+					</StyledNavLink>
 					<StyledTitle>{title}</StyledTitle>
 					<p>{description}</p>
 					<DomainList domainList={domains} />

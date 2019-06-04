@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { isObject } from 'util';
 
 const StyledSymbolsContainer = styled.section`
 	display: grid;

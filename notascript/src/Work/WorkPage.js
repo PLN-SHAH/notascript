@@ -77,7 +77,9 @@ export default function WorkPage({
 					{newSymbolList}
 				</span>
 			</StyledSymbols>
-			<StyledButton onClick={updateSymbols}>save</StyledButton>
+			<StyledButton onClick={updateSymbols}>
+				<i class='far fa-check-square' />
+			</StyledButton>
 			<Buttons
 				createdSymbols={createdSymbols}
 				handleButtonClick={symbolFromButton => {
