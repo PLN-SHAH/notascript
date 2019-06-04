@@ -3,6 +3,7 @@ import Buttons from './Buttons';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Title } from '../misc/Style.js';
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from '@loadable/component';
 
 const StyledSymbols = styled.section`
 	font-size: 2em;
@@ -18,8 +19,6 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledButton = styled.button`
-	position: absolute;
-	right: 0;
 	font-size: 2em;
 	background: lightgrey;
 	border: none;
@@ -32,11 +31,17 @@ const StyledContainer = styled.section`
 	grid-template-rows: 50px auto auto;
 `;
 
+const StyledToolbar = styled.section`
+	position: absolute;
+	right: 0;
+`;
+
 export default function WorkPage({ selectedDocument, history, dictionaries }) {
 	const { title, symbols } = selectedDocument;
 	const createdSymbols = createUnicodes(200, 40);
 
-	let [newSymbolList, setNewSymbolList] = useState([]);
+	let [newSymbolList, setNewSymbolList] = useState(symbols);
+	//let [oldSymbols, setOldSymbols] = useState(symbols);
 
 	function createUnicodes(start, range) {
 		return Array(range)
@@ -66,18 +71,25 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 		history.push('/');
 	}
 
+	function unDoSymbols() {
+		newSymbolList.pop();
+		setNewSymbolList((newSymbolList = [...newSymbolList]));
+	}
+
 	return (
 		<StyledContainer>
 			<StyledTitle>{selectedDocument && title}</StyledTitle>
 			<StyledSymbols>
-				<span>
-					{selectedDocument && symbols}
-					{newSymbolList}
-				</span>
+				<span>{selectedDocument && newSymbolList}</span>
 			</StyledSymbols>
-			<StyledButton onClick={updateSymbols}>
-				<i className='far fa-check-square' />
-			</StyledButton>
+			<StyledToolbar>
+				<StyledButton onClick={updateSymbols}>
+					<i className='far fa-check-square' />
+				</StyledButton>
+				<StyledButton onClick={unDoSymbols}>
+					<i className='fas fa-undo' />
+				</StyledButton>
+			</StyledToolbar>
 			<Buttons
 				createdSymbols={createdSymbols}
 				dictionaries={dictionaries}

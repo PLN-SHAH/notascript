@@ -102,5 +102,6 @@ export default function AddDictionary({ dictionary, onFormSubmitEntries }) {
 }
 
 AddDictionary.propType = {
-	dictionary: PropType.obj
+	dictionary: PropType.obj,
+	onFormSubmitEntries: PropType.func
 };

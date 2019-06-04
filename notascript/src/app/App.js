@@ -40,6 +40,11 @@ export default class App extends Component {
 					{ key: 'Tr', value: 'Türkei' },
 					{ key: 'Bo', value: 'Bolivien' }
 				]
+			},
+			{
+				title: 'all',
+				id: uid(),
+				entries: []
 			}
 		],
 

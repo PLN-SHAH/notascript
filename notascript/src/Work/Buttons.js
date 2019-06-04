@@ -42,11 +42,10 @@ export default function Buttons({
 	function getFilteredOutput() {
 		const dict = filter && dictionaries.find(dict => dict.title === filter);
 
+		filter === 'all' ? (dict.entries = createdSymbols) : console.log('no all');
+
 		return (dict && dict.entries) || createdSymbols;
 	}
-
-	const output = getFilteredOutput();
-
 	return (
 		<>
 			<section>
@@ -57,7 +56,7 @@ export default function Buttons({
 				))}
 			</section>
 			<StyledSymbolsContainer>
-				{output.map(symbol => (
+				{getFilteredOutput().map(symbol => (
 					<StyledButton
 						key={symbol.key}
 						onClick={() => handleButtonClick(symbol.key)}
