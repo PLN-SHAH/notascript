@@ -34,17 +34,22 @@ const StyledContainer = styled.section`
 
 export default function WorkPage({ selectedDocument, history, dictionaries }) {
 	const { title, symbols } = selectedDocument;
-	const createdSymbols = createUnicodes('0200', 40);
+	const createdSymbols = createUnicodes(200, 40);
 
 	let [newSymbolList, setNewSymbolList] = useState([]);
 
-	function createUnicodes(start, counter) {
-		return Array(counter)
+	function createUnicodes(start, range) {
+		return Array(range)
 			.fill('')
-			.map(() => {
-				start++;
-				let unicode = '0x' + start;
-				return String.fromCodePoint(unicode);
+			.map((item, index) => {
+				const charCode = start + index;
+				const unicode = '0x0' + charCode;
+				const key = String.fromCodePoint(unicode);
+
+				return {
+					key,
+					value: key // TODO: choose some value
+				};
 			});
 	}
 
@@ -71,7 +76,7 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 				</span>
 			</StyledSymbols>
 			<StyledButton onClick={updateSymbols}>
-				<i class='far fa-check-square' />
+				<i className='far fa-check-square' />
 			</StyledButton>
 			<Buttons
 				createdSymbols={createdSymbols}

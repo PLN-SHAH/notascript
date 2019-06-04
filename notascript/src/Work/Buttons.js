@@ -29,41 +29,49 @@ export default function Buttons({
 	handleButtonClick,
 	dictionaries
 }) {
-	console.log(dictionaries, 'dictionaries in buttons');
-	let [output, setOutput] = useState(createdSymbols);
-	let [filter, setFilter] = useState([]);
+	//const [output, setOutput] = useState(createdSymbols);
+	const [filter, setFilter] = useState('');
 
-	function getFilter() {
+	function getFilterTitle() {
 		return dictionaries.map(dict => dict.title);
 	}
 
-	function getContentFromFilter(entries) {
+	/*
+	function getContentForFilter(entries) {
 		return entries.map(entry => entry.key);
+	}*/
+
+	function handleOnClick(filter) {
+		console.log(filter);
+		setFilter(filter);
 	}
 
-	function handleOnClick(event) {
-		setFilter((filter = event.target.innerHTML));
+	function getFilteredOutput() {
+		const dict = filter && dictionaries.find(dict => dict.title === filter);
 
-		if (filter === 'shorthands') {
-			setOutput((output = getContentFromFilter(dictionaries[0].entries)));
-		} else if (filter === 'stuff') {
-			setOutput((output = getContentFromFilter(dictionaries[1].entries)));
-		} else {
-			setOutput((output = createdSymbols));
-		}
+		return (dict && dict.entries) || createdSymbols;
 	}
+
+	const output = getFilteredOutput();
+
+	console.log(output);
 
 	return (
 		<>
 			<section>
-				{getFilter().map(filter => (
-					<button onClick={handleOnClick}>{filter}</button>
+				{getFilterTitle().map(filter => (
+					<button key={filter} onClick={() => handleOnClick(filter)}>
+						{filter}
+					</button>
 				))}
 			</section>
 			<StyledSymbolsContainer>
 				{output.map(symbol => (
-					<StyledButton key={symbol} onClick={() => handleButtonClick(symbol)}>
-						{symbol}
+					<StyledButton
+						key={symbol.key}
+						onClick={() => handleButtonClick(symbol)}
+					>
+						{symbol.key}
 					</StyledButton>
 				))}
 			</StyledSymbolsContainer>

@@ -42,7 +42,6 @@ export default class App extends Component {
 				]
 			}
 		],
-		filterList: ['shorthands', 'stuff', 'all'],
 
 		domains: ['random', 'important', 'do'],
 		documents: [
@@ -108,12 +107,8 @@ export default class App extends Component {
 
 		this.setState({
 			...this.state,
-			dictionaries: [newDictionary, ...this.state.dictionaries],
-			filterList: [...this.state.filterList, newDictionary.title]
+			dictionaries: [newDictionary, ...this.state.dictionaries]
 		});
-
-		console.log(...this.state.dictionaries, '...this.state.dictionaries');
-		console.log(...this.state.filterList, '...this.state.filterList');
 	}
 
 	updateDocument(document) {
