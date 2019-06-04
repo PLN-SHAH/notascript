@@ -27,21 +27,23 @@ const StyledButton = styled.button`
 export default function Buttons({
 	createdSymbols,
 	handleButtonClick,
-	filterList,
 	dictionaries
 }) {
-	console.log(dictionaries[0].entries, 'shorthands');
-
-	function getContentFromFilter(entries) {
-		const keys = entries.map(obj => obj.key);
-		return keys;
-	}
-
+	console.log(dictionaries, 'dictionaries in buttons');
 	let [output, setOutput] = useState(createdSymbols);
 	let [filter, setFilter] = useState([]);
 
-	function handleClick(event) {
+	function getFilter() {
+		return dictionaries.map(dict => dict.title);
+	}
+
+	function getContentFromFilter(entries) {
+		return entries.map(entry => entry.key);
+	}
+
+	function handleOnClick(event) {
 		setFilter((filter = event.target.innerHTML));
+
 		if (filter === 'shorthands') {
 			setOutput((output = getContentFromFilter(dictionaries[0].entries)));
 		} else if (filter === 'stuff') {
@@ -54,8 +56,8 @@ export default function Buttons({
 	return (
 		<>
 			<section>
-				{filterList.map(filter => (
-					<button onClick={handleClick}>{filter}</button>
+				{getFilter().map(filter => (
+					<button onClick={handleOnClick}>{filter}</button>
 				))}
 			</section>
 			<StyledSymbolsContainer>
@@ -71,5 +73,6 @@ export default function Buttons({
 
 Buttons.propTypes = {
 	createdSymbols: PropTypes.array,
-	handleButtonClick: PropTypes.func
+	handleButtonClick: PropTypes.func,
+	dictionaries: PropTypes.array
 };

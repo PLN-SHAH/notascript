@@ -14,7 +14,7 @@ export default function DocumentsPage({ documentList, onDelete }) {
 	return (
 		<StyledDocumentsContainer>
 			<StyledNavLink to='/create'>
-				<i clasName='far fa-plus-square' />
+				<i className='far fa-plus-square' />
 			</StyledNavLink>
 			<DocumentList documentList={documentList} onDelete={onDelete} />
 		</StyledDocumentsContainer>

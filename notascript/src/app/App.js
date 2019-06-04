@@ -269,7 +269,6 @@ export default class App extends Component {
 										{ props },
 										this.state.documents
 									)}
-									filterList={this.state.filterList}
 									dictionaries={this.state.dictionaries}
 									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 									{...props}

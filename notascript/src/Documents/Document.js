@@ -57,7 +57,7 @@ export default function Document({ document, onDelete }) {
 
 Document.propTypes = {
 	document: PropTypes.object,
-	title: PropTypes.string.isRequired,
+	title: PropTypes.string,
 	description: PropTypes.string,
 	id: PropTypes.string,
 	symbols: PropTypes.array,

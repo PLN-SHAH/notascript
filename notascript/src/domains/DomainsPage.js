@@ -20,14 +20,13 @@ const StyledForm = styled.form`
 export default function DomainsPage({ domainList, onFormSubmit }) {
 	function handleSubmit(event) {
 		event.preventDefault();
-
 		onFormSubmit(event.target.name.value);
 	}
 	return (
 		<>
 			<StyledTitle>Add or edit domains</StyledTitle>
 			<StyledForm onSubmit={handleSubmit}>
-				<StyledLabel htmlFor='name'>New Domain name: </StyledLabel>
+				<StyledLabel htmlFor='name'>New title</StyledLabel>
 				<StyledInput
 					type='text'
 					name='name'

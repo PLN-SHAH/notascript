@@ -3,7 +3,6 @@ import Document from './Document';
 import PropTypes from 'prop-types';
 
 export default function DocumentList({ documentList, onDelete }) {
-	console.log(documentList, 'doc list');
 	return (
 		<section>
 			{documentList.map(document => (
