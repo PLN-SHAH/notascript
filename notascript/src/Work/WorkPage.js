@@ -20,10 +20,10 @@ const StyledTitle = styled(Title)`
 const StyledButton = styled.button`
 	position: absolute;
 	right: 0;
-	width: 100px;
+	font-size: 2em;
+	background: lightgrey;
 	border: none;
 	padding: 5px;
-	background: #170444;
 	color: white;
 `;
 
