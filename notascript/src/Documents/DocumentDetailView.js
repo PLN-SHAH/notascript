@@ -38,13 +38,13 @@ const StyledSymbolsSheet = styled.section`
 
 export default function DocumentDetailView({ selectedDocument }) {
 	const { title, description, symbols, domains } = selectedDocument;
-	console.log(symbols, 'in detail view');
+
 	return (
 		selectedDocument && (
 			<>
 				<StyledDocument>
 					<StyledNavLink to='/documents'>
-						<i class='fas fa-angle-double-left' />
+						<i className='fas fa-angle-double-left' />
 					</StyledNavLink>
 					<StyledTitle>{title}</StyledTitle>
 					<p>{description}</p>

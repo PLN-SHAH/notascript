@@ -31,15 +31,15 @@ export default function OverviewPage() {
 		<StyledNavContainer>
 			<StyledNav>
 				<StyledNavLink to='/documents'>
-					<i class='fas fa-copy' />
+					<i className='fas fa-copy' />
 					Documents
 				</StyledNavLink>
 				<StyledNavLink to='/domains'>
-					<i class='fas fa-tags' />
+					<i className='fas fa-tags' />
 					Domains
 				</StyledNavLink>
 				<StyledNavLink to='/dictionaries'>
-					<i class='fas fa-book' />
+					<i className='fas fa-book' />
 					Dictionaries
 				</StyledNavLink>
 			</StyledNav>

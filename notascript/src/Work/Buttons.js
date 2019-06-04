@@ -29,20 +29,13 @@ export default function Buttons({
 	handleButtonClick,
 	dictionaries
 }) {
-	//const [output, setOutput] = useState(createdSymbols);
 	const [filter, setFilter] = useState('');
 
 	function getFilterTitle() {
 		return dictionaries.map(dict => dict.title);
 	}
 
-	/*
-	function getContentForFilter(entries) {
-		return entries.map(entry => entry.key);
-	}*/
-
 	function handleOnClick(filter) {
-		console.log(filter);
 		setFilter(filter);
 	}
 
@@ -53,8 +46,6 @@ export default function Buttons({
 	}
 
 	const output = getFilteredOutput();
-
-	console.log(output);
 
 	return (
 		<>
@@ -69,7 +60,7 @@ export default function Buttons({
 				{output.map(symbol => (
 					<StyledButton
 						key={symbol.key}
-						onClick={() => handleButtonClick(symbol)}
+						onClick={() => handleButtonClick(symbol.key)}
 					>
 						{symbol.key}
 					</StyledButton>
