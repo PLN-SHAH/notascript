@@ -21,7 +21,7 @@ export default function DictionaryList({
 	dictionaries,
 	onDelete,
 	onFormSubmit,
-	onFormSubmitEntries
+	onDeleteEntry
 }) {
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -51,6 +51,7 @@ export default function DictionaryList({
 					dictionary={dictionary}
 					key={dictionary.id}
 					onDelete={() => onDelete(dictionary)}
+					onDeleteEntry={entry => onDeleteEntry(entry)}
 				/>
 			))}
 		</>

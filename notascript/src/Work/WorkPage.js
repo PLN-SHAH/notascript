@@ -37,11 +37,10 @@ const StyledToolbar = styled.section`
 `;
 
 export default function WorkPage({ selectedDocument, history, dictionaries }) {
-	const { title, symbols } = selectedDocument;
+	const { title, symbols, id } = selectedDocument;
 	const createdSymbols = createUnicodes(200, 40);
 
 	let [newSymbolList, setNewSymbolList] = useState(symbols);
-	//let [oldSymbols, setOldSymbols] = useState(symbols);
 
 	function createUnicodes(start, range) {
 		return Array(range)
@@ -62,7 +61,7 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
 	}
 
-	function updateSymbols() {
+	function updateSymbols(event) {
 		setNewSymbolList(
 			(newSymbolList &&
 				newSymbolList.forEach(symbol => symbols.push(symbol))) ||
@@ -89,6 +88,9 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 				<StyledButton onClick={unDoSymbols}>
 					<i className='fas fa-undo' />
 				</StyledButton>
+				{/* <StyledButton onClick={updateSymbolsLocal}>
+					<i className='far fa-save' />
+				</StyledButton> */}
 			</StyledToolbar>
 			<Buttons
 				createdSymbols={createdSymbols}

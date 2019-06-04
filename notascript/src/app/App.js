@@ -182,6 +182,10 @@ export default class App extends Component {
 		selectedDict.entries = [...selectedDict.entries, newEntry];
 	}
 
+	deleteEntry(entry) {
+		console.log(entry, 'in delete entry');
+	}
+
 	render() {
 		return (
 			<main>
@@ -262,6 +266,7 @@ export default class App extends Component {
 										{ props },
 										this.state.dictionaries
 									)}
+									onDeleteEntry={entry => this.deleteEntry(entry)}
 									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 								/>
 							)}

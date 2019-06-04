@@ -20,7 +20,7 @@ const StyledGrid = styled.section`
 	grid-template-columns: 50% 50%;
 `;
 
-const StyledEntry = styled.li`
+const StyledEntry = styled.span`
 	padding-left: 20px;
 `;
 
@@ -28,7 +28,11 @@ const StyledContainer = styled.section`
 	padding: 20px;
 `;
 
-export default function AddDictionary({ dictionary, onFormSubmitEntries }) {
+export default function AddDictionary({
+	dictionary,
+	onFormSubmitEntries,
+	onDeleteEntry
+}) {
 	const { title, entries } = dictionary;
 
 	let [synonyms, setSynonym] = useState(entries.key || []);
@@ -76,24 +80,15 @@ export default function AddDictionary({ dictionary, onFormSubmitEntries }) {
 				<StyledButton>add</StyledButton>
 			</form>
 			<StyledGrid>
-				<p>Synonyms</p>
-				<p>Meanings</p>
-			</StyledGrid>
-			<StyledGrid>
 				<ul>
+					<li>
+						<span>Synonyms</span>
+						<span>Meanings</span>
+					</li>
 					{entries.map(entry => (
-						<StyledEntry>{entry.key}</StyledEntry>
-					))}
-					{synonyms.map(synonym => (
-						<StyledEntry>{synonym}</StyledEntry>
-					))}
-				</ul>
-				<ul>
-					{entries.map(entry => (
-						<StyledEntry>{entry.value}</StyledEntry>
-					))}
-					{meanings.map(meaning => (
-						<StyledEntry>{meaning}</StyledEntry>
+						<li>
+							<span>{entry.key}</span>|<span>{entry.value}</span>
+						</li>
 					))}
 				</ul>
 			</StyledGrid>
