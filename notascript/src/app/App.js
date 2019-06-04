@@ -169,7 +169,12 @@ export default class App extends Component {
 	}
 
 	addEntryToDict(entry) {
-		console.log(entry, 'addEntryToDict');
+		const newEntry = { key: entry.synonym, value: entry.meaning };
+		const selectedDict = this.state.dictionaries.find(
+			item => item.title === entry.title
+		);
+
+		selectedDict.entries = [...selectedDict.entries, newEntry];
 	}
 
 	render() {
@@ -252,6 +257,7 @@ export default class App extends Component {
 										{ props },
 										this.state.dictionaries
 									)}
+									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 								/>
 							)}
 						/>

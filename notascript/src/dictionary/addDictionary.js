@@ -45,8 +45,9 @@ export default function AddDictionary({ dictionary, onFormSubmitEntries }) {
 		setMeaning((meanings = [...meanings, meaning]));
 
 		onFormSubmitEntries({
-			synonyms,
-			meanings
+			title,
+			synonym,
+			meaning
 		});
 	}
 
