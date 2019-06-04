@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React, { Component } from 'react';
 import NavLink from './NavLink.js';
-import ReactSVG from 'react-svg';
 
 const StyledNavigation = styled.nav`
 	height: 100%;
@@ -15,6 +14,7 @@ const StyledNavigation = styled.nav`
 			text-align: center;
 			justify-content: center;
 			display: grid;
+			color: white;
 		}
 	}
 `;
@@ -26,17 +26,17 @@ export default class Navigation extends Component {
 				<ul>
 					<li>
 						<NavLink to='/create'>
-							<i class='far fa-plus-square' />
+							<i className='far fa-plus-square' />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/documents'>
-							<i class='fas fa-copy' />
+							<i className='fas fa-copy' />
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/overview'>
-							<i class='fas fa-cog' />
+							<i className='fas fa-cog' />
 						</NavLink>
 					</li>
 				</ul>

@@ -3,7 +3,6 @@ import NavLink from '../app/NavLink.js';
 import styled from 'styled-components';
 import PropType from 'prop-types';
 import { Title } from '../misc/Style.js';
-import ReactSVG from 'react-svg';
 
 const StyledTitle = styled(Title)``;
 
@@ -30,19 +29,17 @@ const StyledContainer = styled.section`
 	grid-template-columns: auto 30px;
 `;
 
-const StyledSVG = styled(ReactSVG)`
-	text-align: right;
-`;
-
 export default function Dictionary({ dictionary, onDelete }) {
 	const { title, id } = dictionary;
 	return (
 		<StyledContainer>
 			<StyledNavLink to={`/editDictionary/${id}`}>
 				<StyledTitle>{title}</StyledTitle>
-				<StyledSVG src='icon-edit.svg' />
+				<i className='far fa-edit' />
 			</StyledNavLink>
-			<StyledButton onClick={onDelete}>x</StyledButton>
+			<StyledButton onClick={onDelete}>
+				<i className='fas fa-trash-alt' />
+			</StyledButton>
 		</StyledContainer>
 	);
 }

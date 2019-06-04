@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ReactSVG from 'react-svg';
 import DomainList from '../domains/DomainList.js';
 import { Title, RouteLink } from '../misc/Style.js';
 

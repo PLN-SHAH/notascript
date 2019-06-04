@@ -18,7 +18,8 @@ const StyledButton = styled(Button)``;
 export default function DictionaryList({
 	dictionaries,
 	onDelete,
-	onFormSubmit
+	onFormSubmit,
+	onFormSubmitEntries
 }) {
 	function handleSubmit(event) {
 		event.preventDefault();
