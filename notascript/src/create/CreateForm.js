@@ -3,25 +3,17 @@ import PropType from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
 import uid from 'uid';
-import { Formular, Input, Button, Label, Textarea } from '../misc/Style.js';
+import { Button } from '../misc/Style.js';
 
-const StyledInput = styled(Input)``;
-const StyledForm = styled(Formular)``;
 const StyledButton = styled(Button)``;
-const StyledTextarea = styled(Textarea)``;
-
-const StyledLabel = styled(Label)``;
-const StyledLabelTextarea = styled(Label)`
-	grid-auto-rows: 35px auto;
-`;
 
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
 	margin-top: 10px;
-	font-style: italic;
+	height: 45px;
 `;
 
-export default function createForm({ onFormSubmit, domainList, isWork }) {
+export default function createForm({ onFormSubmit, domainList }) {
 	function handleOnSubmit(event) {
 		event.preventDefault();
 
@@ -44,27 +36,22 @@ export default function createForm({ onFormSubmit, domainList, isWork }) {
 	}));
 
 	return (
-		<StyledForm onSubmit={handleOnSubmit}>
-			<StyledLabel>
-				New Title
-				<StyledInput
-					name='title'
-					placeholder='type title here...'
-					type='text'
-					required
-				/>
-			</StyledLabel>
-			<StyledLabelTextarea>
-				New Description
-				<StyledTextarea
-					name='description'
-					placeholder='type description here...'
-					type='text'
-					required
-				/>
-			</StyledLabelTextarea>
-
-			<StyledLabel>
+		<form onSubmit={handleOnSubmit}>
+			<label htmlFor='title'>New Title</label>
+			<input
+				name='title'
+				placeholder='type title here...'
+				type='text'
+				required
+			/>
+			<label htmlFor='description'>New Description </label>
+			<textarea
+				name='description'
+				placeholder='type description here...'
+				type='text'
+				required
+			/>
+			<label htmlFor='domainFirst'>
 				Choose domains
 				<StyledSelect
 					name='domainFirst'
@@ -76,10 +63,9 @@ export default function createForm({ onFormSubmit, domainList, isWork }) {
 					options={options}
 					defaultValue={options[1]}
 				/>
-			</StyledLabel>
+			</label>
 			<StyledButton>save</StyledButton>
-			{isWork && <StyledButton>go work</StyledButton>}
-		</StyledForm>
+		</form>
 	);
 }
 

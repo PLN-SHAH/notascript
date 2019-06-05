@@ -5,23 +5,31 @@ import PropTypes from 'prop-types';
 const StyledSymbolsContainer = styled.section`
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
-	background: linear-gradient(135deg, #562323, #4c4a58);
-	position: absolute;
-	width: 100%;
-	bottom: 80px;
 `;
 
-const StyledButton = styled.button`
+const StyledSymbol = styled.button`
 	font-size: 1.8em;
 	padding: 5px;
-	color: white;
+	color: #4d6c99;
 	border: none;
+	font-weight: 200;
 	background: transparent;
+`;
 
-	&:hover,
-	&:active {
-		font-size: 2.2em;
+const StyledButtons = styled.button`
+	background-color: #4d6c99;
+	color: #fff;
+	border: none;
+	padding: 10px;
+
+	&::active,
+	&::focus {
+		background: red;
 	}
+`;
+
+const StyledButtonContainer = styled.section`
+	border-bottom: 1px solid #4d6c99;
 `;
 
 export default function Buttons({
@@ -46,23 +54,24 @@ export default function Buttons({
 
 		return (dict && dict.entries) || createdSymbols;
 	}
+
 	return (
 		<>
-			<section>
+			<StyledButtonContainer>
 				{getFilterTitle().map(filter => (
-					<button key={filter} onClick={() => handleOnClick(filter)}>
+					<StyledButtons key={filter} onClick={() => handleOnClick(filter)}>
 						{filter}
-					</button>
+					</StyledButtons>
 				))}
-			</section>
+			</StyledButtonContainer>
 			<StyledSymbolsContainer>
 				{getFilteredOutput().map(symbol => (
-					<StyledButton
+					<StyledSymbol
 						key={symbol.key}
 						onClick={() => handleButtonClick(symbol.key)}
 					>
 						{symbol.key}
-					</StyledButton>
+					</StyledSymbol>
 				))}
 			</StyledSymbolsContainer>
 		</>

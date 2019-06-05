@@ -2,21 +2,13 @@ import styled from 'styled-components';
 import PropType from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
-import { Formular, Input, Button, Label, Textarea } from '../misc/Style.js';
+import { Button } from '../misc/Style.js';
 
-const StyledInput = styled(Input)``;
-const StyledForm = styled(Formular)``;
-const StyledLabel = styled(Label)``;
 const StyledButton = styled(Button)``;
-const StyledTextarea = styled(Textarea)``;
-const StyledLabelTextarea = styled(Label)`
-	grid-auto-rows: 35px auto;
-`;
-
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
 	margin-top: 10px;
-	font-style: italic;
+	height: 45px;
 `;
 
 export default function EditForm({
@@ -49,43 +41,37 @@ export default function EditForm({
 	}));
 
 	return (
-		<StyledForm onSubmit={handleOnSubmit}>
-			<StyledLabel>
-				New Title
-				<StyledInput
-					name='title'
-					placeholder='type title here...'
-					type='text'
-					defaultValue={selectedDocument && title}
-					required
-				/>
-			</StyledLabel>
-			<StyledLabelTextarea>
-				New Description
-				<StyledTextarea
-					name='description'
-					placeholder='type description here...'
-					type='text'
-					defaultValue={selectedDocument && description}
-					required
-				/>
-			</StyledLabelTextarea>
+		<form onSubmit={handleOnSubmit}>
+			<label htmlFor='title'>New Title</label>
+			<input
+				name='title'
+				placeholder='type title here...'
+				type='text'
+				defaultValue={selectedDocument && title}
+				required
+			/>
+			<label htmlFor='description'>New Description</label>
+			<textarea
+				name='description'
+				placeholder='type description here...'
+				type='text'
+				defaultValue={selectedDocument && description}
+				required
+			/>
 			<div>{selectedDocument && symbols}</div>
-			<StyledLabel>
-				Choose domains
-				<StyledSelect
-					name='domainFirst'
-					options={options}
-					defaultValue={options[0]}
-				/>
-				<StyledSelect
-					name='domainSecond'
-					options={options}
-					defaultValue={options[1]}
-				/>
-			</StyledLabel>
+			<label htmlFor='domainFirst'>Choose domains</label>
+			<StyledSelect
+				name='domainFirst'
+				options={options}
+				defaultValue={options[0]}
+			/>
+			<StyledSelect
+				name='domainSecond'
+				options={options}
+				defaultValue={options[1]}
+			/>
 			<StyledButton>save</StyledButton>
-		</StyledForm>
+		</form>
 	);
 }
 

@@ -37,7 +37,7 @@ const StyledToolbar = styled.section`
 `;
 
 export default function WorkPage({ selectedDocument, history, dictionaries }) {
-	const { title, symbols, id } = selectedDocument;
+	const { title, symbols } = selectedDocument;
 	const createdSymbols = createUnicodes(200, 40);
 
 	let [newSymbolList, setNewSymbolList] = useState(symbols);
@@ -88,9 +88,6 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 				<StyledButton onClick={unDoSymbols}>
 					<i className='fas fa-undo' />
 				</StyledButton>
-				{/* <StyledButton onClick={updateSymbolsLocal}>
-					<i className='far fa-save' />
-				</StyledButton> */}
 			</StyledToolbar>
 			<Buttons
 				createdSymbols={createdSymbols}

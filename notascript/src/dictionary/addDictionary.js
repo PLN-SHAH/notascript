@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
 import PropType from 'prop-types';
 import styled from 'styled-components';
-import { Title, Input, Label, Button } from '../misc/Style.js';
+import { Button } from '../misc/Style.js';
 
-const StyledInput = styled(Input)`
-	margin-top: 10px;
-	margin-bottom: 5px;
+const StyledForm = styled.form`
+	grid-template-rows: unset;
+	height: unset;
 `;
-const StyledLabel = styled(Label)``;
+
 const StyledButton = styled(Button)`
 	width: 100%;
 `;
-const StyledTitle = styled(Title)`
+const StyledTitle = styled.h4`
 	text-align: center;
 `;
 
-const StyledGrid = styled.section`
-	display: grid;
-	grid-template-columns: 50% 50%;
-`;
-
-const StyledEntry = styled.span`
-	padding-left: 20px;
-`;
-
-const StyledContainer = styled.section`
+const StyledList = styled.ul`
 	padding: 20px;
+
+	> li {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: center;
+	}
+`;
+
+const StyledSynonym = styled.span`
+	font-weight: normal;
 `;
 
 export default function AddDictionary({
@@ -56,43 +57,41 @@ export default function AddDictionary({
 	}
 
 	return (
-		<StyledContainer>
+		<>
 			<StyledTitle>{title}</StyledTitle>
-			<form onSubmit={handleSubmit}>
-				<StyledLabel>
-					Synonym
-					<StyledInput
-						name='synonym'
-						placeholder='type synonym here...'
-						type='text'
-						required
-					/>
-				</StyledLabel>
-				<StyledLabel>
-					Meaning
-					<StyledInput
-						name='meaning'
-						placeholder='type meaning here...'
-						type='text'
-						required
-					/>
-				</StyledLabel>
+			<StyledForm onSubmit={handleSubmit}>
+				<label htmlFor='synonym'>Synonym</label>
+				<input
+					name='synonym'
+					placeholder='type synonym here...'
+					type='text'
+					required
+				/>
+				<label htmlFor='meaning'>Meaning</label>
+				<input
+					name='meaning'
+					placeholder='type meaning here...'
+					type='text'
+					required
+				/>
 				<StyledButton>add</StyledButton>
-			</form>
-			<StyledGrid>
-				<ul>
-					<li>
-						<span>Synonyms</span>
-						<span>Meanings</span>
+			</StyledForm>
+			<StyledList>
+				<li>
+					<StyledSynonym>Synonyms</StyledSynonym>
+					<span>Meanings</span>
+				</li>
+				{entries.map(entry => (
+					<li key={entries.key}>
+						<StyledSynonym>{entry.key}</StyledSynonym>
+						<span>{entry.value}</span>
+						<button onClick={onDeleteEntry}>
+							<i className='fas fa-trash-alt' />
+						</button>
 					</li>
-					{entries.map(entry => (
-						<li>
-							<span>{entry.key}</span>|<span>{entry.value}</span>
-						</li>
-					))}
-				</ul>
-			</StyledGrid>
-		</StyledContainer>
+				))}
+			</StyledList>
+		</>
 	);
 }
 

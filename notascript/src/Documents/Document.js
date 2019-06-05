@@ -11,7 +11,7 @@ const StyledFile = styled.section`
 	box-shadow: -2px 3px 3px 0 #ccc;
 	margin-bottom: 20px;
 	border-left-width: 15px;
-	border-left-color: #170444;
+	border-left-color: #4d6c99;
 	grid-template-rows: 50px auto 50px;
 	padding: 20px;
 	width: 100%;
@@ -22,14 +22,14 @@ const StyledCta = styled.section`
 `;
 
 const StyledButton = styled.button`
-	background: transparent;
 	border: none;
 	justify-self: right;
-	width: 30px;
 `;
 
 const StyledTitle = styled(Title)``;
-const StyledNavLink = styled(RouteLink)``;
+const StyledNavLink = styled(RouteLink)`
+	color: #c11212;
+`;
 
 export default function Document({ document, onDelete }) {
 	const { id, title, domains, description } = document;
