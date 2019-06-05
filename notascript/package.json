@@ -11,6 +11,7 @@
 	"dependencies": {
 		"@babel/plugin-proposal-class-properties": "7.4.4",
 		"@craco/craco": "5.0.2",
+		"concurrently": "^4.1.0",
 		"docz": "^1.2.0",
 		"docz-theme-default": "^1.2.0",
 		"dotenv": "^8.0.0",
@@ -29,9 +30,9 @@
 		"uid": "0.0.2"
 	},
 	"scripts": {
-		"start": "run-p react server",
 		"react": "craco start",
-		"server": "nodemon -w server.js -w models/* server.js",
+		"server": "nodemon server.js",
+		"dev": "concurrently \"npm run server\" \"npm run react\"",
 		"build": "craco build",
 		"test": "craco test",
 		"eject": "react-scripts eject",
