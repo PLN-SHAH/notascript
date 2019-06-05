@@ -1,6 +1,6 @@
 {
 	"name": "Notascript",
-	"proxy": "http://localhost:3000",
+	"proxy": "http://localhost:4000",
 	"version": "0.0.1",
 	"author": {
 		"name": "Pauline Shahjahan",

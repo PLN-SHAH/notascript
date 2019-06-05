@@ -5,10 +5,23 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const fs = require('fs');
+dotenv.config();
+
+try {
+	const localConfig = dotenv.parse(fs.readFileSync('.env'));
+	process.env = {
+		...process.env,
+		...localConfig
+	};
+} catch (error) {
+	console.log('no .env found');
+}
 
 module.exports = function() {
 	mongoose
-		.connect('mongodb://localhost:27017/notascript', {
+		.connect(process.env.DB_URL, {
 			useNewUrlParser: true
 		})
 		.then(() => console.log('Connected to MongoDB'))

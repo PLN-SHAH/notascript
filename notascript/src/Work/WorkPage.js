@@ -3,7 +3,6 @@ import Buttons from './Buttons';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Title } from '../misc/Style.js';
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from '@loadable/component';
 
 const StyledSymbols = styled.section`
 	font-size: 2em;
