@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavLink from '../../app/NavLink.js';
-import DomainList from '../domains/DomainList.js';
+import DomainList from '../domain/DomainList.js';
 import PropTypes from 'prop-types';
 import { Title } from '../../misc/Style.js';
 

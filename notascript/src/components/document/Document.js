@@ -1,4 +1,4 @@
-import DomainList from '../domains/DomainList.js';
+import DomainList from '../domain/DomainList.js';
 import NavLink from '../../app/NavLink.js';
 import PropTypes from 'prop-types';
 import React from 'react';
