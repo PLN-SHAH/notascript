@@ -8,7 +8,7 @@ import { Title } from '../misc/Style.js';
 const StyledDocument = styled.section`
 	padding: 20px;
 	border-left-width: 15px;
-	border-left-color: #170444;
+	border-left-color: #4d6c99;
 	border-left-style: solid;
 	word-break: break-all;
 	width: 100vw;

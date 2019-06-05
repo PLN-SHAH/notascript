@@ -12,8 +12,9 @@ const StyledFile = styled.section`
 	margin-bottom: 20px;
 	border-left-width: 15px;
 	border-left-color: #4d6c99;
-	grid-template-rows: 50px auto 50px;
+	grid-template-rows: 50px auto auto;
 	padding: 20px;
+	display: grid;
 	width: 100%;
 `;
 const StyledCta = styled.section`
@@ -24,6 +25,10 @@ const StyledCta = styled.section`
 
 const StyledIcon = styled.i`
 	color: #4d6c99;
+`;
+
+const StyledNavLink = styled(NavLink)`
+	justify-self: end;
 `;
 
 export default function Document({ document, onDelete }) {
@@ -44,7 +49,7 @@ export default function Document({ document, onDelete }) {
 					<p>{description}</p>
 					<DomainList domainList={domains} />
 				</Link>
-				<NavLink to={`work/${id}`}>...continue work</NavLink>
+				<StyledNavLink to={`work/${id}`}>...continue work</StyledNavLink>
 			</StyledFile>
 		)
 	);

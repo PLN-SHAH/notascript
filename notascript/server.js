@@ -1,10 +1,17 @@
-const setupServer = require('./setup-server')
-const app = setupServer()
+const setupServer = require('./setup-server');
+const app = setupServer();
 
-const Card = require('./models/Card')
+const Document = require('./models/Document');
 
-app.get('/cards', (req, res) => {
-  Card.find()
-    .then(cards => res.json(cards))
-    .catch(err => res.json(err))
-})
+app.get('/documents', (req, res) => {
+	Document.find()
+		.then(document => res.json(document))
+		.catch(err => res.json(err));
+});
+
+app.post('/documents', (req, res) => {
+	Document.create(req.body)
+		.then(document => res.status(201).json(document))
+		.catch(err => console.error(err));
+	console.log('Successful Document Update');
+});
