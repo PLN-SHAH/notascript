@@ -1,9 +1,8 @@
+import DomainList from '../domains/DomainList.js';
+import NavLink from '../../app/NavLink.js';
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import NavLink from '../app/NavLink.js';
-import { Link } from 'react-router-dom';
-import DomainList from '../domains/DomainList.js';
 
 const StyledFile = styled.section`
 	border: 1px solid #ccc;
@@ -28,7 +27,7 @@ const StyledIcon = styled.i`
 `;
 
 const StyledNavLink = styled(NavLink)`
-	justify-self: end;
+	text-align: left;
 `;
 
 export default function Document({ document, onDelete }) {
@@ -44,11 +43,11 @@ export default function Document({ document, onDelete }) {
 						<i className='fas fa-trash-alt' />
 					</button>
 				</StyledCta>
-				<Link to={`details/${id}`}>
+				<StyledNavLink to={`details/${id}`}>
 					<h4>{title}</h4>
 					<p>{description}</p>
 					<DomainList domainList={domains} />
-				</Link>
+				</StyledNavLink>
 				<StyledNavLink to={`work/${id}`}>...continue work</StyledNavLink>
 			</StyledFile>
 		)

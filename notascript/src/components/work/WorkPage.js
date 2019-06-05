@@ -1,7 +1,7 @@
-import React, { useState } from './node_modules/react';
-import Buttons from './Buttons';
-import styled from './node_modules/styled-components';
-import PropTypes from './node_modules/prop-types';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import Symbols from './Symbols';
+import styled from 'styled-components';
 import { Title } from '../../misc/Style.js';
 
 const StyledSymbols = styled.section`
@@ -37,8 +37,12 @@ const StyledToolbar = styled.section`
 	right: 0;
 `;
 
-export default function WorkPage({ selectedDocument, history, dictionaries }) {
-	const { title, symbols } = selectedDocument;
+export default function WorkPage({
+	selectedDocument,
+	history,
+	dictionaryList
+}) {
+	const { title, symbols } = selectedDocument || {};
 	const createdSymbols = createUnicodes(200, 40);
 
 	let [newSymbolList, setNewSymbolList] = useState(symbols);
@@ -90,9 +94,9 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 					<i className='fas fa-undo' />
 				</StyledButton>
 			</StyledToolbar>
-			<Buttons
+			<Symbols
 				createdSymbols={createdSymbols}
-				dictionaries={dictionaries}
+				dictionaryList={dictionaryList}
 				handleButtonClick={symbolFromButton => {
 					renderSymbols(symbolFromButton);
 				}}
@@ -103,5 +107,5 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 
 WorkPage.propTypes = {
 	selectedDocument: PropTypes.object,
-	dictionaries: PropTypes.array
+	dictionaryList: PropTypes.array
 };

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import PropType from 'prop-types';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from '../misc/Style.js';
+import { Button } from '../../misc/Style.js';
 
 const StyledForm = styled.form`
 	grid-template-rows: unset;
@@ -38,15 +38,15 @@ const StyledSynonym = styled.span`
 	font-weight: normal;
 `;
 
-export default function AddDictionary({
+export default function DictionaryAdd({
 	dictionary,
 	onFormSubmitEntries,
 	onDeleteEntry
 }) {
 	const { title, entries } = dictionary;
 
-	let [synonyms, setSynonym] = useState(entries.key || []);
-	let [meanings, setMeaning] = useState(entries.value || []);
+	let [synonyms, setSynonyms] = useState(entries.key || []);
+	let [meanings, setMeanings] = useState(entries.value || []);
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -55,8 +55,8 @@ export default function AddDictionary({
 		const synonym = form.synonym.value;
 		const meaning = form.meaning.value;
 
-		setSynonym((synonyms = [...synonyms, synonym]));
-		setMeaning((meanings = [...meanings, meaning]));
+		setSynonyms((synonyms = [...synonyms, synonym]));
+		setMeanings((meanings = [...meanings, meaning]));
 
 		onFormSubmitEntries({
 			title,
@@ -104,7 +104,7 @@ export default function AddDictionary({
 	);
 }
 
-AddDictionary.propType = {
+DictionaryAdd.propType = {
 	dictionary: PropType.obj,
 	onFormSubmitEntries: PropType.func
 };

@@ -1,5 +1,5 @@
+import NavLink from '../../app/NavLink.js';
 import React from 'react';
-import NavLink from '../app/NavLink.js';
 import styled from 'styled-components';
 
 const StyledNavLink = styled(NavLink)`

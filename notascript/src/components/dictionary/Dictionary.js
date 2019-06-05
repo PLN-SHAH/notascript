@@ -1,7 +1,7 @@
-import React from 'react';
-import NavLink from '../app/NavLink.js';
-import styled from 'styled-components';
+import NavLink from '../../app/NavLink.js';
 import PropType from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledContainer = styled.section`
 	display: grid;

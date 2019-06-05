@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavLink from '../app/NavLink.js';
+import NavLink from '../../app/NavLink.js';
 import DomainList from '../domains/DomainList.js';
 import PropTypes from 'prop-types';
-import { Title } from '../misc/Style.js';
+import { Title } from '../../misc/Style.js';
 
+const StyledTitle = styled(Title)``;
+const StyledNavLink = styled(NavLink)``;
 const StyledDocument = styled.section`
 	padding: 20px;
 	border-left-width: 15px;
@@ -14,10 +16,6 @@ const StyledDocument = styled.section`
 	width: 100vw;
 	padding: 20px;
 `;
-
-const StyledTitle = styled(Title)``;
-
-const StyledNavLink = styled(NavLink)``;
 
 const StyledSymbols = styled.section`
 	background-color: #f2f2f2;
@@ -36,7 +34,7 @@ const StyledSymbolsSheet = styled.section`
 	height: 100%;
 `;
 
-export default function DocumentDetailView({ selectedDocument }) {
+export default function DocumentDetail({ selectedDocument }) {
 	const { title, description, symbols, domains } = selectedDocument;
 
 	return (
@@ -58,7 +56,7 @@ export default function DocumentDetailView({ selectedDocument }) {
 	);
 }
 
-DocumentDetailView.propTypes = {
+DocumentDetail.propTypes = {
 	title: PropTypes.string,
 	description: PropTypes.string,
 	domains: PropTypes.array,

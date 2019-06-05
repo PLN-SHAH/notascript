@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import Header from './Header.js';
+import DictionaryAdd from '../components/dictionary/DictionaryAdd.js';
+import DocumentCreate from '../components/create/Document';
+import DictionaryList from '../components/dictionary/DictionaryList.js';
+import DocumentDetail from '../components/documents/DocumentDetails.js';
+import DocumentsPage from '../components/documents/DocumentsPage.js';
+import DomainsPage from '../components/domains/DomainsPage.js';
+import Edit from '../components/edit/Edit.js';
 import Footer from './Footer.js';
-import WorkPage from '../Work/WorkPage.js';
-import DocumentsPage from '../Documents/DocumentsPage.js';
-import DomainsPage from '../domains/DomainsPage.js';
-import DictionaryList from '../dictionary/DictionaryList.js';
-import AddDictionary from '../dictionary/AddDictionary.js';
-import Edit from '../edit/Edit.js';
-import CreateDocument from '../create/CreateDocument';
-import OverviewPage from '../Overview/OverviewPage.js';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import DocumentDetailView from '../Documents/DocumentDetailView.js';
+import Header from './Header.js';
+import OverviewPage from '../components/overview/OverviewPage.js';
+import React, { Component } from 'react';
+import WorkPage from '../components/work/WorkPage.js';
 import styled from 'styled-components';
 import uid from 'uid';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 const StyledContent = styled.section`
 	overflow-y: scroll;
@@ -103,7 +103,7 @@ export default class App extends Component {
 		});
 	}
 
-	addDictionary({ title }) {
+	DictionaryAdd({ title }) {
 		const newDictionary = {
 			title,
 			entries: [],
@@ -195,7 +195,7 @@ export default class App extends Component {
 						<Route
 							path='/create'
 							render={props => (
-								<CreateDocument
+								<DocumentCreate
 									onFormSubmit={data => this.addDocument(data)}
 									domainList={this.state.domains}
 									{...props}
@@ -215,9 +215,9 @@ export default class App extends Component {
 							path='/dictionaries'
 							render={() => (
 								<DictionaryList
-									dictionaries={this.state.dictionaries}
+									dictionaryList={this.state.dictionaries}
 									onDelete={document => this.deleteDictionary(document)}
-									onFormSubmit={dictionary => this.addDictionary(dictionary)}
+									onFormSubmit={dictionary => this.DictionaryAdd(dictionary)}
 								/>
 							)}
 						/>
@@ -235,7 +235,7 @@ export default class App extends Component {
 						<Route
 							path='/details/:id'
 							render={props => (
-								<DocumentDetailView
+								<DocumentDetail
 									selectedDocument={this.showDetails(
 										{ props },
 										this.state.documents
@@ -261,7 +261,7 @@ export default class App extends Component {
 						<Route
 							path='/editDictionary/:id'
 							render={props => (
-								<AddDictionary
+								<DictionaryAdd
 									dictionary={this.showDetails(
 										{ props },
 										this.state.dictionaries
@@ -280,7 +280,7 @@ export default class App extends Component {
 										{ props },
 										this.state.documents
 									)}
-									dictionaries={this.state.dictionaries}
+									dictionaryList={this.state.dictionaries}
 									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 									{...props}
 								/>

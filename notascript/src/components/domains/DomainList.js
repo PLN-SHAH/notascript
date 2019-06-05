@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Domain from './Domain.js';
 import styled from 'styled-components';
-import { DomainList as Domainlist } from '../misc/Style.js';
+import { DomainList as Domainlist } from '../../misc/Style.js';
 
 const StyledDomainlist = styled(Domainlist)``;
 

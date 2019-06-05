@@ -1,24 +1,20 @@
-import styled from 'styled-components';
 import PropType from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
-import { Button } from '../misc/Style.js';
+import styled from 'styled-components';
+import uid from 'uid';
+import { Button } from '../../misc/Style.js';
 
 const StyledButton = styled(Button)``;
+
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
 	margin-top: 10px;
 	height: 45px;
 `;
 
-export default function EditForm({
-	onFormSubmit,
-	domainList,
-	selectedDocument
-}) {
-	const { title, description, id, symbols } = selectedDocument || {};
-
-	function handleOnSubmit(event) {
+export default function FormCreate({ onFormSubmit, domainList }) {
+	function handleSubmit(event) {
 		event.preventDefault();
 
 		const form = event.target;
@@ -30,8 +26,7 @@ export default function EditForm({
 			title,
 			description,
 			domains,
-			symbols,
-			id
+			id: uid()
 		});
 	}
 
@@ -41,41 +36,40 @@ export default function EditForm({
 	}));
 
 	return (
-		<form onSubmit={handleOnSubmit}>
+		<form onSubmit={handleSubmit}>
 			<label htmlFor='title'>New Title</label>
 			<input
 				name='title'
 				placeholder='type title here...'
 				type='text'
-				defaultValue={selectedDocument && title}
 				required
 			/>
-			<label htmlFor='description'>New Description</label>
+			<label htmlFor='description'>New Description </label>
 			<textarea
 				name='description'
 				placeholder='type description here...'
 				type='text'
-				defaultValue={selectedDocument && description}
 				required
 			/>
-			<div>{selectedDocument && symbols}</div>
-			<label htmlFor='domainFirst'>Choose domains</label>
-			<StyledSelect
-				name='domainFirst'
-				options={options}
-				defaultValue={options[0]}
-			/>
-			<StyledSelect
-				name='domainSecond'
-				options={options}
-				defaultValue={options[1]}
-			/>
+			<label htmlFor='domainFirst'>
+				Choose domains
+				<StyledSelect
+					name='domainFirst'
+					options={options}
+					defaultValue={options[0]}
+				/>
+				<StyledSelect
+					name='domainSecond'
+					options={options}
+					defaultValue={options[1]}
+				/>
+			</label>
 			<StyledButton>save</StyledButton>
 		</form>
 	);
 }
 
-EditForm.propType = {
+FormCreate.propType = {
 	onFormSubmit: PropType.func.isRequired,
 	domainList: PropType.array,
 	selectedDocument: PropType.object

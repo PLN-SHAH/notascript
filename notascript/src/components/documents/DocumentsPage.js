@@ -1,17 +1,18 @@
-import NavLink from '../app/NavLink.js';
-import React from 'react';
 import DocumentList from './DocumentList.js';
-import styled from 'styled-components';
+import NavLink from '../../app/NavLink.js';
 import PropType from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledNavLink = styled(NavLink)`
 	display: grid;
 	margin: 10px;
-	> i {
-		font-size: 2em;
-		justify-self: end;
-		color: #4d6c99;
-	}
+`;
+
+const StyledIcon = styled.i`
+	font-size: 2em;
+	justify-self: end;
+	color: #4d6c99;
 `;
 
 const StyledDocumentsContainer = styled.section`
@@ -22,7 +23,7 @@ export default function DocumentsPage({ documentList, onDelete }) {
 	return (
 		<StyledDocumentsContainer>
 			<StyledNavLink to='/create'>
-				<i className='far fa-plus-square' />
+				<StyledIcon className='far fa-plus-square' />
 			</StyledNavLink>
 			<DocumentList documentList={documentList} onDelete={onDelete} />
 		</StyledDocumentsContainer>
