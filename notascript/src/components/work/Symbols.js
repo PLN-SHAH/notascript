@@ -31,12 +31,12 @@ const StyledButtonContainer = styled.section`
 export default function Buttons({
 	createdSymbols,
 	handleButtonClick,
-	dictionaries
+	dictionaryList
 }) {
 	const [filter, setFilter] = useState('');
 
 	function getFilterTitle() {
-		return dictionaries.map(dict => dict.title);
+		return dictionaryList.map(dict => dict.title);
 	}
 
 	function handleOnClick(filter) {
@@ -44,7 +44,7 @@ export default function Buttons({
 	}
 
 	function getFilteredOutput() {
-		const dict = filter && dictionaries.find(dict => dict.title === filter);
+		const dict = filter && dictionaryList.find(dict => dict.title === filter);
 
 		filter === 'all' ? (dict.entries = createdSymbols) : console.log('no all');
 
@@ -77,5 +77,5 @@ export default function Buttons({
 Buttons.propTypes = {
 	createdSymbols: PropTypes.array,
 	handleButtonClick: PropTypes.func,
-	dictionaries: PropTypes.array
+	dictionaryList: PropTypes.array
 };
