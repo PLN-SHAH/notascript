@@ -19,11 +19,13 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledButton = styled.button`
-	font-size: 2em;
+	font-size: 1em;
 	background: lightgrey;
-	border: none;
 	padding: 5px;
-	color: white;
+
+	> i {
+		color: white;
+	}
 `;
 
 const StyledContainer = styled.section`

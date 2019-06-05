@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import NavLink from '../app/NavLink.js';
 import { Link } from 'react-router-dom';
 import DomainList from '../domains/DomainList.js';
-import { Title, RouteLink } from '../misc/Style.js';
 
 const StyledFile = styled.section`
 	border: 1px solid #ccc;
@@ -18,17 +18,12 @@ const StyledFile = styled.section`
 `;
 const StyledCta = styled.section`
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	justify-content: end;
 `;
 
-const StyledButton = styled.button`
-	border: none;
-	justify-self: right;
-`;
-
-const StyledTitle = styled(Title)``;
-const StyledNavLink = styled(RouteLink)`
-	color: #c11212;
+const StyledIcon = styled.i`
+	color: #4d6c99;
 `;
 
 export default function Document({ document, onDelete }) {
@@ -37,19 +32,19 @@ export default function Document({ document, onDelete }) {
 		document && (
 			<StyledFile>
 				<StyledCta>
-					<Link to={`edit/${id}`}>
-						<i className='far fa-edit' />
-					</Link>
-					<StyledButton onClick={onDelete}>
+					<NavLink to={`edit/${id}`}>
+						<StyledIcon className='far fa-edit' />
+					</NavLink>
+					<button onClick={onDelete}>
 						<i className='fas fa-trash-alt' />
-					</StyledButton>
+					</button>
 				</StyledCta>
 				<Link to={`details/${id}`}>
-					<StyledTitle>{title}</StyledTitle>
+					<h4>{title}</h4>
 					<p>{description}</p>
 					<DomainList domainList={domains} />
 				</Link>
-				<StyledNavLink to={`work/${id}`}>...continue work</StyledNavLink>
+				<NavLink to={`work/${id}`}>...continue work</NavLink>
 			</StyledFile>
 		)
 	);

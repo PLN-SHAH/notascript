@@ -8,10 +8,12 @@ const StyledSymbolsContainer = styled.section`
 `;
 
 const StyledSymbol = styled.button`
-	font-size: 1.8em;
+	font-size: 1.3em;
+	height: 30px;
+	width: auto;
 	padding: 5px;
 	color: #4d6c99;
-	border: none;
+	padding: 5px;
 	font-weight: 200;
 	background: transparent;
 `;
@@ -19,13 +21,7 @@ const StyledSymbol = styled.button`
 const StyledButtons = styled.button`
 	background-color: #4d6c99;
 	color: #fff;
-	border: none;
 	padding: 10px;
-
-	&::active,
-	&::focus {
-		background: red;
-	}
 `;
 
 const StyledButtonContainer = styled.section`
