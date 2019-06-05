@@ -5,9 +5,17 @@ import PropType from 'prop-types';
 
 const StyledContainer = styled.section`
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	align-items: center;
+	grid-template-columns: repeat(2, 1fr);
 	padding: 0 20px;
+`;
+
+const StyledButtonDelete = styled.button`
+	justify-self: end;
+`;
+
+const StyledIcons = styled.section`
+	display: grid;
+	justify-content: end;
 `;
 
 export default function Dictionary({ dictionary, onDelete }) {
@@ -16,12 +24,14 @@ export default function Dictionary({ dictionary, onDelete }) {
 	return (
 		<StyledContainer>
 			<h4>{title}</h4>
-			<NavLink to={`/editDictionary/${id}`}>
-				<i className='far fa-edit' />
-			</NavLink>
-			<button onClick={onDelete}>
-				<i className='fas fa-trash-alt' />
-			</button>
+			<StyledIcons>
+				<NavLink to={`/editDictionary/${id}`}>
+					<i className='far fa-edit' />
+				</NavLink>
+				<StyledButtonDelete onClick={onDelete}>
+					<i className='fas fa-trash-alt' />
+				</StyledButtonDelete>
+			</StyledIcons>
 		</StyledContainer>
 	);
 }

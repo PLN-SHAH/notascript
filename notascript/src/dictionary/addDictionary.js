@@ -11,6 +11,11 @@ const StyledForm = styled.form`
 const StyledButton = styled(Button)`
 	width: 100%;
 `;
+
+const StyledButtonDelete = styled.button`
+	justify-self: end;
+`;
+
 const StyledTitle = styled.h4`
 	text-align: center;
 `;
@@ -22,6 +27,10 @@ const StyledList = styled.ul`
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		align-items: center;
+
+		> span {
+			text-align: center;
+		}
 	}
 `;
 
@@ -85,9 +94,9 @@ export default function AddDictionary({
 					<li key={entries.key}>
 						<StyledSynonym>{entry.key}</StyledSynonym>
 						<span>{entry.value}</span>
-						<button onClick={onDeleteEntry}>
+						<StyledButtonDelete onClick={onDeleteEntry}>
 							<i className='fas fa-trash-alt' />
-						</button>
+						</StyledButtonDelete>
 					</li>
 				))}
 			</StyledList>

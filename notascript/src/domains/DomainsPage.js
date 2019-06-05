@@ -10,7 +10,8 @@ const StyledTitle = styled.h4`
 `;
 const StyledForm = styled.form`
 	padding: 20px;
-	display: grid;
+	height: unset;
+	grid-template-rows: unset;
 `;
 
 export default function DomainsPage({ domainList, onFormSubmit }) {
