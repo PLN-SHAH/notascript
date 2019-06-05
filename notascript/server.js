@@ -23,6 +23,23 @@ app.post('/documents', (req, res) => {
 	console.log('Successful Document Update');
 });
 
+app.delete('/documents/:id', (req, res) => {
+	const { id } = req.params;
+	Document.findByIdAndDelete(id)
+		.then(document => res.status(200).json(document))
+		.catch(err => res.status(500).json(err));
+});
+
+app.patch('/cards/:id', (req, res) => {
+	const { id } = req.params;
+	const { title, description } = req.body;
+
+	Document.findByIdAndUpdate(id, { title, description }, { new: true })
+		.then(document => res.json(cdocumentard))
+		.catch(err => err.json({ errors: [err] }));
+});
+
+//CONFIGURATION
 const db = 'mongodb://localhost:27017/notascript';
 const port = process.env.PORT || 4000;
 
