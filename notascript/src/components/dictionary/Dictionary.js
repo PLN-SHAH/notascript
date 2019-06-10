@@ -14,8 +14,7 @@ const StyledButtonDelete = styled.button`
 `;
 
 const StyledIcons = styled.section`
-	display: grid;
-	justify-content: end;
+	text-align: right;
 `;
 
 export default function Dictionary({ dictionary, onDelete }) {

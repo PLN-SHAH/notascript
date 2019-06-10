@@ -1,10 +1,10 @@
-import React from 'react';
 import Document from './Document';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 export default function DocumentList({ documentList, onDelete }) {
 	return (
-		<section>
+		<>
 			{documentList.map(document => (
 				<Document
 					key={document.id}
@@ -13,7 +13,7 @@ export default function DocumentList({ documentList, onDelete }) {
 					{...document}
 				/>
 			))}
-		</section>
+		</>
 	);
 }
 

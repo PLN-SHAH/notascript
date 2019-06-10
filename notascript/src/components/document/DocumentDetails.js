@@ -1,17 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavLink from '../../app/NavLink.js';
-import DomainList from '../domain/DomainList.js';
 import PropTypes from 'prop-types';
-import { Title } from '../../misc/Style.js';
+import { Title, NavIcon } from '../../misc/Style.js';
 
-const StyledTitle = styled(Title)``;
-const StyledNavLink = styled(NavLink)``;
+const StyledTitle = styled(Title)`
+	font-weight: bold;
+	color: #7cd365;
+`;
+const StyledNavLink = styled(NavLink)`
+	display: grid;
+	justify-content: flex-end;
+`;
 const StyledDocument = styled.section`
+	border-top: 5px solid #7cd365;
 	padding: 20px;
-	border-left-width: 15px;
-	border-left-color: #4d6c99;
-	border-left-style: solid;
 	word-break: break-all;
 	width: 100vw;
 	padding: 20px;
@@ -34,8 +37,10 @@ const StyledSymbolsSheet = styled.section`
 	height: 100%;
 `;
 
+const StyledNavIcon = styled(NavIcon)``;
+
 export default function DocumentDetail({ selectedDocument }) {
-	const { title, description, symbols, domains } = selectedDocument;
+	const { title, description, symbols } = selectedDocument;
 
 	return (
 		selectedDocument && (
@@ -46,11 +51,12 @@ export default function DocumentDetail({ selectedDocument }) {
 					</StyledNavLink>
 					<StyledTitle>{title}</StyledTitle>
 					<p>{description}</p>
-					<DomainList domainList={domains} />
 				</StyledDocument>
 				<StyledSymbols>
 					<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
 				</StyledSymbols>
+
+				<StyledNavIcon className='fas fa-copy' />
 			</>
 		)
 	);
@@ -59,6 +65,5 @@ export default function DocumentDetail({ selectedDocument }) {
 DocumentDetail.propTypes = {
 	title: PropTypes.string,
 	description: PropTypes.string,
-	domains: PropTypes.array,
 	symbols: PropTypes.array
 };

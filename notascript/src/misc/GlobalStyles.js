@@ -14,16 +14,11 @@ export default createGlobalStyle`
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
     font-size: 18px;
-    color: #170444;
+    color: #373f43;
   }
-
-  i {
-    color: #c11212;
-  }
-
   main {
     display: grid;
-    grid-template-rows: 40px auto 80px;
+    grid-template-rows: 40px auto 40px;
     height: 100vh;
   }
 
@@ -45,7 +40,7 @@ export default createGlobalStyle`
 
     a {
       text-decoration: none;
-      color:#170444;
+      color:#373f43;
 
       &:hover {
         text-decoration: none;
@@ -54,7 +49,7 @@ export default createGlobalStyle`
 
     h4{
       word-break: break-all;
-      color: #4d6c99;
+      color: #373f43;
       font-weight: normal;
       margin: 0;
     }
@@ -77,12 +72,11 @@ input {
 	font-size: 1rem;
 	padding-left: 5px;
 	height: 45px;
-	border-radius: 5px;
 	margin-bottom: 10px;
 }
 
 label {
-  color: #4d6c99;
+  color: #373f43;
 	font-weight: normal;
 	margin-bottom: 10px;
 }
@@ -93,7 +87,6 @@ textarea {
 	padding-left: 5px;
 	width: 100%;
 	height: 150px;
-	border-radius: 5px;
 	margin-bottom: 10px;
 }
 
@@ -105,7 +98,7 @@ form {
 }
 
 button {
+  font-size: 1em;
   border: none;
-  border-radius: 5px;
 }
 `;

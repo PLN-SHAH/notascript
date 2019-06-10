@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Symbols from './Symbols';
 import styled from 'styled-components';
-import { Title } from '../../misc/Style.js';
+import { Title, Subtitle, NavIcon } from '../../misc/Style.js';
 
 const StyledSymbols = styled.section`
 	font-size: 2em;
@@ -11,14 +11,25 @@ const StyledSymbols = styled.section`
 	padding: 20px;
 	min-height: 350px;
 	overflow-y: scroll;
+
+	span {
+		padding: 0 10px;
+	}
 `;
 
 const StyledTitle = styled(Title)`
 	padding: 20px;
+	color: #373f43;
+	display: grid;
+	font-weight: bold;
 `;
 
+const StyledSubtitle = styled(Subtitle)``;
+
+const StyledNavIcon = styled(NavIcon)``;
+
 const StyledButton = styled.button`
-	font-size: 1em;
+	font-size: 1.5em;
 	background: lightgrey;
 	padding: 5px;
 
@@ -30,6 +41,7 @@ const StyledButton = styled.button`
 const StyledContainer = styled.section`
 	display: grid;
 	grid-template-rows: 50px auto auto;
+	border-top: 5px solid #d32e4a;
 `;
 
 const StyledToolbar = styled.section`
@@ -82,7 +94,10 @@ export default function WorkPage({
 
 	return (
 		<StyledContainer>
-			<StyledTitle>{selectedDocument && title}</StyledTitle>
+			<StyledTitle>
+				<StyledSubtitle>document title</StyledSubtitle>
+				{selectedDocument && title}
+			</StyledTitle>
 			<StyledSymbols>
 				<span>{selectedDocument && newSymbolList}</span>
 			</StyledSymbols>
@@ -101,6 +116,7 @@ export default function WorkPage({
 					renderSymbols(symbolFromButton);
 				}}
 			/>
+			<StyledNavIcon className='fas fa-file-signature' />
 		</StyledContainer>
 	);
 }

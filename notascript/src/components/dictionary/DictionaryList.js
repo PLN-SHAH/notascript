@@ -2,13 +2,23 @@ import Dictionary from './Dictionary.js';
 import PropType from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from '../../misc/Style.js';
+import { Button, NavIcon } from '../../misc/Style.js';
 
-const StyledButton = styled(Button)``;
+const StyledButton = styled(Button)`
+	background-color: #29c1ee;
+`;
 const StyledForm = styled.form`
 	grid-template-rows: auto;
 	height: unset;
+	border-top: 5px solid #29c1ee;
 `;
+
+const StyledLabel = styled.label`
+	font-weight: bold;
+	color: #29c1ee;
+`;
+
+const StyledNavIcon = styled(NavIcon)``;
 
 export default function DictionaryList({
 	dictionaryList,
@@ -27,7 +37,7 @@ export default function DictionaryList({
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit}>
-				<label htmlFor='title'>New title</label>
+				<StyledLabel htmlFor='title'>New title</StyledLabel>
 				<input
 					name='title'
 					placeholder='type title here...'
@@ -45,6 +55,7 @@ export default function DictionaryList({
 					onDeleteEntry={entry => onDeleteEntry(entry)}
 				/>
 			))}
+			<StyledNavIcon className='fas fa-book' />
 		</>
 	);
 }

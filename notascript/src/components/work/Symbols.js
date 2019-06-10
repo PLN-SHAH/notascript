@@ -12,20 +12,19 @@ const StyledSymbol = styled.button`
 	height: 30px;
 	width: auto;
 	padding: 5px;
-	color: #4d6c99;
-	padding: 5px;
-	font-weight: 200;
+	color: #373f43;
+	border: none;
 	background: transparent;
 `;
 
 const StyledButtons = styled.button`
-	background-color: #4d6c99;
+	background-color: #d32e4a;
 	color: #fff;
 	padding: 10px;
 `;
 
 const StyledButtonContainer = styled.section`
-	border-bottom: 1px solid #4d6c99;
+	border-bottom: 1px solid #d32e4a;
 `;
 
 export default function Buttons({

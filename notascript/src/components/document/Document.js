@@ -6,28 +6,28 @@ import styled from 'styled-components';
 
 const StyledFile = styled.section`
 	border: 1px solid #ccc;
-	border-radius: 5px;
+	border-top: 10px solid #373f43;
 	box-shadow: -2px 3px 3px 0 #ccc;
 	margin-bottom: 20px;
-	border-left-width: 15px;
-	border-left-color: #4d6c99;
-	grid-template-rows: 50px auto auto;
 	padding: 20px;
-	display: grid;
-	width: 100%;
 `;
 const StyledCta = styled.section`
-	display: grid;
-	grid-template-rows: repeat(2, 1fr);
-	justify-content: end;
+	text-align: right;
 `;
 
 const StyledIcon = styled.i`
-	color: #4d6c99;
+	color: #373f43;
 `;
 
 const StyledNavLink = styled(NavLink)`
-	text-align: left;
+	> h4 {
+		font-weight: bold;
+		color: #7cd365;
+	}
+
+	> p {
+		color: #373f43;
+	}
 `;
 
 export default function Document({ document, onDelete }) {
@@ -46,9 +46,11 @@ export default function Document({ document, onDelete }) {
 				<StyledNavLink to={`details/${id}`}>
 					<h4>{title}</h4>
 					<p>{description}</p>
-					<DomainList domainList={domains} />
+					{/* 	<DomainList domainList={domains} /> */}
 				</StyledNavLink>
-				<StyledNavLink to={`work/${id}`}>...continue work</StyledNavLink>
+				<NavLink to={`work/${id}`}>
+					...continue work <i className='fas fa-file-signature' />
+				</NavLink>
 			</StyledFile>
 		)
 	);

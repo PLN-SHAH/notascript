@@ -1,19 +1,28 @@
 import NavLink from '../../app/NavLink.js';
 import React from 'react';
 import styled from 'styled-components';
+import { NavIcon } from '../../misc/Style.js';
 
 const StyledNavLink = styled(NavLink)`
-	color: #4d6c99;
-	border: 1px solid #4d6c99;
-	border-radius: 5px;
-	display: grid;
-	padding: 10px;
-	text-align: center;
-	justify-content: center;
+	color: white;
+	background-color: #7cd365;
+	font-family: 'Raleway';
+	padding: 20px;
 	font-size: 2em;
+	text-align: left;
+	box-shadow: 3px 3px 3px 2px #ccc;
 
 	> i {
-		color: #4d6c99;
+		color: white;
+		padding-right: 20px;
+	}
+
+	&:nth-child(2) {
+		background-color: #ee8329;
+	}
+
+	&:nth-child(3) {
+		background-color: #29c1ee;
 	}
 `;
 
@@ -28,23 +37,28 @@ const StyledNav = styled.nav`
 	height: 100%;
 `;
 
+const StyledNavIcon = styled(NavIcon)``;
+
 export default function OverviewPage() {
 	return (
-		<StyledNavContainer>
-			<StyledNav>
-				<StyledNavLink to='/documents'>
-					<i className='fas fa-copy' />
-					Documents
-				</StyledNavLink>
-				<StyledNavLink to='/domains'>
-					<i className='fas fa-tags' />
-					Domains
-				</StyledNavLink>
-				<StyledNavLink to='/dictionaries'>
-					<i className='fas fa-book' />
-					Dictionaries
-				</StyledNavLink>
-			</StyledNav>
-		</StyledNavContainer>
+		<>
+			<StyledNavContainer>
+				<StyledNav>
+					<StyledNavLink to='/documents'>
+						<i className='fas fa-copy' />
+						Documents
+					</StyledNavLink>
+					<StyledNavLink to='/domains'>
+						<i className='fas fa-tags' />
+						Domains
+					</StyledNavLink>
+					<StyledNavLink to='/dictionaries'>
+						<i className='fas fa-book' />
+						Dictionaries
+					</StyledNavLink>
+				</StyledNav>
+			</StyledNavContainer>
+			<StyledNavIcon className='fas fa-cog' />
+		</>
 	);
 }

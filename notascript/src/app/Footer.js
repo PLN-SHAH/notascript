@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Navigation from './Navigation.js';
 
 const StyledFooter = styled.footer`
-	background-color: #a6bee0;
-	font-size: 2em;
+	background-color: #373f43;
 `;
 
 export default function Footer() {

@@ -3,14 +3,27 @@ import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 import uid from 'uid';
-import { Button } from '../../misc/Style.js';
+import { Button, NavIcon } from '../../misc/Style.js';
 
-const StyledButton = styled(Button)``;
+const StyledNavIcon = styled(NavIcon)``;
+
+const StyledButton = styled(Button)`
+	background: #7cd365;
+`;
+
+const StyledForm = styled.form`
+	border-top: 5px solid #7cd365;
+`;
 
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
 	margin-top: 10px;
 	height: 45px;
+`;
+
+const StyledLabel = styled.label`
+	font-weight: bold;
+	color: #7cd365;
 `;
 
 export default function FormCreate({ onFormSubmit, domainList }) {
@@ -36,22 +49,23 @@ export default function FormCreate({ onFormSubmit, domainList }) {
 	}));
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor='title'>New Title</label>
-			<input
-				name='title'
-				placeholder='type title here...'
-				type='text'
-				required
-			/>
-			<label htmlFor='description'>New Description </label>
-			<textarea
-				name='description'
-				placeholder='type description here...'
-				type='text'
-				required
-			/>
-			<label htmlFor='domainFirst'>
+		<>
+			<StyledForm onSubmit={handleSubmit}>
+				<StyledLabel htmlFor='title'>New Title</StyledLabel>
+				<input
+					name='title'
+					placeholder='type title here...'
+					type='text'
+					required
+				/>
+				<StyledLabel htmlFor='description'>New Description </StyledLabel>
+				<textarea
+					name='description'
+					placeholder='type description here...'
+					type='text'
+					required
+				/>
+				{/* <label htmlFor='domainFirst'>
 				Choose domains
 				<StyledSelect
 					name='domainFirst'
@@ -63,9 +77,11 @@ export default function FormCreate({ onFormSubmit, domainList }) {
 					options={options}
 					defaultValue={options[1]}
 				/>
-			</label>
-			<StyledButton>save</StyledButton>
-		</form>
+			</label> */}
+				<StyledButton>save</StyledButton>
+			</StyledForm>
+			<StyledNavIcon className='far fa-plus-square' />
+		</>
 	);
 }
 

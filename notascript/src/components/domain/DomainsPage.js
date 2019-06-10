@@ -2,17 +2,20 @@ import DomainList from './DomainList.js';
 import PropType from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from '../../misc/Style.js';
+import { Button, NavIcon } from '../../misc/Style.js';
 
-const StyledButton = styled(Button)``;
-const StyledTitle = styled.h4`
-	padding: 20px;
+const StyledButton = styled(Button)`
+	background-color: #ee8329;
 `;
+
 const StyledForm = styled.form`
 	padding: 20px;
 	height: unset;
 	grid-template-rows: unset;
+	border-top: 5px solid #ee8329;
 `;
+
+const StyledNavIcon = styled(NavIcon)``;
 
 export default function DomainsPage({ domainList, onFormSubmit }) {
 	function handleSubmit(event) {
@@ -23,9 +26,8 @@ export default function DomainsPage({ domainList, onFormSubmit }) {
 
 	return (
 		<>
-			<StyledTitle>Add or edit domains</StyledTitle>
 			<StyledForm onSubmit={handleSubmit}>
-				<label htmlFor='name'>New title</label>
+				<label htmlFor='name'>New domain name</label>
 				<input
 					name='name'
 					placeholder='add domain name here..'
@@ -35,6 +37,7 @@ export default function DomainsPage({ domainList, onFormSubmit }) {
 				<StyledButton>add</StyledButton>
 			</StyledForm>
 			<DomainList domainList={domainList} />
+			<StyledNavIcon className='fas fa-tags' />
 		</>
 	);
 }

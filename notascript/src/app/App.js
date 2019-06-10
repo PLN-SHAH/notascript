@@ -13,6 +13,7 @@ import WorkPage from '../components/work/WorkPage.js';
 import styled from 'styled-components';
 import uid from 'uid';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { postDocument } from '../Services';
 
 const StyledContent = styled.section`
 	overflow-y: scroll;
@@ -102,6 +103,18 @@ export default class App extends Component {
 			documents: [newDocument, ...this.state.documents]
 		});
 	}
+
+	createDocument = (data, history) => {
+		postDocument(data)
+			.then(newDocument => {
+				this.setState({
+					...this.state,
+					documents: [newDocument, ...this.state.documents]
+				});
+				history.push('/');
+			})
+			.catch(error => console.log(error));
+	};
 
 	DictionaryAdd({ title }) {
 		const newDictionary = {
@@ -196,7 +209,7 @@ export default class App extends Component {
 							path='/create'
 							render={props => (
 								<DocumentCreate
-									onFormSubmit={data => this.addDocument(data)}
+									onFormSubmit={data => this.createDocument(data)}
 									domainList={this.state.domains}
 									{...props}
 								/>

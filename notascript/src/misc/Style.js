@@ -1,6 +1,21 @@
 import styled from 'styled-components';
 import NavLink from '../app/NavLink.js';
 
+export const NavIcon = styled.i`
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10px;
+	color: white;
+	padding: 10px;
+`;
+
+export const Subtitle = styled.span`
+	font-size: 0.5em;
+	color: #ddd;
+	font-weight: bold;
+`;
+
 export const Formular = styled.form`
 	height: 100%;
 	padding: 20px;
@@ -28,16 +43,12 @@ export const Title = styled.h4`
 `;
 
 export const DomainTag = styled.li`
-	margin: 5px 10px;
-	background: #4d6c99;
-	border-radius: 5px;
-	box-shadow: -2px 3px 3px 0 #ccc;
-	color: white;
-	padding: 10px;
+	color: #ee8329;
+	font-weight: bold;
 `;
 
 export const DomainList = styled.ul`
-	display: flex;
+	padding: 20px;
 `;
 
 export const RouteLink = styled(NavLink)`

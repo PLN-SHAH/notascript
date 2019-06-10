@@ -1,24 +1,37 @@
 import PropType from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from '../../misc/Style.js';
+import { Button, Subtitle, NavIcon } from '../../misc/Style.js';
 
 const StyledForm = styled.form`
 	grid-template-rows: unset;
 	height: unset;
+	border-top: 5px solid #2eadd3;
 `;
 
 const StyledButton = styled(Button)`
 	width: 100%;
+	background-color: #2eadd3;
 `;
 
 const StyledButtonDelete = styled.button`
 	justify-self: end;
 `;
 
+const StyledSubtitle = styled(Subtitle)``;
+
 const StyledTitle = styled.h4`
 	text-align: center;
+	display: grid;
+	margin-bottom: 10px;
 `;
+
+const StyledLabel = styled.label`
+	font-weight: bold;
+	color: #2eadd3;
+`;
+
+const StyledNavIcon = styled(NavIcon)``;
 
 const StyledList = styled.ul`
 	padding: 20px;
@@ -67,16 +80,19 @@ export default function DictionaryAdd({
 
 	return (
 		<>
-			<StyledTitle>{title}</StyledTitle>
 			<StyledForm onSubmit={handleSubmit}>
-				<label htmlFor='synonym'>Synonym</label>
+				<StyledTitle>
+					<StyledSubtitle>dictionary</StyledSubtitle>
+					{title}
+				</StyledTitle>
+				<StyledLabel htmlFor='synonym'>Synonym</StyledLabel>
 				<input
 					name='synonym'
 					placeholder='type synonym here...'
 					type='text'
 					required
 				/>
-				<label htmlFor='meaning'>Meaning</label>
+				<StyledLabel htmlFor='meaning'>Meaning</StyledLabel>
 				<input
 					name='meaning'
 					placeholder='type meaning here...'
@@ -100,6 +116,7 @@ export default function DictionaryAdd({
 					</li>
 				))}
 			</StyledList>
+			<StyledNavIcon className='fas fa-book' />
 		</>
 	);
 }
