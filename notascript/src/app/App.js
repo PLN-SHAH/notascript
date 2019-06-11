@@ -32,32 +32,7 @@ const StyledContent = styled.section`
 
 export default class App extends Component {
 	state = {
-		dictionaries: [
-			{
-				title: 'shorthands',
-				id: uid(),
-				entries: [
-					{ key: '1', value: 'first' },
-					{ key: '2', value: 'second' },
-					{ key: '3', value: 'third' }
-				]
-			},
-			{
-				title: 'stuff',
-				id: uid(),
-				entries: [
-					{ key: 'I', value: 'Iran' },
-					{ key: 'Tr', value: 'Türkei' },
-					{ key: 'Bo', value: 'Bolivien' }
-				]
-			},
-			{
-				title: 'all',
-				id: uid(),
-				entries: []
-			}
-		],
-
+		dictionaries: [],
 		domains: ['random', 'important', 'do'],
 		documents: []
 	};
@@ -158,7 +133,7 @@ export default class App extends Component {
 			]
 		});
 	}
-
+	//delete entry
 	removeDictionary(dictionary) {
 		const index = getIndex(this.state.dictionaries, dictionary);
 
@@ -170,6 +145,10 @@ export default class App extends Component {
 				...this.state.dictionaries.slice(index + 1)
 			]
 		});
+	}
+
+	removeData(data) {
+		data === 'document' ? console.log(data) : console.log('should be dict');
 	}
 
 	componentDidMount() {
