@@ -30,7 +30,7 @@ app.delete('/documents/:id', (req, res) => {
 		.catch(err => res.status(500).json(err));
 });
 
-app.patch('/cards/:id', (req, res) => {
+app.patch('/documents/:id', (req, res) => {
 	const { id } = req.params;
 	const { title, description } = req.body;
 

@@ -3,7 +3,6 @@ export function getDocuments() {
 }
 
 export function postDocument(data) {
-	console.log('in postDocument');
 	return fetchDocument('POST', data);
 }
 
@@ -12,15 +11,10 @@ export function deleteDocument(data, id) {
 }
 
 export function patchDocument(data, id) {
-	return fetchDocument('patch', data, id);
-}
-
-export function getIndex(list, item) {
-	return list.findIndex(listItem => listItem.id === item.id);
+	return fetchDocument('PATCH', data, id);
 }
 
 function fetchDocument(method, data, id = '') {
-	console.log('in fetch card');
 	return fetch('/documents/' + id, {
 		method,
 		headers: {
@@ -28,4 +22,7 @@ function fetchDocument(method, data, id = '') {
 		},
 		body: JSON.stringify(data)
 	}).then(res => res.json());
+}
+export function getIndex(list, item) {
+	return list.findIndex(listItem => listItem.id === item.id);
 }

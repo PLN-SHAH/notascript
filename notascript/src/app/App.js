@@ -71,26 +71,14 @@ export default class App extends Component {
 			.catch(error => console.log(error));
 	};
 
-	addDocument({ title, description, domains, symbols }) {
-		const newDocument = {
-			title,
-			description,
-			id: uid(),
-			domains,
-			symbols: symbols || ['*']
-		};
-
-		this.setState({
-			...this.state,
-			documents: [newDocument, ...this.state.documents]
-		});
+	readDocument({ props }) {
+		const selectionArray = this.state.documents.filter(
+			document => document._id === props.match.params.id
+		);
+		return selectionArray[0];
 	}
 
-	componentDidMount() {
-		this.loadDocuments();
-	}
-
-	loadDocuments() {
+	readDocuments() {
 		getDocuments()
 			.then(data => {
 				this.setState({
@@ -101,12 +89,55 @@ export default class App extends Component {
 			.catch(error => console.log(error));
 	}
 
-	deleteDocument(document) {
-		deleteDocument(document, document._id);
+	updateDocument(document) {
+		patchDocument(document, document._id);
+
+		const index = getIndex(this.state.documents, document);
+		const { title, description, domains, symbols, _id } = document;
+
+		const updatedDocument = {
+			title,
+			description,
+			domains,
+			symbols,
+			_id
+		};
+
+		this.setState({
+			...this.state,
+			documents: [
+				...this.state.documents.slice(0, index),
+				updatedDocument,
+				...this.state.documents.slice(index + 1)
+			]
+		});
 	}
 
-	editDocument(document) {
-		patchDocument(document, document._id);
+	removeDocument(document) {
+		const index = getIndex(this.state.documents, document);
+
+		deleteDocument(document, document._id);
+
+		this.setState({
+			documents: [
+				...this.state.documents.slice(0, index),
+				...this.state.documents.slice(index + 1)
+			]
+		});
+	}
+	deleteDictionary(dictionary) {
+		const index = getIndex(this.state.dictionaries, dictionary);
+
+		this.setState({
+			dictionaries: [
+				...this.state.dictionaries.slice(0, index),
+				...this.state.dictionaries.slice(index + 1)
+			]
+		});
+	}
+
+	componentDidMount() {
+		this.readDocuments();
 	}
 
 	DictionaryAdd({ title }) {
@@ -120,57 +151,6 @@ export default class App extends Component {
 			...this.state,
 			dictionaries: [newDictionary, ...this.state.dictionaries]
 		});
-	}
-
-	updateDocument(document) {
-		const index = getIndex(this.state.documents, document);
-		const { title, description, domains, symbols, id } = document;
-
-		const updatedDocument = {
-			title,
-			description,
-			domains,
-			symbols,
-			id
-		};
-
-		this.setState({
-			...this.state,
-			documents: [
-				...this.state.documents.slice(0, index),
-				updatedDocument,
-				...this.state.documents.slice(index + 1)
-			]
-		});
-	}
-
-	/*deleteDocument(document) {
-		const index = getIndex(this.state.documents, document);
-
-		this.setState({
-			documents: [
-				...this.state.documents.slice(0, index),
-				...this.state.documents.slice(index + 1)
-			]
-		});
-	}*/
-
-	deleteDictionary(dictionary) {
-		const index = getIndex(this.state.dictionaries, dictionary);
-
-		this.setState({
-			dictionaries: [
-				...this.state.dictionaries.slice(0, index),
-				...this.state.dictionaries.slice(index + 1)
-			]
-		});
-	}
-
-	showDocumentDetails({ props }) {
-		const selectionArray = this.state.documents.filter(
-			document => document._id === props.match.params.id
-		);
-		return selectionArray[0];
 	}
 
 	showDetails({ props }, dataArray) {
@@ -243,8 +223,7 @@ export default class App extends Component {
 								<DocumentsPage
 									documentList={this.state.documents}
 									onDelete={document => {
-										this.deleteDocument(document);
-										this.deleteDocument(document);
+										this.removeDocument(document);
 									}}
 									{...props}
 								/>
@@ -255,7 +234,7 @@ export default class App extends Component {
 							path='/details/:id'
 							render={props => (
 								<DocumentDetail
-									selectedDocument={this.showDocumentDetails({ props })}
+									selectedDocument={this.readDocument({ props })}
 								/>
 							)}
 						/>
@@ -263,10 +242,7 @@ export default class App extends Component {
 							path='/edit/:id'
 							render={props => (
 								<Edit
-									selectedDocument={this.showDetails(
-										{ props },
-										this.state.documents
-									)}
+									selectedDocument={this.readDocument({ props })}
 									onFormSubmit={document => this.updateDocument(document)}
 									domainList={this.state.domains}
 									{...props}
@@ -292,7 +268,7 @@ export default class App extends Component {
 							path='/work/:id'
 							render={props => (
 								<WorkPage
-									selectedDocument={this.showDocumentDetails({ props })}
+									selectedDocument={this.readDocument({ props })}
 									dictionaryList={this.state.dictionaries}
 									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 									{...props}

@@ -25,9 +25,7 @@ export default function EditForm({
 	domainList,
 	selectedDocument
 }) {
-	const { title, description, id, symbols } = selectedDocument || {};
-	console.log('in edit form');
-	console.log('in edit form selectedDocument', selectedDocument);
+	const { title, description, _id, symbols } = selectedDocument || {};
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
@@ -42,7 +40,7 @@ export default function EditForm({
 			description,
 			/*domains,*/
 			symbols,
-			id
+			_id
 		});
 	}
 
