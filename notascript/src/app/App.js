@@ -13,7 +13,13 @@ import WorkPage from '../components/work/WorkPage.js';
 import styled from 'styled-components';
 import uid from 'uid';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { postDocument } from '../Services';
+import {
+	postDocument,
+	getDocuments,
+	deleteDocument,
+	patchDocument,
+	getIndex
+} from '../Services';
 
 const StyledContent = styled.section`
 	overflow-y: scroll;
@@ -50,44 +56,20 @@ export default class App extends Component {
 		],
 
 		domains: ['random', 'important', 'do'],
-		documents: [
-			{
-				title: 'Eins',
-				description:
-					'Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel',
-				id: uid(),
-				domains: ['Gericht', 'Straftrecht'],
-				symbols: ['A', 'Ȇ', 'ȇ', 'Ȉ', 'Ȑ', 'A']
-			},
-			{
-				title: 'Zwei',
-				description:
-					'But I must explain to you how all this mistaken idea of denouncing',
-				id: uid(),
-				domains: ['Zeitung', 'Medien'],
-				symbols: ['C', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
-			},
-			{
-				title: 'Drei',
-				description: 'lalalalala',
-				id: uid(),
-				domains: ['Zeitung', 'Medien'],
-				symbols: ['C', 'Ȃ', 'ȃ', 'Ȅ', 'ȅ', 'Ȇ', 'ȇ', 'Ȉ', 'ȉ', 'Ȑ']
-			}
-		]
+		documents: []
 	};
 
-	getIndex(document) {
-		return this.state.documents.findIndex(
-			arrayItem => arrayItem.id === document.id
-		);
-	}
-
-	getIndexDict(dictionary) {
-		return this.state.dictionaries.findIndex(
-			arrayItem => arrayItem.id === dictionary.id
-		);
-	}
+	createDocument = (data, history) => {
+		postDocument(data)
+			.then(newDocument => {
+				this.setState({
+					...this.state,
+					documents: [newDocument, ...this.state.documents]
+				});
+				history.push('/');
+			})
+			.catch(error => console.log(error));
+	};
 
 	addDocument({ title, description, domains, symbols }) {
 		const newDocument = {
@@ -104,17 +86,28 @@ export default class App extends Component {
 		});
 	}
 
-	createDocument = (data, history) => {
-		postDocument(data)
-			.then(newDocument => {
+	componentDidMount() {
+		this.loadDocuments();
+	}
+
+	loadDocuments() {
+		getDocuments()
+			.then(data => {
 				this.setState({
 					...this.state,
-					documents: [newDocument, ...this.state.documents]
+					documents: data
 				});
-				history.push('/');
 			})
 			.catch(error => console.log(error));
-	};
+	}
+
+	deleteDocument(document) {
+		deleteDocument(document, document._id);
+	}
+
+	editDocument(document) {
+		patchDocument(document, document._id);
+	}
 
 	DictionaryAdd({ title }) {
 		const newDictionary = {
@@ -130,7 +123,7 @@ export default class App extends Component {
 	}
 
 	updateDocument(document) {
-		const index = this.getIndex(document);
+		const index = getIndex(this.state.documents, document);
 		const { title, description, domains, symbols, id } = document;
 
 		const updatedDocument = {
@@ -151,8 +144,8 @@ export default class App extends Component {
 		});
 	}
 
-	deleteDocument(document) {
-		const index = this.getIndex(document);
+	/*deleteDocument(document) {
+		const index = getIndex(this.state.documents, document);
 
 		this.setState({
 			documents: [
@@ -160,10 +153,10 @@ export default class App extends Component {
 				...this.state.documents.slice(index + 1)
 			]
 		});
-	}
+	}*/
 
 	deleteDictionary(dictionary) {
-		const index = this.getIndexDict(dictionary);
+		const index = getIndex(this.state.dictionaries, dictionary);
 
 		this.setState({
 			dictionaries: [
@@ -173,10 +166,20 @@ export default class App extends Component {
 		});
 	}
 
+	showDocumentDetails({ props }) {
+		const selectionArray = this.state.documents.filter(
+			document => document._id === props.match.params.id
+		);
+		return selectionArray[0];
+	}
+
 	showDetails({ props }, dataArray) {
+		console.log('in showDetails ', this.state.documents);
 		const selectionArray = dataArray.filter(
 			document => document.id === props.match.params.id
 		);
+
+		console.log('in showDetails ', selectionArray);
 		return selectionArray[0];
 	}
 
@@ -239,7 +242,10 @@ export default class App extends Component {
 							render={props => (
 								<DocumentsPage
 									documentList={this.state.documents}
-									onDelete={document => this.deleteDocument(document)}
+									onDelete={document => {
+										this.deleteDocument(document);
+										this.deleteDocument(document);
+									}}
 									{...props}
 								/>
 							)}
@@ -249,10 +255,7 @@ export default class App extends Component {
 							path='/details/:id'
 							render={props => (
 								<DocumentDetail
-									selectedDocument={this.showDetails(
-										{ props },
-										this.state.documents
-									)}
+									selectedDocument={this.showDocumentDetails({ props })}
 								/>
 							)}
 						/>
@@ -289,10 +292,7 @@ export default class App extends Component {
 							path='/work/:id'
 							render={props => (
 								<WorkPage
-									selectedDocument={this.showDetails(
-										{ props },
-										this.state.documents
-									)}
+									selectedDocument={this.showDocumentDetails({ props })}
 									dictionaryList={this.state.dictionaries}
 									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 									{...props}

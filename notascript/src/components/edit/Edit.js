@@ -8,6 +8,7 @@ export default function Edit({
 	domainList,
 	history
 }) {
+	console.log('selectedDocument in edit', selectedDocument);
 	function handleSubmit(doc) {
 		onFormSubmit({
 			...doc

@@ -26,6 +26,8 @@ export default function EditForm({
 	selectedDocument
 }) {
 	const { title, description, id, symbols } = selectedDocument || {};
+	console.log('in edit form');
+	console.log('in edit form selectedDocument', selectedDocument);
 
 	function handleOnSubmit(event) {
 		event.preventDefault();

@@ -28,6 +28,8 @@ const StyledLabel = styled.label`
 `;
 
 export default function FormCreate({ onFormSubmit, domainList }) {
+	console.log('in create form');
+
 	function handleSubmit(event) {
 		event.preventDefault();
 

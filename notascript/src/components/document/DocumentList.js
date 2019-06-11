@@ -7,7 +7,7 @@ export default function DocumentList({ documentList, onDelete }) {
 		<>
 			{documentList.map(document => (
 				<Document
-					key={document.id}
+					key={document._id}
 					document={document}
 					onDelete={() => onDelete(document)}
 					{...document}

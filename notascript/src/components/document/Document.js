@@ -35,24 +35,24 @@ const StyledDeleteButton = styled.button`
 `;
 
 export default function Document({ document, onDelete }) {
-	const { id, title, domains, description } = document;
+	const { _id, title, domains, description } = document;
 	return (
 		document && (
 			<StyledFile>
 				<StyledCta>
-					<NavLink to={`edit/${id}`}>
+					<NavLink to={`edit/${_id}`}>
 						<StyledIcon className='far fa-edit' />
 					</NavLink>
 					<StyledDeleteButton onClick={onDelete}>
 						<i className='fas fa-trash-alt' />
 					</StyledDeleteButton>
 				</StyledCta>
-				<StyledNavLink to={`details/${id}`}>
+				<StyledNavLink to={`details/${_id}`}>
 					<h4>{title}</h4>
 					<p>{description}</p>
 					{/* 	<DomainList domainList={domains} /> */}
 				</StyledNavLink>
-				<NavLink to={`work/${id}`}>
+				<NavLink to={`work/${_id}`}>
 					...continue work <i className='fas fa-file-signature' />
 				</NavLink>
 			</StyledFile>

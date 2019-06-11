@@ -35,7 +35,7 @@ app.patch('/cards/:id', (req, res) => {
 	const { title, description } = req.body;
 
 	Document.findByIdAndUpdate(id, { title, description }, { new: true })
-		.then(document => res.json(cdocumentard))
+		.then(document => res.json(document))
 		.catch(err => err.json({ errors: [err] }));
 });
 
