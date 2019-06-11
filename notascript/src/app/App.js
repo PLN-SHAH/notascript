@@ -159,7 +159,6 @@ export default class App extends Component {
 		});
 	}
 
-	//löscht immer das erste element
 	removeDictionary(dictionary) {
 		const index = getIndex(this.state.dictionaries, dictionary);
 
@@ -177,10 +176,15 @@ export default class App extends Component {
 		this.readDocuments();
 		this.readDictionaries();
 	}
-	addDomain(domainName) {
+
+	/*addDomain(domainName) {
 		this.setState({
 			domains: [domainName, ...this.state.domains]
 		});
+	}*/
+
+	deleteEntry() {
+		console.log('delete entry');
 	}
 
 	addEntryToDict(entry) {

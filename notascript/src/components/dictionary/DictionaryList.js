@@ -27,12 +27,17 @@ export default function DictionaryList({
 	onDeleteEntry
 }) {
 	function handleSubmit(event) {
+		const title = event.target.title;
+
 		event.preventDefault();
 
 		onFormSubmit({
-			title: event.target.title.value,
+			title: title.value,
 			entries: []
 		});
+
+		title.value = '';
+		title.focus();
 	}
 
 	return (

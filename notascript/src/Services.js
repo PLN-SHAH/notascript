@@ -47,5 +47,5 @@ function fetchDictionary(method, data, id = '') {
 }
 
 export function getIndex(list, item) {
-	return list.findIndex(listItem => listItem.id === item.id);
+	return list.findIndex(listItem => listItem._id === item._id);
 }
