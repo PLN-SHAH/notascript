@@ -13,6 +13,7 @@ const StyledButton = styled(Button)`
 
 const StyledForm = styled.form`
 	border-top: 5px solid #7cd365;
+	grid-template-rows: auto;
 `;
 
 const StyledSelect = styled(Select)`
@@ -33,12 +34,12 @@ export default function FormCreate({ onFormSubmit, domainList }) {
 		const form = event.target;
 		const title = form.title.value;
 		const description = form.description.value;
-		const domains = [form.domainFirst.value, form.domainSecond.value];
+		//const domains = [form.domainFirst.value, form.domainSecond.value];
 
 		onFormSubmit({
 			title,
 			description,
-			domains,
+			/*domains,*/
 			id: uid()
 		});
 	}

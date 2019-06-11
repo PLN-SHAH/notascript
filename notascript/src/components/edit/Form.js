@@ -33,12 +33,12 @@ export default function EditForm({
 		const form = event.target;
 		const title = form.title.value;
 		const description = form.description.value;
-		const domains = [form.domainFirst.value, form.domainSecond.value];
+		//const domains = [form.domainFirst.value, form.domainSecond.value];
 
 		onFormSubmit({
 			title,
 			description,
-			domains,
+			/*domains,*/
 			symbols,
 			id
 		});

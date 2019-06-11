@@ -16,6 +16,7 @@ const StyledButton = styled(Button)`
 
 const StyledButtonDelete = styled.button`
 	justify-self: end;
+	background: white;
 `;
 
 const StyledSubtitle = styled(Subtitle)``;

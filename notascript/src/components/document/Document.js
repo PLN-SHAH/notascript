@@ -30,6 +30,10 @@ const StyledNavLink = styled(NavLink)`
 	}
 `;
 
+const StyledDeleteButton = styled.button`
+	background: white;
+`;
+
 export default function Document({ document, onDelete }) {
 	const { id, title, domains, description } = document;
 	return (
@@ -39,9 +43,9 @@ export default function Document({ document, onDelete }) {
 					<NavLink to={`edit/${id}`}>
 						<StyledIcon className='far fa-edit' />
 					</NavLink>
-					<button onClick={onDelete}>
+					<StyledDeleteButton onClick={onDelete}>
 						<i className='fas fa-trash-alt' />
-					</button>
+					</StyledDeleteButton>
 				</StyledCta>
 				<StyledNavLink to={`details/${id}`}>
 					<h4>{title}</h4>

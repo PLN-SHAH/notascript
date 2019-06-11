@@ -11,6 +11,7 @@ const StyledContainer = styled.section`
 
 const StyledButtonDelete = styled.button`
 	justify-self: end;
+	background: white;
 `;
 
 const StyledIcons = styled.section`
