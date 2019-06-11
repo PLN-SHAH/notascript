@@ -11,18 +11,20 @@ import OverviewPage from '../components/overview/OverviewPage.js';
 import React, { Component } from 'react';
 import WorkPage from '../components/work/WorkPage.js';
 import styled from 'styled-components';
-import uid from 'uid';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { getIndex } from '../services/Services.js';
 import {
-	postDocument,
-	getDocuments,
-	getDictionaries,
 	deleteDocument,
-	deleteDictionary,
+	getDocuments,
 	patchDocument,
-	getIndex,
+	postDocument
+} from '../services/ServiceDocument.js';
+
+import {
+	deleteDictionary,
+	getDictionaries,
 	postDictionary
-} from '../Services';
+} from '../services/ServiceDictionary.js';
 
 const StyledContent = styled.section`
 	overflow-y: scroll;
@@ -36,6 +38,10 @@ export default class App extends Component {
 		domains: ['random', 'important', 'do'],
 		documents: []
 	};
+
+	/*
+	const [documents, setDocuments] = useState([]);
+	const [dictionaries, setDictionaries] = useState([]);*/
 
 	createDocument = (data, history) => {
 		postDocument(data)
@@ -147,29 +153,25 @@ export default class App extends Component {
 		});
 	}
 
-	removeData(data) {
-		data === 'document' ? console.log(data) : console.log('should be dict');
-	}
-
 	componentDidMount() {
 		this.readDocuments();
 		this.readDictionaries();
 	}
 
-	/*addDomain(domainName) {
+	addDomain(domainName) {
 		this.setState({
 			domains: [domainName, ...this.state.domains]
 		});
-	}*/
-
-	deleteEntry() {
-		console.log('delete entry');
 	}
 
+	//deleteDomain
+	//deleteEntry
+
 	addEntryToDict(entry) {
-		const newEntry = { key: entry.synonym, value: entry.meaning };
+		const { synonym, title, meaning } = entry;
+		const newEntry = { key: synonym, value: meaning };
 		const selectedDict = this.state.dictionaries.find(
-			item => item.title === entry.title
+			item => item.title === title
 		);
 
 		selectedDict.entries = [...selectedDict.entries, newEntry];
