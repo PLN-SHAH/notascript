@@ -19,13 +19,13 @@ const StyledIcons = styled.section`
 `;
 
 export default function Dictionary({ dictionary, onDelete }) {
-	const { title, id } = dictionary;
+	const { title, _id } = dictionary;
 
 	return (
 		<StyledContainer>
 			<h4>{title}</h4>
 			<StyledIcons>
-				<NavLink to={`/editDictionary/${id}`}>
+				<NavLink to={`/editDictionary/${_id}`}>
 					<i className='far fa-edit' />
 				</NavLink>
 				<StyledButtonDelete onClick={onDelete}>

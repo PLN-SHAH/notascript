@@ -16,9 +16,12 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import {
 	postDocument,
 	getDocuments,
+	getDictionaries,
 	deleteDocument,
+	deleteDictionary,
 	patchDocument,
-	getIndex
+	getIndex,
+	postDictionary
 } from '../Services';
 
 const StyledContent = styled.section`
@@ -71,9 +74,28 @@ export default class App extends Component {
 			.catch(error => console.log(error));
 	};
 
+	createDictionary = (title, history) => {
+		postDictionary(title)
+			.then(newDictionary => {
+				this.setState({
+					...this.state,
+					dictionaries: [newDictionary, ...this.state.dictionaries]
+				});
+				history.push('/');
+			})
+			.catch(error => console.log(error));
+	};
+
 	readDocument({ props }) {
 		const selectionArray = this.state.documents.filter(
 			document => document._id === props.match.params.id
+		);
+		return selectionArray[0];
+	}
+
+	readDictionary({ props }) {
+		const selectionArray = this.state.dictionaries.filter(
+			dictionary => dictionary._id === props.match.params.id
 		);
 		return selectionArray[0];
 	}
@@ -84,6 +106,17 @@ export default class App extends Component {
 				this.setState({
 					...this.state,
 					documents: data
+				});
+			})
+			.catch(error => console.log(error));
+	}
+
+	readDictionaries() {
+		getDictionaries()
+			.then(data => {
+				this.setState({
+					...this.state,
+					dictionaries: data
 				});
 			})
 			.catch(error => console.log(error));
@@ -125,8 +158,12 @@ export default class App extends Component {
 			]
 		});
 	}
-	deleteDictionary(dictionary) {
+
+	//löscht immer das erste element
+	removeDictionary(dictionary) {
 		const index = getIndex(this.state.dictionaries, dictionary);
+
+		deleteDictionary(dictionary, dictionary._id);
 
 		this.setState({
 			dictionaries: [
@@ -138,31 +175,8 @@ export default class App extends Component {
 
 	componentDidMount() {
 		this.readDocuments();
+		this.readDictionaries();
 	}
-
-	DictionaryAdd({ title }) {
-		const newDictionary = {
-			title,
-			entries: [],
-			id: uid()
-		};
-
-		this.setState({
-			...this.state,
-			dictionaries: [newDictionary, ...this.state.dictionaries]
-		});
-	}
-
-	showDetails({ props }, dataArray) {
-		console.log('in showDetails ', this.state.documents);
-		const selectionArray = dataArray.filter(
-			document => document.id === props.match.params.id
-		);
-
-		console.log('in showDetails ', selectionArray);
-		return selectionArray[0];
-	}
-
 	addDomain(domainName) {
 		this.setState({
 			domains: [domainName, ...this.state.domains]
@@ -176,10 +190,6 @@ export default class App extends Component {
 		);
 
 		selectedDict.entries = [...selectedDict.entries, newEntry];
-	}
-
-	deleteEntry(entry) {
-		console.log(entry, 'in delete entry');
 	}
 
 	render() {
@@ -212,8 +222,8 @@ export default class App extends Component {
 							render={() => (
 								<DictionaryList
 									dictionaryList={this.state.dictionaries}
-									onDelete={document => this.deleteDictionary(document)}
-									onFormSubmit={dictionary => this.DictionaryAdd(dictionary)}
+									onDelete={document => this.removeDictionary(document)}
+									onFormSubmit={dictionary => this.createDictionary(dictionary)}
 								/>
 							)}
 						/>
@@ -254,10 +264,7 @@ export default class App extends Component {
 							path='/editDictionary/:id'
 							render={props => (
 								<DictionaryAdd
-									dictionary={this.showDetails(
-										{ props },
-										this.state.dictionaries
-									)}
+									dictionary={this.readDictionary({ props })}
 									onDeleteEntry={entry => this.deleteEntry(entry)}
 									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
 								/>

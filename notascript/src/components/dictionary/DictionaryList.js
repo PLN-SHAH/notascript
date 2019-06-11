@@ -30,7 +30,8 @@ export default function DictionaryList({
 		event.preventDefault();
 
 		onFormSubmit({
-			title: event.target.title.value
+			title: event.target.title.value,
+			entries: []
 		});
 	}
 
@@ -50,7 +51,7 @@ export default function DictionaryList({
 			{dictionaryList.map(dictionary => (
 				<Dictionary
 					dictionary={dictionary}
-					key={dictionary.id}
+					key={dictionary._id}
 					onDelete={() => onDelete(dictionary)}
 					onDeleteEntry={entry => onDeleteEntry(entry)}
 				/>

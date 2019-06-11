@@ -58,6 +58,7 @@ export default function DictionaryAdd({
 	onDeleteEntry
 }) {
 	const { title, entries } = dictionary;
+	console.log(dictionary, 'in dictionary');
 
 	let [synonyms, setSynonyms] = useState(entries.key || []);
 	let [meanings, setMeanings] = useState(entries.value || []);
