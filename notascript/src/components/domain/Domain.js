@@ -6,7 +6,7 @@ import { DomainTag } from '../../misc/Style.js';
 const StyledDomainTag = styled(DomainTag)``;
 
 export default function Domain({ domain }) {
-	return <StyledDomainTag key={domain}>{domain}</StyledDomainTag>;
+	return <StyledDomainTag key={domain._id}>{domain}</StyledDomainTag>;
 }
 
 Domain.propTypes = {

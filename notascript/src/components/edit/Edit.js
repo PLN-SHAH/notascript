@@ -3,21 +3,21 @@ import Form from './Form.js';
 import PropType from 'prop-types';
 
 export default function Edit({
-	selectedDocument,
 	onFormSubmit,
-	domainList,
+	selectedDocument,
+	domains,
 	history
 }) {
-	function handleSubmit(doc) {
+	function handleSubmit(document) {
 		onFormSubmit({
-			...doc
+			...document
 		});
 		history.push('/');
 	}
 	return (
 		<Form
 			onFormSubmit={handleSubmit}
-			domainList={domainList}
+			domains={domains}
 			selectedDocument={selectedDocument}
 		/>
 	);
@@ -25,7 +25,8 @@ export default function Edit({
 
 Edit.propType = {
 	onFormSubmit: PropType.func,
+	domains: PropType.array,
+	symbols: PropType.array,
 	selectedDocument: PropType.object,
-	domainList: PropType.array,
-	symbols: PropType.array
+	history: PropType.object
 };

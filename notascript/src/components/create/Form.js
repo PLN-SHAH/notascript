@@ -2,18 +2,21 @@ import PropType from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
-import uid from 'uid';
-import { Button, NavIcon } from '../../misc/Style.js';
-
-const StyledNavIcon = styled(NavIcon)``;
-
-const StyledButton = styled(Button)`
-	background: #7cd365;
-`;
+import { NavIcon } from '../../misc/Style.js';
 
 const StyledForm = styled.form`
 	border-top: 5px solid #7cd365;
 	grid-template-rows: auto;
+	height: unset;
+`;
+
+const StyledLabel = styled.label`
+	font-weight: bold;
+	color: #7cd365;
+`;
+
+const StyledButton = styled.button`
+	background: #7cd365;
 `;
 
 const StyledSelect = styled(Select)`
@@ -22,14 +25,8 @@ const StyledSelect = styled(Select)`
 	height: 45px;
 `;
 
-const StyledLabel = styled.label`
-	font-weight: bold;
-	color: #7cd365;
-`;
-
-export default function FormCreate({ onFormSubmit, domainList }) {
-	console.log('in create form');
-
+const StyledNavIcon = styled(NavIcon)``;
+export default function FormCreate({ onFormSubmit, domains }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 
@@ -40,13 +37,12 @@ export default function FormCreate({ onFormSubmit, domainList }) {
 
 		onFormSubmit({
 			title,
-			description,
+			description
 			/*domains,*/
-			id: uid()
 		});
 	}
 
-	const options = domainList.map(domain => ({
+	const options = domains.map(domain => ({
 		value: domain,
 		label: domain
 	}));
@@ -54,14 +50,14 @@ export default function FormCreate({ onFormSubmit, domainList }) {
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit}>
-				<StyledLabel htmlFor='title'>New Title</StyledLabel>
+				<StyledLabel htmlFor='title'>New title</StyledLabel>
 				<input
 					name='title'
 					placeholder='type title here...'
 					type='text'
 					required
 				/>
-				<StyledLabel htmlFor='description'>New Description </StyledLabel>
+				<StyledLabel htmlFor='description'>New description </StyledLabel>
 				<textarea
 					name='description'
 					placeholder='type description here...'
@@ -90,6 +86,6 @@ export default function FormCreate({ onFormSubmit, domainList }) {
 
 FormCreate.propType = {
 	onFormSubmit: PropType.func.isRequired,
-	domainList: PropType.array,
+	domains: PropType.array,
 	selectedDocument: PropType.object
 };

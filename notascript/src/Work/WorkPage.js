@@ -4,6 +4,15 @@ import styled from './node_modules/styled-components';
 import PropTypes from './node_modules/prop-types';
 import { Title } from '../../misc/Style.js';
 
+const StyledContainer = styled.section`
+	display: grid;
+	grid-template-rows: 50px auto auto;
+`;
+
+const StyledTitle = styled(Title)`
+	padding: 20px;
+`;
+
 const StyledSymbols = styled.section`
 	font-size: 2em;
 	word-break: break-all;
@@ -13,8 +22,9 @@ const StyledSymbols = styled.section`
 	overflow-y: scroll;
 `;
 
-const StyledTitle = styled(Title)`
-	padding: 20px;
+const StyledToolbar = styled.section`
+	position: absolute;
+	right: 0;
 `;
 
 const StyledButton = styled.button`
@@ -27,21 +37,11 @@ const StyledButton = styled.button`
 	}
 `;
 
-const StyledContainer = styled.section`
-	display: grid;
-	grid-template-rows: 50px auto auto;
-`;
-
-const StyledToolbar = styled.section`
-	position: absolute;
-	right: 0;
-`;
-
-export default function WorkPage({ selectedDocument, history, dictionaries }) {
+export default function WorkPage({ dictionaries, selectedDocument, history }) {
 	const { title, symbols } = selectedDocument;
 	const createdSymbols = createUnicodes(200, 40);
 
-	let [newSymbolList, setNewSymbolList] = useState(symbols);
+	let [newSymbols, setNewSymbols] = useState(symbols);
 
 	function createUnicodes(start, range) {
 		return Array(range)
@@ -53,55 +53,59 @@ export default function WorkPage({ selectedDocument, history, dictionaries }) {
 
 				return {
 					key,
-					value: key // TODO: choose some value
+					value: key
 				};
 			});
 	}
 
 	function renderSymbols(symbolFromButton) {
-		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
+		setNewSymbols([...newSymbols, symbolFromButton]);
 	}
 
-	function updateSymbols(event) {
-		setNewSymbolList(
-			(newSymbolList &&
-				newSymbolList.forEach(symbol => symbols.push(symbol))) ||
+	function updateSymbols() {
+		setNewSymbols(
+			(newSymbols && newSymbols.forEach(symbol => symbols.push(symbol))) ||
 				symbols
 		);
 		history.push('/');
 	}
 
 	function unDoSymbols() {
-		newSymbolList.pop();
-		setNewSymbolList((newSymbolList = [...newSymbolList]));
+		newSymbols.pop();
+		setNewSymbols([...newSymbols]);
 	}
 
 	return (
-		<StyledContainer>
-			<StyledTitle>{selectedDocument && title}</StyledTitle>
-			<StyledSymbols>
-				<span>{selectedDocument && newSymbolList}</span>
-			</StyledSymbols>
-			<StyledToolbar>
-				<StyledButton onClick={updateSymbols}>
-					<i className='far fa-check-square' />
-				</StyledButton>
-				<StyledButton onClick={unDoSymbols}>
-					<i className='fas fa-undo' />
-				</StyledButton>
-			</StyledToolbar>
-			<Buttons
-				createdSymbols={createdSymbols}
-				dictionaries={dictionaries}
-				handleButtonClick={symbolFromButton => {
-					renderSymbols(symbolFromButton);
-				}}
-			/>
-		</StyledContainer>
+		<>
+			{selectedDocument && (
+				<StyledContainer>
+					<StyledTitle>{title}</StyledTitle>
+					<StyledSymbols>
+						<span>{newSymbols}</span>
+					</StyledSymbols>
+					<StyledToolbar>
+						<StyledButton onClick={updateSymbols}>
+							<i className='far fa-check-square' />
+						</StyledButton>
+						<StyledButton onClick={unDoSymbols}>
+							<i className='fas fa-undo' />
+						</StyledButton>
+					</StyledToolbar>
+					<Buttons
+						createdSymbols={createdSymbols}
+						dictionaries={dictionaries}
+						handleButtonClick={symbolFromButton => {
+							renderSymbols(symbolFromButton);
+						}}
+					/>
+				</StyledContainer>
+			)}
+		</>
 	);
 }
 
 WorkPage.propTypes = {
 	selectedDocument: PropTypes.object,
-	dictionaries: PropTypes.array
+	dictionaries: PropTypes.array,
+	history: PropTypes.object
 };

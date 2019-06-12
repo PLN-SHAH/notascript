@@ -38,51 +38,16 @@ export default function App() {
 	const [domains, setDomains] = useState([]);
 
 	useEffect(() => {
-		loadDocuments();
-		loadDictionaries();
+		loadData();
 	}, []);
 
-	const createDocument = (data, history) => {
-		postDocument(data)
-			.then(newDocument => {
-				setDocuments([...documents, newDocument]);
-				history.push('/');
-			})
-			.catch(error => console.log(error));
-	};
-
-	const createDictionary = (title, history) => {
-		postDictionary(title)
-			.then(newDictionary => {
-				setDictionaries([...dictionaries, newDictionary]);
-				history.push('/');
-			})
-			.catch(error => console.log(error));
-	};
-
-	const readDocument = props => {
-		const selectionArray = documents.filter(
-			document => document._id === props.match.params.id
-		);
-		return selectionArray[0];
-	};
-
-	const readDictionary = props => {
-		const selectionArray = dictionaries.filter(
-			dictionary => dictionary._id === props.match.params.id
-		);
-		return selectionArray[0];
-	};
-
-	function loadDocuments() {
+	function loadData() {
 		getDocuments()
 			.then(data => {
 				setDocuments(data);
 			})
 			.catch(error => console.log(error));
-	}
 
-	function loadDictionaries() {
 		getDictionaries()
 			.then(data => {
 				setDictionaries(data);
@@ -90,11 +55,32 @@ export default function App() {
 			.catch(error => console.log(error));
 	}
 
-	const updateDocument = document => {
-		patchDocument(document, document._id);
+	const createDocument = (data, history) => {
+		postDocument(data)
+			.then(newDocument => {
+				setDocuments([newDocument, ...documents]);
+				history.push('/');
+			})
+			.catch(error => console.log(error));
+	};
 
-		const index = getIndex(documents, document);
+	const createDictionary = (data, history) => {
+		postDictionary(data)
+			.then(newDictionary => {
+				setDictionaries([...dictionaries, newDictionary]);
+				history.push('/');
+			})
+			.catch(error => console.log(error));
+	};
+
+	const readData = (props, dataList) => {
+		return dataList.filter(data => data._id === props.match.params.id)[0];
+	};
+
+	const updateDocument = document => {
 		const { title, description, domains, symbols, _id } = document;
+		const index = getIndex(documents, document);
+		patchDocument(document, document._id);
 
 		const updatedDocument = {
 			title,
@@ -130,19 +116,15 @@ export default function App() {
 		]);
 	};
 
-	const addDomain = domainName => {
+	const createDomain = domainName => {
 		setDomains([domainName, ...domains]);
 	};
 
-	//deleteDomain
-	//deleteEntry
-
-	const addEntryToDict = entry => {
-		const { synonym, title, meaning } = entry;
+	const createDictionaryEntry = ({ title, synonym, meaning }) => {
 		const newEntry = { key: synonym, value: meaning };
-		const selectedDict = dictionaries.find(item => item.title === title);
+		const dictionary = dictionaries.find(item => item.title === title);
 
-		selectedDict.entries = [...selectedDict.entries, newEntry];
+		dictionary.entries = [...dictionary.entries, newEntry];
 	};
 
 	return (
@@ -155,7 +137,7 @@ export default function App() {
 						render={props => (
 							<DocumentCreate
 								onFormSubmit={data => createDocument(data)}
-								domainList={domains}
+								domains={domains}
 								{...props}
 							/>
 						)}
@@ -164,8 +146,8 @@ export default function App() {
 						path='/domains'
 						render={() => (
 							<DomainsPage
-								domainList={domains}
-								onFormSubmit={data => addDomain(data)}
+								onFormSubmit={data => createDomain(data)}
+								domains={domains}
 							/>
 						)}
 					/>
@@ -173,9 +155,9 @@ export default function App() {
 						path='/dictionaries'
 						render={() => (
 							<DictionaryList
-								dictionaryList={dictionaries}
+								onFormSubmit={data => createDictionary(data)}
 								onDelete={document => removeDictionary(document)}
-								onFormSubmit={dictionary => createDictionary(dictionary)}
+								dictionaries={dictionaries}
 							/>
 						)}
 					/>
@@ -183,10 +165,10 @@ export default function App() {
 						path='/documents'
 						render={props => (
 							<DocumentsPage
-								documentList={documents}
 								onDelete={document => {
 									removeDocument(document);
 								}}
+								documents={documents}
 								{...props}
 							/>
 						)}
@@ -195,16 +177,16 @@ export default function App() {
 					<Route
 						path='/details/:id'
 						render={props => (
-							<DocumentDetail selectedDocument={readDocument(props)} />
+							<DocumentDetail selectedDocument={readData(props, documents)} />
 						)}
 					/>
 					<Route
 						path='/edit/:id'
 						render={props => (
 							<Edit
-								selectedDocument={readDocument(props)}
 								onFormSubmit={document => updateDocument(document)}
-								domainList={domains}
+								domains={domains}
+								selectedDocument={readData(props, documents)}
 								{...props}
 							/>
 						)}
@@ -214,9 +196,8 @@ export default function App() {
 						path='/editDictionary/:id'
 						render={props => (
 							<DictionaryAdd
-								dictionary={readDictionary(props)}
-								/*onDeleteEntry={entry => deleteEntry(entry)}*/
-								onFormSubmitEntries={entry => addEntryToDict(entry)}
+								onFormSubmitEntries={entry => createDictionaryEntry(entry)}
+								dictionary={readData(props, dictionaries)}
 							/>
 						)}
 					/>
@@ -225,24 +206,15 @@ export default function App() {
 						path='/work/:id'
 						render={props => (
 							<WorkPage
-								selectedDocument={readDocument(props)}
-								dictionaryList={dictionaries}
-								onFormSubmitEntries={entry => addEntryToDict(entry)}
+								onFormSubmitEntries={entry => createDictionaryEntry(entry)}
+								dictionaries={dictionaries}
+								selectedDocument={readData(props, documents)}
 								{...props}
 							/>
 						)}
 					/>
 
-					<Route
-						path='/overview'
-						render={props => (
-							<OverviewPage
-								documentList={documents}
-								onDelete={document => deleteDocument(document)}
-								{...props}
-							/>
-						)}
-					/>
+					<Route path='/overview' render={props => <OverviewPage />} />
 					<Redirect from='/' to='/documents' />
 					<Route exact path='/not-found' component={() => <h1>Not Found</h1>} />
 				</Switch>

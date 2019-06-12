@@ -23,23 +23,9 @@ export const Formular = styled.form`
 	grid-template-rows: 1fr 3fr 1fr 1fr;
 `;
 
-export const Button = styled.button`
-	background: #4d6c99;
-	padding: 5px;
-	color: white;
-	max-height: 50px;
-	border: none;
-	font-family: 'Dancing Script', cursive;
-	font-size: 2rem;
-	text-align: center;
-	margin: 10px 0;
-`;
-
 export const Title = styled.h4`
 	word-break: break-all;
-	color: #4d6c99;
 	font-weight: normal;
-	margin: 0;
 `;
 
 export const DomainTag = styled.li`

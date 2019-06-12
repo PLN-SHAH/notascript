@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const StyledButtonContainer = styled.section`
+	border-bottom: 1px solid #d32e4a;
+`;
+
+const StyledButtons = styled.button`
+	background-color: #d32e4a;
+	margin: 0;
+	font-size: 1.2em;
+	font-family: 'Raleway', sans-serif;
+`;
+
 const StyledSymbolsContainer = styled.section`
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
@@ -17,25 +28,15 @@ const StyledSymbol = styled.button`
 	background: transparent;
 `;
 
-const StyledButtons = styled.button`
-	background-color: #d32e4a;
-	color: #fff;
-	padding: 10px;
-`;
-
-const StyledButtonContainer = styled.section`
-	border-bottom: 1px solid #d32e4a;
-`;
-
 export default function Buttons({
-	createdSymbols,
 	handleButtonClick,
-	dictionaryList
+	createdSymbols,
+	dictionaries
 }) {
 	const [filter, setFilter] = useState('');
 
 	function getFilterTitle() {
-		return dictionaryList.map(dict => dict.title);
+		return dictionaries.map(dictionary => dictionary.title);
 	}
 
 	function handleOnClick(filter) {
@@ -43,11 +44,14 @@ export default function Buttons({
 	}
 
 	function getFilteredOutput() {
-		const dict = filter && dictionaryList.find(dict => dict.title === filter);
+		const dictionary =
+			filter && dictionaries.find(dictionary => dictionary.title === filter);
 
-		filter === 'all' ? (dict.entries = createdSymbols) : console.log('no all');
+		filter === 'all'
+			? (dictionary.entries = createdSymbols)
+			: console.log('no all');
 
-		return (dict && dict.entries) || createdSymbols;
+		return (dictionary && dictionary.entries) || createdSymbols;
 	}
 
 	return (
@@ -74,7 +78,7 @@ export default function Buttons({
 }
 
 Buttons.propTypes = {
-	createdSymbols: PropTypes.array,
 	handleButtonClick: PropTypes.func,
-	dictionaryList: PropTypes.array
+	createdSymbols: PropTypes.array,
+	dictionaries: PropTypes.array
 };

@@ -2,11 +2,17 @@ import PropType from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
-import { Button, NavIcon } from '../../misc/Style.js';
+import { NavIcon } from '../../misc/Style.js';
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.button`
 	background-color: #7cd365;
 `;
+
+const StyledForm = styled.form`
+	height: unset;
+	grid-template-rows: unset;
+`;
+
 const StyledSelect = styled(Select)`
 	font-size: 1rem;
 	margin-top: 10px;
@@ -20,11 +26,7 @@ const StyledLabel = styled.label`
 
 const StyledNavIcon = styled(NavIcon)``;
 
-export default function EditForm({
-	onFormSubmit,
-	domainList,
-	selectedDocument
-}) {
+export default function EditForm({ onFormSubmit, domains, selectedDocument }) {
 	const { title, description, _id, symbols } = selectedDocument || {};
 
 	function handleOnSubmit(event) {
@@ -44,32 +46,31 @@ export default function EditForm({
 		});
 	}
 
-	const options = domainList.map(domain => ({
+	const options = domains.map(domain => ({
 		value: domain,
 		label: domain
 	}));
 
 	return (
-		<>
-			<form onSubmit={handleOnSubmit}>
-				<StyledLabel htmlFor='title'>New Title</StyledLabel>
-				<input
-					name='title'
-					placeholder='type title here...'
-					type='text'
-					defaultValue={selectedDocument && title}
-					required
-				/>
-				<StyledLabel htmlFor='description'>New Description</StyledLabel>
-				<textarea
-					name='description'
-					placeholder='type description here...'
-					type='text'
-					defaultValue={selectedDocument && description}
-					required
-				/>
-				<div>{selectedDocument && symbols}</div>
-				{/* <label htmlFor='domainFirst'>Choose domains</label>
+		<StyledForm onSubmit={handleOnSubmit}>
+			<StyledLabel htmlFor='title'>edit title</StyledLabel>
+			<input
+				name='title'
+				placeholder='type title here...'
+				type='text'
+				defaultValue={selectedDocument && title}
+				required
+			/>
+			<StyledLabel htmlFor='description'>edit description</StyledLabel>
+			<textarea
+				name='description'
+				placeholder='type description here...'
+				type='text'
+				defaultValue={selectedDocument && description}
+				required
+			/>
+			<div>{selectedDocument && symbols}</div>
+			{/* <label htmlFor='domainFirst'>Choose domains</label>
 			<StyledSelect
 				name='domainFirst'
 				options={options}
@@ -80,15 +81,14 @@ export default function EditForm({
 				options={options}
 				defaultValue={options[1]}
 			/> */}
-				<StyledButton>save</StyledButton>
-			</form>
+			<StyledButton>save</StyledButton>
 			<StyledNavIcon className='fas fa-copy' />
-		</>
+		</StyledForm>
 	);
 }
 
 EditForm.propType = {
 	onFormSubmit: PropType.func.isRequired,
-	domainList: PropType.array,
+	domains: PropType.array,
 	selectedDocument: PropType.object
 };

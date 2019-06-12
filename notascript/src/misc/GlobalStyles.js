@@ -16,10 +16,15 @@ export default createGlobalStyle`
     font-size: 18px;
     color: #373f43;
   }
+  
   main {
     display: grid;
     grid-template-rows: 40px auto 40px;
     height: 100vh;
+  }
+
+  i {
+	  color: white;
   }
 
   h1 {
@@ -47,14 +52,14 @@ export default createGlobalStyle`
       }
     }
 
-    h4{
+    h4 {
       word-break: break-all;
       color: #373f43;
       font-weight: normal;
       margin: 0;
     }
 
-    p{
+    p {
       word-break: break-word;
     }
 
@@ -67,38 +72,45 @@ export default createGlobalStyle`
   }
 
 
-input {
-	border: 1px solid #ddd;
-	font-size: 1rem;
-	padding-left: 5px;
-	height: 45px;
-	margin-bottom: 10px;
-}
+  input {
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    padding-left: 5px;
+    height: 45px;
+    margin-bottom: 10px;
+  }
 
-label {
-  color: #373f43;
-	font-weight: normal;
-	margin-bottom: 10px;
-}
+  label {
+    color: #373f43;
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
 
-textarea {
-  border: 1px solid #ddd;
-	font-size: 1rem;
-	padding-left: 5px;
-	width: 100%;
-	height: 150px;
-	margin-bottom: 10px;
-}
+  textarea {
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    padding-left: 5px;
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+  }
 
-form {
-  height: 100%;
-	padding: 20px;
-	display: grid;
-	grid-template-rows: 1fr 3fr 1fr 1fr;
-}
+  form {
+    height: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr 1fr;
+  }
 
-button {
-  font-size: 1em;
-  border: none;
-}
+  button {
+    font-size: 2em;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    max-height: 50px;
+    font-family: 'Dancing Script', cursive;
+    margin: 10px 0;
+    background: transparent;
+  }
 `;

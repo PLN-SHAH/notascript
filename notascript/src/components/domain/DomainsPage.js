@@ -2,11 +2,7 @@ import DomainList from './DomainList.js';
 import PropType from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { Button, NavIcon } from '../../misc/Style.js';
-
-const StyledButton = styled(Button)`
-	background-color: #ee8329;
-`;
+import { NavIcon } from '../../misc/Style.js';
 
 const StyledForm = styled.form`
 	padding: 20px;
@@ -15,9 +11,13 @@ const StyledForm = styled.form`
 	border-top: 5px solid #ee8329;
 `;
 
+const StyledButton = styled.button`
+	background-color: #ee8329;
+`;
+
 const StyledNavIcon = styled(NavIcon)``;
 
-export default function DomainsPage({ domainList, onFormSubmit }) {
+export default function DomainsPage({ domains, onFormSubmit }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 
@@ -36,13 +36,13 @@ export default function DomainsPage({ domainList, onFormSubmit }) {
 				/>
 				<StyledButton>add</StyledButton>
 			</StyledForm>
-			<DomainList domainList={domainList} />
+			<DomainList domains={domains} />
 			<StyledNavIcon className='fas fa-tags' />
 		</>
 	);
 }
 
 DomainsPage.propType = {
-	domainList: PropType.array,
+	domains: PropType.array,
 	onFormSubmit: PropType.func
 };

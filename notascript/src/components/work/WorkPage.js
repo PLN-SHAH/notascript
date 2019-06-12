@@ -31,11 +31,6 @@ const StyledNavIcon = styled(NavIcon)``;
 const StyledButton = styled.button`
 	font-size: 1.5em;
 	background: lightgrey;
-	padding: 5px;
-
-	> i {
-		color: white;
-	}
 `;
 
 const StyledContainer = styled.section`
@@ -47,13 +42,10 @@ const StyledContainer = styled.section`
 const StyledToolbar = styled.section`
 	position: absolute;
 	right: 0;
+	top: 35px;
 `;
 
-export default function WorkPage({
-	selectedDocument,
-	history,
-	dictionaryList
-}) {
+export default function WorkPage({ dictionaries, selectedDocument, history }) {
 	const { title, symbols } = selectedDocument || {};
 	const createdSymbols = createUnicodes(200, 40);
 
@@ -75,7 +67,7 @@ export default function WorkPage({
 	}
 
 	function renderSymbols(symbolFromButton) {
-		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
+		setNewSymbolList([...newSymbolList, symbolFromButton]);
 	}
 
 	function updateSymbols(event) {
@@ -89,7 +81,7 @@ export default function WorkPage({
 
 	function unDoSymbols() {
 		newSymbolList.pop();
-		setNewSymbolList((newSymbolList = [...newSymbolList]));
+		setNewSymbolList([...newSymbolList]);
 	}
 
 	return (
@@ -110,11 +102,11 @@ export default function WorkPage({
 				</StyledButton>
 			</StyledToolbar>
 			<Symbols
-				createdSymbols={createdSymbols}
-				dictionaryList={dictionaryList}
 				handleButtonClick={symbolFromButton => {
 					renderSymbols(symbolFromButton);
 				}}
+				createdSymbols={createdSymbols}
+				dictionaries={dictionaries}
 			/>
 			<StyledNavIcon className='fas fa-file-signature' />
 		</StyledContainer>
@@ -123,5 +115,6 @@ export default function WorkPage({
 
 WorkPage.propTypes = {
 	selectedDocument: PropTypes.object,
-	dictionaryList: PropTypes.array
+	dictionaries: PropTypes.array,
+	history: PropTypes.object
 };

@@ -4,14 +4,6 @@ import NavLink from '../../app/NavLink.js';
 import PropTypes from 'prop-types';
 import { Title, NavIcon } from '../../misc/Style.js';
 
-const StyledTitle = styled(Title)`
-	font-weight: bold;
-	color: #7cd365;
-`;
-const StyledNavLink = styled(NavLink)`
-	display: grid;
-	justify-content: flex-end;
-`;
 const StyledDocument = styled.section`
 	border-top: 5px solid #7cd365;
 	padding: 20px;
@@ -26,6 +18,15 @@ const StyledSymbols = styled.section`
 	border-top: 3px solid #170444;
 	width: 100vw;
 	height: 100%;
+`;
+const StyledTitle = styled(Title)`
+	font-weight: bold;
+	color: #7cd365;
+`;
+const StyledIcon = styled.i`
+	display: grid;
+	justify-content: flex-end;
+	color: #373f43;
 `;
 
 const StyledSymbolsSheet = styled.section`
@@ -46,16 +47,15 @@ export default function DocumentDetail({ selectedDocument }) {
 		selectedDocument && (
 			<>
 				<StyledDocument>
-					<StyledNavLink to='/documents'>
-						<i className='fas fa-angle-double-left' />
-					</StyledNavLink>
+					<NavLink to='/documents'>
+						<StyledIcon className='fas fa-angle-double-left' />
+					</NavLink>
 					<StyledTitle>{title}</StyledTitle>
 					<p>{description}</p>
 				</StyledDocument>
 				<StyledSymbols>
 					<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
 				</StyledSymbols>
-
 				<StyledNavIcon className='fas fa-copy' />
 			</>
 		)

@@ -5,17 +5,21 @@ import styled from 'styled-components';
 
 const StyledContainer = styled.section`
 	display: grid;
+	align-items: center;
 	grid-template-columns: repeat(2, 1fr);
 	padding: 0 20px;
 `;
 
-const StyledButtonDelete = styled.button`
-	justify-self: end;
-	background: white;
-`;
-
 const StyledIcons = styled.section`
 	text-align: right;
+
+	i {
+		color: #373f43;
+	}
+`;
+
+const StyledButton = styled.button`
+	font-size: 1em;
 `;
 
 export default function Dictionary({ dictionary, onDelete }) {
@@ -23,14 +27,16 @@ export default function Dictionary({ dictionary, onDelete }) {
 
 	return (
 		<StyledContainer>
-			<h4>{title}</h4>
+			<NavLink to={`/editDictionary/${_id}`}>
+				<h4>{title}</h4>
+			</NavLink>
 			<StyledIcons>
 				<NavLink to={`/editDictionary/${_id}`}>
 					<i className='far fa-edit' />
 				</NavLink>
-				<StyledButtonDelete onClick={onDelete}>
+				<StyledButton onClick={onDelete}>
 					<i className='fas fa-trash-alt' />
-				</StyledButtonDelete>
+				</StyledButton>
 			</StyledIcons>
 		</StyledContainer>
 	);

@@ -2,11 +2,8 @@ import Dictionary from './Dictionary.js';
 import PropType from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { Button, NavIcon } from '../../misc/Style.js';
+import { NavIcon } from '../../misc/Style.js';
 
-const StyledButton = styled(Button)`
-	background-color: #29c1ee;
-`;
 const StyledForm = styled.form`
 	grid-template-rows: auto;
 	height: unset;
@@ -18,13 +15,17 @@ const StyledLabel = styled.label`
 	color: #29c1ee;
 `;
 
+const StyledButton = styled.button`
+	background-color: #29c1ee;
+`;
+
 const StyledNavIcon = styled(NavIcon)``;
 
 export default function DictionaryList({
-	dictionaryList,
-	onDelete,
 	onFormSubmit,
-	onDeleteEntry
+	onDelete,
+	onDeleteEntry,
+	dictionaries
 }) {
 	function handleSubmit(event) {
 		const title = event.target.title;
@@ -43,7 +44,7 @@ export default function DictionaryList({
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit}>
-				<StyledLabel htmlFor='title'>New title</StyledLabel>
+				<StyledLabel htmlFor='title'>New dictionary</StyledLabel>
 				<input
 					name='title'
 					placeholder='type title here...'
@@ -53,7 +54,7 @@ export default function DictionaryList({
 				<StyledButton>add</StyledButton>
 			</StyledForm>
 
-			{dictionaryList.map(dictionary => (
+			{dictionaries.map(dictionary => (
 				<Dictionary
 					dictionary={dictionary}
 					key={dictionary._id}
@@ -67,7 +68,8 @@ export default function DictionaryList({
 }
 
 DictionaryList.propType = {
-	dictionaryList: PropType.array,
+	onFormSubmit: PropType.func,
 	onDelete: PropType.func,
-	onFormSubmit: PropType.func
+	onDeleteEntry: PropType.func,
+	dictionaries: PropType.array
 };

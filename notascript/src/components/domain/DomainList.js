@@ -6,16 +6,16 @@ import { DomainList as Domainlist } from '../../misc/Style.js';
 
 const StyledDomainlist = styled(Domainlist)``;
 
-export default function DomainList({ domainList }) {
+export default function DomainList({ domains }) {
 	return (
 		<StyledDomainlist>
-			{domainList.map(domain => (
-				<Domain domain={domain} key={domain} />
+			{domains.map(domain => (
+				<Domain domain={domain} key={domain._id} />
 			))}
 		</StyledDomainlist>
 	);
 }
 
 DomainList.propTypes = {
-	domainList: PropTypes.array
+	domains: PropTypes.array
 };

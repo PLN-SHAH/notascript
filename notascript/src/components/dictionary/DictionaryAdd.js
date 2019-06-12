@@ -1,7 +1,7 @@
 import PropType from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button, Subtitle, NavIcon } from '../../misc/Style.js';
+import { Subtitle, NavIcon } from '../../misc/Style.js';
 
 const StyledForm = styled.form`
 	grid-template-rows: unset;
@@ -9,14 +9,15 @@ const StyledForm = styled.form`
 	border-top: 5px solid #2eadd3;
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.button`
 	width: 100%;
 	background-color: #2eadd3;
 `;
 
 const StyledButtonDelete = styled.button`
+	font-size: 1em;
 	justify-self: end;
-	background: white;
+	background: transparent;
 `;
 
 const StyledSubtitle = styled(Subtitle)``;

@@ -2,10 +2,10 @@ import Document from './Document';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function DocumentList({ documentList, onDelete }) {
+export default function DocumentList({ onDelete, documents }) {
 	return (
 		<>
-			{documentList.map(document => (
+			{documents.map(document => (
 				<Document
 					key={document._id}
 					document={document}
@@ -18,6 +18,6 @@ export default function DocumentList({ documentList, onDelete }) {
 }
 
 DocumentList.propTypes = {
-	documentList: PropTypes.array,
-	onDelete: PropTypes.func
+	onDelete: PropTypes.func,
+	documents: PropTypes.array
 };
