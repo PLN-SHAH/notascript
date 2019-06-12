@@ -78,8 +78,7 @@ export default function App() {
 	};
 
 	const updateDocument = document => {
-		console.log('in app document', document);
-		const { title, description, domains, symbols, _id } = document;
+		const { title, description, symbols, _id } = document;
 		const index = getIndex(documents, document);
 
 		patchDocument(document, document._id);
@@ -87,7 +86,6 @@ export default function App() {
 		const updatedDocument = {
 			title,
 			description,
-			domains,
 			symbols,
 			_id
 		};
@@ -106,7 +104,7 @@ export default function App() {
 
 		setDocuments([...documents.slice(0, index), ...documents.slice(index + 1)]);
 	};
-	//delete entry
+
 	const removeDictionary = dictionary => {
 		const index = getIndex(dictionaries, dictionary);
 

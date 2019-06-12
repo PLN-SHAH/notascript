@@ -43,6 +43,9 @@ export default function Dictionary({ dictionary, onDelete }) {
 }
 
 Dictionary.propType = {
-	dictionary: PropType.obj,
+	dictionary: PropType.shape({
+		_id: PropType.number,
+		title: PropType.string.isRequired
+	}),
 	onDelete: PropType.func
 };

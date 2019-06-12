@@ -1,4 +1,3 @@
-import DomainList from '../domain/DomainList.js';
 import NavLink from '../../app/NavLink.js';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -20,8 +19,12 @@ const StyledIcon = styled.i`
 	padding-right: 5px;
 `;
 
+const StyledButton = styled.button`
+	font-size: 1em;
+`;
 const StyledNavLink = styled(NavLink)`
 	text-align: left;
+
 	> h4 {
 		font-weight: bold;
 		color: #7cd365;
@@ -33,7 +36,7 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export default function Document({ document, onDelete }) {
-	const { _id, title, domains, description } = document;
+	const { _id, title, description } = document;
 	return (
 		document && (
 			<StyledFile>
@@ -41,14 +44,13 @@ export default function Document({ document, onDelete }) {
 					<NavLink to={`edit/${_id}`}>
 						<StyledIcon className='far fa-edit' />
 					</NavLink>
-					<NavLink onClick={onDelete}>
+					<StyledButton onClick={onDelete}>
 						<StyledIcon className='fas fa-trash-alt' />
-					</NavLink>
+					</StyledButton>
 				</StyledCta>
 				<StyledNavLink to={`details/${_id}`}>
 					<h4>{title}</h4>
 					<p>{description}</p>
-					{/* 	<DomainList domainList={domains} /> */}
 				</StyledNavLink>
 				<NavLink to={`work/${_id}`}>
 					...continue work <StyledIcon className='fas fa-file-signature' />
@@ -59,11 +61,10 @@ export default function Document({ document, onDelete }) {
 }
 
 Document.propTypes = {
-	document: PropTypes.object,
-	title: PropTypes.string,
-	description: PropTypes.string,
-	id: PropTypes.string,
-	symbols: PropTypes.array,
-	domains: PropTypes.array,
-	onDelete: PropTypes.func
+	document: PropTypes.shape({
+		title: PropTypes.string,
+		description: PropTypes.string,
+		_id: PropTypes.string,
+		onDelete: PropTypes.func
+	})
 };

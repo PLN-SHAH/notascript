@@ -59,7 +59,6 @@ export default function DictionaryAdd({
 	onDeleteEntry
 }) {
 	const { title, entries } = dictionary;
-	console.log(dictionary, 'in dictionary');
 
 	let [synonyms, setSynonyms] = useState(entries.key || []);
 	let [meanings, setMeanings] = useState(entries.value || []);
@@ -125,6 +124,12 @@ export default function DictionaryAdd({
 }
 
 DictionaryAdd.propType = {
-	dictionary: PropType.obj,
+	dictionary: PropType.shape({
+		title: PropType.string.isRequired,
+		entries: PropType.arrayOf({
+			synonym: PropType.string,
+			meaning: PropType.string
+		})
+	}),
 	onFormSubmitEntries: PropType.func
 };
