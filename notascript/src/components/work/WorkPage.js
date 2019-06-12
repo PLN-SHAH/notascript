@@ -31,6 +31,11 @@ const StyledNavIcon = styled(NavIcon)``;
 const StyledButton = styled.button`
 	font-size: 1.5em;
 	background: lightgrey;
+	padding: 5px;
+
+	> i {
+		color: white;
+	}
 `;
 
 const StyledContainer = styled.section`
@@ -42,7 +47,6 @@ const StyledContainer = styled.section`
 const StyledToolbar = styled.section`
 	position: absolute;
 	right: 0;
-	top: 35px;
 `;
 
 export default function WorkPage({ dictionaries, selectedDocument, history }) {
@@ -67,7 +71,7 @@ export default function WorkPage({ dictionaries, selectedDocument, history }) {
 	}
 
 	function renderSymbols(symbolFromButton) {
-		setNewSymbolList([...newSymbolList, symbolFromButton]);
+		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
 	}
 
 	function updateSymbols(event) {
@@ -81,7 +85,7 @@ export default function WorkPage({ dictionaries, selectedDocument, history }) {
 
 	function unDoSymbols() {
 		newSymbolList.pop();
-		setNewSymbolList([...newSymbolList]);
+		setNewSymbolList((newSymbolList = [...newSymbolList]));
 	}
 
 	return (

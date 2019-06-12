@@ -44,21 +44,19 @@ export default function DocumentDetail({ selectedDocument }) {
 	const { title, description, symbols } = selectedDocument;
 
 	return (
-		selectedDocument && (
-			<>
-				<StyledDocument>
-					<NavLink to='/documents'>
-						<StyledIcon className='fas fa-angle-double-left' />
-					</NavLink>
-					<StyledTitle>{title}</StyledTitle>
-					<p>{description}</p>
-				</StyledDocument>
-				<StyledSymbols>
-					<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
-				</StyledSymbols>
-				<StyledNavIcon className='fas fa-copy' />
-			</>
-		)
+		<>
+			<StyledDocument>
+				<NavLink to='/documents'>
+					<StyledIcon className='fas fa-angle-double-left' />
+				</NavLink>
+				<StyledTitle>{selectedDocument && title}</StyledTitle>
+				<p>{selectedDocument && description}</p>
+			</StyledDocument>
+			<StyledSymbols>
+				<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
+			</StyledSymbols>
+			<StyledNavIcon className='fas fa-copy' />
+		</>
 	);
 }
 

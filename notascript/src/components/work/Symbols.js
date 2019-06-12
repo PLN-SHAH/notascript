@@ -9,7 +9,7 @@ const StyledButtonContainer = styled.section`
 const StyledButtons = styled.button`
 	background-color: #d32e4a;
 	margin: 0;
-	font-size: 1.2em;
+	font-size: 1.5em;
 	font-family: 'Raleway', sans-serif;
 `;
 

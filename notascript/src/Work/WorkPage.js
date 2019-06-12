@@ -30,11 +30,6 @@ const StyledToolbar = styled.section`
 const StyledButton = styled.button`
 	font-size: 1em;
 	background: lightgrey;
-	padding: 5px;
-
-	> i {
-		color: white;
-	}
 `;
 
 export default function WorkPage({ dictionaries, selectedDocument, history }) {
