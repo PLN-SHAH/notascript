@@ -32,10 +32,6 @@ const StyledButton = styled.button`
 	font-size: 1.5em;
 	background: lightgrey;
 	padding: 5px;
-
-	> i {
-		color: white;
-	}
 `;
 
 const StyledContainer = styled.section`
@@ -49,7 +45,12 @@ const StyledToolbar = styled.section`
 	right: 0;
 `;
 
-export default function WorkPage({ dictionaries, selectedDocument, history }) {
+export default function WorkPage({
+	dictionaries,
+	selectedDocument,
+	updateDocumentSymbols,
+	history
+}) {
 	const { title, symbols } = selectedDocument || {};
 	const createdSymbols = createUnicodes(200, 40);
 
@@ -65,7 +66,7 @@ export default function WorkPage({ dictionaries, selectedDocument, history }) {
 
 				return {
 					key,
-					value: key // TODO: choose some value
+					value: key
 				};
 			});
 	}
@@ -74,14 +75,11 @@ export default function WorkPage({ dictionaries, selectedDocument, history }) {
 		setNewSymbolList((newSymbolList = [...newSymbolList, symbolFromButton]));
 	}
 
-	function updateSymbols(event) {
-		setNewSymbolList(
-			(newSymbolList &&
-				newSymbolList.forEach(symbol => symbols.push(symbol))) ||
-				symbols
-		);
+	const updateSymbols = () => {
+		selectedDocument.symbols = [...newSymbolList];
+		updateDocumentSymbols(selectedDocument);
 		history.push('/');
-	}
+	};
 
 	function unDoSymbols() {
 		newSymbolList.pop();
@@ -120,5 +118,6 @@ export default function WorkPage({ dictionaries, selectedDocument, history }) {
 WorkPage.propTypes = {
 	selectedDocument: PropTypes.object,
 	dictionaries: PropTypes.array,
+	updateDocumentSymbols: PropTypes.func,
 	history: PropTypes.object
 };

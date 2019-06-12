@@ -78,8 +78,10 @@ export default function App() {
 	};
 
 	const updateDocument = document => {
+		console.log('in app document', document);
 		const { title, description, domains, symbols, _id } = document;
 		const index = getIndex(documents, document);
+
 		patchDocument(document, document._id);
 
 		const updatedDocument = {
@@ -209,6 +211,9 @@ export default function App() {
 								onFormSubmitEntries={entry => createDictionaryEntry(entry)}
 								dictionaries={dictionaries}
 								selectedDocument={readData(props, documents)}
+								updateDocumentSymbols={selectedDocument =>
+									updateDocument(selectedDocument)
+								}
 								{...props}
 							/>
 						)}

@@ -41,6 +41,7 @@ const StyledSymbolsSheet = styled.section`
 const StyledNavIcon = styled(NavIcon)``;
 
 export default function DocumentDetail({ selectedDocument }) {
+	console.log();
 	const { title, description, symbols } = selectedDocument;
 
 	return (
@@ -53,7 +54,7 @@ export default function DocumentDetail({ selectedDocument }) {
 				<p>{selectedDocument && description}</p>
 			</StyledDocument>
 			<StyledSymbols>
-				<StyledSymbolsSheet>{symbols}</StyledSymbolsSheet>
+				<StyledSymbolsSheet>{selectedDocument && symbols}</StyledSymbolsSheet>
 			</StyledSymbols>
 			<StyledNavIcon className='fas fa-copy' />
 		</>

@@ -53,9 +53,9 @@ app.delete('/dictionaries/:id', (req, res) => {
 
 app.patch('/documents/:id', (req, res) => {
 	const { id } = req.params;
-	const { title, description } = req.body;
+	const { title, description, symbols } = req.body;
 
-	Document.findByIdAndUpdate(id, { title, description }, { new: true })
+	Document.findByIdAndUpdate(id, { title, description, symbols }, { new: true })
 		.then(document => res.json(document))
 		.catch(err => err.json({ errors: [err] }));
 });
