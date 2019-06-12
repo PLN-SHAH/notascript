@@ -8,7 +8,7 @@ import Edit from '../components/edit/Edit.js';
 import Footer from './Footer.js';
 import Header from './Header.js';
 import OverviewPage from '../components/overview/OverviewPage.js';
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import WorkPage from '../components/work/WorkPage.js';
 import styled from 'styled-components';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -32,81 +32,68 @@ const StyledContent = styled.section`
 	width: 100vw;
 `;
 
-export default class App extends Component {
-	state = {
-		dictionaries: [],
-		domains: ['random', 'important', 'do'],
-		documents: []
-	};
-
-	/*
+export default function App() {
 	const [documents, setDocuments] = useState([]);
-	const [dictionaries, setDictionaries] = useState([]);*/
+	const [dictionaries, setDictionaries] = useState([]);
+	const [domains, setDomains] = useState([]);
 
-	createDocument = (data, history) => {
+	useEffect(() => {
+		loadDocuments();
+		loadDictionaries();
+	}, []);
+
+	const createDocument = (data, history) => {
 		postDocument(data)
 			.then(newDocument => {
-				this.setState({
-					...this.state,
-					documents: [newDocument, ...this.state.documents]
-				});
+				setDocuments([...documents, newDocument]);
 				history.push('/');
 			})
 			.catch(error => console.log(error));
 	};
 
-	createDictionary = (title, history) => {
+	const createDictionary = (title, history) => {
 		postDictionary(title)
 			.then(newDictionary => {
-				this.setState({
-					...this.state,
-					dictionaries: [newDictionary, ...this.state.dictionaries]
-				});
+				setDictionaries([...dictionaries, newDictionary]);
 				history.push('/');
 			})
 			.catch(error => console.log(error));
 	};
 
-	readDocument({ props }) {
-		const selectionArray = this.state.documents.filter(
+	const readDocument = props => {
+		const selectionArray = documents.filter(
 			document => document._id === props.match.params.id
 		);
 		return selectionArray[0];
-	}
+	};
 
-	readDictionary({ props }) {
-		const selectionArray = this.state.dictionaries.filter(
+	const readDictionary = props => {
+		const selectionArray = dictionaries.filter(
 			dictionary => dictionary._id === props.match.params.id
 		);
 		return selectionArray[0];
-	}
+	};
 
-	readDocuments() {
+	function loadDocuments() {
 		getDocuments()
 			.then(data => {
-				this.setState({
-					...this.state,
-					documents: data
-				});
+				setDocuments(data);
 			})
 			.catch(error => console.log(error));
 	}
 
-	readDictionaries() {
+	function loadDictionaries() {
 		getDictionaries()
 			.then(data => {
-				this.setState({
-					...this.state,
-					dictionaries: data
-				});
+				setDictionaries(data);
 			})
 			.catch(error => console.log(error));
 	}
 
-	updateDocument(document) {
+	const updateDocument = document => {
 		patchDocument(document, document._id);
 
-		const index = getIndex(this.state.documents, document);
+		const index = getIndex(documents, document);
 		const { title, description, domains, symbols, _id } = document;
 
 		const updatedDocument = {
@@ -117,177 +104,150 @@ export default class App extends Component {
 			_id
 		};
 
-		this.setState({
-			...this.state,
-			documents: [
-				...this.state.documents.slice(0, index),
-				updatedDocument,
-				...this.state.documents.slice(index + 1)
-			]
-		});
-	}
+		setDocuments([
+			...documents.slice(0, index),
+			updatedDocument,
+			...documents.slice(index + 1)
+		]);
+	};
 
-	removeDocument(document) {
-		const index = getIndex(this.state.documents, document);
+	const removeDocument = document => {
+		const index = getIndex(documents, document);
 
 		deleteDocument(document, document._id);
 
-		this.setState({
-			documents: [
-				...this.state.documents.slice(0, index),
-				...this.state.documents.slice(index + 1)
-			]
-		});
-	}
+		setDocuments([...documents.slice(0, index), ...documents.slice(index + 1)]);
+	};
 	//delete entry
-	removeDictionary(dictionary) {
-		const index = getIndex(this.state.dictionaries, dictionary);
+	const removeDictionary = dictionary => {
+		const index = getIndex(dictionaries, dictionary);
 
 		deleteDictionary(dictionary, dictionary._id);
 
-		this.setState({
-			dictionaries: [
-				...this.state.dictionaries.slice(0, index),
-				...this.state.dictionaries.slice(index + 1)
-			]
-		});
-	}
+		setDictionaries([
+			...dictionaries.slice(0, index),
+			...dictionaries.slice(index + 1)
+		]);
+	};
 
-	componentDidMount() {
-		this.readDocuments();
-		this.readDictionaries();
-	}
-
-	addDomain(domainName) {
-		this.setState({
-			domains: [domainName, ...this.state.domains]
-		});
-	}
+	const addDomain = domainName => {
+		setDomains([domainName, ...domains]);
+	};
 
 	//deleteDomain
 	//deleteEntry
 
-	addEntryToDict(entry) {
+	const addEntryToDict = entry => {
 		const { synonym, title, meaning } = entry;
 		const newEntry = { key: synonym, value: meaning };
-		const selectedDict = this.state.dictionaries.find(
-			item => item.title === title
-		);
+		const selectedDict = dictionaries.find(item => item.title === title);
 
 		selectedDict.entries = [...selectedDict.entries, newEntry];
-	}
+	};
 
-	render() {
-		return (
-			<main>
-				<Header />
-				<StyledContent>
-					<Switch>
-						<Route
-							path='/create'
-							render={props => (
-								<DocumentCreate
-									onFormSubmit={data => this.createDocument(data)}
-									domainList={this.state.domains}
-									{...props}
-								/>
-							)}
-						/>
-						<Route
-							path='/domains'
-							render={() => (
-								<DomainsPage
-									domainList={this.state.domains}
-									onFormSubmit={data => this.addDomain(data)}
-								/>
-							)}
-						/>
-						<Route
-							path='/dictionaries'
-							render={() => (
-								<DictionaryList
-									dictionaryList={this.state.dictionaries}
-									onDelete={document => this.removeDictionary(document)}
-									onFormSubmit={dictionary => this.createDictionary(dictionary)}
-								/>
-							)}
-						/>
-						<Route
-							path='/documents'
-							render={props => (
-								<DocumentsPage
-									documentList={this.state.documents}
-									onDelete={document => {
-										this.removeDocument(document);
-									}}
-									{...props}
-								/>
-							)}
-						/>
+	return (
+		<main>
+			<Header />
+			<StyledContent>
+				<Switch>
+					<Route
+						path='/create'
+						render={props => (
+							<DocumentCreate
+								onFormSubmit={data => createDocument(data)}
+								domainList={domains}
+								{...props}
+							/>
+						)}
+					/>
+					<Route
+						path='/domains'
+						render={() => (
+							<DomainsPage
+								domainList={domains}
+								onFormSubmit={data => addDomain(data)}
+							/>
+						)}
+					/>
+					<Route
+						path='/dictionaries'
+						render={() => (
+							<DictionaryList
+								dictionaryList={dictionaries}
+								onDelete={document => removeDictionary(document)}
+								onFormSubmit={dictionary => createDictionary(dictionary)}
+							/>
+						)}
+					/>
+					<Route
+						path='/documents'
+						render={props => (
+							<DocumentsPage
+								documentList={documents}
+								onDelete={document => {
+									removeDocument(document);
+								}}
+								{...props}
+							/>
+						)}
+					/>
 
-						<Route
-							path='/details/:id'
-							render={props => (
-								<DocumentDetail
-									selectedDocument={this.readDocument({ props })}
-								/>
-							)}
-						/>
-						<Route
-							path='/edit/:id'
-							render={props => (
-								<Edit
-									selectedDocument={this.readDocument({ props })}
-									onFormSubmit={document => this.updateDocument(document)}
-									domainList={this.state.domains}
-									{...props}
-								/>
-							)}
-						/>
+					<Route
+						path='/details/:id'
+						render={props => (
+							<DocumentDetail selectedDocument={readDocument(props)} />
+						)}
+					/>
+					<Route
+						path='/edit/:id'
+						render={props => (
+							<Edit
+								selectedDocument={readDocument(props)}
+								onFormSubmit={document => updateDocument(document)}
+								domainList={domains}
+								{...props}
+							/>
+						)}
+					/>
 
-						<Route
-							path='/editDictionary/:id'
-							render={props => (
-								<DictionaryAdd
-									dictionary={this.readDictionary({ props })}
-									onDeleteEntry={entry => this.deleteEntry(entry)}
-									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
-								/>
-							)}
-						/>
+					<Route
+						path='/editDictionary/:id'
+						render={props => (
+							<DictionaryAdd
+								dictionary={readDictionary(props)}
+								/*onDeleteEntry={entry => deleteEntry(entry)}*/
+								onFormSubmitEntries={entry => addEntryToDict(entry)}
+							/>
+						)}
+					/>
 
-						<Route
-							path='/work/:id'
-							render={props => (
-								<WorkPage
-									selectedDocument={this.readDocument({ props })}
-									dictionaryList={this.state.dictionaries}
-									onFormSubmitEntries={entry => this.addEntryToDict(entry)}
-									{...props}
-								/>
-							)}
-						/>
+					<Route
+						path='/work/:id'
+						render={props => (
+							<WorkPage
+								selectedDocument={readDocument(props)}
+								dictionaryList={dictionaries}
+								onFormSubmitEntries={entry => addEntryToDict(entry)}
+								{...props}
+							/>
+						)}
+					/>
 
-						<Route
-							path='/overview'
-							render={props => (
-								<OverviewPage
-									documentList={this.state.documents}
-									onDelete={document => this.deleteDocument(document)}
-									{...props}
-								/>
-							)}
-						/>
-						<Redirect from='/' to='/documents' />
-						<Route
-							exact
-							path='/not-found'
-							component={() => <h1>Not Found</h1>}
-						/>
-					</Switch>
-				</StyledContent>
-				<Footer />
-			</main>
-		);
-	}
+					<Route
+						path='/overview'
+						render={props => (
+							<OverviewPage
+								documentList={documents}
+								onDelete={document => deleteDocument(document)}
+								{...props}
+							/>
+						)}
+					/>
+					<Redirect from='/' to='/documents' />
+					<Route exact path='/not-found' component={() => <h1>Not Found</h1>} />
+				</Switch>
+			</StyledContent>
+			<Footer />
+		</main>
+	);
 }
