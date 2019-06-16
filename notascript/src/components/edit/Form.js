@@ -26,7 +26,7 @@ const StyledPreviewText = styled.p`
 
 const StyledNavIcon = styled(NavIcon)``;
 
-export default function EditForm({ onFormSubmit, domains, selectedDocument }) {
+export default function EditForm({ onFormSubmit, selectedDocument }) {
 	const { title, description, _id, symbols } = selectedDocument || {};
 
 	function handleOnSubmit(event) {
@@ -72,6 +72,5 @@ export default function EditForm({ onFormSubmit, domains, selectedDocument }) {
 
 EditForm.propType = {
 	onFormSubmit: PropType.func.isRequired,
-	domains: PropType.array,
 	selectedDocument: PropType.object
 };

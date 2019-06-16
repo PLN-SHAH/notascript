@@ -46,7 +46,7 @@ const StyledToolbar = styled.section`
 	}
 `;
 
-export default function WorkPage({
+export default function Work({
 	dictionaries,
 	selectedDocument,
 	updateDocumentSymbols,
@@ -118,7 +118,7 @@ export default function WorkPage({
 	);
 }
 
-WorkPage.propTypes = {
+Work.propTypes = {
 	selectedDocument: PropTypes.object,
 	dictionaries: PropTypes.array,
 	updateDocumentSymbols: PropTypes.func,

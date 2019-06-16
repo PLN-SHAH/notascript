@@ -40,7 +40,7 @@ const StyledSymbolsSheet = styled.section`
 
 const StyledNavIcon = styled(NavIcon)``;
 
-export default function DocumentDetail({ selectedDocument }) {
+export default function Details({ selectedDocument }) {
 	const { title, description, symbols } = selectedDocument;
 
 	return (
@@ -60,7 +60,7 @@ export default function DocumentDetail({ selectedDocument }) {
 	);
 }
 
-DocumentDetail.propTypes = {
+Details.propTypes = {
 	selectedDocument: PropTypes.shape({
 		title: PropTypes.string.isRequired,
 		description: PropTypes.string,

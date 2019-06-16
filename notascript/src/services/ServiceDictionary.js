@@ -3,11 +3,13 @@ export function getDictionaries() {
 }
 
 export function postDictionary(data) {
+	console.log(data, 'postDictionary');
 	return fetchDictionary('POST', data);
 }
 
 export function patchDictionary(data) {
-	console.log('in patchDictionary', data);
+	console.log(data, 'patchDictionary');
+
 	return fetchDictionaryEntry('PATCH', data);
 }
 
@@ -26,13 +28,12 @@ function fetchDictionary(method, data, id = '') {
 }
 
 function fetchDictionaryEntry(method, data, id = '') {
+	console.log('in fetch entry', data);
 	return fetch('/dictionaries/' + id, {
 		method,
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(data)
-	})
-		.then(res => res.json())
-		.then(console.log(data, 'in fetchEntry'));
+	}).then(res => res.json());
 }

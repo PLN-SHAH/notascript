@@ -20,7 +20,7 @@ const StyledButton = styled.button`
 
 const StyledNavIcon = styled(NavIcon)``;
 
-export default function FormCreate({ onFormSubmit, domains }) {
+export default function FormCreate({ onFormSubmit }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 
@@ -60,6 +60,5 @@ export default function FormCreate({ onFormSubmit, domains }) {
 
 FormCreate.propType = {
 	onFormSubmit: PropType.func.isRequired,
-	domains: PropType.array,
 	selectedDocument: PropType.object
 };

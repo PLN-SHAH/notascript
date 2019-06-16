@@ -62,8 +62,8 @@ app.patch('/documents/:id', (req, res) => {
 
 app.patch('/dictionaries/:id', (req, res) => {
 	const { id } = req.params;
-	const { title, synonym, meaning } = req.body;
-	Dictionary.findByIdAndUpdate(id, { title, synonym, meaning }, { new: true })
+	const { synonym, meaning } = req.body;
+	Dictionary.findByIdAndUpdate(id, { synonym, meaning }, { new: true })
 		.then(dictionary => res.json(dictionary))
 		.catch(err => err.json({ errors: [err] }));
 });

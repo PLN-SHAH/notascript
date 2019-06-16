@@ -1,15 +1,14 @@
 import DictionaryAdd from '../components/dictionary/DictionaryAdd.js';
 import DocumentCreate from '../components/create/Document';
 import DictionaryList from '../components/dictionary/DictionaryList.js';
-import DocumentDetail from '../components/document/DocumentDetails.js';
-import DocumentsPage from '../components/document/DocumentsPage.js';
-import DomainsPage from '../components/domain/DomainsPage.js';
+import Details from '../components/document/Details.js';
+import Documents from '../components/document/Documents.js';
 import Edit from '../components/edit/Edit.js';
 import Footer from './Footer.js';
 import Header from './Header.js';
 import OverviewPage from '../components/overview/OverviewPage.js';
 import React, { useEffect, useState } from 'react';
-import WorkPage from '../components/work/WorkPage.js';
+import Work from '../components/work/Work.js';
 import styled from 'styled-components';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { getIndex } from '../services/Services.js';
@@ -36,7 +35,6 @@ const StyledContent = styled.section`
 export default function App() {
 	const [documents, setDocuments] = useState([]);
 	const [dictionaries, setDictionaries] = useState([]);
-	const [domains, setDomains] = useState([]);
 
 	useEffect(() => {
 		loadData();
@@ -117,10 +115,6 @@ export default function App() {
 		]);
 	};
 
-	const createDomain = domainName => {
-		setDomains([domainName, ...domains]);
-	};
-
 	const createDictionaryEntry = dictionary => {
 		const { _id, entries, title } = dictionary;
 
@@ -131,8 +125,7 @@ export default function App() {
 			entries: [...entries],
 			_id
 		};
-		patchDictionary(dictionary, dictionary._id);
-		console.log(updatedDictionary, 'updatedDictionary create dict');
+		//patchDictionary(dictionary, dictionary._id);
 
 		setDictionaries([
 			...dictionaries.slice(0, index),
@@ -155,17 +148,7 @@ export default function App() {
 						render={props => (
 							<DocumentCreate
 								onFormSubmit={data => createDocument(data)}
-								domains={domains}
 								{...props}
-							/>
-						)}
-					/>
-					<Route
-						path='/domains'
-						render={() => (
-							<DomainsPage
-								onFormSubmit={data => createDomain(data)}
-								domains={domains}
 							/>
 						)}
 					/>
@@ -182,7 +165,7 @@ export default function App() {
 					<Route
 						path='/documents'
 						render={props => (
-							<DocumentsPage
+							<Documents
 								onDelete={document => {
 									removeDocument(document);
 								}}
@@ -195,7 +178,7 @@ export default function App() {
 					<Route
 						path='/details/:id'
 						render={props => (
-							<DocumentDetail selectedDocument={readData(props, documents)} />
+							<Details selectedDocument={readData(props, documents)} />
 						)}
 					/>
 					<Route
@@ -203,7 +186,6 @@ export default function App() {
 						render={props => (
 							<Edit
 								onFormSubmit={document => updateDocument(document)}
-								domains={domains}
 								selectedDocument={readData(props, documents)}
 								{...props}
 							/>
@@ -211,7 +193,7 @@ export default function App() {
 					/>
 
 					<Route
-						path='/editDictionary/:id'
+						path='/dictionariesE/:id'
 						render={props => (
 							<DictionaryAdd
 								onFormSubmitEntries={dictionary =>
@@ -226,7 +208,7 @@ export default function App() {
 					<Route
 						path='/work/:id'
 						render={props => (
-							<WorkPage
+							<Work
 								onFormSubmitEntries={dictionary =>
 									createDictionaryEntry(dictionary)
 								}

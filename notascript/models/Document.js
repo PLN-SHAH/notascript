@@ -12,10 +12,6 @@ const documentSchema = new mongoose.Schema({
 	symbols: {
 		type: [String],
 		default: '*'
-	},
-	Domains: {
-		type: [String],
-		default: 'important'
 	}
 });
 

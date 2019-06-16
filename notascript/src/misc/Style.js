@@ -36,15 +36,6 @@ export const Title = styled.h4`
 	font-weight: normal;
 `;
 
-export const DomainTag = styled.li`
-	color: #ee8329;
-	font-weight: bold;
-`;
-
-export const DomainList = styled.ul`
-	padding: 20px;
-`;
-
 export const RouteLink = styled(NavLink)`
 	color: #170444;
 	font-size: 2em;

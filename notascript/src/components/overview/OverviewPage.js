@@ -48,10 +48,6 @@ export default function OverviewPage() {
 						<i className='fas fa-copy' />
 						Documents
 					</StyledNavLink>
-					<StyledNavLink to='/domains'>
-						<i className='fas fa-tags' />
-						Domains
-					</StyledNavLink>
 					<StyledNavLink to='/dictionaries'>
 						<i className='fas fa-book' />
 						Dictionaries

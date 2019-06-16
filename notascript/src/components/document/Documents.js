@@ -24,7 +24,7 @@ const StyledIcon = styled.i`
 
 const StyledNavIcon = styled(NavIcon)``;
 
-export default function DocumentsPage({ onDelete, documents }) {
+export default function Documents({ onDelete, documents }) {
 	return (
 		<>
 			<StyledDocumentsContainer>
@@ -38,7 +38,7 @@ export default function DocumentsPage({ onDelete, documents }) {
 	);
 }
 
-DocumentsPage.propType = {
+Documents.propType = {
 	onDelete: PropType.func,
 	documents: PropType.array
 };
