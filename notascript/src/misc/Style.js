@@ -23,6 +23,14 @@ export const Formular = styled.form`
 	grid-template-rows: 1fr 3fr 1fr 1fr;
 `;
 
+export const SymbolsPreview = styled.section`
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 320px;
+	height: 50px;
+`;
+
 export const Title = styled.h4`
 	word-break: break-all;
 	font-weight: normal;

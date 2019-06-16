@@ -9,7 +9,7 @@ const StyledSymbols = styled.section`
 	word-break: break-all;
 	width: 100vw;
 	padding: 20px;
-	min-height: 350px;
+	height: 350px;
 	overflow-y: scroll;
 
 	span {
@@ -28,12 +28,6 @@ const StyledSubtitle = styled(Subtitle)``;
 
 const StyledNavIcon = styled(NavIcon)``;
 
-const StyledButton = styled.button`
-	font-size: 1.5em;
-	background: lightgrey;
-	padding: 5px;
-`;
-
 const StyledContainer = styled.section`
 	display: grid;
 	grid-template-rows: 50px auto auto;
@@ -43,6 +37,13 @@ const StyledContainer = styled.section`
 const StyledToolbar = styled.section`
 	position: absolute;
 	right: 0;
+	top: 35px;
+
+	> button {
+		background: lightgrey;
+		padding: 5px;
+		font-size: 1.5em;
+	}
 `;
 
 export default function WorkPage({
@@ -95,21 +96,23 @@ export default function WorkPage({
 			<StyledSymbols>
 				<span>{selectedDocument && newSymbolList}</span>
 			</StyledSymbols>
-			<StyledToolbar>
-				<StyledButton onClick={updateSymbols}>
-					<i className='far fa-check-square' />
-				</StyledButton>
-				<StyledButton onClick={unDoSymbols}>
-					<i className='fas fa-undo' />
-				</StyledButton>
-			</StyledToolbar>
-			<Symbols
-				handleButtonClick={symbolFromButton => {
-					renderSymbols(symbolFromButton);
-				}}
-				createdSymbols={createdSymbols}
-				dictionaries={dictionaries}
-			/>
+			<section>
+				<StyledToolbar>
+					<button onClick={updateSymbols}>
+						<i className='far fa-check-square' />
+					</button>
+					<button onClick={unDoSymbols}>
+						<i className='fas fa-undo' />
+					</button>
+				</StyledToolbar>
+				<Symbols
+					handleButtonClick={symbolFromButton => {
+						renderSymbols(symbolFromButton);
+					}}
+					createdSymbols={createdSymbols}
+					dictionaries={dictionaries}
+				/>
+			</section>
 			<StyledNavIcon className='fas fa-file-signature' />
 		</StyledContainer>
 	);

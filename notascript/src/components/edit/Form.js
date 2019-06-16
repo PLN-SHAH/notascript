@@ -1,7 +1,7 @@
 import PropType from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { NavIcon } from '../../misc/Style.js';
+import { NavIcon, SymbolsPreview } from '../../misc/Style.js';
 
 const StyledButton = styled.button`
 	background-color: #7cd365;
@@ -15,6 +15,13 @@ const StyledForm = styled.form`
 const StyledLabel = styled.label`
 	font-weight: bold;
 	color: #7cd365;
+`;
+
+const StyledSymbols = styled(SymbolsPreview)``;
+
+const StyledPreviewText = styled.p`
+	margin: 0;
+	margin-bottom: 10px;
 `;
 
 const StyledNavIcon = styled(NavIcon)``;
@@ -55,7 +62,8 @@ export default function EditForm({ onFormSubmit, domains, selectedDocument }) {
 				defaultValue={selectedDocument && description}
 				required
 			/>
-			<section>{selectedDocument && symbols}</section>
+			<StyledPreviewText>preview:</StyledPreviewText>
+			<StyledSymbols>{selectedDocument && symbols}</StyledSymbols>
 			<StyledButton>save</StyledButton>
 			<StyledNavIcon className='fas fa-copy' />
 		</StyledForm>

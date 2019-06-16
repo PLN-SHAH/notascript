@@ -66,6 +66,7 @@ export default createGlobalStyle`
     Input,
     textarea {
       &::placeholder {
+        padding-top: 10px;
         color: #d3d3d3;
         font-style: italic;
       }

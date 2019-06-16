@@ -18,6 +18,11 @@ const StyledButtonDelete = styled.button`
 	font-size: 1em;
 	justify-self: end;
 	background: transparent;
+	color: black;
+
+	> i {
+		color: black;
+	}
 `;
 
 const StyledSubtitle = styled(Subtitle)``;
@@ -56,9 +61,10 @@ const StyledSynonym = styled.span`
 export default function DictionaryAdd({
 	dictionary,
 	onFormSubmitEntries,
-	onDeleteEntry
+	deleteDictionaryEntry,
+	createDictionaryEntry
 }) {
-	const { title, entries } = dictionary;
+	const { title, entries, _id } = dictionary;
 
 	let [synonyms, setSynonyms] = useState(entries.key || []);
 	let [meanings, setMeanings] = useState(entries.value || []);
@@ -75,8 +81,14 @@ export default function DictionaryAdd({
 
 		onFormSubmitEntries({
 			title,
-			synonym,
-			meaning
+			entries: [
+				...entries,
+				{
+					key: synonym,
+					value: meaning
+				}
+			],
+			_id
 		});
 	}
 
@@ -85,7 +97,7 @@ export default function DictionaryAdd({
 			<StyledForm onSubmit={handleSubmit}>
 				<StyledTitle>
 					<StyledSubtitle>dictionary</StyledSubtitle>
-					{title}
+					{dictionary && title}
 				</StyledTitle>
 				<StyledLabel htmlFor='synonym'>Synonym</StyledLabel>
 				<input
@@ -101,22 +113,23 @@ export default function DictionaryAdd({
 					type='text'
 					required
 				/>
-				<StyledButton>add</StyledButton>
+				<StyledButton onClick={createDictionaryEntry}>add</StyledButton>
 			</StyledForm>
 			<StyledList>
 				<li>
 					<StyledSynonym>Synonyms</StyledSynonym>
 					<span>Meanings</span>
 				</li>
-				{entries.map(entry => (
-					<li key={entries.key}>
-						<StyledSynonym>{entry.key}</StyledSynonym>
-						<span>{entry.value}</span>
-						<StyledButtonDelete onClick={onDeleteEntry}>
-							<i className='fas fa-trash-alt' />
-						</StyledButtonDelete>
-					</li>
-				))}
+				{dictionary &&
+					entries.map(entry => (
+						<li key={entries.key}>
+							<StyledSynonym>{entry.key}</StyledSynonym>
+							<span>{entry.value}</span>
+							<StyledButtonDelete onClick={deleteDictionaryEntry}>
+								<i className='fas fa-trash-alt' />
+							</StyledButtonDelete>
+						</li>
+					))}
 			</StyledList>
 			<StyledNavIcon className='fas fa-book' />
 		</>

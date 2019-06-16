@@ -10,6 +10,10 @@ const StyledContainer = styled.section`
 	padding: 0 20px;
 `;
 
+const StyledTitle = styled.h4`
+	font-weight: bold;
+	color: #2eadd3;
+`;
 const StyledIcons = styled.section`
 	text-align: right;
 
@@ -28,7 +32,7 @@ export default function Dictionary({ dictionary, onDelete }) {
 	return (
 		<StyledContainer>
 			<NavLink to={`/editDictionary/${_id}`}>
-				<h4>{title}</h4>
+				<StyledTitle>{title}</StyledTitle>
 			</NavLink>
 			<StyledIcons>
 				<NavLink to={`/editDictionary/${_id}`}>

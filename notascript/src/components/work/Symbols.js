@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 
 const StyledButtonContainer = styled.section`
 	border-bottom: 1px solid #d32e4a;
+	overflow-x: scroll;
+	min-width: 320px;
 `;
 
 const StyledButtons = styled.button`
 	background-color: #d32e4a;
 	margin: 0;
-	font-size: 1.5em;
+	font-size: 1em;
 	font-family: 'Raleway', sans-serif;
 `;
 
@@ -33,7 +35,7 @@ export default function Buttons({
 	createdSymbols,
 	dictionaries
 }) {
-	const [filter, setFilter] = useState('');
+	const [filter, setFilter] = useState(['all']);
 
 	function getFilterTitle() {
 		return dictionaries.map(dictionary => dictionary.title);
@@ -47,10 +49,9 @@ export default function Buttons({
 		const dictionary =
 			filter && dictionaries.find(dictionary => dictionary.title === filter);
 
-		filter === 'all'
-			? (dictionary.entries = createdSymbols)
-			: console.log('no all');
-
+		if (filter === 'all') {
+			dictionary.entries = createdSymbols;
+		}
 		return (dictionary && dictionary.entries) || createdSymbols;
 	}
 

@@ -12,12 +12,14 @@ const StyledDocumentsContainer = styled.section`
 
 const StyledNavLink = styled(NavLink)`
 	font-family: 'Raleway', sans-serif;
+	font-size: 1em;
 	margin: 20px 0;
 `;
 
 const StyledIcon = styled.i`
-	padding: 15px 15px 15px 0;
+	margin-bottom: 10px;
 	color: #7cd365;
+	font-size: 2em;
 `;
 
 const StyledNavIcon = styled(NavIcon)``;
@@ -28,7 +30,6 @@ export default function DocumentsPage({ onDelete, documents }) {
 			<StyledDocumentsContainer>
 				<StyledNavLink to='/create'>
 					<StyledIcon className='far fa-plus-square' />
-					create new document
 				</StyledNavLink>
 				<DocumentList documents={documents} onDelete={onDelete} />
 			</StyledDocumentsContainer>

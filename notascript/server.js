@@ -60,6 +60,14 @@ app.patch('/documents/:id', (req, res) => {
 		.catch(err => err.json({ errors: [err] }));
 });
 
+app.patch('/dictionaries/:id', (req, res) => {
+	const { id } = req.params;
+	const { title, synonym, meaning } = req.body;
+	Dictionary.findByIdAndUpdate(id, { title, synonym, meaning }, { new: true })
+		.then(dictionary => res.json(dictionary))
+		.catch(err => err.json({ errors: [err] }));
+});
+
 //CONFIGURATION
 const db = 'mongodb://localhost:27017/notascript';
 const port = process.env.PORT || 4000;

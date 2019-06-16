@@ -11,7 +11,6 @@ export function deleteDocument(data, id) {
 }
 
 export function patchDocument(data, id) {
-	console.log('in patch doc', data);
 	return fetchDocument('PATCH', data, id);
 }
 

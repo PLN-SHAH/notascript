@@ -23,7 +23,8 @@ import {
 import {
 	deleteDictionary,
 	getDictionaries,
-	postDictionary
+	postDictionary,
+	patchDictionary
 } from '../services/ServiceDictionary.js';
 
 const StyledContent = styled.section`
@@ -120,11 +121,28 @@ export default function App() {
 		setDomains([domainName, ...domains]);
 	};
 
-	const createDictionaryEntry = ({ title, synonym, meaning }) => {
-		const newEntry = { key: synonym, value: meaning };
-		const dictionary = dictionaries.find(item => item.title === title);
+	const createDictionaryEntry = dictionary => {
+		const { _id, entries, title } = dictionary;
 
-		dictionary.entries = [...dictionary.entries, newEntry];
+		const index = getIndex(dictionaries, dictionary);
+
+		const updatedDictionary = {
+			title,
+			entries: [...entries],
+			_id
+		};
+		patchDictionary(dictionary, dictionary._id);
+		console.log(updatedDictionary, 'updatedDictionary create dict');
+
+		setDictionaries([
+			...dictionaries.slice(0, index),
+			updatedDictionary,
+			...dictionaries.slice(index + 1)
+		]);
+	};
+
+	const deleteDictionaryEntry = dictionary => {
+		console.log(dictionary, ' in delete');
 	};
 
 	return (
@@ -196,7 +214,10 @@ export default function App() {
 						path='/editDictionary/:id'
 						render={props => (
 							<DictionaryAdd
-								onFormSubmitEntries={entry => createDictionaryEntry(entry)}
+								onFormSubmitEntries={dictionary =>
+									createDictionaryEntry(dictionary)
+								}
+								deleteDictionaryEntry={entry => deleteDictionaryEntry(entry)}
 								dictionary={readData(props, dictionaries)}
 							/>
 						)}
@@ -206,7 +227,9 @@ export default function App() {
 						path='/work/:id'
 						render={props => (
 							<WorkPage
-								onFormSubmitEntries={entry => createDictionaryEntry(entry)}
+								onFormSubmitEntries={dictionary =>
+									createDictionaryEntry(dictionary)
+								}
 								dictionaries={dictionaries}
 								selectedDocument={readData(props, documents)}
 								updateDocumentSymbols={selectedDocument =>
