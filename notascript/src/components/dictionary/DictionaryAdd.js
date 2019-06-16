@@ -61,7 +61,6 @@ const StyledSynonym = styled.span`
 export default function DictionaryAdd({
 	dictionary,
 	onFormSubmitEntries,
-	deleteDictionaryEntry,
 	createDictionaryEntry
 }) {
 	const { title, entries, _id } = dictionary;
@@ -125,7 +124,7 @@ export default function DictionaryAdd({
 						<li key={entries.key}>
 							<StyledSynonym>{entry.key}</StyledSynonym>
 							<span>{entry.value}</span>
-							<StyledButtonDelete onClick={deleteDictionaryEntry}>
+							<StyledButtonDelete>
 								<i className='fas fa-trash-alt' />
 							</StyledButtonDelete>
 						</li>

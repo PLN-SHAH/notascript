@@ -22,8 +22,7 @@ import {
 import {
 	deleteDictionary,
 	getDictionaries,
-	postDictionary,
-	patchDictionary
+	postDictionary
 } from '../services/ServiceDictionary.js';
 
 const StyledContent = styled.section`
@@ -134,10 +133,6 @@ export default function App() {
 		]);
 	};
 
-	const deleteDictionaryEntry = dictionary => {
-		console.log(dictionary, ' in delete');
-	};
-
 	return (
 		<main>
 			<Header />
@@ -199,7 +194,6 @@ export default function App() {
 								onFormSubmitEntries={dictionary =>
 									createDictionaryEntry(dictionary)
 								}
-								deleteDictionaryEntry={entry => deleteDictionaryEntry(entry)}
 								dictionary={readData(props, dictionaries)}
 							/>
 						)}
