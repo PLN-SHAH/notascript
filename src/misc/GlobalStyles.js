@@ -1,21 +1,23 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    margin: 0;
     font-family: 'Raleway', sans-serif;
   }
 
   body {
-   @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:100,700&display=swap');
-   @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
-    margin: 0;
     font-family: 'Raleway', sans-serif;
+   src: url('https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:100,700&display=swap');
+   @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
     font-weight: 200;
     font-size: 18px;
     color: #373f43;
+    margin: 0;
   }
+
   
   main {
     display: grid;
@@ -114,4 +116,4 @@ export default createGlobalStyle`
     margin: 10px 0;
     background: transparent;
   }
-`;
+`
