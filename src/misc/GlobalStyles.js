@@ -6,12 +6,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     font-family: 'Raleway', sans-serif;
-    src: url('https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:100,700&display=swap');
   }
 
   body {
     font-family: 'Raleway', sans-serif;
-    @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
     font-weight: 200;
     font-size: 18px;
     color: #373f43;
