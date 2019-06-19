@@ -23,10 +23,7 @@ import {
   deleteDictionary,
   getDictionaries,
   postDictionary,
-<<<<<<< HEAD
-=======
   patchDictionary,
->>>>>>> f832881dd3b3ea12885ef92277b27f9dbd3a980e
 } from '../services/ServiceDictionary.js'
 
 const StyledContent = styled.section`
@@ -192,7 +189,7 @@ export default function App() {
           />
 
           <Route
-            path="/dictionaries/:id"
+            path="/dictionariesE/:id"
             render={props => (
               <DictionaryAdd
                 onFormSubmitEntries={dictionary =>

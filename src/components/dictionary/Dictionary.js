@@ -31,11 +31,11 @@ export default function Dictionary({ dictionary, onDelete }) {
 
   return (
     <StyledContainer>
-      <NavLink to={`/dictionaries/${_id}`}>
+      <NavLink to={`/dictionariesE/${_id}`}>
         <StyledTitle>{title}</StyledTitle>
       </NavLink>
       <StyledIcons>
-        <NavLink to={`/dictionaries/${_id}`}>
+        <NavLink to={`/dictionariesE/${_id}`}>
           <i className="far fa-edit" />
         </NavLink>
         <StyledButton onClick={onDelete}>
