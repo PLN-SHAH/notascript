@@ -33,8 +33,6 @@ const StyledNav = styled.nav`
   height: 100%;
 `
 
-const StyledNavIcon = styled(NavIcon)``
-
 export default function OverviewPage() {
   return (
     <>
