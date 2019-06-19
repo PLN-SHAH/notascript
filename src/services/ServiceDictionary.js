@@ -25,7 +25,6 @@ function fetchDictionary(method, data, id = '') {
 }
 
 function fetchDictionaryEntry(method, data, id = '') {
-  console.log('in fetch entry', data)
   return fetch('/dictionaries/' + id, {
     method,
     headers: {

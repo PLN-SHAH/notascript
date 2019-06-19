@@ -60,11 +60,10 @@ app.patch('/documents/:id', (req, res) => {
     .catch(err => err.json({ errors: [err] }))
 })
 
-app.patch('/dictionaries/:id', (req, res) => {
-  const { id } = req.params
-  const { synonym, meaning } = req.body
-  Dictionary.findByIdAndUpdate(id, { synonym, meaning }, { new: true })
-    .then(dictionary => res.json(dictionary))
+app.patch('/dictionaries', (req, res) => {
+  const { title, entries, _id } = req.body
+  Dictionary.findByIdAndUpdate(_id, { title, entries }, { new: true })
+    .then(dictionary => console.log(dictionary))
     .catch(err => err.json({ errors: [err] }))
 })
 
