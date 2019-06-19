@@ -189,7 +189,7 @@ export default function App() {
           />
 
           <Route
-            path="/dictionariesE/:id"
+            path="/dictionaries/:id"
             render={props => (
               <DictionaryAdd
                 onFormSubmitEntries={dictionary =>
