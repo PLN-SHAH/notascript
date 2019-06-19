@@ -23,6 +23,10 @@ import {
   deleteDictionary,
   getDictionaries,
   postDictionary,
+<<<<<<< HEAD
+=======
+  patchDictionary,
+>>>>>>> f832881dd3b3ea12885ef92277b27f9dbd3a980e
 } from '../services/ServiceDictionary.js'
 
 const StyledContent = styled.section`
@@ -115,6 +119,7 @@ export default function App() {
   }
 
   const createDictionaryEntry = dictionary => {
+<<<<<<< HEAD
     const { _id, entries, title } = dictionary
 
     const index = getIndex(dictionaries, dictionary)
@@ -125,6 +130,18 @@ export default function App() {
       _id,
     }
     //patchDictionary(dictionary, dictionary._id);
+=======
+    const index = getIndex(dictionaries, dictionary)
+    const { _id, entries, title } = dictionary
+
+    const updatedDictionary = {
+      title,
+      entries,
+      _id,
+    }
+
+    patchDictionary(dictionary)
+>>>>>>> f832881dd3b3ea12885ef92277b27f9dbd3a980e
 
     setDictionaries([
       ...dictionaries.slice(0, index),
