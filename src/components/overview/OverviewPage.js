@@ -50,7 +50,6 @@ export default function OverviewPage() {
           </StyledNavLink>
         </StyledNav>
       </StyledNavContainer>
-      <StyledNavIcon className="fas fa-cog" />
     </>
   )
 }
