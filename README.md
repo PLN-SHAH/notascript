@@ -2,7 +2,7 @@
 
 ## Installation
 1. Run `npmi`for installing dev dependencies
-2. Run `npm run dev`to start application locally
+2. Run `npm run start` to start application locally
 
 
 View app: 
